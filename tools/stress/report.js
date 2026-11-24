@@ -110,7 +110,7 @@ for (const r of full) for (const f of r.metrics?.formed || []) leaders[f.tag + "
 P(`Unification leaders: ${Object.entries(leaders).sort((a, b) => b[1] - a[1]).map(([k, n]) => k + " " + pct(n, N)).join(", ") || "none"}.\n`);
 
 /* Germany and Italy form by renaming their leader (formNation), so read the formNation record; CSA appears as a new tag. */
-const formedAt = (r, tag) => { const f = (r.metrics?.formed || []).find(x => x.tag === tag); return f ? f.t : r.formations?.[tag]; };
+const formedAt = (r, tag) => r.formations?.[tag] ?? (r.metrics?.formed || []).find(x => x.tag === tag)?.t;
 const form = (tag, lo, hi) => {
  const ys = full.map(r => formedAt(r, tag)).filter(x => x !== undefined).map(yearOf);
  const inW = ys.filter(y => y >= lo && y <= hi).length;

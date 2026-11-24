@@ -35,7 +35,7 @@ const __M={endWar:{},defaults:[],spawned:[],rebelWins:[],formed:[],restored:[]};
 {const f=formNation;formNation=function(c,tag){const r=f.apply(this,arguments);if(c.formed===tag&&!__M.formed.some(x=>x.tag===tag))__M.formed.push({t:G.t,tag,by:c.tag});return r;};}
 return {
  newGame,monthTick,advanceCampaign,cardDefault,pack,unpack,execCommand,issueCampaignCommand,
- G:()=>G,P,provsOf,popOf,isGP,yearOf,dateStr,armyStr:typeof armyStr==="function"?armyStr:null,
+ G:()=>G,P,formedAlive,provsOf,popOf,isGP,yearOf,dateStr,armyStr:typeof armyStr==="function"?armyStr:null,
  BLD,RECIPE,TF,MOD_BY,PROGRAMMES,__M,
  full:()=>JSON.stringify(G,__rep),
  facLvl:typeof facLvl==="function"?facLvl:null,
@@ -244,7 +244,7 @@ function main() {
   for (const t of alive) if (!G2.c[t]?.alive) out.destroyed.push({ t: month, tag: t });
   alive = new Set(Object.keys(G2.c).filter(t => G2.c[t].alive));
   for (const t of Object.keys(G2.c)) if (G2.c[t].civ && !civ.has(t)) { civ.add(t); out.westernised.push({ t: month, tag: t }); }
-  for (const tag of ["GER", "ITA", "CSA"]) if (!out.formations[tag] && G2.c[tag]?.alive) out.formations[tag] = month;
+  for (const tag of ["GER", "ITA", "CSA"]) if (!out.formations[tag] && (G2.c[tag]?.alive || A.formedAlive(tag))) out.formations[tag] = month;
   if (month % 12 === 0) yearly(A);
   if (month % 120 === 0) {
    const text = A.pack();
