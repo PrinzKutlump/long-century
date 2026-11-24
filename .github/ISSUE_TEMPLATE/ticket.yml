@@ -1,0 +1,59 @@
+name: Ticket
+description: A small engine, UI, art or balance change for one agent
+title: "[ticket] "
+labels: ["ticket"]
+body:
+  - type: input
+    id: ticket_id
+    attributes:
+      label: Ticket id and slug
+      description: Branch will be t/<id>-<slug>, for example a5-research-balance.
+      placeholder: a5-research-balance
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [engine, ui, art, balance, bug]
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: One or two sentences. What changes for the player, and why.
+    validations:
+      required: true
+  - type: input
+    id: plan_section
+    attributes:
+      label: Plan section
+      description: Section of the plan this implements, for example docs/plans/Engine_Plan.md section A5.
+  - type: textarea
+    id: files
+    attributes:
+      label: Files and functions to touch
+      description: File names and function names only (use tools/fn.py to find them). No whole-file reads.
+      placeholder: "src/society.js: rpOf, techCost\ntest_a5.js (new)"
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance checks
+      description: Each check is a test or a number. Tests run on GitHub; name the test file.
+      placeholder: "- [ ] node test_a5.js passes\n- [ ] state hash unchanged on seed 7 (or changed, stated in PR)\n- [ ] ms/month at 1936 is at most 130"
+    validations:
+      required: true
+  - type: textarea
+    id: budgets
+    attributes:
+      label: Budgets
+      description: Leave a budget out only if the ticket cannot touch it.
+      placeholder: "ms/month at 1936: 130 max\nsave file: 1 MB max\nmap height: 640 px min\ncontrols: 8% of screen max"
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes and out of scope
+      description: Anything the agent must not change.

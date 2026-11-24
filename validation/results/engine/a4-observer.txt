@@ -1,0 +1,52 @@
+A0 observer-neutral comparison, seed 7, 24 months, fixed command list (21 commands for PUN/GBR/SWI), pending cards take their default
+Digest excludes: msgs, log, player, plist, card, ai, agenda, cabinetBase, commandSerial, actorSerial, orderId, cabinetTreaties, completedWorks, constructionLedger, constructionSequence, ledgerId, lastProgress, tradeReceipts, landUse, employerAccount, localMarket, hist and every key starting with an underscore; includes treasuries, pools, debt, province pops, factories, projects, prices, wars, ownership and the RNG word.
+
+== Seats set after identical initialisation, with the exhausted-treasury fixture (months 5-12)
+  none  vs PUN   economy digest: identical for 24 months; full digest: identical
+  none  vs GBR   economy digest: identical for 24 months; full digest: identical
+  none  vs SWI   economy digest: identical for 24 months; full digest: identical
+  PUN   vs GBR   economy digest: identical for 24 months; full digest: identical
+  PUN   vs SWI   economy digest: identical for 24 months; full digest: identical
+  GBR   vs SWI   economy digest: identical for 24 months; full digest: identical
+
+== Same, but no treasury fixture (the natural economy only)
+  none  vs PUN   economy digest: identical for 24 months; full digest: identical
+  none  vs GBR   economy digest: identical for 24 months; full digest: identical
+  none  vs SWI   economy digest: identical for 24 months; full digest: identical
+  PUN   vs GBR   economy digest: identical for 24 months; full digest: identical
+  PUN   vs SWI   economy digest: identical for 24 months; full digest: identical
+  GBR   vs SWI   economy digest: identical for 24 months; full digest: identical
+
+== Seat chosen at newGame (real new-game path), control flag neutralised, with fixture
+  none  vs PUN   economy digest: identical for 24 months; full digest: identical
+  none  vs GBR   economy digest: first differs after month -1 (undefined 1835); full digest: month -1
+  none  vs SWI   economy digest: first differs after month -1 (undefined 1835); full digest: month -1
+  PUN   vs GBR   economy digest: first differs after month -1 (undefined 1835); full digest: month -1
+  PUN   vs SWI   economy digest: first differs after month -1 (undefined 1835); full digest: month -1
+  GBR   vs SWI   economy digest: first differs after month -1 (undefined 1835); full digest: month -1
+  seat GBR vs nobody, month -1 (undefined 1835)
+    first divergent snapshot: after purgeWars; allocateLocalHouseholds calls 62 (nobody) vs 62 (seat)
+    first divergent material field (document order): price.grain = 1.9351070576877358 vs 1.9311462627651852
+    first divergent field of the seat's own nation: nations.GBR.tr
+    fields differing at that snapshot: 7595; groups {"price.grain":1,"price.fruit":1,"price.livestock":1,"price.fish":1,"price.tobacco":1,"price.coffee":1,"price.sugar":1,"price.timber":1,"price.coal":1,"price.iron":1,"price.fabric":1,"price.clothes":1,"price.liquor":1,"price.furniture":1,"price.paper":1,"price.luxuries":1,"price.steel":1,"price.machinery":1,"pricePrev.grain":1,"pricePrev.fruit":1,"pricePrev.livestock":1,"pricePrev.fish":1,"pricePrev.tobacco":1,"pricePrev.coffee":1,"pricePrev.sugar":1,"pricePrev.timber":1,"pricePrev.coal":1,"pricePrev.iron":1,"pricePrev.fabric":1,"pricePrev.clothes":1,"pricePrev.liquor":1,"pricePrev.furniture":1,"pricePrev.paper":1,"pricePrev.luxuries":1,"pricePrev.steel":1,"pricePrev.machinery":1,"tight.grain":1,"tight.fruit":1,"tight.livestock":1,"tight.fish":1,"tight.tobacco":1,"tight.coffee":1,"tight.sugar":1,"tight.timber":1,"tight.coal":1,"tight.iron":1,"tight.fabric":1,"tight.clothes":1,"tight.liquor":1,"tight.furniture":1,"tight.paper":1,"tight.luxuries":1,"tight.steel":1,"tight.machinery":1,"nations.*.tr":62,"nations.*.capPool":23,"prov.*.pops[*].cash":1666,"prov.*.pops[*].inc":1637,"prov.*.pops[*].ld":1195,"prov.*.pops[*].ed":1551,"prov.*.pops[*].xd":1389,"prov.*.factories[*].cash":17,"prov.*.factories[*].loss":1}
+    opening balances (identical in both runs): {"PUN":{"tr":19293.17,"inv":0,"debt":0},"GBR":{"tr":510582.97,"inv":0,"debt":0},"SWI":{"tr":4496.23,"inv":0,"debt":0}}
+    involved nation GBR, balances after: nobody {"tr":622479.9702608516,"inv":30814.207125452005,"debt":0} | seat {"tr":187892.9189080436,"inv":31912.29195498958,"debt":0}
+    projects of GBR nobody: ["ammo@DEL paid 0 left 5475"]
+    projects of GBR seat:   ["ammo@DEL paid 0 left 5475"]
+  seat SWI vs nobody, month -1 (undefined 1835)
+    first divergent snapshot: after purgeWars; allocateLocalHouseholds calls 62 (nobody) vs 62 (seat)
+    first divergent material field (document order): price.grain = 1.9351070576877358 vs 1.9351047659690217
+    first divergent field of the seat's own nation: nations.SWI.tr
+    fields differing at that snapshot: 6680; groups {"price.grain":1,"price.fruit":1,"price.livestock":1,"price.fish":1,"price.tobacco":1,"price.coffee":1,"price.sugar":1,"price.timber":1,"price.coal":1,"price.iron":1,"price.fabric":1,"price.clothes":1,"price.liquor":1,"price.furniture":1,"price.paper":1,"price.luxuries":1,"price.steel":1,"price.machinery":1,"pricePrev.grain":1,"pricePrev.fruit":1,"pricePrev.livestock":1,"pricePrev.fish":1,"pricePrev.tobacco":1,"pricePrev.coffee":1,"pricePrev.sugar":1,"pricePrev.timber":1,"pricePrev.coal":1,"pricePrev.iron":1,"pricePrev.fabric":1,"pricePrev.clothes":1,"pricePrev.liquor":1,"pricePrev.furniture":1,"pricePrev.paper":1,"pricePrev.luxuries":1,"pricePrev.steel":1,"pricePrev.machinery":1,"tight.grain":1,"tight.fruit":1,"tight.livestock":1,"tight.fish":1,"tight.tobacco":1,"tight.coffee":1,"tight.sugar":1,"tight.timber":1,"tight.coal":1,"tight.iron":1,"tight.fabric":1,"tight.clothes":1,"tight.liquor":1,"tight.furniture":1,"tight.paper":1,"tight.luxuries":1,"tight.steel":1,"tight.machinery":1,"nations.*.tr":62,"nations.*.capPool":23,"prov.*.pops[*].cash":1651,"prov.*.pops[*].inc":1637,"prov.*.pops[*].ld":950,"prov.*.pops[*].ed":1449,"prov.*.pops[*].xd":839,"prov.*.factories[*].cash":15}
+    opening balances (identical in both runs): {"PUN":{"tr":19293.17,"inv":0,"debt":0},"GBR":{"tr":510582.97,"inv":0,"debt":0},"SWI":{"tr":4496.23,"inv":0,"debt":0}}
+    involved nation SWI, balances after: nobody {"tr":7093.056618699881,"inv":0,"debt":0} | seat {"tr":2542.595398816408,"inv":0,"debt":0}
+    projects of SWI nobody: []
+    projects of SWI seat:   []
+
+== Counterfactual: only the investMonth ledger neutralised (display-only since A2; no outcome change expected)
+  none  vs PUN   economy digest: identical for 24 months; full digest: identical
+  none  vs GBR   economy digest: identical for 24 months; full digest: identical
+  none  vs SWI   economy digest: identical for 24 months; full digest: identical
+  PUN   vs GBR   economy digest: identical for 24 months; full digest: identical
+  PUN   vs SWI   economy digest: identical for 24 months; full digest: identical
+  GBR   vs SWI   economy digest: identical for 24 months; full digest: identical

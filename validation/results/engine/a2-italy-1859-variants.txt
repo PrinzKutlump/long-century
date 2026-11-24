@@ -1,0 +1,20 @@
+## variant head
+{"seed":3,"sarTr":41052,"sarTroops":7,"sarFac":0.5,"ausTroops":67,"ausTr":1088273,"warOn":1,"end":"September 1861","win":"def","ws":-31,"ausTroopsEnd":71,"def":"AUS+SIC+TUS+PAP","att":"SAR+FRA","ger":"November 1871"}
+{"seed":7,"sarTr":35314,"sarTroops":11,"sarFac":2.5,"ausTroops":65,"ausTr":1161487,"warOn":1,"end":"July 1859","win":"att","ws":33,"ausTroopsEnd":84,"def":"AUS+TUS+PAP","att":"SAR+FRA","ita":"May 1860"}
+{"seed":11,"sarTr":32243,"sarTroops":13,"sarFac":2.5,"ausTroops":72,"ausTr":946449,"warOn":1,"end":"November 1859","win":"att","ws":34,"ausTroopsEnd":82,"def":"AUS+SIC+PAP","att":"SAR+FRA","ita":"February 1860","ger":"June 1869"}
+{"seed":21,"sarTr":57149,"sarTroops":18,"sarFac":2.5,"ausTroops":81,"ausTr":917621,"warOn":1,"end":"May 1860","win":"att","ws":31,"ausTroopsEnd":90,"def":"AUS+TUS","att":"SAR+FRA","ita":"August 1860","ger":"June 1872"}
+## variant b
+{"seed":3,"sarTr":35631,"sarTroops":7,"sarFac":0.5,"ausTroops":63,"ausTr":975842,"warOn":1,"end":"July 1859","win":"att","ws":34,"ausTroopsEnd":76,"def":"AUS+SIC+TUS+PAP","att":"SAR+FRA","ita":"November 1862","ger":"April 1868"}
+{"seed":7,"sarTr":19716,"sarTroops":12,"sarFac":3,"ausTroops":73,"ausTr":856753,"warOn":1,"end":"December 1859","win":"def","ws":-47,"ausTroopsEnd":84,"def":"AUS+SIC+TUS+PAP","att":"SAR+FRA"}
+{"seed":11,"sarTr":22861,"sarTroops":17,"sarFac":2,"ausTroops":69,"ausTr":596917,"warOn":1,"end":"October 1859","win":"att","ws":34,"ausTroopsEnd":77,"def":"AUS+SIC+PAP","att":"SAR+FRA","ita":"December 1859"}
+{"seed":21,"sarTr":46149,"sarTroops":18,"sarFac":1.5,"ausTroops":73,"ausTr":1320672,"warOn":1,"end":"January 1860","win":"att","ws":33,"ausTroopsEnd":84,"def":"AUS+TUS","att":"SAR+FRA","ita":"June 1860"}
+## variant c
+{"seed":3,"sarTr":29934,"sarTroops":7,"sarFac":0.5,"ausTroops":51,"ausTr":866356,"warOn":1,"end":"September 1859","win":"att","ws":44,"ausTroopsEnd":64,"def":"AUS+TUS+PAP","att":"SAR+FRA","ita":"February 1862","ger":"June 1866"}
+{"seed":7,"sarTr":24603,"sarTroops":7,"sarFac":0.5,"ausTroops":69,"ausTr":561121,"warOn":1,"end":"January 1860","win":"att","ws":31,"ausTroopsEnd":78,"def":"AUS+SIC+PAP","att":"SAR+FRA","ita":"May 1861"}
+{"seed":11,"sarTr":33939,"sarTroops":8,"sarFac":0.5,"ausTroops":62,"ausTr":631700,"warOn":1,"end":"July 1859","win":"att","ws":49,"ausTroopsEnd":76,"def":"AUS+SIC+TUS+PAP","att":"SAR+FRA","ita":"February 1861"}
+{"seed":21,"sarTr":58027,"sarTroops":19,"sarFac":0.5,"ausTroops":60,"ausTr":923914,"warOn":1,"end":"June 1859","win":"def","ws":-35,"ausTroopsEnd":83,"def":"AUS+SIC+TUS","att":"SAR+FRA"}
+## variant a2
+{"seed":3,"sarTr":16303,"sarTroops":7,"sarFac":0.5,"ausTroops":63,"ausTr":1018808,"warOn":1,"end":"July 1860","win":"att","ws":32,"ausTroopsEnd":54,"def":"AUS+SIC+TUS","att":"SAR+FRA","ita":"September 1862","ger":"December 1866"}
+{"seed":7,"sarTr":29475,"sarTroops":7,"sarFac":0.5,"ausTroops":79,"ausTr":522959,"warOn":1,"end":"February 1861","win":"att","ws":31,"ausTroopsEnd":97,"def":"AUS+SIC+PAP","att":"SAR+FRA","ita":"October 1862"}
+{"seed":11,"sarTr":34970,"sarTroops":13,"sarFac":0.5,"ausTroops":77,"ausTr":855024,"warOn":1,"end":"January 1860","win":"att","ws":46,"ausTroopsEnd":94,"def":"AUS+SIC+PAP","att":"SAR+FRA","ita":"April 1861","ger":"April 1869"}
+{"seed":21,"sarTr":70076,"sarTroops":24,"sarFac":10.5,"ausTroops":78,"ausTr":647260,"warOn":1,"end":"April 1859","win":"def","ws":-26,"ausTroopsEnd":84,"def":"AUS+SIC","att":"SAR+FRA","ger":"June 1866"}

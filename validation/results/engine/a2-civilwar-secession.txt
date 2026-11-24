@@ -1,0 +1,19 @@
+## civil war outcome and army at secession (Jan 1861), 8 seeds each; head=f2e410b, a2=funding limit + facCan
+--- a2
+{"seed":3,"usaTroops":47,"csaTroops":26,"usaTr":376522,"csaTr":222383,"usaProv":7,"csaProv":2,"date":"January 1861","end":"December 1861","win":"def","ws":-51}
+{"seed":7,"usaTroops":21,"csaTroops":9,"usaTr":354187,"csaTr":212181,"usaProv":6,"csaProv":2,"date":"January 1861","end":"October 1861","win":"att","ws":79}
+{"seed":11,"usaTroops":20,"csaTroops":10,"usaTr":407201,"csaTr":202658,"usaProv":6,"csaProv":2,"date":"January 1861","end":"February 1862","win":"att","ws":73}
+{"seed":21,"usaTroops":20,"csaTroops":10,"usaTr":404002,"csaTr":223415,"usaProv":7,"csaProv":2,"date":"January 1861","end":"November 1861","win":"att","ws":79}
+{"seed":5,"usaTroops":26,"csaTroops":12,"usaTr":371309,"csaTr":215929,"usaProv":6,"csaProv":2,"date":"January 1861","end":"October 1861","win":"att","ws":60}
+{"seed":13,"usaTroops":7,"csaTroops":4,"usaTr":412595,"csaTr":215412,"usaProv":7,"csaProv":2,"date":"January 1861","end":"July 1862","win":"att","ws":61}
+{"seed":17,"usaTroops":20,"csaTroops":10,"usaTr":361074,"csaTr":207650,"usaProv":6,"csaProv":2,"date":"January 1861","end":"October 1861","win":"att","ws":68}
+{"seed":29,"usaTroops":20,"csaTroops":9,"usaTr":321922,"csaTr":202653,"usaProv":7,"csaProv":2,"date":"January 1861","end":"July 1861","win":"att","ws":65}
+--- head
+{"seed":3,"usaTroops":19,"csaTroops":10,"usaTr":332876,"csaTr":208508,"usaProv":5,"csaProv":2,"date":"January 1861","end":"December 1861","win":"att","ws":76}
+{"seed":7,"usaTroops":19,"csaTroops":10,"usaTr":397948,"csaTr":225012,"usaProv":7,"csaProv":2,"date":"January 1861","end":"November 1861","win":"att","ws":70}
+{"seed":11,"usaTroops":20,"csaTroops":10,"usaTr":403579,"csaTr":236560,"usaProv":6,"csaProv":2,"date":"January 1861","end":"November 1861","win":"att","ws":63}
+{"seed":21,"usaTroops":21,"csaTroops":9,"usaTr":1145477,"csaTr":423081,"usaProv":7,"csaProv":2,"date":"January 1861","end":"October 1861","win":"att","ws":74}
+{"seed":5,"usaTroops":19,"csaTroops":10,"usaTr":337501,"csaTr":202379,"usaProv":7,"csaProv":2,"date":"January 1861","end":"December 1861","win":"att","ws":80}
+{"seed":13,"usaTroops":19,"csaTroops":10,"usaTr":372703,"csaTr":217351,"usaProv":7,"csaProv":2,"date":"January 1861","end":"July 1861","win":"att","ws":64}
+{"seed":17,"usaTroops":11,"csaTroops":5,"usaTr":402415,"csaTr":230056,"usaProv":7,"csaProv":2,"date":"January 1861","end":"August 1861","win":"att","ws":68}
+{"seed":29,"usaTroops":21,"csaTroops":10,"usaTr":347955,"csaTr":199371,"usaProv":7,"csaProv":2,"date":"January 1861","end":"October 1861","win":"att","ws":66}

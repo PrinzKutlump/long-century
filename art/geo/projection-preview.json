@@ -1,0 +1,57 @@
+{
+  "anchors": 184,
+  "europeAnchors": 62,
+  "results": [
+    {
+      "name": "Robinson",
+      "projection": "robin",
+      "centralMeridian": 0,
+      "latitudeRange": [
+        -60,
+        80
+      ],
+      "meanDistance": 113,
+      "p90Distance": 157,
+      "worstMatch": {
+        "id": "ARC",
+        "distance": 615
+      },
+      "europeAreaVsCurrent": 0.403,
+      "pacificEdgeBandShare": 0.1
+    },
+    {
+      "name": "Winkel Tripel",
+      "projection": "wintri",
+      "centralMeridian": 0,
+      "latitudeRange": [
+        -60,
+        80
+      ],
+      "meanDistance": 109,
+      "p90Distance": 160,
+      "worstMatch": {
+        "id": "ARC",
+        "distance": 622
+      },
+      "europeAreaVsCurrent": 0.368,
+      "pacificEdgeBandShare": 0.099
+    },
+    {
+      "name": "Miller",
+      "projection": "mill",
+      "centralMeridian": 0,
+      "latitudeRange": [
+        -60,
+        80
+      ],
+      "meanDistance": 61,
+      "p90Distance": 105,
+      "worstMatch": {
+        "id": "RUB",
+        "distance": 537
+      },
+      "europeAreaVsCurrent": 0.521,
+      "pacificEdgeBandShare": 0.119
+    }
+  ]
+}

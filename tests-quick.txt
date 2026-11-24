@@ -1,0 +1,17 @@
+# Quick engine tests: each finishes locally in under 12 s (timeout 30, exit 0), measured sequentially. CI runner is about 1.8x slower than the measuring machine, so the 30 s cap needs a margin. Read by .github/workflows/quick.yml.
+test_a3.js
+test_art_budget.js
+test_autosave.js
+test_b3.js
+test_commands.js
+test_construction.js
+test_d1.js
+test_d4.js
+test_e4.js
+test_e6.js
+test_m0.js
+test_m1.js
+test_research_queue.js
+test_w1.js
+test_w5.js
+test_works_planner.js

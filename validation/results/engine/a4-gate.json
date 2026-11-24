@@ -1,0 +1,67 @@
+{
+ "timing": [
+  {
+   "label": "opening",
+   "from": 0,
+   "months": 12,
+   "shown": {
+    "mean": 62.4,
+    "median": 53.5,
+    "p95": 99.6,
+    "max": 116.9
+   },
+   "handler": {
+    "mean": 58.0,
+    "median": 49.4,
+    "p95": 97,
+    "max": 113.9
+   },
+   "saved": {
+    "mean": 109.9,
+    "median": 100.5,
+    "p95": 138,
+    "max": 175.9
+   }
+  },
+  {
+   "label": "seed7_1934.txt",
+   "from": 1176,
+   "months": 12,
+   "shown": {
+    "mean": 98.7,
+    "median": 94.5,
+    "p95": 152.9,
+    "max": 162.9
+   },
+   "handler": {
+    "mean": 96.8,
+    "median": 93.1,
+    "p95": 150.5,
+    "max": 161.4
+   },
+   "saved": {
+    "mean": 196.2,
+    "median": 192.9,
+    "p95": 249.8,
+    "max": 271.7
+   }
+  }
+ ],
+ "storage": {
+  "saveChars": 912033,
+  "usedChars": 3515425,
+  "headroomChars": 1704108,
+  "capacityChars": 5219533,
+  "keys": [
+   "vic.auto",
+   "vic.autoM",
+   "vic.opt",
+   "vic.s1",
+   "vic.s1m",
+   "vic.s2",
+   "vic.s2m",
+   "vic.s3",
+   "vic.s3m"
+  ]
+ }
+}

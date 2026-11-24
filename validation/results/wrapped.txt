@@ -1,0 +1,4 @@
+Command: python3 wrap_test.py --months 24 --screenshots /tmp/lc-final-screens
+Result: BLOCKED before a page opened.
+Chromium could not create its process socket: Operation not permitted.
+Desktop timing, the wrapped screenshot comparison, 360px and 390px portrait interactions, and browser quota remain unverified.

@@ -1,0 +1,1 @@
+PASS native compression, newest autosave wins, stale campaign isolation and page-hide flush.

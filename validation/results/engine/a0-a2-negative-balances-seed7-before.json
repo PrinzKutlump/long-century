@@ -1,0 +1,99 @@
+{
+ "seed": 7,
+ "player": "SWI",
+ "years": "1836-1936",
+ "seconds": 76.1,
+ "stateHash": "3c01a9cafc9860bffeec016d68bd37afb62f6f9df8c2a5214304c38766210329",
+ "definition": "A charge counts when a non-player payer's treasury (tr, state projects) or investment pool (inv, private and foreign projects) is below zero after investMonth books a construction bill. 'overdraw' = the part of the bill above the payer's positive balance, i.e. what the funding fraction would have withheld. crossedZero: balance was >= 0 before the charge; alreadyNegative: it was already below zero.",
+ "constructionChargesAll": 58658,
+ "constructionChargesNonPlayer": 58597,
+ "chargesLeavingBalanceBelowZero": 15,
+ "crossedZero": 9,
+ "alreadyNegative": 6,
+ "nationMonths": 12,
+ "byBalance": {
+  "tr": 6,
+  "inv": 9
+ },
+ "byPayerKind": {
+  "domestic": 15,
+  "foreign": 0
+ },
+ "overdrawTotalPounds": 7145,
+ "worstBalanceAfterCharge": {
+  "value": -2391.9250190207076,
+  "tag": "BEL",
+  "balance": "inv",
+  "month": 24,
+  "date": "1838-01",
+  "project": "fac:machinery",
+  "province": "BRU",
+  "before": -1849.526690506967,
+  "cost": 542.3983285137404,
+  "bill": 542.3983285137404,
+  "foreign": false
+ },
+ "worstOverdrawSingleCharge": {
+  "amount": 1427.9680236998756,
+  "tag": "FRA",
+  "balance": "inv",
+  "date": "1842-12",
+  "province": "PAR",
+  "before": 37.60388297922282,
+  "cost": 1465.5719066790984
+ },
+ "firstEvent": {
+  "date": "1837-11",
+  "tag": "BEL",
+  "balance": "inv",
+  "before": 670.1148376766614,
+  "cost": 712.0251378581527,
+  "province": "BRU",
+  "project": "fac:machinery"
+ },
+ "byDecade": {
+  "1830": 7,
+  "1840": 8
+ },
+ "topPayersByOverdraw": [
+  {
+   "tag": "BEL",
+   "events": 7,
+   "overdraw": 2924,
+   "worst": -2392
+  },
+  {
+   "tag": "FRA",
+   "events": 2,
+   "overdraw": 2316,
+   "worst": -1428
+  },
+  {
+   "tag": "PAP",
+   "events": 5,
+   "overdraw": 1188,
+   "worst": -356
+  },
+  {
+   "tag": "CHL",
+   "events": 1,
+   "overdraw": 717,
+   "worst": -717
+  }
+ ],
+ "allCausesMonthEnd": {
+  "trNationMonths": 6,
+  "invNationMonths": 9,
+  "trNations": [
+   "PAP",
+   "CHL"
+  ],
+  "invNations": [
+   "BEL",
+   "FRA"
+  ],
+  "trWorst": -716.8185332158803,
+  "invWorst": -2391.9250190207076
+ },
+ "note": "allCausesMonthEnd counts every nation-month ending with tr or inv below zero for any reason (non-player nations), for context; the construction-attributed counts are above."
+}

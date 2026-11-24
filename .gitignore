@@ -1,0 +1,11 @@
+shots/
+__pycache__/
+*.pyc
+Long_Century_History.bundle
+dist/
+data/raw/geo/*.geojson
+
+/data/raw/cow/
+/archive/
+/deepseek_h1.txt
+/*.zip

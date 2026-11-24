@@ -1,0 +1,3 @@
+sphere member-months with sphere imports: 495 | tariff charged on sphere imports in any of them: 0
+example: {"when":"March 1839","member":"Hanover","leader":"Prussia","good":"Grain","qty":333,"sphereImports":1961,"allImports":44114,"tariff":0.25,"tariffIncome":6095,"tariffIfCharged":6378}
+ok

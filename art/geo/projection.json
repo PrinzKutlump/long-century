@@ -1,0 +1,13 @@
+{
+  "projection": "mill",
+  "centralMeridian": 0,
+  "latitudeRange": [-60, 80],
+  "canvas": [3000, 1549],
+  "worldScale": "uniform contain",
+  "initialEuropeView": {
+    "centerLongitude": 16.5,
+    "centerLatitude": 53.5,
+    "zoomRelativeToWorld": 1.4
+  },
+  "naturalEarthCommit": "ca96624a56bd078437bca8184e78163e5039ad19"
+}

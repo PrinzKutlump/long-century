@@ -1,0 +1,57 @@
+ok   famine as GBR: Leave it to the market
+ok   famine as GBR: Open the ports and fund relief
+skip y1848 as PRU: the event did not apply (world state)
+ok   y1848 as AUS: Ride it out
+ok   y1848 as AUS: Grant a constitution
+ok   y1848 as AUS: Send in the troops
+ok   taiping as CHI: Raise the banner armies
+ok   taiping as CHI: Cut taxes and feed the south
+ok   taiping as CHI: Hire Western drill
+ok   crimea as RUS: Send the army across the Danube
+ok   crimea as RUS: Settle by treaty
+ok   crimea as OTT: Refuse and fight
+ok   crimea as OTT: Accept the Russian terms
+ok   crimea as GBR: Stand with the Sultan
+ok   crimea as GBR: Stay out of it
+ok   mutiny as GBR: Crush it with force
+ok   mutiny as GBR: Pardon and reform
+ok   mutiny as GBR: Rush troops from home
+skip italy1 as SAR: the event did not apply (world state)
+ok   italy1 as AUS: Fight for Lombardy
+ok   italy1 as AUS: Cede Lombardy
+ok   civilwar as USA: Fight and call up everyone
+ok   civilwar as USA: Fight with the regular army
+ok   civilwar as USA: Let the South go
+ok   germany1 as PRU: Take it with Austria
+ok   germany1 as PRU: Take it alone
+ok   germany1 as PRU: Let it be
+ok   germany1 as DEN: Fight on
+ok   germany1 as DEN: Give up Schleswig
+ok   germany1 as DEN: Ask Britain to stand with us
+ok   germany2 as PRU: War with Austria
+ok   germany2 as PRU: Settle quietly
+ok   germany2 as AUS: Fight for our place in Germany
+ok   germany2 as AUS: Accept Prussian leadership
+ok   meiji as JAP: Copy the West at once
+ok   meiji as JAP: Keep the old order
+ok   germany3 as PRU: Publish the telegram
+ok   germany3 as PRU: Soothe France
+ok   germany3 as FRA: Declare war on Prussia
+ok   germany3 as FRA: Accept the prince's withdrawal
+ok   berlin as GBR: Claim all we can
+ok   berlin as GBR: Back a fair division
+ok   berlin as GBR: Stay out of Africa
+ok   berlin as FRA: Claim all we can
+ok   berlin as FRA: Back a fair division
+ok   berlin as FRA: Stay out of Africa
+ok   boxers as CHI: Put them down
+ok   boxers as CHI: Back the Boxers
+ok   boxers as CHI: Ask the powers for troops
+ok   rjwar as RUS: Hold firm
+ok   rjwar as RUS: Divide spheres by treaty
+ok   rjwar as JAP: Strike first at Port Arthur
+ok   rjwar as JAP: Offer a treaty on spheres
+skip balkan as AUS: the event did not apply (world state)
+skip balkan as RUS: the event did not apply (world state)
+cards seen 21, options played 51, failures 0
+ok

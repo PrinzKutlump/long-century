@@ -1,0 +1,3832 @@
+{
+ "seed": 7,
+ "months": 24,
+ "actors": [
+  "PUN",
+  "GBR",
+  "SWI"
+ ],
+ "commands": [
+  {
+   "m": 1,
+   "tag": "PUN",
+   "kind": "factory",
+   "prov": "LAH",
+   "good": "fabric"
+  },
+  {
+   "m": 2,
+   "tag": "PUN",
+   "kind": "bld",
+   "prov": "LAH",
+   "b": "school"
+  },
+  {
+   "m": 3,
+   "tag": "PUN",
+   "kind": "factory",
+   "prov": "LAH",
+   "good": "furniture"
+  },
+  {
+   "m": 4,
+   "tag": "PUN",
+   "kind": "bld",
+   "prov": "PES",
+   "b": "hosp"
+  },
+  {
+   "m": 5,
+   "tag": "PUN",
+   "kind": "exhaust"
+  },
+  {
+   "m": 9,
+   "tag": "PUN",
+   "kind": "factory",
+   "prov": "LAH",
+   "good": "machinery"
+  },
+  {
+   "m": 12,
+   "tag": "PUN",
+   "kind": "restore",
+   "tr": 4000,
+   "inv": 4000
+  },
+  {
+   "m": 1,
+   "tag": "GBR",
+   "kind": "factory",
+   "prov": "DEL",
+   "good": "fabric"
+  },
+  {
+   "m": 2,
+   "tag": "GBR",
+   "kind": "bld",
+   "prov": "DEL",
+   "b": "school"
+  },
+  {
+   "m": 3,
+   "tag": "GBR",
+   "kind": "factory",
+   "prov": "DEL",
+   "good": "furniture"
+  },
+  {
+   "m": 4,
+   "tag": "GBR",
+   "kind": "bld",
+   "prov": "CAL",
+   "b": "hosp"
+  },
+  {
+   "m": 5,
+   "tag": "GBR",
+   "kind": "exhaust"
+  },
+  {
+   "m": 9,
+   "tag": "GBR",
+   "kind": "factory",
+   "prov": "DEL",
+   "good": "machinery"
+  },
+  {
+   "m": 12,
+   "tag": "GBR",
+   "kind": "restore",
+   "tr": 4000,
+   "inv": 4000
+  },
+  {
+   "m": 1,
+   "tag": "SWI",
+   "kind": "factory",
+   "prov": "ZUR",
+   "good": "fabric"
+  },
+  {
+   "m": 2,
+   "tag": "SWI",
+   "kind": "bld",
+   "prov": "ZUR",
+   "b": "school"
+  },
+  {
+   "m": 3,
+   "tag": "SWI",
+   "kind": "factory",
+   "prov": "ZUR",
+   "good": "furniture"
+  },
+  {
+   "m": 4,
+   "tag": "SWI",
+   "kind": "bld",
+   "prov": "ZUR",
+   "b": "hosp"
+  },
+  {
+   "m": 5,
+   "tag": "SWI",
+   "kind": "exhaust"
+  },
+  {
+   "m": 9,
+   "tag": "SWI",
+   "kind": "factory",
+   "prov": "ZUR",
+   "good": "machinery"
+  },
+  {
+   "m": 12,
+   "tag": "SWI",
+   "kind": "restore",
+   "tr": 4000,
+   "inv": 4000
+  }
+ ],
+ "variants": {
+  "post_init_fixture": {
+   "title": "Seats set after identical initialisation, with the exhausted-treasury fixture (months 5-12)",
+   "pairs": [
+    {
+     "a": "none",
+     "b": "PUN",
+     "firstDivergentMonthEco": 5,
+     "firstDivergentMonthFull": 5
+    },
+    {
+     "a": "none",
+     "b": "GBR",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    },
+    {
+     "a": "none",
+     "b": "SWI",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    },
+    {
+     "a": "PUN",
+     "b": "GBR",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    },
+    {
+     "a": "PUN",
+     "b": "SWI",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    },
+    {
+     "a": "GBR",
+     "b": "SWI",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    }
+   ],
+   "seats": {
+    "PUN": {
+     "month": 5,
+     "date": "June 1836",
+     "seatA": null,
+     "seatB": "PUN",
+     "openingBalances": {
+      "PUN": {
+       "a": {
+        "tr": 20866.44070371802,
+        "inv": 72.26128817263407,
+        "debt": 0
+       },
+       "b": {
+        "tr": 20866.44070371802,
+        "inv": 72.26128817263407,
+        "debt": 0
+       }
+      },
+      "GBR": {
+       "a": {
+        "tr": 732294.3227598375,
+        "inv": 55790.4052541117,
+        "debt": 0
+       },
+       "b": {
+        "tr": 732294.3227598375,
+        "inv": 55790.4052541117,
+        "debt": 0
+       }
+      },
+      "SWI": {
+       "a": {
+        "tr": 7720.278591937184,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 7720.278591937184,
+        "inv": 0,
+        "debt": 0
+       }
+      }
+     },
+     "allocateLocalHouseholdsCalls": {
+      "a": 1,
+      "b": 1
+     },
+     "firstEvent": {
+      "index": 2,
+      "afterPhase": "investMonth",
+      "digest": "eco",
+      "differentPaths": 13,
+      "firstPaths": [
+       "nations.PUN.tr",
+       "prov.LAH.build[0].left.timber",
+       "prov.LAH.build[0].left.cement",
+       "prov.LAH.build[0].left.machinery",
+       "prov.LAH.build[0].paid",
+       "prov.LAH.build[1].left.timber",
+       "prov.LAH.build[1].left.cement",
+       "prov.LAH.build[1].left.paper",
+       "prov.LAH.build[1].paid",
+       "prov.PES.build[0].left.cement",
+       "prov.PES.build[0].left.clothes",
+       "prov.PES.build[0].left.furniture"
+      ],
+      "groups": {
+       "nations.*.tr": 1,
+       "prov.*.build[*].left.timber": 2,
+       "prov.*.build[*].left.cement": 3,
+       "prov.*.build[*].left.machinery": 1,
+       "prov.*.build[*].paid": 3,
+       "prov.*.build[*].left.paper": 1,
+       "prov.*.build[*].left.clothes": 1,
+       "prov.*.build[*].left.furniture": 1
+      }
+     },
+     "firstField": "nations.PUN.tr",
+     "firstSeatField": "nations.PUN.tr",
+     "firstFieldValues": {
+      "a": -40893.326526652585,
+      "b": -39674.38721660349
+     },
+     "involvedNation": "PUN",
+     "actorProjects": {
+      "PUN": {
+       "a": [
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4097.97,
+         "leftUnits": 1914.73
+        },
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 722.58,
+         "leftUnits": 99.66
+        },
+        {
+         "prov": "PES",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        }
+       ],
+       "b": [
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 3350.3,
+         "leftUnits": 2242.68
+        },
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 547.29,
+         "leftUnits": 145.91
+        },
+        {
+         "prov": "PES",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 297.19,
+         "leftUnits": 360
+        }
+       ]
+      },
+      "GBR": {
+       "a": [
+        {
+         "prov": "IRE",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "liquor",
+         "payer": "capital",
+         "state": false,
+         "paid": 4020.32,
+         "leftUnits": 4047.57
+        },
+        {
+         "prov": "CAL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 699.04,
+         "leftUnits": 102.54
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "furniture",
+         "payer": "state",
+         "state": true,
+         "paid": 2996.85,
+         "leftUnits": 4412.57
+        }
+       ],
+       "b": [
+        {
+         "prov": "IRE",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "liquor",
+         "payer": "capital",
+         "state": false,
+         "paid": 4020.32,
+         "leftUnits": 4047.57
+        },
+        {
+         "prov": "CAL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 699.04,
+         "leftUnits": 102.54
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "furniture",
+         "payer": "state",
+         "state": true,
+         "paid": 2996.85,
+         "leftUnits": 4412.57
+        }
+       ]
+      },
+      "SWI": {
+       "a": [
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4161.73,
+         "leftUnits": 3739.73
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 676.57,
+         "leftUnits": 107.48
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 587.97,
+         "leftUnits": 321.52
+        }
+       ],
+       "b": [
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4161.73,
+         "leftUnits": 3739.73
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 676.57,
+         "leftUnits": 107.48
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 587.97,
+         "leftUnits": 321.52
+        }
+       ]
+      }
+     },
+     "projectsA": [
+      {
+       "prov": "LAH",
+       "owner": "PUN",
+       "k": "fac",
+       "g": "fabric",
+       "payer": "state",
+       "state": true,
+       "paid": 4097.97,
+       "leftUnits": 1914.73
+      },
+      {
+       "prov": "LAH",
+       "owner": "PUN",
+       "k": "bld",
+       "g": "school",
+       "payer": "state",
+       "state": true,
+       "paid": 722.58,
+       "leftUnits": 99.66
+      },
+      {
+       "prov": "PES",
+       "owner": "PUN",
+       "k": "bld",
+       "g": "hosp",
+       "payer": "state",
+       "state": true,
+       "paid": 593.17,
+       "leftUnits": 320
+      }
+     ],
+     "projectsB": [
+      {
+       "prov": "LAH",
+       "owner": "PUN",
+       "k": "fac",
+       "g": "fabric",
+       "payer": "state",
+       "state": true,
+       "paid": 3350.3,
+       "leftUnits": 2242.68
+      },
+      {
+       "prov": "LAH",
+       "owner": "PUN",
+       "k": "bld",
+       "g": "school",
+       "payer": "state",
+       "state": true,
+       "paid": 547.29,
+       "leftUnits": 145.91
+      },
+      {
+       "prov": "PES",
+       "owner": "PUN",
+       "k": "bld",
+       "g": "hosp",
+       "payer": "state",
+       "state": true,
+       "paid": 297.19,
+       "leftUnits": 360
+      }
+     ],
+     "balancesAfter": {
+      "a": {
+       "tr": -40893.326526652585,
+       "inv": 22.597996234538577,
+       "debt": 0
+      },
+      "b": {
+       "tr": -39674.38721660349,
+       "inv": 22.597996234538577,
+       "debt": 0
+      }
+     }
+    },
+    "GBR": {
+     "month": 0,
+     "date": "January 1836",
+     "seatA": null,
+     "seatB": "GBR",
+     "openingBalances": {
+      "PUN": {
+       "a": {
+        "tr": 19293.166383867003,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 19293.166383867003,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "GBR": {
+       "a": {
+        "tr": 510582.9688280932,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 510582.9688280932,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "SWI": {
+       "a": {
+        "tr": 4496.226221631455,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 4496.226221631455,
+        "inv": 0,
+        "debt": 0
+       }
+      }
+     },
+     "allocateLocalHouseholdsCalls": {
+      "a": 1,
+      "b": 2
+     },
+     "firstEvent": {
+      "index": 1,
+      "afterPhase": "moneyMonth",
+      "digest": "eco",
+      "differentPaths": 1884,
+      "firstPaths": [
+       "nations.GBR.inv",
+       "nations.GBR.capPool",
+       "prov.LON.pops[0].cash",
+       "prov.LON.pops[0].ld",
+       "prov.LON.pops[1].cash",
+       "prov.LON.pops[1].ld",
+       "prov.LON.pops[2].cash",
+       "prov.LON.pops[2].ld",
+       "prov.LON.pops[3].cash",
+       "prov.LON.pops[3].ld",
+       "prov.LON.pops[4].cash",
+       "prov.LON.pops[4].ld"
+      ],
+      "groups": {
+       "nations.*.inv": 1,
+       "nations.*.capPool": 1,
+       "prov.*.pops[*].cash": 1649,
+       "prov.*.pops[*].ld": 174,
+       "prov.*.pops[*].ed": 59
+      }
+     },
+     "firstField": "nations.GBR.inv",
+     "firstSeatField": "nations.GBR.inv",
+     "firstFieldValues": {
+      "a": 30677.297203346694,
+      "b": 37031.01525393153
+     },
+     "involvedNation": "GBR",
+     "actorProjects": {
+      "PUN": {
+       "a": [],
+       "b": []
+      },
+      "GBR": {
+       "a": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ],
+       "b": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ]
+      },
+      "SWI": {
+       "a": [],
+       "b": []
+      }
+     },
+     "projectsA": [
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "ammo",
+       "payer": "capital",
+       "state": false,
+       "paid": 0,
+       "leftUnits": 5475
+      }
+     ],
+     "projectsB": [
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "ammo",
+       "payer": "capital",
+       "state": false,
+       "paid": 0,
+       "leftUnits": 5475
+      }
+     ],
+     "balancesAfter": {
+      "a": {
+       "tr": 622479.9702608516,
+       "inv": 30677.297203346694,
+       "debt": 0
+      },
+      "b": {
+       "tr": 622479.9702608516,
+       "inv": 37031.01525393153,
+       "debt": 0
+      }
+     }
+    },
+    "SWI": {
+     "month": 0,
+     "date": "January 1836",
+     "seatA": null,
+     "seatB": "SWI",
+     "openingBalances": {
+      "PUN": {
+       "a": {
+        "tr": 19293.166383867003,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 19293.166383867003,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "GBR": {
+       "a": {
+        "tr": 510582.9688280932,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 510582.9688280932,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "SWI": {
+       "a": {
+        "tr": 4496.226221631455,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 4496.226221631455,
+        "inv": 0,
+        "debt": 0
+       }
+      }
+     },
+     "allocateLocalHouseholdsCalls": {
+      "a": 1,
+      "b": 2
+     },
+     "firstEvent": {
+      "index": 1,
+      "afterPhase": "moneyMonth",
+      "digest": "eco",
+      "differentPaths": 1660,
+      "firstPaths": [
+       "prov.LON.pops[0].cash",
+       "prov.LON.pops[1].cash",
+       "prov.LON.pops[2].cash",
+       "prov.LON.pops[3].cash",
+       "prov.LON.pops[4].cash",
+       "prov.LON.pops[5].cash",
+       "prov.LON.pops[6].cash",
+       "prov.LON.pops[7].cash",
+       "prov.LON.pops[8].cash",
+       "prov.LON.pops[9].cash",
+       "prov.LON.pops[10].cash",
+       "prov.MID.pops[0].cash"
+      ],
+      "groups": {
+       "prov.*.pops[*].cash": 1649,
+       "prov.*.pops[*].ld": 11
+      }
+     },
+     "firstField": "prov.LON.pops[0].cash",
+     "firstSeatField": "prov.ZUR.pops[0].cash",
+     "firstFieldValues": {
+      "a": 4275.6625821308435,
+      "b": 4274.7397884790225
+     },
+     "involvedNation": "SWI",
+     "actorProjects": {
+      "PUN": {
+       "a": [],
+       "b": []
+      },
+      "GBR": {
+       "a": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ],
+       "b": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ]
+      },
+      "SWI": {
+       "a": [],
+       "b": []
+      }
+     },
+     "projectsA": [],
+     "projectsB": [],
+     "balancesAfter": {
+      "a": {
+       "tr": 7093.056618699881,
+       "inv": 0,
+       "debt": 0
+      },
+      "b": {
+       "tr": 7093.056618699881,
+       "inv": 0,
+       "debt": 0
+      }
+     }
+    }
+   },
+   "seconds": 20
+  },
+  "post_init_natural": {
+   "title": "Same, but no treasury fixture (the natural economy only)",
+   "pairs": [
+    {
+     "a": "none",
+     "b": "PUN",
+     "firstDivergentMonthEco": null,
+     "firstDivergentMonthFull": null
+    },
+    {
+     "a": "none",
+     "b": "GBR",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    },
+    {
+     "a": "none",
+     "b": "SWI",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    },
+    {
+     "a": "PUN",
+     "b": "GBR",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    },
+    {
+     "a": "PUN",
+     "b": "SWI",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    },
+    {
+     "a": "GBR",
+     "b": "SWI",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    }
+   ],
+   "seats": {
+    "GBR": {
+     "month": 0,
+     "date": "January 1836",
+     "seatA": null,
+     "seatB": "GBR",
+     "openingBalances": {
+      "PUN": {
+       "a": {
+        "tr": 19293.166383867003,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 19293.166383867003,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "GBR": {
+       "a": {
+        "tr": 510582.9688280932,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 510582.9688280932,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "SWI": {
+       "a": {
+        "tr": 4496.226221631455,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 4496.226221631455,
+        "inv": 0,
+        "debt": 0
+       }
+      }
+     },
+     "allocateLocalHouseholdsCalls": {
+      "a": 1,
+      "b": 2
+     },
+     "firstEvent": {
+      "index": 1,
+      "afterPhase": "moneyMonth",
+      "digest": "eco",
+      "differentPaths": 1884,
+      "firstPaths": [
+       "nations.GBR.inv",
+       "nations.GBR.capPool",
+       "prov.LON.pops[0].cash",
+       "prov.LON.pops[0].ld",
+       "prov.LON.pops[1].cash",
+       "prov.LON.pops[1].ld",
+       "prov.LON.pops[2].cash",
+       "prov.LON.pops[2].ld",
+       "prov.LON.pops[3].cash",
+       "prov.LON.pops[3].ld",
+       "prov.LON.pops[4].cash",
+       "prov.LON.pops[4].ld"
+      ],
+      "groups": {
+       "nations.*.inv": 1,
+       "nations.*.capPool": 1,
+       "prov.*.pops[*].cash": 1649,
+       "prov.*.pops[*].ld": 174,
+       "prov.*.pops[*].ed": 59
+      }
+     },
+     "firstField": "nations.GBR.inv",
+     "firstSeatField": "nations.GBR.inv",
+     "firstFieldValues": {
+      "a": 30677.297203346694,
+      "b": 37031.01525393153
+     },
+     "involvedNation": "GBR",
+     "actorProjects": {
+      "PUN": {
+       "a": [],
+       "b": []
+      },
+      "GBR": {
+       "a": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ],
+       "b": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ]
+      },
+      "SWI": {
+       "a": [],
+       "b": []
+      }
+     },
+     "projectsA": [
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "ammo",
+       "payer": "capital",
+       "state": false,
+       "paid": 0,
+       "leftUnits": 5475
+      }
+     ],
+     "projectsB": [
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "ammo",
+       "payer": "capital",
+       "state": false,
+       "paid": 0,
+       "leftUnits": 5475
+      }
+     ],
+     "balancesAfter": {
+      "a": {
+       "tr": 622479.9702608516,
+       "inv": 30677.297203346694,
+       "debt": 0
+      },
+      "b": {
+       "tr": 622479.9702608516,
+       "inv": 37031.01525393153,
+       "debt": 0
+      }
+     }
+    },
+    "SWI": {
+     "month": 0,
+     "date": "January 1836",
+     "seatA": null,
+     "seatB": "SWI",
+     "openingBalances": {
+      "PUN": {
+       "a": {
+        "tr": 19293.166383867003,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 19293.166383867003,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "GBR": {
+       "a": {
+        "tr": 510582.9688280932,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 510582.9688280932,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "SWI": {
+       "a": {
+        "tr": 4496.226221631455,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 4496.226221631455,
+        "inv": 0,
+        "debt": 0
+       }
+      }
+     },
+     "allocateLocalHouseholdsCalls": {
+      "a": 1,
+      "b": 2
+     },
+     "firstEvent": {
+      "index": 1,
+      "afterPhase": "moneyMonth",
+      "digest": "eco",
+      "differentPaths": 1660,
+      "firstPaths": [
+       "prov.LON.pops[0].cash",
+       "prov.LON.pops[1].cash",
+       "prov.LON.pops[2].cash",
+       "prov.LON.pops[3].cash",
+       "prov.LON.pops[4].cash",
+       "prov.LON.pops[5].cash",
+       "prov.LON.pops[6].cash",
+       "prov.LON.pops[7].cash",
+       "prov.LON.pops[8].cash",
+       "prov.LON.pops[9].cash",
+       "prov.LON.pops[10].cash",
+       "prov.MID.pops[0].cash"
+      ],
+      "groups": {
+       "prov.*.pops[*].cash": 1649,
+       "prov.*.pops[*].ld": 11
+      }
+     },
+     "firstField": "prov.LON.pops[0].cash",
+     "firstSeatField": "prov.ZUR.pops[0].cash",
+     "firstFieldValues": {
+      "a": 4275.6625821308435,
+      "b": 4274.7397884790225
+     },
+     "involvedNation": "SWI",
+     "actorProjects": {
+      "PUN": {
+       "a": [],
+       "b": []
+      },
+      "GBR": {
+       "a": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ],
+       "b": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ]
+      },
+      "SWI": {
+       "a": [],
+       "b": []
+      }
+     },
+     "projectsA": [],
+     "projectsB": [],
+     "balancesAfter": {
+      "a": {
+       "tr": 7093.056618699881,
+       "inv": 0,
+       "debt": 0
+      },
+      "b": {
+       "tr": 7093.056618699881,
+       "inv": 0,
+       "debt": 0
+      }
+     }
+    }
+   },
+   "seconds": 16.1
+  },
+  "real_init": {
+   "title": "Seat chosen at newGame (real new-game path), control flag neutralised, with fixture",
+   "pairs": [
+    {
+     "a": "none",
+     "b": "PUN",
+     "firstDivergentMonthEco": 5,
+     "firstDivergentMonthFull": 5
+    },
+    {
+     "a": "none",
+     "b": "GBR",
+     "firstDivergentMonthEco": -1,
+     "firstDivergentMonthFull": -1
+    },
+    {
+     "a": "none",
+     "b": "SWI",
+     "firstDivergentMonthEco": -1,
+     "firstDivergentMonthFull": -1
+    },
+    {
+     "a": "PUN",
+     "b": "GBR",
+     "firstDivergentMonthEco": -1,
+     "firstDivergentMonthFull": -1
+    },
+    {
+     "a": "PUN",
+     "b": "SWI",
+     "firstDivergentMonthEco": -1,
+     "firstDivergentMonthFull": -1
+    },
+    {
+     "a": "GBR",
+     "b": "SWI",
+     "firstDivergentMonthEco": -1,
+     "firstDivergentMonthFull": -1
+    }
+   ],
+   "seats": {
+    "PUN": {
+     "month": 5,
+     "date": "June 1836",
+     "seatA": null,
+     "seatB": "PUN",
+     "openingBalances": {
+      "PUN": {
+       "a": {
+        "tr": 20866.44070371802,
+        "inv": 72.26128817263407,
+        "debt": 0
+       },
+       "b": {
+        "tr": 20866.44070371802,
+        "inv": 72.26128817263407,
+        "debt": 0
+       }
+      },
+      "GBR": {
+       "a": {
+        "tr": 732294.3227598375,
+        "inv": 55790.4052541117,
+        "debt": 0
+       },
+       "b": {
+        "tr": 732294.3227598375,
+        "inv": 55790.4052541117,
+        "debt": 0
+       }
+      },
+      "SWI": {
+       "a": {
+        "tr": 7720.278591937184,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 7720.278591937184,
+        "inv": 0,
+        "debt": 0
+       }
+      }
+     },
+     "allocateLocalHouseholdsCalls": {
+      "a": 1,
+      "b": 1
+     },
+     "firstEvent": {
+      "index": 2,
+      "afterPhase": "investMonth",
+      "digest": "eco",
+      "differentPaths": 13,
+      "firstPaths": [
+       "nations.PUN.tr",
+       "prov.LAH.build[0].left.timber",
+       "prov.LAH.build[0].left.cement",
+       "prov.LAH.build[0].left.machinery",
+       "prov.LAH.build[0].paid",
+       "prov.LAH.build[1].left.timber",
+       "prov.LAH.build[1].left.cement",
+       "prov.LAH.build[1].left.paper",
+       "prov.LAH.build[1].paid",
+       "prov.PES.build[0].left.cement",
+       "prov.PES.build[0].left.clothes",
+       "prov.PES.build[0].left.furniture"
+      ],
+      "groups": {
+       "nations.*.tr": 1,
+       "prov.*.build[*].left.timber": 2,
+       "prov.*.build[*].left.cement": 3,
+       "prov.*.build[*].left.machinery": 1,
+       "prov.*.build[*].paid": 3,
+       "prov.*.build[*].left.paper": 1,
+       "prov.*.build[*].left.clothes": 1,
+       "prov.*.build[*].left.furniture": 1
+      }
+     },
+     "firstField": "nations.PUN.tr",
+     "firstSeatField": "nations.PUN.tr",
+     "firstFieldValues": {
+      "a": -40893.326526652585,
+      "b": -39674.38721660349
+     },
+     "involvedNation": "PUN",
+     "actorProjects": {
+      "PUN": {
+       "a": [
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4097.97,
+         "leftUnits": 1914.73
+        },
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 722.58,
+         "leftUnits": 99.66
+        },
+        {
+         "prov": "PES",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        }
+       ],
+       "b": [
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 3350.3,
+         "leftUnits": 2242.68
+        },
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 547.29,
+         "leftUnits": 145.91
+        },
+        {
+         "prov": "PES",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 297.19,
+         "leftUnits": 360
+        }
+       ]
+      },
+      "GBR": {
+       "a": [
+        {
+         "prov": "IRE",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "liquor",
+         "payer": "capital",
+         "state": false,
+         "paid": 4020.32,
+         "leftUnits": 4047.57
+        },
+        {
+         "prov": "CAL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 699.04,
+         "leftUnits": 102.54
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "furniture",
+         "payer": "state",
+         "state": true,
+         "paid": 2996.85,
+         "leftUnits": 4412.57
+        }
+       ],
+       "b": [
+        {
+         "prov": "IRE",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "liquor",
+         "payer": "capital",
+         "state": false,
+         "paid": 4020.32,
+         "leftUnits": 4047.57
+        },
+        {
+         "prov": "CAL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 699.04,
+         "leftUnits": 102.54
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "furniture",
+         "payer": "state",
+         "state": true,
+         "paid": 2996.85,
+         "leftUnits": 4412.57
+        }
+       ]
+      },
+      "SWI": {
+       "a": [
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4161.73,
+         "leftUnits": 3739.73
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 676.57,
+         "leftUnits": 107.48
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 587.97,
+         "leftUnits": 321.52
+        }
+       ],
+       "b": [
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4161.73,
+         "leftUnits": 3739.73
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 676.57,
+         "leftUnits": 107.48
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 587.97,
+         "leftUnits": 321.52
+        }
+       ]
+      }
+     },
+     "projectsA": [
+      {
+       "prov": "LAH",
+       "owner": "PUN",
+       "k": "fac",
+       "g": "fabric",
+       "payer": "state",
+       "state": true,
+       "paid": 4097.97,
+       "leftUnits": 1914.73
+      },
+      {
+       "prov": "LAH",
+       "owner": "PUN",
+       "k": "bld",
+       "g": "school",
+       "payer": "state",
+       "state": true,
+       "paid": 722.58,
+       "leftUnits": 99.66
+      },
+      {
+       "prov": "PES",
+       "owner": "PUN",
+       "k": "bld",
+       "g": "hosp",
+       "payer": "state",
+       "state": true,
+       "paid": 593.17,
+       "leftUnits": 320
+      }
+     ],
+     "projectsB": [
+      {
+       "prov": "LAH",
+       "owner": "PUN",
+       "k": "fac",
+       "g": "fabric",
+       "payer": "state",
+       "state": true,
+       "paid": 3350.3,
+       "leftUnits": 2242.68
+      },
+      {
+       "prov": "LAH",
+       "owner": "PUN",
+       "k": "bld",
+       "g": "school",
+       "payer": "state",
+       "state": true,
+       "paid": 547.29,
+       "leftUnits": 145.91
+      },
+      {
+       "prov": "PES",
+       "owner": "PUN",
+       "k": "bld",
+       "g": "hosp",
+       "payer": "state",
+       "state": true,
+       "paid": 297.19,
+       "leftUnits": 360
+      }
+     ],
+     "balancesAfter": {
+      "a": {
+       "tr": -40893.326526652585,
+       "inv": 22.597996234538577,
+       "debt": 0
+      },
+      "b": {
+       "tr": -39674.38721660349,
+       "inv": 22.597996234538577,
+       "debt": 0
+      }
+     }
+    },
+    "GBR": {
+     "month": -1,
+     "date": "undefined 1835",
+     "seatA": null,
+     "seatB": "GBR",
+     "openingBalances": {
+      "PUN": {
+       "a": {
+        "tr": 19293.166383867003,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 18917.334619944053,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "GBR": {
+       "a": {
+        "tr": 510582.9688280932,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 171894.54991864596,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "SWI": {
+       "a": {
+        "tr": 4496.226221631455,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 4366.207670348108,
+        "inv": 0,
+        "debt": 0
+       }
+      }
+     },
+     "allocateLocalHouseholdsCalls": {
+      "a": 1,
+      "b": 2
+     },
+     "firstEvent": {
+      "index": 0,
+      "afterPhase": "purgeWars",
+      "digest": "eco",
+      "differentPaths": 7595,
+      "firstPaths": [
+       "price.grain",
+       "price.fruit",
+       "price.livestock",
+       "price.fish",
+       "price.tobacco",
+       "price.coffee",
+       "price.sugar",
+       "price.timber",
+       "price.coal",
+       "price.iron",
+       "price.fabric",
+       "price.clothes"
+      ],
+      "groups": {
+       "price.grain": 1,
+       "price.fruit": 1,
+       "price.livestock": 1,
+       "price.fish": 1,
+       "price.tobacco": 1,
+       "price.coffee": 1,
+       "price.sugar": 1,
+       "price.timber": 1,
+       "price.coal": 1,
+       "price.iron": 1,
+       "price.fabric": 1,
+       "price.clothes": 1,
+       "price.liquor": 1,
+       "price.furniture": 1,
+       "price.paper": 1,
+       "price.luxuries": 1,
+       "price.steel": 1,
+       "price.machinery": 1,
+       "pricePrev.grain": 1,
+       "pricePrev.fruit": 1,
+       "pricePrev.livestock": 1,
+       "pricePrev.fish": 1,
+       "pricePrev.tobacco": 1,
+       "pricePrev.coffee": 1,
+       "pricePrev.sugar": 1,
+       "pricePrev.timber": 1,
+       "pricePrev.coal": 1,
+       "pricePrev.iron": 1,
+       "pricePrev.fabric": 1,
+       "pricePrev.clothes": 1,
+       "pricePrev.liquor": 1,
+       "pricePrev.furniture": 1,
+       "pricePrev.paper": 1,
+       "pricePrev.luxuries": 1,
+       "pricePrev.steel": 1,
+       "pricePrev.machinery": 1,
+       "tight.grain": 1,
+       "tight.fruit": 1,
+       "tight.livestock": 1,
+       "tight.fish": 1,
+       "tight.tobacco": 1,
+       "tight.coffee": 1,
+       "tight.sugar": 1,
+       "tight.timber": 1,
+       "tight.coal": 1,
+       "tight.iron": 1,
+       "tight.fabric": 1,
+       "tight.clothes": 1,
+       "tight.liquor": 1,
+       "tight.furniture": 1,
+       "tight.paper": 1,
+       "tight.luxuries": 1,
+       "tight.steel": 1,
+       "tight.machinery": 1,
+       "nations.*.tr": 62,
+       "nations.*.capPool": 23,
+       "prov.*.pops[*].cash": 1666,
+       "prov.*.pops[*].inc": 1637,
+       "prov.*.pops[*].ld": 1195,
+       "prov.*.pops[*].ed": 1551,
+       "prov.*.pops[*].xd": 1389,
+       "prov.*.factories[*].cash": 17,
+       "prov.*.factories[*].loss": 1
+      }
+     },
+     "firstField": "price.grain",
+     "firstSeatField": "nations.GBR.tr",
+     "firstFieldValues": {
+      "a": 1.9351070576877358,
+      "b": 1.9311462627651852
+     },
+     "involvedNation": "GBR",
+     "actorProjects": {
+      "PUN": {
+       "a": [],
+       "b": []
+      },
+      "GBR": {
+       "a": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ],
+       "b": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ]
+      },
+      "SWI": {
+       "a": [],
+       "b": []
+      }
+     },
+     "projectsA": [
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "ammo",
+       "payer": "capital",
+       "state": false,
+       "paid": 0,
+       "leftUnits": 5475
+      }
+     ],
+     "projectsB": [
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "ammo",
+       "payer": "capital",
+       "state": false,
+       "paid": 0,
+       "leftUnits": 5475
+      }
+     ],
+     "balancesAfter": {
+      "a": {
+       "tr": 622479.9702608516,
+       "inv": 30677.297203346694,
+       "debt": 0
+      },
+      "b": {
+       "tr": 187892.9189080436,
+       "inv": 38032.370561765776,
+       "debt": 0
+      }
+     }
+    },
+    "SWI": {
+     "month": -1,
+     "date": "undefined 1835",
+     "seatA": null,
+     "seatB": "SWI",
+     "openingBalances": {
+      "PUN": {
+       "a": {
+        "tr": 19293.166383867003,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 19292.364380164887,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "GBR": {
+       "a": {
+        "tr": 510582.9688280932,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 510493.08539034653,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "SWI": {
+       "a": {
+        "tr": 4496.226221631455,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 1039.2745578451695,
+        "inv": 0,
+        "debt": 0
+       }
+      }
+     },
+     "allocateLocalHouseholdsCalls": {
+      "a": 1,
+      "b": 2
+     },
+     "firstEvent": {
+      "index": 0,
+      "afterPhase": "purgeWars",
+      "digest": "eco",
+      "differentPaths": 6680,
+      "firstPaths": [
+       "price.grain",
+       "price.fruit",
+       "price.livestock",
+       "price.fish",
+       "price.tobacco",
+       "price.coffee",
+       "price.sugar",
+       "price.timber",
+       "price.coal",
+       "price.iron",
+       "price.fabric",
+       "price.clothes"
+      ],
+      "groups": {
+       "price.grain": 1,
+       "price.fruit": 1,
+       "price.livestock": 1,
+       "price.fish": 1,
+       "price.tobacco": 1,
+       "price.coffee": 1,
+       "price.sugar": 1,
+       "price.timber": 1,
+       "price.coal": 1,
+       "price.iron": 1,
+       "price.fabric": 1,
+       "price.clothes": 1,
+       "price.liquor": 1,
+       "price.furniture": 1,
+       "price.paper": 1,
+       "price.luxuries": 1,
+       "price.steel": 1,
+       "price.machinery": 1,
+       "pricePrev.grain": 1,
+       "pricePrev.fruit": 1,
+       "pricePrev.livestock": 1,
+       "pricePrev.fish": 1,
+       "pricePrev.tobacco": 1,
+       "pricePrev.coffee": 1,
+       "pricePrev.sugar": 1,
+       "pricePrev.timber": 1,
+       "pricePrev.coal": 1,
+       "pricePrev.iron": 1,
+       "pricePrev.fabric": 1,
+       "pricePrev.clothes": 1,
+       "pricePrev.liquor": 1,
+       "pricePrev.furniture": 1,
+       "pricePrev.paper": 1,
+       "pricePrev.luxuries": 1,
+       "pricePrev.steel": 1,
+       "pricePrev.machinery": 1,
+       "tight.grain": 1,
+       "tight.fruit": 1,
+       "tight.livestock": 1,
+       "tight.fish": 1,
+       "tight.tobacco": 1,
+       "tight.coffee": 1,
+       "tight.sugar": 1,
+       "tight.timber": 1,
+       "tight.coal": 1,
+       "tight.iron": 1,
+       "tight.fabric": 1,
+       "tight.clothes": 1,
+       "tight.liquor": 1,
+       "tight.furniture": 1,
+       "tight.paper": 1,
+       "tight.luxuries": 1,
+       "tight.steel": 1,
+       "tight.machinery": 1,
+       "nations.*.tr": 62,
+       "nations.*.capPool": 23,
+       "prov.*.pops[*].cash": 1651,
+       "prov.*.pops[*].inc": 1637,
+       "prov.*.pops[*].ld": 950,
+       "prov.*.pops[*].ed": 1449,
+       "prov.*.pops[*].xd": 839,
+       "prov.*.factories[*].cash": 15
+      }
+     },
+     "firstField": "price.grain",
+     "firstSeatField": "nations.SWI.tr",
+     "firstFieldValues": {
+      "a": 1.9351070576877358,
+      "b": 1.9351047659690217
+     },
+     "involvedNation": "SWI",
+     "actorProjects": {
+      "PUN": {
+       "a": [],
+       "b": []
+      },
+      "GBR": {
+       "a": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ],
+       "b": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ]
+      },
+      "SWI": {
+       "a": [],
+       "b": []
+      }
+     },
+     "projectsA": [],
+     "projectsB": [],
+     "balancesAfter": {
+      "a": {
+       "tr": 7093.056618699881,
+       "inv": 0,
+       "debt": 0
+      },
+      "b": {
+       "tr": 2542.595398816408,
+       "inv": 0,
+       "debt": 0
+      }
+     }
+    }
+   },
+   "seconds": 17.9
+  },
+  "cf_neutral": {
+   "title": "Counterfactual: participants, hasProvincialEconomy and the construction ledger all made seat-independent (PUN only, no ledger)",
+   "pairs": [
+    {
+     "a": "none",
+     "b": "PUN",
+     "firstDivergentMonthEco": null,
+     "firstDivergentMonthFull": null
+    },
+    {
+     "a": "none",
+     "b": "GBR",
+     "firstDivergentMonthEco": null,
+     "firstDivergentMonthFull": null
+    },
+    {
+     "a": "none",
+     "b": "SWI",
+     "firstDivergentMonthEco": null,
+     "firstDivergentMonthFull": null
+    },
+    {
+     "a": "PUN",
+     "b": "GBR",
+     "firstDivergentMonthEco": null,
+     "firstDivergentMonthFull": null
+    },
+    {
+     "a": "PUN",
+     "b": "SWI",
+     "firstDivergentMonthEco": null,
+     "firstDivergentMonthFull": null
+    },
+    {
+     "a": "GBR",
+     "b": "SWI",
+     "firstDivergentMonthEco": null,
+     "firstDivergentMonthFull": null
+    }
+   ],
+   "seats": {},
+   "seconds": 12.7
+  },
+  "cf_pilot_only": {
+   "title": "Counterfactual: only the econMonth participants and hasProvincialEconomy neutralised (ledger still seat-dependent)",
+   "pairs": [
+    {
+     "a": "none",
+     "b": "PUN",
+     "firstDivergentMonthEco": 5,
+     "firstDivergentMonthFull": 5
+    },
+    {
+     "a": "none",
+     "b": "GBR",
+     "firstDivergentMonthEco": 5,
+     "firstDivergentMonthFull": 5
+    },
+    {
+     "a": "none",
+     "b": "SWI",
+     "firstDivergentMonthEco": 5,
+     "firstDivergentMonthFull": 5
+    },
+    {
+     "a": "PUN",
+     "b": "GBR",
+     "firstDivergentMonthEco": 5,
+     "firstDivergentMonthFull": 5
+    },
+    {
+     "a": "PUN",
+     "b": "SWI",
+     "firstDivergentMonthEco": 5,
+     "firstDivergentMonthFull": 5
+    },
+    {
+     "a": "GBR",
+     "b": "SWI",
+     "firstDivergentMonthEco": 5,
+     "firstDivergentMonthFull": 5
+    }
+   ],
+   "seats": {
+    "PUN": {
+     "month": 5,
+     "date": "June 1836",
+     "seatA": null,
+     "seatB": "PUN",
+     "openingBalances": {
+      "PUN": {
+       "a": {
+        "tr": 20866.44070371802,
+        "inv": 72.26128817263407,
+        "debt": 0
+       },
+       "b": {
+        "tr": 20866.44070371802,
+        "inv": 72.26128817263407,
+        "debt": 0
+       }
+      },
+      "GBR": {
+       "a": {
+        "tr": 732294.3227598375,
+        "inv": 55790.4052541117,
+        "debt": 0
+       },
+       "b": {
+        "tr": 732294.3227598375,
+        "inv": 55790.4052541117,
+        "debt": 0
+       }
+      },
+      "SWI": {
+       "a": {
+        "tr": 7720.278591937184,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 7720.278591937184,
+        "inv": 0,
+        "debt": 0
+       }
+      }
+     },
+     "allocateLocalHouseholdsCalls": {
+      "a": 1,
+      "b": 1
+     },
+     "firstEvent": {
+      "index": 2,
+      "afterPhase": "investMonth",
+      "digest": "eco",
+      "differentPaths": 13,
+      "firstPaths": [
+       "nations.PUN.tr",
+       "prov.LAH.build[0].left.timber",
+       "prov.LAH.build[0].left.cement",
+       "prov.LAH.build[0].left.machinery",
+       "prov.LAH.build[0].paid",
+       "prov.LAH.build[1].left.timber",
+       "prov.LAH.build[1].left.cement",
+       "prov.LAH.build[1].left.paper",
+       "prov.LAH.build[1].paid",
+       "prov.PES.build[0].left.cement",
+       "prov.PES.build[0].left.clothes",
+       "prov.PES.build[0].left.furniture"
+      ],
+      "groups": {
+       "nations.*.tr": 1,
+       "prov.*.build[*].left.timber": 2,
+       "prov.*.build[*].left.cement": 3,
+       "prov.*.build[*].left.machinery": 1,
+       "prov.*.build[*].paid": 3,
+       "prov.*.build[*].left.paper": 1,
+       "prov.*.build[*].left.clothes": 1,
+       "prov.*.build[*].left.furniture": 1
+      }
+     },
+     "firstField": "nations.PUN.tr",
+     "firstSeatField": "nations.PUN.tr",
+     "firstFieldValues": {
+      "a": -40893.326526652585,
+      "b": -39674.38721660349
+     },
+     "involvedNation": "PUN",
+     "actorProjects": {
+      "PUN": {
+       "a": [
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4097.97,
+         "leftUnits": 1914.73
+        },
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 722.58,
+         "leftUnits": 99.66
+        },
+        {
+         "prov": "PES",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        }
+       ],
+       "b": [
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 3350.3,
+         "leftUnits": 2242.68
+        },
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 547.29,
+         "leftUnits": 145.91
+        },
+        {
+         "prov": "PES",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 297.19,
+         "leftUnits": 360
+        }
+       ]
+      },
+      "GBR": {
+       "a": [
+        {
+         "prov": "IRE",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "liquor",
+         "payer": "capital",
+         "state": false,
+         "paid": 4020.32,
+         "leftUnits": 4047.57
+        },
+        {
+         "prov": "CAL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 699.04,
+         "leftUnits": 102.54
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "furniture",
+         "payer": "state",
+         "state": true,
+         "paid": 2996.85,
+         "leftUnits": 4412.57
+        }
+       ],
+       "b": [
+        {
+         "prov": "IRE",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "liquor",
+         "payer": "capital",
+         "state": false,
+         "paid": 4020.32,
+         "leftUnits": 4047.57
+        },
+        {
+         "prov": "CAL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 699.04,
+         "leftUnits": 102.54
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "furniture",
+         "payer": "state",
+         "state": true,
+         "paid": 2996.85,
+         "leftUnits": 4412.57
+        }
+       ]
+      },
+      "SWI": {
+       "a": [
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4161.73,
+         "leftUnits": 3739.73
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 676.57,
+         "leftUnits": 107.48
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 587.97,
+         "leftUnits": 321.52
+        }
+       ],
+       "b": [
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4161.73,
+         "leftUnits": 3739.73
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 676.57,
+         "leftUnits": 107.48
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 587.97,
+         "leftUnits": 321.52
+        }
+       ]
+      }
+     },
+     "projectsA": [
+      {
+       "prov": "LAH",
+       "owner": "PUN",
+       "k": "fac",
+       "g": "fabric",
+       "payer": "state",
+       "state": true,
+       "paid": 4097.97,
+       "leftUnits": 1914.73
+      },
+      {
+       "prov": "LAH",
+       "owner": "PUN",
+       "k": "bld",
+       "g": "school",
+       "payer": "state",
+       "state": true,
+       "paid": 722.58,
+       "leftUnits": 99.66
+      },
+      {
+       "prov": "PES",
+       "owner": "PUN",
+       "k": "bld",
+       "g": "hosp",
+       "payer": "state",
+       "state": true,
+       "paid": 593.17,
+       "leftUnits": 320
+      }
+     ],
+     "projectsB": [
+      {
+       "prov": "LAH",
+       "owner": "PUN",
+       "k": "fac",
+       "g": "fabric",
+       "payer": "state",
+       "state": true,
+       "paid": 3350.3,
+       "leftUnits": 2242.68
+      },
+      {
+       "prov": "LAH",
+       "owner": "PUN",
+       "k": "bld",
+       "g": "school",
+       "payer": "state",
+       "state": true,
+       "paid": 547.29,
+       "leftUnits": 145.91
+      },
+      {
+       "prov": "PES",
+       "owner": "PUN",
+       "k": "bld",
+       "g": "hosp",
+       "payer": "state",
+       "state": true,
+       "paid": 297.19,
+       "leftUnits": 360
+      }
+     ],
+     "balancesAfter": {
+      "a": {
+       "tr": -40893.326526652585,
+       "inv": 22.597996234538577,
+       "debt": 0
+      },
+      "b": {
+       "tr": -39674.38721660349,
+       "inv": 22.597996234538577,
+       "debt": 0
+      }
+     }
+    },
+    "GBR": {
+     "month": 5,
+     "date": "June 1836",
+     "seatA": null,
+     "seatB": "GBR",
+     "openingBalances": {
+      "PUN": {
+       "a": {
+        "tr": 20866.44070371802,
+        "inv": 72.26128817263407,
+        "debt": 0
+       },
+       "b": {
+        "tr": 20866.44070371802,
+        "inv": 72.26128817263407,
+        "debt": 0
+       }
+      },
+      "GBR": {
+       "a": {
+        "tr": 732294.3227598375,
+        "inv": 55790.4052541117,
+        "debt": 0
+       },
+       "b": {
+        "tr": 732294.3227598375,
+        "inv": 55790.4052541117,
+        "debt": 0
+       }
+      },
+      "SWI": {
+       "a": {
+        "tr": 7720.278591937184,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 7720.278591937184,
+        "inv": 0,
+        "debt": 0
+       }
+      }
+     },
+     "allocateLocalHouseholdsCalls": {
+      "a": 1,
+      "b": 1
+     },
+     "firstEvent": {
+      "index": 2,
+      "afterPhase": "investMonth",
+      "digest": "eco",
+      "differentPaths": 17,
+      "firstPaths": [
+       "nations.GBR.tr",
+       "prov.CAL.build[0].left.cement",
+       "prov.CAL.build[0].left.clothes",
+       "prov.CAL.build[0].left.furniture",
+       "prov.CAL.build[0].paid",
+       "prov.DEL.build[1].left.timber",
+       "prov.DEL.build[1].left.cement",
+       "prov.DEL.build[1].left.machinery",
+       "prov.DEL.build[1].paid",
+       "prov.DEL.build[2].left.timber",
+       "prov.DEL.build[2].left.cement",
+       "prov.DEL.build[2].left.paper"
+      ],
+      "groups": {
+       "nations.*.tr": 1,
+       "prov.*.build[*].left.cement": 4,
+       "prov.*.build[*].left.clothes": 1,
+       "prov.*.build[*].left.furniture": 1,
+       "prov.*.build[*].paid": 4,
+       "prov.*.build[*].left.timber": 3,
+       "prov.*.build[*].left.machinery": 2,
+       "prov.*.build[*].left.paper": 1
+      }
+     },
+     "firstField": "nations.GBR.tr",
+     "firstSeatField": "nations.GBR.tr",
+     "firstFieldValues": {
+      "a": -660335.4129542025,
+      "b": -657911.1048881898
+     },
+     "involvedNation": "GBR",
+     "actorProjects": {
+      "PUN": {
+       "a": [
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4097.97,
+         "leftUnits": 1914.73
+        },
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 722.58,
+         "leftUnits": 99.66
+        },
+        {
+         "prov": "PES",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        }
+       ],
+       "b": [
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4097.97,
+         "leftUnits": 1914.73
+        },
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 722.58,
+         "leftUnits": 99.66
+        },
+        {
+         "prov": "PES",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        }
+       ]
+      },
+      "GBR": {
+       "a": [
+        {
+         "prov": "IRE",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "liquor",
+         "payer": "capital",
+         "state": false,
+         "paid": 4020.32,
+         "leftUnits": 4047.57
+        },
+        {
+         "prov": "CAL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 699.04,
+         "leftUnits": 102.54
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "furniture",
+         "payer": "state",
+         "state": true,
+         "paid": 2996.85,
+         "leftUnits": 4412.57
+        }
+       ],
+       "b": [
+        {
+         "prov": "IRE",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "liquor",
+         "payer": "capital",
+         "state": false,
+         "paid": 4020.32,
+         "leftUnits": 4047.57
+        },
+        {
+         "prov": "CAL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 297.19,
+         "leftUnits": 360
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4072.62,
+         "leftUnits": 4024.92
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 530.02,
+         "leftUnits": 147.86
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "furniture",
+         "payer": "state",
+         "state": true,
+         "paid": 2017.2,
+         "leftUnits": 4754.92
+        }
+       ]
+      },
+      "SWI": {
+       "a": [
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4161.73,
+         "leftUnits": 3739.73
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 676.57,
+         "leftUnits": 107.48
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 587.97,
+         "leftUnits": 321.52
+        }
+       ],
+       "b": [
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4161.73,
+         "leftUnits": 3739.73
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 676.57,
+         "leftUnits": 107.48
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 587.97,
+         "leftUnits": 321.52
+        }
+       ]
+      }
+     },
+     "projectsA": [
+      {
+       "prov": "IRE",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "liquor",
+       "payer": "capital",
+       "state": false,
+       "paid": 4020.32,
+       "leftUnits": 4047.57
+      },
+      {
+       "prov": "CAL",
+       "owner": "GBR",
+       "k": "bld",
+       "g": "hosp",
+       "payer": "state",
+       "state": true,
+       "paid": 593.17,
+       "leftUnits": 320
+      },
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "ammo",
+       "payer": "capital",
+       "state": false,
+       "paid": 5052.28,
+       "leftUnits": 3682.57
+      },
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "fabric",
+       "payer": "state",
+       "state": true,
+       "paid": 5052.28,
+       "leftUnits": 3682.57
+      },
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "bld",
+       "g": "school",
+       "payer": "state",
+       "state": true,
+       "paid": 699.04,
+       "leftUnits": 102.54
+      },
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "furniture",
+       "payer": "state",
+       "state": true,
+       "paid": 2996.85,
+       "leftUnits": 4412.57
+      }
+     ],
+     "projectsB": [
+      {
+       "prov": "IRE",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "liquor",
+       "payer": "capital",
+       "state": false,
+       "paid": 4020.32,
+       "leftUnits": 4047.57
+      },
+      {
+       "prov": "CAL",
+       "owner": "GBR",
+       "k": "bld",
+       "g": "hosp",
+       "payer": "state",
+       "state": true,
+       "paid": 297.19,
+       "leftUnits": 360
+      },
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "ammo",
+       "payer": "capital",
+       "state": false,
+       "paid": 5052.28,
+       "leftUnits": 3682.57
+      },
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "fabric",
+       "payer": "state",
+       "state": true,
+       "paid": 4072.62,
+       "leftUnits": 4024.92
+      },
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "bld",
+       "g": "school",
+       "payer": "state",
+       "state": true,
+       "paid": 530.02,
+       "leftUnits": 147.86
+      },
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "furniture",
+       "payer": "state",
+       "state": true,
+       "paid": 2017.2,
+       "leftUnits": 4754.92
+      }
+     ],
+     "balancesAfter": {
+      "a": {
+       "tr": -660335.4129542025,
+       "inv": 29224.957116349975,
+       "debt": 0
+      },
+      "b": {
+       "tr": -657911.1048881898,
+       "inv": 29224.957116349975,
+       "debt": 0
+      }
+     }
+    },
+    "SWI": {
+     "month": 5,
+     "date": "June 1836",
+     "seatA": null,
+     "seatB": "SWI",
+     "openingBalances": {
+      "PUN": {
+       "a": {
+        "tr": 20866.44070371802,
+        "inv": 72.26128817263407,
+        "debt": 0
+       },
+       "b": {
+        "tr": 20866.44070371802,
+        "inv": 72.26128817263407,
+        "debt": 0
+       }
+      },
+      "GBR": {
+       "a": {
+        "tr": 732294.3227598375,
+        "inv": 55790.4052541117,
+        "debt": 0
+       },
+       "b": {
+        "tr": 732294.3227598375,
+        "inv": 55790.4052541117,
+        "debt": 0
+       }
+      },
+      "SWI": {
+       "a": {
+        "tr": 7720.278591937184,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 7720.278591937184,
+        "inv": 0,
+        "debt": 0
+       }
+      }
+     },
+     "allocateLocalHouseholdsCalls": {
+      "a": 1,
+      "b": 1
+     },
+     "firstEvent": {
+      "index": 2,
+      "afterPhase": "investMonth",
+      "digest": "eco",
+      "differentPaths": 13,
+      "firstPaths": [
+       "nations.SWI.tr",
+       "prov.ZUR.build[0].left.timber",
+       "prov.ZUR.build[0].left.cement",
+       "prov.ZUR.build[0].left.machinery",
+       "prov.ZUR.build[0].paid",
+       "prov.ZUR.build[1].left.timber",
+       "prov.ZUR.build[1].left.cement",
+       "prov.ZUR.build[1].left.paper",
+       "prov.ZUR.build[1].paid",
+       "prov.ZUR.build[2].left.cement",
+       "prov.ZUR.build[2].left.clothes",
+       "prov.ZUR.build[2].left.furniture"
+      ],
+      "groups": {
+       "nations.*.tr": 1,
+       "prov.*.build[*].left.timber": 2,
+       "prov.*.build[*].left.cement": 3,
+       "prov.*.build[*].left.machinery": 1,
+       "prov.*.build[*].paid": 3,
+       "prov.*.build[*].left.paper": 1,
+       "prov.*.build[*].left.clothes": 1,
+       "prov.*.build[*].left.furniture": 1
+      }
+     },
+     "firstField": "nations.SWI.tr",
+     "firstSeatField": "nations.SWI.tr",
+     "firstFieldValues": {
+      "a": -12903.648242160478,
+      "b": -11681.379084811168
+     },
+     "involvedNation": "SWI",
+     "actorProjects": {
+      "PUN": {
+       "a": [
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4097.97,
+         "leftUnits": 1914.73
+        },
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 722.58,
+         "leftUnits": 99.66
+        },
+        {
+         "prov": "PES",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        }
+       ],
+       "b": [
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4097.97,
+         "leftUnits": 1914.73
+        },
+        {
+         "prov": "LAH",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 722.58,
+         "leftUnits": 99.66
+        },
+        {
+         "prov": "PES",
+         "owner": "PUN",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        }
+       ]
+      },
+      "GBR": {
+       "a": [
+        {
+         "prov": "IRE",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "liquor",
+         "payer": "capital",
+         "state": false,
+         "paid": 4020.32,
+         "leftUnits": 4047.57
+        },
+        {
+         "prov": "CAL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 699.04,
+         "leftUnits": 102.54
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "furniture",
+         "payer": "state",
+         "state": true,
+         "paid": 2996.85,
+         "leftUnits": 4412.57
+        }
+       ],
+       "b": [
+        {
+         "prov": "IRE",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "liquor",
+         "payer": "capital",
+         "state": false,
+         "paid": 4020.32,
+         "leftUnits": 4047.57
+        },
+        {
+         "prov": "CAL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 593.17,
+         "leftUnits": 320
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 5052.28,
+         "leftUnits": 3682.57
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 699.04,
+         "leftUnits": 102.54
+        },
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "furniture",
+         "payer": "state",
+         "state": true,
+         "paid": 2996.85,
+         "leftUnits": 4412.57
+        }
+       ]
+      },
+      "SWI": {
+       "a": [
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 4161.73,
+         "leftUnits": 3739.73
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 676.57,
+         "leftUnits": 107.48
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 587.97,
+         "leftUnits": 321.52
+        }
+       ],
+       "b": [
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "fac",
+         "g": "fabric",
+         "payer": "state",
+         "state": true,
+         "paid": 3392.07,
+         "leftUnits": 4067.68
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "school",
+         "payer": "state",
+         "state": true,
+         "paid": 517.14,
+         "leftUnits": 150.74
+        },
+        {
+         "prov": "ZUR",
+         "owner": "SWI",
+         "k": "bld",
+         "g": "hosp",
+         "payer": "state",
+         "state": true,
+         "paid": 294.79,
+         "leftUnits": 360.65
+        }
+       ]
+      }
+     },
+     "projectsA": [
+      {
+       "prov": "ZUR",
+       "owner": "SWI",
+       "k": "fac",
+       "g": "fabric",
+       "payer": "state",
+       "state": true,
+       "paid": 4161.73,
+       "leftUnits": 3739.73
+      },
+      {
+       "prov": "ZUR",
+       "owner": "SWI",
+       "k": "bld",
+       "g": "school",
+       "payer": "state",
+       "state": true,
+       "paid": 676.57,
+       "leftUnits": 107.48
+      },
+      {
+       "prov": "ZUR",
+       "owner": "SWI",
+       "k": "bld",
+       "g": "hosp",
+       "payer": "state",
+       "state": true,
+       "paid": 587.97,
+       "leftUnits": 321.52
+      }
+     ],
+     "projectsB": [
+      {
+       "prov": "ZUR",
+       "owner": "SWI",
+       "k": "fac",
+       "g": "fabric",
+       "payer": "state",
+       "state": true,
+       "paid": 3392.07,
+       "leftUnits": 4067.68
+      },
+      {
+       "prov": "ZUR",
+       "owner": "SWI",
+       "k": "bld",
+       "g": "school",
+       "payer": "state",
+       "state": true,
+       "paid": 517.14,
+       "leftUnits": 150.74
+      },
+      {
+       "prov": "ZUR",
+       "owner": "SWI",
+       "k": "bld",
+       "g": "hosp",
+       "payer": "state",
+       "state": true,
+       "paid": 294.79,
+       "leftUnits": 360.65
+      }
+     ],
+     "balancesAfter": {
+      "a": {
+       "tr": -12903.648242160478,
+       "inv": 0,
+       "debt": 0
+      },
+      "b": {
+       "tr": -11681.379084811168,
+       "inv": 0,
+       "debt": 0
+      }
+     }
+    }
+   },
+   "seconds": 21.6
+  },
+  "cf_ledger_only": {
+   "title": "Counterfactual: only the investMonth ledger neutralised (participants still seat-dependent)",
+   "pairs": [
+    {
+     "a": "none",
+     "b": "PUN",
+     "firstDivergentMonthEco": null,
+     "firstDivergentMonthFull": null
+    },
+    {
+     "a": "none",
+     "b": "GBR",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    },
+    {
+     "a": "none",
+     "b": "SWI",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    },
+    {
+     "a": "PUN",
+     "b": "GBR",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    },
+    {
+     "a": "PUN",
+     "b": "SWI",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    },
+    {
+     "a": "GBR",
+     "b": "SWI",
+     "firstDivergentMonthEco": 0,
+     "firstDivergentMonthFull": 0
+    }
+   ],
+   "seats": {
+    "GBR": {
+     "month": 0,
+     "date": "January 1836",
+     "seatA": null,
+     "seatB": "GBR",
+     "openingBalances": {
+      "PUN": {
+       "a": {
+        "tr": 19293.166383867003,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 19293.166383867003,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "GBR": {
+       "a": {
+        "tr": 510582.9688280932,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 510582.9688280932,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "SWI": {
+       "a": {
+        "tr": 4496.226221631455,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 4496.226221631455,
+        "inv": 0,
+        "debt": 0
+       }
+      }
+     },
+     "allocateLocalHouseholdsCalls": {
+      "a": 1,
+      "b": 2
+     },
+     "firstEvent": {
+      "index": 1,
+      "afterPhase": "moneyMonth",
+      "digest": "eco",
+      "differentPaths": 1884,
+      "firstPaths": [
+       "nations.GBR.inv",
+       "nations.GBR.capPool",
+       "prov.LON.pops[0].cash",
+       "prov.LON.pops[0].ld",
+       "prov.LON.pops[1].cash",
+       "prov.LON.pops[1].ld",
+       "prov.LON.pops[2].cash",
+       "prov.LON.pops[2].ld",
+       "prov.LON.pops[3].cash",
+       "prov.LON.pops[3].ld",
+       "prov.LON.pops[4].cash",
+       "prov.LON.pops[4].ld"
+      ],
+      "groups": {
+       "nations.*.inv": 1,
+       "nations.*.capPool": 1,
+       "prov.*.pops[*].cash": 1649,
+       "prov.*.pops[*].ld": 174,
+       "prov.*.pops[*].ed": 59
+      }
+     },
+     "firstField": "nations.GBR.inv",
+     "firstSeatField": "nations.GBR.inv",
+     "firstFieldValues": {
+      "a": 30677.297203346694,
+      "b": 37031.01525393153
+     },
+     "involvedNation": "GBR",
+     "actorProjects": {
+      "PUN": {
+       "a": [],
+       "b": []
+      },
+      "GBR": {
+       "a": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ],
+       "b": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ]
+      },
+      "SWI": {
+       "a": [],
+       "b": []
+      }
+     },
+     "projectsA": [
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "ammo",
+       "payer": "capital",
+       "state": false,
+       "paid": 0,
+       "leftUnits": 5475
+      }
+     ],
+     "projectsB": [
+      {
+       "prov": "DEL",
+       "owner": "GBR",
+       "k": "fac",
+       "g": "ammo",
+       "payer": "capital",
+       "state": false,
+       "paid": 0,
+       "leftUnits": 5475
+      }
+     ],
+     "balancesAfter": {
+      "a": {
+       "tr": 622479.9702608516,
+       "inv": 30677.297203346694,
+       "debt": 0
+      },
+      "b": {
+       "tr": 622479.9702608516,
+       "inv": 37031.01525393153,
+       "debt": 0
+      }
+     }
+    },
+    "SWI": {
+     "month": 0,
+     "date": "January 1836",
+     "seatA": null,
+     "seatB": "SWI",
+     "openingBalances": {
+      "PUN": {
+       "a": {
+        "tr": 19293.166383867003,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 19293.166383867003,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "GBR": {
+       "a": {
+        "tr": 510582.9688280932,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 510582.9688280932,
+        "inv": 0,
+        "debt": 0
+       }
+      },
+      "SWI": {
+       "a": {
+        "tr": 4496.226221631455,
+        "inv": 0,
+        "debt": 0
+       },
+       "b": {
+        "tr": 4496.226221631455,
+        "inv": 0,
+        "debt": 0
+       }
+      }
+     },
+     "allocateLocalHouseholdsCalls": {
+      "a": 1,
+      "b": 2
+     },
+     "firstEvent": {
+      "index": 1,
+      "afterPhase": "moneyMonth",
+      "digest": "eco",
+      "differentPaths": 1660,
+      "firstPaths": [
+       "prov.LON.pops[0].cash",
+       "prov.LON.pops[1].cash",
+       "prov.LON.pops[2].cash",
+       "prov.LON.pops[3].cash",
+       "prov.LON.pops[4].cash",
+       "prov.LON.pops[5].cash",
+       "prov.LON.pops[6].cash",
+       "prov.LON.pops[7].cash",
+       "prov.LON.pops[8].cash",
+       "prov.LON.pops[9].cash",
+       "prov.LON.pops[10].cash",
+       "prov.MID.pops[0].cash"
+      ],
+      "groups": {
+       "prov.*.pops[*].cash": 1649,
+       "prov.*.pops[*].ld": 11
+      }
+     },
+     "firstField": "prov.LON.pops[0].cash",
+     "firstSeatField": "prov.ZUR.pops[0].cash",
+     "firstFieldValues": {
+      "a": 4275.6625821308435,
+      "b": 4274.7397884790225
+     },
+     "involvedNation": "SWI",
+     "actorProjects": {
+      "PUN": {
+       "a": [],
+       "b": []
+      },
+      "GBR": {
+       "a": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ],
+       "b": [
+        {
+         "prov": "DEL",
+         "owner": "GBR",
+         "k": "fac",
+         "g": "ammo",
+         "payer": "capital",
+         "state": false,
+         "paid": 0,
+         "leftUnits": 5475
+        }
+       ]
+      },
+      "SWI": {
+       "a": [],
+       "b": []
+      }
+     },
+     "projectsA": [],
+     "projectsB": [],
+     "balancesAfter": {
+      "a": {
+       "tr": 7093.056618699881,
+       "inv": 0,
+       "debt": 0
+      },
+      "b": {
+       "tr": 7093.056618699881,
+       "inv": 0,
+       "debt": 0
+      }
+     }
+    }
+   },
+   "seconds": 15.3
+  }
+ }
+}

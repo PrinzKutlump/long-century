@@ -1,0 +1,17 @@
+PASS: deck integrity, Jan 1836, historical dates, Perry branching, card rendering, save migration, credit and influenza expiry, debt default, independence, and persisted war IDs.
+PASS: agenda, annual report, multi-month stop rules, both Punjab branches, July mediation, neutrality, entry, separate peace and reparations.
+PASS: advance menu and toggles, actual three-turn cutoff, first report and report markup.
+PASS: London building estimates agree across release and engine, and diplomacy displays fleet counts.
+PASS: Meiji refusal and reload, construction queue, original holdings, migration conservation and Wichalē divergence.
+PASS: failed autosave preserves the last save, Punjab challenge persists, and agreements apply once.
+PASS: rejected import and decree, monthly credit, manual slot recovery, unique agendas, deterministic restart and reload.
+PASS: Punjab hiring conserves population, respects qualifications and records household spending.
+PASS: project commands survive save/reload, queue IDs persist and Punjab accounts reconcile.
+PASS: Punjab household freight, tariff sensitivity and allocation limits.
+PASS: both Punjab bill paths run for 24 months with recorded school order, market receipts and two annual reports.
+PASS: import priorities, customs capacity, method trade-off, financial fields and policy save/load.
+PASS: bilateral depot clearing, commercial rights, Punjab milestone and Britain market rollout.
+PASS: regional market starts and exhaustion-driven peace preserve legal ownership.
+PASS: construction funding delays, payments and ledger persistence.
+PASS: Company revenue, Crown reserve transfer and unchanged province ownership.
+PASS: wider rollout across ten additional starts, allocation totals, save and Economy display.

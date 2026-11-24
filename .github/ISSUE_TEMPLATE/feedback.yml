@@ -1,0 +1,41 @@
+name: Playtest feedback
+description: Report what happened in a build, with a save code so it can be reproduced
+title: "[feedback] "
+labels: ["feedback"]
+body:
+  - type: input
+    id: build
+    attributes:
+      label: Build
+      description: Release tag, for example build-42, or the date you downloaded it.
+    validations:
+      required: true
+  - type: textarea
+    id: did
+    attributes:
+      label: What you did
+      description: Click by click if you can. Year, screen, and the action.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: save
+    attributes:
+      label: Save code
+      description: In the game, use Copy text on the save screen and paste the result here. It is long; paste it in full.
+      render: text
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device
+      options: [Phone, Tablet, Desktop]
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Chrome 130 on Android

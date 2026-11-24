@@ -1,0 +1,59 @@
+# Browser tier: PRs labelled ui. Playwright checks; screenshots go to a CI artifact.
+# The tools launch /usr/bin/google-chrome, which the Ubuntu runner image provides;
+# Playwright's own chromium is installed as well for any tool that asks for it.
+name: browser
+on:
+  pull_request:
+    types: [labeled, synchronize, opened, reopened]
+  workflow_dispatch:
+concurrency:
+  group: browser-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  browser:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'ui')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Playwright and chromium
+        run: |
+          python3 -m pip install --quiet playwright
+          python3 -m playwright install --with-deps chromium
+          test -x /usr/bin/google-chrome && echo "google-chrome present"
+      - name: Build
+        run: python3 build.py
+      - name: Browser checks (one line each)
+        run: |
+          fail=0
+          mkdir -p shots
+          for t in tools/layout_check.py tools/works_board_test.py tools/build_mode_test.py; do
+            name=$(basename "$t")
+            if timeout 600 python3 "$t" > "/tmp/$name.log" 2>&1; then
+              echo "- PASS $name" >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "- FAIL $name" >> "$GITHUB_STEP_SUMMARY"
+              echo '```' >> "$GITHUB_STEP_SUMMARY"; tail -20 "/tmp/$name.log" >> "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
+              fail=1
+            fi
+          done
+          exit $fail
+      - name: Collect screenshots
+        if: always()
+        run: |
+          mkdir -p shots-artifact
+          cp -r shots/. shots-artifact/ 2>/dev/null || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-shots
+          path: shots-artifact/
+          if-no-files-found: ignore

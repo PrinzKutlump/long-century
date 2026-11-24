@@ -1,0 +1,9 @@
+# Working on The Long Century
+
+Before editing, check the [shared work-claims issue](https://github.com/PrinzKutlump/long-century/issues?q=is%3Aissue+in%3Atitle+claims) and record your plan-qualified ticket, branch and affected files or functions. Post your handoff or merged PR there when you release the claim.
+
+Follow the shared repository instructions in [CLAUDE.md](CLAUDE.md). New implementer: read [docs/CODEX_START.md](docs/CODEX_START.md) first.
+
+Roles: Codex/GPT implements all tickets (engine, UI, map, art, data tools, CI). Claude plans, writes the ticket issues and audits each PR (protocol in docs/DEV_WORKFLOW.md section 3b). Take tickets from issues labelled `ticket`; claim on the public claims board first.
+
+No credentials or personal details in code, issues or PRs. Raw Correlates of War files never go into the public repository (docs/MASTER_PLAN.md §0).

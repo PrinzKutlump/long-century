@@ -1,0 +1,41 @@
+{
+ "seed": 7,
+ "player": "SWI",
+ "years": "1836-1936",
+ "seconds": 85.5,
+ "stateHash": "5fafebe206559e77f132f297b516969369f7acacbbf67c378c508c6fd92eb658",
+ "definition": "A charge counts when a non-player payer's treasury (tr, state projects) or investment pool (inv, private and foreign projects) is below zero after investMonth books a construction bill. 'overdraw' = the part of the bill above the payer's positive balance, i.e. what the funding fraction would have withheld. crossedZero: balance was >= 0 before the charge; alreadyNegative: it was already below zero.",
+ "constructionChargesAll": 59671,
+ "constructionChargesNonPlayer": 59593,
+ "chargesLeavingBalanceBelowZero": 0,
+ "crossedZero": 0,
+ "alreadyNegative": 0,
+ "nationMonths": 0,
+ "byBalance": {
+  "tr": 0,
+  "inv": 0
+ },
+ "byPayerKind": {
+  "domestic": 0,
+  "foreign": 0
+ },
+ "overdrawTotalPounds": 0,
+ "worstBalanceAfterCharge": {
+  "value": 0
+ },
+ "worstOverdrawSingleCharge": {
+  "amount": 0
+ },
+ "firstEvent": null,
+ "byDecade": {},
+ "topPayersByOverdraw": [],
+ "allCausesMonthEnd": {
+  "trNationMonths": 0,
+  "invNationMonths": 0,
+  "trNations": [],
+  "invNations": [],
+  "trWorst": 0,
+  "invWorst": 0
+ },
+ "note": "allCausesMonthEnd counts every nation-month ending with tr or inv below zero for any reason (non-player nations), for context; the construction-attributed counts are above."
+}

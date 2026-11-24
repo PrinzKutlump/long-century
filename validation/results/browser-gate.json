@@ -1,0 +1,90 @@
+{
+ "timing": [
+  {
+   "label": "opening",
+   "from": 0,
+   "months": 24,
+   "shown": {
+    "mean": 70.6,
+    "median": 69.5,
+    "p95": 110.4,
+    "max": 117.6
+   },
+   "handler": {
+    "mean": 67.0,
+    "median": 65.4,
+    "p95": 108,
+    "max": 111.3
+   },
+   "saved": {
+    "mean": 131.9,
+    "median": 127.7,
+    "p95": 188.7,
+    "max": 208.6
+   }
+  },
+  {
+   "label": "seed-21-t600.txt",
+   "from": 600,
+   "months": 24,
+   "shown": {
+    "mean": 86.8,
+    "median": 74.8,
+    "p95": 131.1,
+    "max": 171.2
+   },
+   "handler": {
+    "mean": 85.4,
+    "median": 70.2,
+    "p95": 127.2,
+    "max": 170.7
+   },
+   "saved": {
+    "mean": 188.4,
+    "median": 193.1,
+    "p95": 239.2,
+    "max": 261.1
+   }
+  },
+  {
+   "label": "seed-21-t1176.txt",
+   "from": 1176,
+   "months": 24,
+   "shown": {
+    "mean": 89.7,
+    "median": 79.4,
+    "p95": 143.5,
+    "max": 177.9
+   },
+   "handler": {
+    "mean": 88.4,
+    "median": 79.2,
+    "p95": 143.4,
+    "max": 177.6
+   },
+   "saved": {
+    "mean": 203.7,
+    "median": 201.5,
+    "p95": 298.9,
+    "max": 304.4
+   }
+  }
+ ],
+ "storage": {
+  "saveChars": 930789,
+  "usedChars": 3546728,
+  "headroomChars": 1638565,
+  "capacityChars": 5185293,
+  "keys": [
+   "vic.auto",
+   "vic.autoM",
+   "vic.opt",
+   "vic.s1",
+   "vic.s1m",
+   "vic.s2",
+   "vic.s2m",
+   "vic.s3",
+   "vic.s3m"
+  ]
+ }
+}

@@ -1,0 +1,12 @@
+A0 item 2: construction overdraw by non-player payers, seed 7, player SWI, 1836-1936 (85.5s)
+stateHash of the instrumented run: 5fafebe206559e77f132f297b516969369f7acacbbf67c378c508c6fd92eb658
+construction charges booked: 59671 (non-player payers 59593)
+charges leaving the payer below zero: 0 (crossed zero 0, already negative 0)
+nation-months (payer, balance, month): 0; by balance {"tr":0,"inv":0}; by payer {"domestic":0,"foreign":0}
+total overdraw (bill above positive balance): 0 pounds
+worst balance after a construction charge: {"value":0}
+largest single overdraw: {"amount":0}
+first event: null
+by decade: {}
+top payers: []
+all causes, month-end nation-months below zero (non-player): tr 0, inv 0; worst tr 0, worst inv 0

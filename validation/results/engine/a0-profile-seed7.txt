@@ -1,0 +1,24 @@
+A0 item 3: provincial-economy path cost, seed 7, nobody human, node v22.23.5, wall 92 s
+Method: one live century, configuration rotated every month (base, today_PUN, player_SWI, player_GBR, all, all_ledger); monthly timings of econMonth and socMonth with its sub-phases; means over months from 1856.
+
+== 1856-1936: mean ms per month by configuration (n = months, +- standard error of the mean)
+   base        160 mo: econMonth  42.76 (alloc 0, money 0.342, invest 3.48, bilateral 0.06, rest 38.88), socMonth 9.21; econ+soc 51.97 +-0.99; participant provinces 0
+   today_PUN   160 mo: econMonth   41.9 (alloc 0.034, money 0.389, invest 2.21, bilateral 0.046, rest 39.22), socMonth 8.28; econ+soc 50.18 +-1.01; participant provinces 1.99
+   player_SWI  160 mo: econMonth  41.79 (alloc 0.046, money 0.313, invest 2.18, bilateral 0.061, rest 39.19), socMonth 6.71; econ+soc 48.5 +-1.09; participant provinces 2.99
+   player_GBR  160 mo: econMonth   44.2 (alloc 0.188, money 0.376, invest 3.43, bilateral 0.047, rest 40.16), socMonth 10.71; econ+soc 54.91 +-1.08; participant provinces 22.5
+   all         160 mo: econMonth  52.28 (alloc 1.526, money 0.36, invest 2.3, bilateral 0.049, rest 48.05), socMonth 7.93; econ+soc 60.21 +-1.13; participant provinces 171.84
+   all_ledger  160 mo: econMonth  54.01 (alloc 1.602, money 0.406, invest 2.54, bilateral 0.051, rest 49.41), socMonth 9.13; econ+soc 63.14 +-1.13; participant provinces 171.86
+   extra over base (econ+soc ms/month): today_PUN -1.79, player_SWI -3.47, player_GBR 2.94, all 8.24, all_ledger 11.17
+   per-province rate from the all-nations run: 0.048 ms per qualifying province (171.86 provinces, 4205.01 groups => 0.002 ms per group); PUN (1.99 provinces) -0.899 ms/province; large player GBR beyond PUN 0.231 ms/province; isolated allocateLocalHouseholds {"today_PUN":0.017,"player_GBR":0.008,"all":0.009} ms/province
+   A3 PROJECTION: provincial economy for all 171.86 qualifying provinces of all nations costs about +8.24 ms per month over a world with none; +10.03 ms over today's Punjab-only pilot; node-to-browser factor about 1.2.
+
+== 1926-1936: mean ms per month by configuration (n = months, +- standard error of the mean)
+   base         20 mo: econMonth  48.89 (alloc 0, money 0.488, invest 4.4, bilateral 0.057, rest 43.95), socMonth 10.36; econ+soc 59.26 +-2.3; participant provinces 0
+   today_PUN    20 mo: econMonth  46.71 (alloc 0.037, money 0.348, invest 2.43, bilateral 0.048, rest 43.85), socMonth 9.49; econ+soc 56.2 +-2.3; participant provinces 2
+   player_SWI   20 mo: econMonth  48.23 (alloc 0.048, money 0.318, invest 2.28, bilateral 0.053, rest 45.53), socMonth 7.68; econ+soc 55.91 +-2.95; participant provinces 3
+   player_GBR   20 mo: econMonth  55.26 (alloc 0.191, money 0.607, invest 4.77, bilateral 0.052, rest 49.64), socMonth 12.68; econ+soc 67.94 +-4.13; participant provinces 23
+   all          20 mo: econMonth  59.26 (alloc 1.697, money 0.381, invest 2.68, bilateral 0.056, rest 54.45), socMonth 8.87; econ+soc 68.14 +-2.88; participant provinces 174.95
+   all_ledger   20 mo: econMonth  61.73 (alloc 1.618, money 0.497, invest 2.97, bilateral 0.058, rest 56.59), socMonth 10.64; econ+soc 72.37 +-3.01; participant provinces 174.95
+   extra over base (econ+soc ms/month): today_PUN -3.06, player_SWI -3.35, player_GBR 8.68, all 8.88, all_ledger 13.11
+   per-province rate from the all-nations run: 0.051 ms per qualifying province (174.95 provinces, 4840.55 groups => 0.0018 ms per group); PUN (2 provinces) -1.53 ms/province; large player GBR beyond PUN 0.559 ms/province; isolated allocateLocalHouseholds {"today_PUN":0.018,"player_GBR":0.008,"all":0.01} ms/province
+   A3 PROJECTION: provincial economy for all 174.95 qualifying provinces of all nations costs about +8.88 ms per month over a world with none; +11.94 ms over today's Punjab-only pilot; node-to-browser factor about 1.2.

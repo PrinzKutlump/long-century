@@ -1,0 +1,209 @@
+# M0: fetch open geodata (Natural Earth + OpenHistoricalMap), clip to the game extent, open a PR.
+# Run by hand: Actions tab -> geodata -> Run workflow. The game itself makes no network calls.
+name: geodata
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+env:
+  NE_SHA: ca96624a56bd078437bca8184e78163e5039ad19
+  OUT: data/raw/geo
+  MAX_BYTES: 26214400
+  NODE_OPTIONS: --max-old-space-size=6144
+jobs:
+  boundaries:
+    # One download of the OpenHistoricalMap planet file from Amazon S3 (no per-user rate limit),
+    # instead of hundreds of Overpass queries that the live server rate-limits (HTTP 429).
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install tools
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
+          npm install -g mapshaper@0.8.7
+          osmium --version | head -1
+      - name: Find and download the latest OHM planet file
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ohm /tmp/planet
+          bucket="https://s3.amazonaws.com/planet.openhistoricalmap.org"
+          # Candidates: the official pointer (state.txt), then the newest listed files. Use the first that is readable
+          # (a file still being uploaded returns 403).
+          cands=$(curl -fsSL --retry 3 "$bucket/planet/state.txt" 2>/dev/null | grep -oE 'https?://[^ ]+\.osm\.pbf' | grep -v history || true)
+          for yy in $(date -u +%y) $(date -u -d '1 year ago' +%y); do
+            cands="$cands $(curl -fsSL --retry 5 --retry-all-errors "$bucket?prefix=planet/planet-$yy" \
+              | grep -oE 'planet/planet-[0-9]{6}_[0-9]{4}\.osm\.pbf' | sort -u | tail -4 | sort -r | sed "s#^#$bucket/#")"
+          done
+          url=""
+          for c in $cands; do
+            key=${c#*planet.openhistoricalmap.org/}; key=${key#/}
+            for u in "https://planet.openhistoricalmap.org/$key" \
+                     "http://planet.openhistoricalmap.org.s3.amazonaws.com/$key" \
+                     "https://s3.amazonaws.com/planet.openhistoricalmap.org/$key"; do
+              code=$(curl -sL -r 0-0 -o /dev/null -w '%{http_code}' "$u" || true)
+              echo "$code $u"
+              if [ "$code" = 206 ] || [ "$code" = 200 ]; then url=$u; break 2; fi
+            done
+          done
+          [ -n "$url" ] || { echo "::error::no readable planet file"; exit 1; }
+          echo "PLANET_URL=$url" | tee -a "$GITHUB_ENV"
+          curl -fSL --retry 5 --retry-all-errors --retry-delay 30 -o /tmp/planet/ohm.osm.pbf "$url"
+          ls -l /tmp/planet
+          echo "$url" > /tmp/ohm/planet_url.txt
+          sha256sum /tmp/planet/ohm.osm.pbf | cut -d' ' -f1 > /tmp/ohm/planet_sha256.txt
+      - name: Cut admin level 2 and 4 boundaries, export polygons
+        run: |
+          set -euo pipefail
+          cd /tmp/planet
+          osmium tags-filter ohm.osm.pbf r/boundary=administrative -o adm.osm.pbf --overwrite
+          osmium tags-filter adm.osm.pbf r/admin_level=2,4 -o adm24.osm.pbf --overwrite
+          rm ohm.osm.pbf adm.osm.pbf
+          osmium export adm24.osm.pbf -f geojsonseq -x print_record_separator=false \
+            --geometry-types=polygon -o adm24.geojsonl --overwrite
+          wc -l adm24.geojsonl
+          # Keep relations started before 1940, admin level 2/4, no licence tag or a CC0 one.
+          jq -c 'select((.properties.admin_level == "2" or .properties.admin_level == "4")
+                 and ((.properties.start_date // "") | test("^(1[0-8][0-9][0-9]|19[0-3][0-9])"))
+                 and ((.properties.license // "") as $l | $l == "" or ($l | test("^\\s*cc0"; "i"))))' \
+            adm24.geojsonl > keep.geojsonl
+          wc -l keep.geojsonl
+          split -l 400 -d -a 4 keep.geojsonl part-
+          for f in part-*; do
+            awk 'BEGIN {printf "{\"type\":\"FeatureCollection\",\"features\":["}
+                 {printf "%s%s", (NR == 1 ? "" : ","), $0}
+                 END {print "]}"}' "$f" > "$f.json"
+            mapshaper -i "$f.json" -clip bbox=-180,-60,180,80 -o "/tmp/ohm/a24_${f#part-}.geojson" format=geojson precision=0.001
+            rm "$f" "$f.json"
+          done
+          ls /tmp/ohm | head; du -sh /tmp/ohm
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ohm-planet
+          path: /tmp/ohm/
+          if-no-files-found: error
+          retention-days: 7
+  geodata:
+    needs: boundaries
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install tools
+        run: npm install -g mapshaper@0.8.7
+      - name: Download Natural Earth layers (pinned commit)
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ne /tmp/ohm "$OUT"
+          base="https://raw.githubusercontent.com/nvkelso/natural-earth-vector/$NE_SHA/geojson"
+          for s in 10m 50m; do
+            for l in coastline land lakes rivers_lake_centerlines admin_0_countries admin_1_states_provinces; do
+              curl -fsSL --retry 3 -o "/tmp/ne/ne_${s}_${l}.geojson" "$base/ne_${s}_${l}.geojson"
+            done
+          done
+          curl -fsSL --retry 3 -o /tmp/ne/ne_10m_populated_places.geojson "$base/ne_10m_populated_places.geojson"
+          ls -l /tmp/ne
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: ohm-*
+          path: /tmp/ohm
+          merge-multiple: true
+      - name: Clip, filter licences, write compact GeoJSON
+        run: |
+          set -euo pipefail
+          # Game extent: all longitudes, latitudes -60 to 80.
+          BBOX="-180,-60,180,80"
+          for f in /tmp/ne/*.geojson; do
+            b=$(basename "$f")
+            mapshaper -i "$f" -clip bbox=$BBOX remove-slivers -o "$OUT/$b" format=geojson precision=0.001
+          done
+          for d in 1836-01-01 1866-01-01 1900-01-01 1914-01-01; do
+            # Read one converted batch at a time instead of merging all geometries in Mapshaper.
+            jq -c --arg date "$d" '
+              def iso: if length == 4 then . + "-01-01"
+                       elif length == 7 then . + "-01" else . end;
+              .features[] | select(.geometry.type == "Polygon" or .geometry.type == "MultiPolygon")
+              | select((.properties.start_date // "" | tostring | iso) as $start
+                | (.properties.end_date // "" | tostring | iso) as $end
+                | $start != "" and $start <= $date and ($end == "" or $end > $date))
+            ' /tmp/ohm/a*.geojson |
+              awk 'BEGIN {printf "{\"type\":\"FeatureCollection\",\"features\":["}
+                   {printf "%s%s", (NR == 1 ? "" : ","), $0}
+                   END {print "]}"; if (!NR) exit 1}' > "$OUT/ohm_admin_${d}.geojson"
+          done
+          total=$(du -sb "$OUT" | cut -f1)
+          echo "total bytes: $total"
+          # Full data is too large for git (about 370 MB); it is published as a release asset instead.
+      - name: Write SOURCES.md
+        run: |
+          set -euo pipefail
+          now=$(date -u +%Y-%m-%d)
+          {
+            echo "# Geodata sources"
+            echo
+            echo "Generated by .github/workflows/geodata.yml, run ${{ github.run_number }}, on $now (UTC)."
+            echo "Clipped to longitudes -180..180, latitudes -60..80; coordinates rounded to 0.001 degree."
+            echo
+            echo "## Natural Earth"
+            echo "- URL: https://github.com/nvkelso/natural-earth-vector/tree/$NE_SHA/geojson"
+            echo "- Commit: $NE_SHA"
+            echo "- Licence: public domain"
+            echo
+            echo "## OpenHistoricalMap"
+            echo "- Planet file: $(cat /tmp/ohm/planet_url.txt) (sha256 $(cat /tmp/ohm/planet_sha256.txt))"
+            echo "- Method: osmium tags-filter r/boundary=administrative, then r/admin_level=2,4; osmium export polygons; keep start_date before 1940."
+            echo "- Each ohm_admin file keeps boundaries with start_date <= date < end_date for 1836-01-01, 1866-01-01, 1900-01-01, 1914-01-01."
+            echo "- Licence: CC0. Features with a license tag that does not start with CC0 were dropped."
+            echo
+            echo "## Files"
+            echo
+            echo "| file | source | licence | sha256 |"
+            echo "|---|---|---|---|"
+            for f in $(ls "$OUT"/*.geojson | sort); do
+              b=$(basename "$f"); h=$(sha256sum "$f" | cut -d' ' -f1)
+              case "$b" in ohm_*) s="OpenHistoricalMap"; l="CC0";; *) s="Natural Earth @ ${NE_SHA:0:10}"; l="public domain";; esac
+              echo "| $b | $s | $l | $h |"
+            done
+          } > "$OUT/SOURCES.md"
+      - name: Publish data as a release asset, commit only SOURCES.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="geodata-run-${{ github.run_number }}"
+          (cd "$OUT" && zip -q -9 "/tmp/$tag.zip" *.geojson SOURCES.md)
+          ls -l "/tmp/$tag.zip"
+          gh release create "$tag" "/tmp/$tag.zip" --prerelease --target "${{ github.sha }}" \
+            --title "Geodata run ${{ github.run_number }}" --notes-file "$OUT/SOURCES.md"
+          {
+            echo
+            echo "## Where the data is"
+            echo "Release asset (not in git): https://github.com/${{ github.repository }}/releases/tag/$tag"
+            echo "Download in CI: gh release download $tag -p '$tag.zip' && unzip $tag.zip -d data/raw/geo"
+            echo "zip sha256: $(sha256sum "/tmp/$tag.zip" | cut -d' ' -f1)"
+          } >> "$OUT/SOURCES.md"
+          rm -f "$OUT"/*.geojson
+          br="geodata/run-${{ github.run_number }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$br"
+          git add "$OUT/SOURCES.md"
+          git commit -m "Geodata run ${{ github.run_number }}: sources and checksums (data in release $tag)"
+          git push origin "$br"
+          if gh pr create --base main --head "$br" --title "Geodata run ${{ github.run_number }}" \
+               --body "Sources and checksums only. The data (Natural Earth at $NE_SHA; OpenHistoricalMap admin 2/4 for 1836, 1866, 1900, 1914) is the asset of release $tag."; then
+            echo "PR opened"
+          else
+            echo "Actions may not create PRs here. Branch $br was pushed; open the PR by hand:"
+            echo "https://github.com/${{ github.repository }}/compare/main...$br?expand=1"
+          fi

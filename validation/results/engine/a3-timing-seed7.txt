@@ -1,0 +1,5 @@
+MODEL_REV A=2 B=3, seed 7, player SWI, node v22.23.5
+months 1080..1128 (1128): A mean 55.6, median 52.2, p95 80.3, max 83.3 ms
+                       B mean 59.6, median 57.9, p95 75.7, max 104.4 ms
+paired difference B-A: mean 4.0 ms, se 1.6, median 5.3 ms
+save bytes at that point: A 902529, B 953439

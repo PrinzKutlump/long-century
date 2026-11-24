@@ -1,0 +1,48 @@
+# Release tier: every push to main. Builds the game and attaches dist/long-century.html
+# to a GitHub Release tagged build-<run number>, with notes from commit subjects.
+name: release
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build
+        run: |
+          if python3 build.py > /tmp/build.log 2>&1; then
+            echo "- PASS build" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- FAIL build" >> "$GITHUB_STEP_SUMMARY"; tail -20 /tmp/build.log >> "$GITHUB_STEP_SUMMARY"; exit 1
+          fi
+      - name: Release notes from commit subjects
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          prev=$(gh release list --limit 1 --json tagName -q '.[0].tagName' || true)
+          if [ -n "$prev" ]; then
+            git log --format='- %s' "$(git rev-list -n 1 "$prev")..HEAD" > /tmp/notes.md
+          else
+            git log -n 20 --format='- %s' > /tmp/notes.md
+          fi
+          test -s /tmp/notes.md || echo "- no new commits" > /tmp/notes.md
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="build-${{ github.run_number }}"
+          if gh release create "$tag" dist/long-century.html --target "$GITHUB_SHA" --title "$tag" --notes-file /tmp/notes.md; then
+            echo "- PASS release $tag" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- FAIL release $tag" >> "$GITHUB_STEP_SUMMARY"; exit 1
+          fi

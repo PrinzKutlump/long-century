@@ -1,0 +1,22 @@
+[
+  "world.js",
+  "defs.js",
+  "state.js",
+  "econ.js",
+  "society.js",
+  "modern.js",
+  "politics.js",
+  "mil.js",
+  "theatre.js",
+  "diplo.js",
+  "events.js",
+  "history.js",
+  "regional.js",
+  "greatwar.js",
+  "build.js",
+  "ai.js",
+  "campaign.js",
+  "programmes.js",
+  "prog_tanzimat.js",
+  "turn.js"
+]

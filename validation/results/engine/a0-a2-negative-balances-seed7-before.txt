@@ -1,0 +1,12 @@
+A0 item 2: construction overdraw by non-player payers, seed 7, player SWI, 1836-1936 (76.1s)
+stateHash of the instrumented run: 3c01a9cafc9860bffeec016d68bd37afb62f6f9df8c2a5214304c38766210329
+construction charges booked: 58658 (non-player payers 58597)
+charges leaving the payer below zero: 15 (crossed zero 9, already negative 6)
+nation-months (payer, balance, month): 12; by balance {"tr":6,"inv":9}; by payer {"domestic":15,"foreign":0}
+total overdraw (bill above positive balance): 7145 pounds
+worst balance after a construction charge: {"value":-2391.9250190207076,"tag":"BEL","balance":"inv","month":24,"date":"1838-01","project":"fac:machinery","province":"BRU","before":-1849.526690506967,"cost":542.3983285137404,"bill":542.3983285137404,"foreign":false}
+largest single overdraw: {"amount":1427.9680236998756,"tag":"FRA","balance":"inv","date":"1842-12","province":"PAR","before":37.60388297922282,"cost":1465.5719066790984}
+first event: {"date":"1837-11","tag":"BEL","balance":"inv","before":670.1148376766614,"cost":712.0251378581527,"province":"BRU","project":"fac:machinery"}
+by decade: {"1830":7,"1840":8}
+top payers: [{"tag":"BEL","events":7,"overdraw":2924,"worst":-2392},{"tag":"FRA","events":2,"overdraw":2316,"worst":-1428},{"tag":"PAP","events":5,"overdraw":1188,"worst":-356},{"tag":"CHL","events":1,"overdraw":717,"worst":-717}]
+all causes, month-end nation-months below zero (non-player): tr 6, inv 9; worst tr -717, worst inv -2392

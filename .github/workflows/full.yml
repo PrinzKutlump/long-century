@@ -1,0 +1,83 @@
+# Full tier: every PR to main, and nightly.
+# Engine tests split into 4 parallel shards, then seed 7 full century.
+name: full
+on:
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+concurrency:
+  group: full-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  engine:
+    name: engine shard ${{ matrix.shard }} of 4
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build
+        run: python3 build.py
+      - name: Engine tests for this shard (one line each)
+        run: |
+          fail=0
+          mkdir -p /tmp/logs
+          i=0
+          for f in $(ls test_*.js | sort); do
+            if [ $((i % 4)) -eq ${{ matrix.shard }} ]; then
+              timeout 900 node "$f" > "/tmp/logs/$f.log" 2>&1; rc=$?
+              # Same rule as run_tests.js: a FAIL/FAILED/ERROR line counts even when the exit code is 0.
+              if [ $rc -eq 0 ] && ! grep -qE '^(FAIL|FAILED|ERROR)\b' "/tmp/logs/$f.log"; then
+                echo "- PASS $f" >> "$GITHUB_STEP_SUMMARY"
+              else
+                echo "- FAIL $f" >> "$GITHUB_STEP_SUMMARY"
+                echo '```' >> "$GITHUB_STEP_SUMMARY"; tail -20 "/tmp/logs/$f.log" >> "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
+                fail=1
+              fi
+            fi
+            i=$((i + 1))
+          done
+          exit $fail
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: engine-logs-shard-${{ matrix.shard }}
+          path: /tmp/logs/
+          if-no-files-found: ignore
+  century:
+    name: seed 7 full century
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build
+        run: python3 build.py
+      - name: Century run, seed 7
+        run: |
+          if node century.js 7 SWI --quiet > /tmp/century.out 2>&1; then
+            echo "- PASS century 7 SWI" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- FAIL century 7 SWI" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          cat /tmp/century.out >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: century-7
+          path: |
+            /tmp/lc_last_run.txt
+            dist/long-century.html
+          if-no-files-found: ignore
