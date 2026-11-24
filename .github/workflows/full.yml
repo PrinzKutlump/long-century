@@ -81,3 +81,13 @@ jobs:
             /tmp/lc_last_run.txt
             dist/long-century.html
           if-no-files-found: ignore
+  full:
+    needs: [engine, century]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require both tiers to pass
+        env:
+          ENGINE: ${{ needs.engine.result }}
+          CENTURY: ${{ needs.century.result }}
+        run: test "$ENGINE" = success && test "$CENTURY" = success

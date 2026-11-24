@@ -1,11 +1,10 @@
-# M0: fetch open geodata (Natural Earth + OpenHistoricalMap), clip to the game extent, open a PR.
+# M0: fetch open geodata (Natural Earth + OpenHistoricalMap), clip to the game extent and publish a prerelease.
 # Run by hand: Actions tab -> geodata -> Run workflow. The game itself makes no network calls.
 name: geodata
 on:
   workflow_dispatch:
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 env:
   NE_SHA: ca96624a56bd078437bca8184e78163e5039ad19
   OUT: data/raw/geo
@@ -95,7 +94,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.sha }}
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -175,35 +175,38 @@ jobs:
               echo "| $b | $s | $l | $h |"
             done
           } > "$OUT/SOURCES.md"
-      - name: Publish data as a release asset, commit only SOURCES.md
+      - name: Package data and source manifest
+        run: |
+          mkdir -p "$RUNNER_TEMP/package"
+          cd "$OUT"
+          cp SOURCES.md "$RUNNER_TEMP/package/"
+          zip -q -9 "$RUNNER_TEMP/package/geodata.zip" *.geojson SOURCES.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: geodata-package
+          path: ${{ runner.temp }}/package/
+          if-no-files-found: error
+          retention-days: 7
+  release:
+    needs: geodata
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: geodata-package
+          path: package
+      - name: Publish geodata and checksums
+        working-directory: package
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
-          tag="geodata-run-${{ github.run_number }}"
-          (cd "$OUT" && zip -q -9 "/tmp/$tag.zip" *.geojson SOURCES.md)
-          ls -l "/tmp/$tag.zip"
-          gh release create "$tag" "/tmp/$tag.zip" --prerelease --target "${{ github.sha }}" \
-            --title "Geodata run ${{ github.run_number }}" --notes-file "$OUT/SOURCES.md"
-          {
-            echo
-            echo "## Where the data is"
-            echo "Release asset (not in git): https://github.com/${{ github.repository }}/releases/tag/$tag"
-            echo "Download in CI: gh release download $tag -p '$tag.zip' && unzip $tag.zip -d data/raw/geo"
-            echo "zip sha256: $(sha256sum "/tmp/$tag.zip" | cut -d' ' -f1)"
-          } >> "$OUT/SOURCES.md"
-          rm -f "$OUT"/*.geojson
-          br="geodata/run-${{ github.run_number }}"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$br"
-          git add "$OUT/SOURCES.md"
-          git commit -m "Geodata run ${{ github.run_number }}: sources and checksums (data in release $tag)"
-          git push origin "$br"
-          if gh pr create --base main --head "$br" --title "Geodata run ${{ github.run_number }}" \
-               --body "Sources and checksums only. The data (Natural Earth at $NE_SHA; OpenHistoricalMap admin 2/4 for 1836, 1866, 1900, 1914) is the asset of release $tag."; then
-            echo "PR opened"
-          else
-            echo "Actions may not create PRs here. Branch $br was pushed; open the PR by hand:"
-            echo "https://github.com/${{ github.repository }}/compare/main...$br?expand=1"
-          fi
+          tag="geodata-run-$GITHUB_RUN_NUMBER"
+          mv geodata.zip "$tag.zip"
+          sha256sum "$tag.zip" > SHA256SUMS
+          gh release create "$tag" "$tag.zip" SOURCES.md SHA256SUMS --prerelease \
+            --target "$GITHUB_SHA" --title "Geodata run $GITHUB_RUN_NUMBER" --notes-file SOURCES.md

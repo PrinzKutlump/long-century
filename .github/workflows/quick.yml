@@ -5,6 +5,8 @@ name: quick
 on:
   push:
     branches-ignore: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 concurrency:
   group: quick-${{ github.ref }}
