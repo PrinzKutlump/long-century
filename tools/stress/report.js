@@ -104,10 +104,15 @@ const destroyed = full.map(r => r.destroyed.length);
 P(`States destroyed per century: mean ${f1(mean(destroyed))}, range ${Math.min(...destroyed)}-${Math.max(...destroyed)} (old target 8-15).`);
 const killed = {};
 for (const r of full) for (const d of r.destroyed) killed[d.tag] = (killed[d.tag] || 0) + 1;
-P(`Most often destroyed: ${Object.entries(killed).sort((a, b) => b[1] - a[1]).slice(0, 14).map(([t, n]) => t + " " + pct(n, N)).join(", ")}.\n`);
+P(`Most often destroyed (times per run; a restored state can fall twice): ${Object.entries(killed).sort((a, b) => b[1] - a[1]).slice(0, 14).map(([t, n]) => t + " " + (n / N).toFixed(2)).join(", ")}.\n`);
+const leaders = {};
+for (const r of full) for (const f of r.metrics?.formed || []) leaders[f.tag + " by " + f.by] = (leaders[f.tag + " by " + f.by] || 0) + 1;
+P(`Unification leaders: ${Object.entries(leaders).sort((a, b) => b[1] - a[1]).map(([k, n]) => k + " " + pct(n, N)).join(", ") || "none"}.\n`);
 
+/* Germany and Italy form by renaming their leader (formNation), so read the formNation record; CSA appears as a new tag. */
+const formedAt = (r, tag) => { const f = (r.metrics?.formed || []).find(x => x.tag === tag); return f ? f.t : r.formations?.[tag]; };
 const form = (tag, lo, hi) => {
- const ys = full.map(r => r.formations?.[tag]).filter(x => x !== undefined).map(yearOf);
+ const ys = full.map(r => formedAt(r, tag)).filter(x => x !== undefined).map(yearOf);
  const inW = ys.filter(y => y >= lo && y <= hi).length;
  return `${tag}: forms in ${pct(ys.length, N)} of runs, ${lo}-${hi} in ${pct(inW, N)}; years ${ys.length ? Math.min(...ys) + "-" + Math.max(...ys) + ", median " + q(ys, .5) : "-"}`;
 };
