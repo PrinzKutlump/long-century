@@ -41,7 +41,7 @@ jobs:
               echo "- PASS $name" >> "$GITHUB_STEP_SUMMARY"
             else
               echo "- FAIL $name" >> "$GITHUB_STEP_SUMMARY"
-              echo '```' >> "$GITHUB_STEP_SUMMARY"; tail -20 "/tmp/$name.log" >> "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
+              echo '```' >> "$GITHUB_STEP_SUMMARY"; tail -20 "/tmp/$name.log" | tee -a "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
               fail=1
             fi
           done

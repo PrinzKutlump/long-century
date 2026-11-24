@@ -30,7 +30,7 @@ from build_mode_test import check, open_page, start_fresh, start_1866, TABLOG, A
 
 ROOT = Path(__file__).resolve().parents[1]
 NUMBERS = {}
-HASH = "dda070bbbe82c4587f64ca465b9e3267914922fb98fae2d4ecc70e653a518a70"
+HASH = (ROOT / "tools/state_hash.txt").read_text().strip()
 
 
 class Taps:

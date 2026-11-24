@@ -54,7 +54,7 @@ jobs:
               echo "- PASS $f" >> "$GITHUB_STEP_SUMMARY"
             else
               echo "- FAIL $f (exit $rc; 124 means the 30 s cap)" >> "$GITHUB_STEP_SUMMARY"
-              echo '```' >> "$GITHUB_STEP_SUMMARY"; tail -20 "/tmp/logs/$f.log" >> "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
+              echo '```' >> "$GITHUB_STEP_SUMMARY"; tail -20 "/tmp/logs/$f.log" | tee -a "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
               fail=1
             fi
           done
