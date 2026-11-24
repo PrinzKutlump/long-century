@@ -15,13 +15,17 @@ const ROOT = path.join(__dirname, "..");
 const EXCLUDE = [
  "msgs", "log", "player", "plist", "card", "ai", "agenda", "cabinetBase", "commandSerial", "actorSerial", "orderId", "cabinetTreaties",
  "completedWorks", "constructionLedger", "constructionSequence", "ledgerId", "lastProgress", "tradeReceipts",
- "landUse", "employerAccount", "localMarket", "hist"
+ "landUse", "employerAccount", "localMarket", "hist", "grainFreight"
 ];
 
 const API_SOURCE = `
 ;(function(){
  const EX=new Set(${JSON.stringify(EXCLUDE)});
- const rep=(k,v)=>(typeof k==="string"&&(EX.has(k)||k.charCodeAt(0)===95))?undefined:v;
+ const rep=(k,v)=>{
+  if(EX.has(k)||k.charCodeAt(0)===95)return undefined;
+  if(!v||typeof v!=="object"||Array.isArray(v))return v;
+  return Object.fromEntries(Object.keys(v).sort().map(key=>[key,v[key]]));
+ };
  const nat=c=>({alive:c.alive,tr:c.tr,inv:c.inv,debt:c.debt,insol:c.insol,capPool:c.capPool});
  const eco=()=>{const n={};for(const t in G.c)n[t]=nat(G.c[t]);
   return JSON.stringify({t:G.t,seed:G.seed,price:G.price,pricePrev:G.pricePrev,tight:G.tight,nations:n,prov:G.prov},rep);};

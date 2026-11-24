@@ -3,6 +3,7 @@
   "defs.js",
   "state.js",
   "econ.js",
+  "freight.js",
   "society.js",
   "modern.js",
   "politics.js",

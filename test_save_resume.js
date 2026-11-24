@@ -52,9 +52,12 @@ for (const seat of seats) {
  const resumed = { A: E2.A, E: E2, seat, plan: r.plan };
  const preU = rowsU[SPLIT], preR = rowsR[SPLIT];
  check(preU.eco === preR.eco && preU.full === preR.full, label + ": before the save the two runs agree (month " + SPLIT + ")");
+ check(E2.A.getG().grainFreight === undefined, label + ": freight report is transient after reload");
  const afterLoad = digests(resumed);
  check(afterLoad.eco === preR.eco && afterLoad.full === preR.full, label + ": the digest right after the reload equals the digest before the save");
  advance(resumed, MONTHS, rowsR);
+ check(JSON.stringify(resumed.A.getG().grainFreight) === JSON.stringify(u.A.getG().grainFreight) &&
+  resumed.A.getG().grainFreight !== undefined, label + ": freight report regenerates with identical receipts");
  let firstBad = null;
  for (let t = SPLIT; t <= MONTHS; t += 12) if (rowsU[t] && (rowsU[t].eco !== rowsR[t].eco || rowsU[t].full !== rowsR[t].full)) { firstBad = firstBad ?? t; }
  check(firstBad === null, label + ": uninterrupted and save+resume at month " + SPLIT + " identical at every 12th month to " + MONTHS + (firstBad !== null ? " (first difference month " + firstBad + ")" : ""));

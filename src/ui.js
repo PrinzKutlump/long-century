@@ -67,7 +67,7 @@ function render(){if(UI.tab!=="map"){const f=document.getElementById("tkf");if(f
 function setPlay(v){if(v&&G&&G.card){UI.cardHide=0;drawCard();toast("A decree awaits your seal.");v=0;}UI.play=v;if(!v)UI.advanceTo=null;clearInterval(UI.timer);if(v)UI.timer=setInterval(()=>{if(document.hidden)return;endMonth();},700);if(G&&G.player)drawTop();}
 /* ---------- saves ---------- */
 // These values are produced and consumed within the economy pass.
-const SKIP=new Set(["plist","_n","_craUn","_a","_gross","_art","_im","_inc",
+const SKIP=new Set(["grainFreight","plist","_n","_craUn","_a","_gross","_art","_im","_inc",
  "_ari","_cap","_gdp","_govPay","_works",
  /* A3: the household market runs in every province, so its per-month report rows are rebuilt each month. They are saved only for the
     provinces of the nation being played (the Economy page shows them straight after a load); everyone else's are not saved. */
