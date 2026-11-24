@@ -4,6 +4,6 @@ Before editing, check the [shared work-claims issue](https://github.com/PrinzKut
 
 Follow the shared repository instructions in [CLAUDE.md](CLAUDE.md). New implementer: read [docs/CODEX_START.md](docs/CODEX_START.md) first.
 
-Roles: Codex/GPT implements all tickets (engine, UI, map, art, data tools, CI). Claude plans, writes the ticket issues and audits each PR (protocol in docs/DEV_WORKFLOW.md section 3b). Take tickets from issues labelled `ticket`; claim on the public claims board first.
+Roles: Codex/GPT implements all tickets that change the game (engine, UI, map, art, data tools, CI). Claude plans, writes the ticket issues, audits each PR (protocol in docs/DEV_WORKFLOW.md section 3b) and maintains docs and the stress tier (`tools/stress/`). Take tickets from issues labelled `ticket`; claim on the public claims board first.
 
-No credentials or personal details in code, issues or PRs. Raw Correlates of War files never go into the public repository (docs/MASTER_PLAN.md §0).
+No credentials or personal details in code, issues or PRs. Raw Correlates of War files never go into the public repository (docs/MASTER_PLAN.md §1 rule 11).

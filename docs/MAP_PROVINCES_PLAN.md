@@ -1,5 +1,7 @@
 # Map and provinces plan: true borders, then targeted provinces
 
+> Current rules, ticket ids and order: `docs/MASTER_PLAN.md` (v2). Where this plan's rules or ticket names differ, the master plan wins; this file keeps the map and art detail.
+
 Status: proposal for owner approval, revision 4 (24 Nov 2026). Revision 4: the owner dropped compatibility with existing saves, so ids may be renumbered and split migration of old saves is no longer required; ticket ids now follow `docs/MASTER_PLAN.md` (MP, FD, SV). Revision 2 adopted the first Codex/GPT review (finish at 184, pilot 186, evidence-led batches). Revision 3 adopts the second: saves move off localStorage, no lossy save changes, freight by distance, and the province range is decided after the pilot, not before. Replaces the "184 ids" scope of M2b in `docs/ART_MAP_GPT_PLAN.md`; M2a (crosswalk) stands.
 
 ## 1. Recommendation

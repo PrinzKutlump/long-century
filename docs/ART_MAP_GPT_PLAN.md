@@ -1,6 +1,8 @@
 # The Long Century: Art and Earth-Map Plan (written for GPT/Codex to implement)
 
-Status: plan, 23 Nov 2026. Replaces the "how" of UI/Art plan orders V3–V5 and keeps their goals, budgets and art rules (see `docs/plans/Long_Century_UI_Art_Plan.md` §3 and §4). Each ticket below is self-contained: an implementer needs this file, `CLAUDE.md`, and the files the ticket names.
+> Current rules, ticket ids and order: `docs/MASTER_PLAN.md` (v2). Where this plan's rules or ticket names differ, the master plan wins; this file keeps the map and art detail.
+
+Status: plan, 23 Nov 2026. Replaces the "how" of UI/Art plan orders V3–V5 and keeps their goals, budgets and art rules (see `docs/archive/plans/Long_Century_UI_Art_Plan.md` §3 and §4). Each ticket below is self-contained: an implementer needs this file, `CLAUDE.md`, and the files the ticket names.
 
 ## 0. Rules for the implementer (read first)
 
