@@ -12,7 +12,7 @@ on:
     inputs:
       seeds:
         description: "Seeds per seat"
-        default: "12"
+        default: "16"
       fuzz_seeds:
         description: "Fuzzed seeds per seat"
         default: "4"
@@ -28,7 +28,7 @@ concurrency:
   group: stress-${{ github.ref }}
   cancel-in-progress: true
 env:
-  SEEDS: ${{ inputs.seeds || '12' }}
+  SEEDS: ${{ inputs.seeds || '16' }}
   FUZZ_SEEDS: ${{ inputs.fuzz_seeds || '4' }}
   SEATS: ${{ inputs.seats || '' }}
   UI_MONTHS: ${{ inputs.months || '12' }}
@@ -112,6 +112,8 @@ jobs:
         run: |
           node tools/stress/report.js stress-out > stress-report.md
           cat stress-report.md >> "$GITHUB_STEP_SUMMARY"
+          # Also in the job log: artifacts are not readable from every reviewer's sandbox.
+          echo "=== STRESS REPORT BEGIN ==="; cat stress-report.md; echo "=== STRESS REPORT END ==="
       - uses: actions/upload-artifact@v4
         with:
           name: stress-report
