@@ -7,7 +7,7 @@ label overlap, tap-target sizes and how much of the screen the controls take.
 --fixture PATH|all  load a saved game from testdata/ instead of playing a new GBR game ("all" = the three
                     seed-7 saves at 1840, 1866 and 1934). Adds boot time (1x and CPU 4x), Atlas map height,
                     share of the map covered by controls and the Art-detail level (null until V4 adds one).
---assert            check the budgets in docs/plans/Long_Century_UI_Art_Plan.md 4.4 and print PASS/FAIL per line with
+--assert            check the budgets in docs/archive/plans/Long_Century_UI_Art_Plan.md 4.4 and print PASS/FAIL per line with
                     baseline vs target. The exit code stays 0 unless --strict is also given.
 
 Uses the system Chrome (/usr/bin/google-chrome) through Playwright. Headless Chrome

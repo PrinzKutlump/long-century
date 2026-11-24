@@ -1,5 +1,5 @@
 "use strict";
-// V0.4 art/UI budget checks (docs/plans/Long_Century_UI_Art_Plan.md 4.4): size, no network URLs, one <style>, contrast.
+// V0.4 art/UI budget checks (docs/archive/plans/Long_Century_UI_Art_Plan.md 4.4): size, no network URLs, one <style>, contrast.
 // Hard failures print "FAIL ..." and exit 1. Known contrast misses print "WARN KNOWN ..." and do not fail.
 const fs = require("node:fs");
 const path = require("node:path");

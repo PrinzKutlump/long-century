@@ -29,7 +29,7 @@ body:
     id: plan_section
     attributes:
       label: Plan section
-      description: Section of the plan this implements, for example docs/plans/Engine_Plan.md section A5.
+      description: Section of the plan this implements, for example docs/MASTER_PLAN.md ticket FX1.
   - type: textarea
     id: files
     attributes:

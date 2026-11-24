@@ -1,6 +1,6 @@
 # The Long Century: agent guide
 
-Roles: Codex/GPT implements every ticket. Claude plans, writes ticket issues, supervises and audits (docs/DEV_WORKFLOW.md section 3b); Claude does not write or push code.
+Roles: Codex/GPT implements every ticket that changes the game. Claude plans, writes ticket issues, supervises and audits (docs/DEV_WORKFLOW.md section 3b), and maintains docs and test tooling (`tools/stress/`, `stress.yml`); Claude does not change game code (`src/`, `build.py`). Plans: `docs/DESIGN.md`, `docs/MASTER_PLAN.md`, `docs/STATUS.md`.
 
 Before editing, check the [shared work-claims issue](https://github.com/PrinzKutlump/long-century/issues?q=is%3Aissue+in%3Atitle+claims) and record your plan-qualified ticket, branch and affected files or functions. Post your handoff or merged PR there when you release the claim.
 
@@ -85,4 +85,4 @@ Then the flags and interface files (build.py appends these after the engine list
 - Screenshots: at most one per review, and only for UI tickets.
 - Do not resume a large earlier agent for a fix; start a fresh small one.
 
-No credentials or personal details in code, issues or PRs. Raw Correlates of War files never go into the public repository (docs/MASTER_PLAN.md §0).
+No credentials or personal details in code, issues or PRs. Raw Correlates of War files never go into the public repository (docs/MASTER_PLAN.md §1 rule 11).

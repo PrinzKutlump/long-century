@@ -1,284 +1,348 @@
-# The Long Century: master plan (every system, broken into GPT tickets)
+# The Long Century: master plan v2 (rules, stages, tickets, targets)
 
-Status: plan, 24 Nov 2026. Supersedes the order of work in `docs/plans/PLAN.md`, `docs/plans/Long_Century_GPT_Plan.md` and the Engine, UI/Art, Civilising and Art/Map plans; their ticket texts stay valid as detail and are cited by old ID in brackets.
-Roles: Codex/GPT implements every ticket; Claude plans, writes the issue for each ticket, audits each PR (`docs/DEV_WORKFLOW.md` §3b) and reviews this plan four times a day; the owner decides and playtests.
-Owner decisions 24 Nov: **compatibility with existing saves is dropped** (a new save "epoch"; compatibility returns from the first alpha build). **The project goes public** (section 0).
+Status: plan, 24 Nov 2026 (Claude), after a full audit, a cleanup of all plans and a 316-century stress run. **Supersedes** master plan v1 and every plan now in `docs/archive/` (GPT plan, engine plan, UI/art plan, civilising plan, PLAN.md, checkpoint plans, the 24 Nov review). Detail that still applies is cited as "[archive: file §]". Game design: `docs/DESIGN.md`. Verified state and stress results: `docs/STATUS.md`. Map detail: `docs/MAP_PROVINCES_PLAN.md`, `docs/ART_MAP_GPT_PLAN.md` (their rules sections yield to §1 below).
 
-## 0. Going public (owner decision 24 Nov): impacts and mitigations
+Roles: Codex/GPT implements game code; Claude plans, writes ticket issues, writes test tooling and docs, audits every PR and reviews this plan four times a day; the owner decides, plays and merges where Claude's merge is not permitted.
 
-Method: a **fresh public repository** `PrinzKutlump/long-century` built from a clean snapshot of `main`. The current repository (`long-century-`) stays **private** as an archive, because its history and its old pull-request pages hold Correlates of War raw data, which COW's terms forbid passing on, and GitHub keeps pull-request commits reachable even after a history rewrite.
+## 1. Rules (one list; the archived plans' rule lists are retired)
 
-| Impact | Mitigation | Ticket |
+1. **Same rules for every nation**, player and AI. Differences come from data (flavour packs, region tables, events). No nation tag in core code.
+2. **Game theory on every major decision**: one evaluator for adviser and AI (DESIGN §10).
+3. **War by theatre**: no selecting or dragging individual armies; infantry, cavalry and artillery stay distinct.
+4. **Phone first**: 360 and 390 px, 100% and 125% text, 44 px targets, no sideways page scroll, map ≥ 640 px, controls ≤ 8%.
+5. **One self-contained HTML file**, plain global JavaScript built by `build.py`, no network calls, one `<style>` element, wrapper-safe (no `document.write`, no `document.body.innerHTML=`). Served by GitHub Pages and Releases.
+6. **Saves**: old saves need not load until the first alpha (owner, 24 Nov). A save made by a build must load in that build and continue **exactly** (the stress tier checks this). From the alpha on, saves of the same release line load (SV5).
+7. **Randomness only from `rng()`**; previews never draw from it. No scratch value is read in a month in which it was not recomputed.
+8. **Stated effects are applied effects**, no more and no less.
+9. **Ids from data**: provinces, nations and regions are read from tables; an event whose actors no longer exist does not fire.
+10. **Conservation**: goods, money and people have a source and a sink.
+11. **Original art only**; shipped assets only under PD, CC0, OFL, MIT, ISC, Apache-2.0 or BSD, each in `docs/ASSETS.md`. No raw Correlates of War files in the public repository.
+12. **Plain English** on screen; a disabled button says why.
+13. **Owner's standing wishes**: nation flags; a Settings cheat adding £100 million per press; the Devlet-i Âliyye look; web only, no APK.
+14. **Budgets** (until PL8 measures a phone): Node month median ≤ 90 ms on the CI runner at 1926–36, browser ≤ 130 ms; save ≤ 1 MB until SV1, then save ≤ 300 ms blocked screen and load ≤ 3 s.
+15. **Process**: one ticket, one branch `t/<id>-<slug>`, one PR; a ticket names its state-hash change and why; CI decides pass or fail; no merge with a red stress run on the same base (from QA1).
+
+## 2. Re-evaluation of the previous plan
+
+| Previous choice | Verdict | Change |
 |---|---|---|
-| COW raw data may not be published | Snapshot excludes `data/raw/cow/**`; raw data stays in the private archive; the public repo holds only derived aggregates (counts by decade, top-8 ranks) produced from it, with COW cited | PB1, PB3 |
-| Anyone can read and copy the code | `LICENSE`: all rights reserved (owner may change later); `NOTICE.md` credits every source and the bundled pako licence; README says contributions are not accepted for now | PB1 |
-| Strangers can open issues and pull requests; fork PRs can run workflows | Interaction limit "collaborators only" (renewed every 6 months); fork-PR workflows need approval; no `pull_request_target`; default workflow token read-only, write only in the release job; branch protection on `main` with required checks | PB2 |
-| Leaked secrets or personal details | Secret scan of the snapshot (gitleaks) before the first push; secret scanning and push protection on; rule in `AGENTS.md`/`CLAUDE.md`: no personal details or credentials in code, issues or PRs | PB1, PB2 |
-| Old issues, PRs and the claims board stay in the archive | Claude recreates the open tickets and the claims board in the public repo; old repo archived read-only | PB6 |
-| Map data release lives in the private repo | Re-run the geodata workflow in the public repo (Natural Earth public domain, OpenHistoricalMap CC0) | PB4 |
-| Calibration tools read COW files | Tools read `data/derived/` tables only; Claude regenerates them from the archive when needed | PB3 |
-| CI minutes | **Free on a public repo**: the minutes limit (L1) is lifted; PL2 shrinks to hygiene (docs skip CI) | PL2 |
-| Upside: anyone can play | GitHub Pages serves the latest build at a fixed web address; Releases are public for testers | PB5 |
+| Foundations first (CI gates, saves, source split) | **Keep** | Add stability: four engine bugs found by the stress tier go first (FX1–FX4) |
+| Alpha as a narrow Punjab grain scenario | **Keep, but not alone** | The owner plays every Pages build from now (QA5); the alpha stays the tutorial slice |
+| Grow to 230–260 provinces after the pilot | **Keep with a new gate** | Month time is already over budget in the 1930s on many seats (Node p95 164 ms); province batches MP7+ wait for perf headroom (PF1–PF3) |
+| Design specified system by system | **Incomplete** | Missing: demography as a hub, religion, national flavour packs, naval races, war exhaustion, trade policy, money and banking, history ledger. Added in DESIGN and in new tracks DM, NF, NV, TR, FI |
+| Programmes (Tanzimat, Meiji, unification) as the flavour vehicle | **Keep inside a wider frame** | Flavour packs (NF) hold programmes, decisions, modifiers and AI inclinations as data |
+| Old targets (wars 30–45, states destroyed 8–15) | **Retired** | Targets from COW by kind and decade (§T) |
+| Milestones M0–M8 | **Renamed Stages S0–S8** | "M" clashed with the old art tickets M0–M7 and the military tests `test_m*.js` |
+| Review four times a day with merges by Claude | **At risk** | This session's merge attempt was refused by the permission classifier; the owner merges, or allows Claude's merges for the scheduled review |
 
+## 3. Stages and gates
+
+| Stage | Contents | Gate (all must hold) |
+|---|---|---|
+| **S0 Foundations and stability** | Open PRs (#22 FD1, #23 PL1, #25 PB5), QA1, FX1–FX6, PB2 owner settings, PB3–PB4, PL2, PL3a/b, PL4, PL7, SV1–SV4, CA1 | Stress tier green: 0 crashes, 0 invariant breaks, 0 resume divergences, 0 phantom income; saves in IndexedDB; no line over 300 chars; ids in data |
+| **S1 True map** | MP1–MP5, FD2, WD1, NF0–NF1 | Owner approves the 184 historical map; 186 pilot plays; no tag tests in core |
+| **S2 Alpha** | FD3–FD5, AI1, UI1a, UI3, UI9, UI11, SC1, RL1, RL3, QA5 | Five testers' pass marks [archive: DEV_WORKFLOW §7b]; owner has played three Pages builds |
+| **S3 Performance and provinces** | PF1–PF3, SO4, MP6–MP10, WD2–WD4, MI6, HI5 | Node p95 ≤ 90 ms at 1926–36 on every stress seat; calibration not worse by > 10% per batch |
+| **S4 Economy, demography and society** | DM1–DM6, EC1–EC6, FI1–FI3, TR1–TR3, SO1–SO3, FD6–FD7 | §T targets for population, literacy, factories, prices, defaults |
+| **S5 Politics, programmes and flavour** | PO1–PO6, RS1–RS9, NF2–NF5, HI1–HI4 | Japan, Ottoman, Germany, Italy targets on 6 of 8 seeds; every priority pack loaded |
+| **S6 Diplomacy, war, navy and AI** | DP1–DP7, MI1–MI11, NV1–NV3, AI2–AI6, HI6 | War counts by kind and decade inside COW bands; war length p90 ≤ 48 months |
+| **S7 Whole world and art** | MP11–MP14, AR1–AR8, UI2, UI4–UI8, UI10, UI12–UI13, SC2–SC4, CA2–CA5 | Art budgets; every nation playable under the same rules |
+| **S8 Release** | RL2, RL4–RL6, SC5, release gate | Phone gate, licences, PWA |
+
+## 4. Tickets
+
+Size: S under 60k tokens; M one day; L split first. "After": tickets that must merge first. A ticket becomes a GitHub issue labelled `ticket` when its "after" list has merged. ✔ done, ◐ PR open.
+
+### QA Quality and stress (Claude writes tooling; Codex fixes what it finds)
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| PB0 | **Owner:** create an empty public repository `long-century` (no README); give Codex and Claude access | — | — | Repo exists |
-| PB1 | Clean snapshot: copy `main` without `data/raw/cow/**`, `archive/**`, `deepseek_h1.txt` and old zips; move root plans into `docs/plans/`; add `LICENSE`, `NOTICE.md`, `README.md`, `SECURITY.md`; gitleaks scan; one initial commit pushed to the public repo | M | PB0, PR #26 merged | Scan clean; no raw COW data or restricted filename markers in the snapshot; build and tests pass in the new repo |
-| PB2 | Public-repo hardening: workflow permissions, fork-PR rules, branch protection, CODEOWNERS, Dependabot; `docs/PUBLIC_REPO_SETTINGS.md` lists the owner's settings clicks | S | PB1 | Settings checklist done by owner; a fork PR cannot run with write access |
-| PB3 | Derived calibration data: `tools/derive_cow.py` (runs in the archive) writes `data/derived/cow_*.csv` aggregates; `calibrate_cow.py` reads only those | S | PB1 | Report regenerates in the public repo without raw COW files |
-| PB4 | Re-run geodata in the public repo; release `geodata-run-1` | S | PB2 | Checksums match `SOURCES.md` method |
-| PB5 | GitHub Pages: the release workflow also publishes the latest build | S | PB2 | Game opens from the Pages address on a phone, offline after first load |
-| PB6 | **Claude:** recreate open tickets and the claims board in the public repo; update the review schedule; archive the old repo (owner click) | S | PB1 | Queue live in the public repo |
+| QA1 | Stress tier: `tools/stress/` and `stress.yml` (316 centuries, resume checks, fuzzing, interface sweep of 62 nations) ◐ branch `t/stress-harness` | S | — | Merged; weekly run on main; report in the job log |
+| QA2 | Conservation checks in the stress runner: goods (supply = use + stock change + loss), money (minted, destroyed, external flows), people (births − deaths ± migration) | M | QA1 | Report sections for each; zero breaches on main after FX1 |
+| QA3 | Resume checks in the full tier (seed 7 at months 240 and 720) | S | FX1 | Full tier fails on divergence |
+| QA4 | Per-run JSON as a release asset of the weekly run, so reviewers without artifact access can read it | S | QA1 | Asset attached |
+| QA5 | Owner playtest loop: each Pages build has a feedback link; owner notes become `feedback` issues | S | PB5 | Three owner sessions recorded |
 
-Until PB1 is pushed, nothing else merges in the private repo, so the two do not diverge.
-
-## 1. What limits the plan (measured 24 Nov, `main` 3bcdc63)
-
-| # | Limit | Measured | Effect | Remedy (ticket) |
-|---|---|---|---|---|
-| L1 | **CI minutes** (lifted once public, §0) | 1,645 job-minutes used since 22 Nov; GitHub Free includes 2,000 a month and by default stops private-repo Actions at the limit. Full tier costs about 23 job-minutes per PR push; 4 shards each round up | CI can stop within days; approvals then stall | PL2 now; owner: check Settings → Billing, set a small spending limit or move to Pro (3,000) |
-| L2 | **Save storage** | Saves in localStorage (about 5 MiB per site); 1936 save 976,549 B of the 1 MB budget | Blocks provinces, records and new systems | SV1 IndexedDB, then SV3 |
-| L3 | **Save compatibility** | 72-line save-defaults repair, legacy fixtures (`testdata/`, 2.2 MB), "keep old ids" rule, migration in every structural ticket | Slows every structural change | **Lifted by owner.** SV2 deletes it |
-| L4 | **Monthly time** | 69.5 ms at 1936 in Node (economy 42.6), 87–90 ms in desktop Chrome; budget 130; **phone never measured** | Caps pops and provinces; phone may already be over | PL8 phone bench; SO4 pop merging if needed |
-| L5 | **Source shape** | 26 files have lines over 300 characters (world.js one 83k line; ui.css 8.4k; ui5.js 2.7k); ~350 hard-coded province ids in 10 files | Every map change touches code; agents burn tokens | PL3 split, PL4 ids as data, MP4 province table |
-| L6 | **Exact hash pinning** | Seed 7 hash pinned in a Playwright test only; changes on every feature | Cannot tell a good change from a bad one | PL7: hash only for refactors; outcome bands for features |
-| L7 | **CI checks that cannot fail** | Century step exits green on failure; no budget checks | "Green" is not evidence | PL1 (#28) |
-| L8 | **One implementer, one auditor, one owner** | GPT implements all; Claude audits 4×/day; owner decides | Queue stalls on decisions or audit | 3 lanes with file ownership (§3); decisions batched in #8 |
-| L9 | **No player has played it** | 0 playtests | Risk of building the wrong thing | Alpha at milestone M2, not at the end |
-| L10 | **Data gaps and licences** | OHM lacks 1836 South Asia; COW terms forbid passing data on; HYDE licence to confirm | Map evidence and repo openness | MP1 evidence notes; RL4 data out of repo |
-| L11 | **Design gaps found by calibration** | 39 one-province nations; Baltic states inside St Petersburg province; post-1900 wars 8 vs COW 22; army ranks uncorrelated (−0.02); techs have no prerequisites; freight per border crossing | History cannot happen | MP, WD4, MI1–MI2, RS1, FD2 |
-
-## 2. Milestones
-
-| Milestone | Contents | Gate (all must hold) |
-|---|---|---|
-| **M0 Public repo and foundations** | PB0–PB6, PL1–PL8, SV1–SV4, FD1, CA1 | CI trustworthy and inside its minutes; saves in IndexedDB; old save code gone; no line over 300 chars; province ids live in data; phone numbers known |
-| **M1 True map** | MP1–MP5, FD2, WD1 | Owner approves the 184 historical map; 186 pilot plays (cede Lombardy, Venetia stays Austrian) |
-| **M2 Alpha "Punjab grain"** | FD3–FD5, SC1, UI1a, UI9, AI1, UI3, RL1, RL3 | Five testers; pass marks in `DEV_WORKFLOW.md` §7b; saves compatible from here |
-| **M3 More provinces and new states** | MP6–MP10, WD2–WD4, MI6, HI5 | Decade-and-region calibration not worse by more than 10%; budgets hold on phone |
-| **M4 Economy and society** | EC1–EC6, SO1–SO4, FD6–FD7 | §T targets for factories, literacy, prices |
-| **M5 Politics and programmes** | PO1–PO6, RS1–RS8 | Japan, Ottoman, Germany, Italy targets on 6 of 8 seeds |
-| **M6 Diplomacy, war and AI** | DP1–DP6, MI1–MI8, AI2–AI6, HI1–HI4, HI6 | War counts by kind and decade inside COW bands |
-| **M7 Whole world and art** | MP11–MP14, AR1–AR8, UI2, UI4–UI8, UI10, SC2–SC4, CA2–CA5 | Art budgets; every nation playable under the same rules |
-| **M8 Release** | RL2, RL4, RL5, release gate (V9) | Phone gate, licences, PWA |
-
-## 3. Lanes (so GPT can run up to three tickets at once)
-
-| Lane | Owns | Never touches |
-|---|---|---|
-| E engine | `src/` engine files, `test_*.js`, `century.js` | `ui*.js`, `*.css`, `art/` |
-| M map and data | `art/geo/`, `data/`, `tools/` (data and calibration), generated `src/world.js` | other engine logic |
-| U interface and art | `src/ui*.js`, `src/*.css`, `src/flags.js`, `art/` (not `art/geo`) | engine files |
-
-A ticket that needs two lanes is split, engine half first. Platform tickets (PL) run alone.
-
-## 4. Tickets by component
-
-Size: S under 60k tokens or about half a day; M one day; L split before starting. "After" lists tickets that must be merged first. Each ticket becomes a GitHub issue labelled `ticket` when its "after" list is merged; the issue carries the full acceptance checks.
-
-### PL Platform and CI
+### FX Fixes from the stress tier (engine lane, label `balance` where outcomes change)
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| PL1 | CI gates: century step can fail; 1936 time and save budgets; `tools/state_hash.txt`; failing tail in job log (#28) | S | — | A planted failure turns CI red |
-| PL2 | CI hygiene (public repo, minutes free): `paths-ignore` for docs; 2 balanced shards; cancel superseded runs | S | PB2 | Docs-only PR starts no workflow; full tier ≤ 10 min wall clock |
+| FX1 (#27) | **Phantom factory output and resume divergence.** In `econMonth` production, a factory skipped by `if(f.lv<=0\|\|!goodOK(c,f.g))continue` keeps last month's `_out`, `_e`, `_im`; settlement then pays revenue on output never made (64 level-0 factories at 1856, 104 at 1896 on seed 3) and, because `_im` is not saved, a loaded game prices inputs differently (40 of 948 resume checks diverge). Zero them on skip; compute `im` where used | S | — | Stress: 0 resume divergences, 0 level-0 factories with output; hash change explained |
+| FX2 | **Endless wars**: p90 62 months, max 337. Exhaustion forces talks; a stalemate past 36 months ends in a white or status-quo peace through the evaluator | M | FX1 | p90 ≤ 48, max ≤ 120 months on 128 seeds |
+| FX3 | **Treasury discipline**: GBR (17 of 256 runs, ~182 months negative, low −£954k) and China (10 runs, ~319 months) run deficits for years. Find the spending path (GBR: `companyBudget` special case in `econ.js`; China: army upkeep?) and make every actor cut or borrow by the same rule | M | FX1 | No nation below zero for more than 12 consecutive months on 128 seeds |
+| FX4 | **Save size**: 82 of 316 runs exceed 1 MB (max 1.18 MB). Folded into SV1 (#4), now the second engine ticket; interim trims only if SV1 slips | S | — | Max ≤ 1 MB on the stress set, or SV1 merged |
+| FX5 | **Nation tags in core**: 18 tag comparisons in `state`, `econ`, `build`, `modern`, `politics` move into data (pack fields) | M | WD1 | grep finds none in core files; hash identical except where noted |
+| FX6 | **Page layout sweep**: Research, Military, Politics, Nation, Works-as-page, World and Overview fail the layout audit (8,396 violations, mostly controls under 44 px and clipped labels) | M | PL3b | `tools/stress/ui_sweep.py` reports 0 for these pages at 360×740 @125% |
+
+### PB Public repository (✔ PB1, PB6; ◐ PB2 settings, PB5)
+| ID | Ticket | Size | After | Done when |
+|---|---|---|---|---|
+| PB2 | **Owner settings** from `docs/PUBLIC_REPO_SETTINGS.md`: branch protection on `main` (*now* off), required checks quick and full, fork-PR approval | — | — | Settings confirmed |
+| PB3 | Derived calibration data only (Codex claimed) | S | — | Report regenerates without raw COW |
+| PB4 | Re-run geodata in public; release `geodata-run-1` | S | PB2 | Checksums match |
+| PB5 | Pages deploy (◐ #25). **Owner: enable Pages with source "GitHub Actions" before merging** (*now* off; the deploy job would fail) | S | Pages on | Game opens from the Pages address on the phone |
+
+### PL Platform and CI (◐ PL1 #23)
+| ID | Ticket | Size | After | Done when |
+|---|---|---|---|---|
+| PL1 | CI gates ◐ #23 (audited APPROVE) | S | — | A planted failure turns CI red |
+| PL2 | CI wall-clock diet (minutes are free on a public repo): docs skip CI, 2 balanced shards, cancel superseded runs | S | PB2 | Full tier ≤ 10 min |
 | PL3a | Source split, engine files: no line over 300 chars, no file over 600 lines | M | PL1 | Hash identical on seeds 3 and 7 |
-| PL3b | Source split, interface JS and CSS | M | PL3a | Layout check and Playwright tests pass; screenshots unchanged |
-| PL4 | Province ids as data: the ~350 literals move to named region tables | M | PL3a | No province-id literal in engine code outside data tables; hash identical |
-| PL5 | Lint and type checks (ESLint minimal; `@ts-check` with JSDoc on `G`, nation, province) in the quick tier | M | PL3b | Zero errors on `main` |
-| PL6 | Tests into `tests/engine` and `tests/browser`, one runner, quiet by default | S | PL3b | CI uses the new runner |
-| PL7 | Outcome policy: refactors keep the hash; features are judged by an 8-seed outcome table (label `balance` runs the seeds tier); Playwright tests stop pinning hashes | S | PL1 | Seeds tier writes the §T table to the run summary |
-| PL8 | Phone bench: a `?bench` mode reporting ms per month, save and load times; Playwright 4× CPU throttle in CI; owner runs it on the Galaxy A56 | M | SV1 | First A56 numbers in `docs/PERF.md` |
+| PL3b | Source split, interface JS and CSS | M | PL3a | Layout and Playwright tests pass |
+| PL4 | Province ids as data (~350 literals to region tables) | M | PL3a | No province literal in engine code |
+| PL5 | ESLint minimal and `@ts-check` on `G`, nation, province | M | PL3b | Zero errors |
+| PL6 | Tests into `tests/engine` and `tests/browser`, one quiet runner | S | PL3b | CI uses it |
+| PL7 | Outcome policy: hash for refactors only; features judged by the §T table from the seeds and stress tiers | S | PL1, QA1 | Seeds tier writes §T to the run summary |
+| PL8 | Phone bench: `?bench` mode, Playwright 4× CPU throttle in CI, owner runs it on the Galaxy A56 | M | SV1 | First phone numbers in `docs/PERF.md` |
 
 ### SV Saves
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| SV1 | IndexedDB saves, Web Worker compression, file export and import (#30; old-save migration no longer required) | M | PL1 | 5 MB test save round-trips; ≤ 300 ms blocked screen |
-| SV2 | Save epoch 2: delete save-defaults repair and legacy decode paths and fixtures; versioned schema; older saves refused with a plain message | M | SV1 | Code and `testdata/` legacy files removed; tests green |
-| SV3 | Lossless compact encoding: ideology as arrays, pops column-wise, derived fields out | M | SV2 | Save→load→continue gives the identical outcome; packed size reported |
-| SV4 | Save/resume invariance as a standing CI test (sorted-value digest, from #29) | S | FD1 | In the quick tier |
-| SV5 | From alpha on: saves of the same release line must load (policy and test) | S | RL1 | Test loads the previous alpha save |
+| SV1 | IndexedDB saves, worker compression, file export and import | M | PL1 | 5 MB save round-trips; ≤ 300 ms blocked screen |
+| SV2 | Save epoch 2: delete legacy repair, decode paths and `testdata/` legacy fixtures; refuse older saves with a plain message | M | SV1 | Legacy code and fixtures gone |
+| SV3 | Lossless compact encoding (ideology arrays, pops column-wise, derived fields out) | M | SV2 | Save → load → continue identical |
+| SV4 | Save/resume invariance in the quick tier | S | FX1 | In quick tier |
+| SV5 | From the alpha: same-release-line saves load | S | RL1 | Test loads the previous alpha save |
 
-### MP Map and provinces (detail: `docs/MAP_PROVINCES_PLAN.md`, `docs/ART_MAP_GPT_PLAN.md`)
+### PF Performance (new)
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| MP1a/b/c | Historical shapes at 184 with an evidence note per major border: Europe and Middle East / Asia / Americas and Africa [M2] | M each | — | ART plan M2 checks; `cuts.geojson` notes |
-| MP2 | Owner checkpoint: preview build, contact sheets at 390 px and desktop, `adj_diff.md` in three groups [M3] | S | MP1 | Owner approves |
-| MP3 | Adjacency switch and straits table [M4] | M | MP2 | 8-seed table not worse by 10% |
-| MP4 | `provinces.csv` generates `world.js`; ids may be renumbered (compatibility lifted) | M | PL4, MP3 | Byte-identical rerun |
-| MP5 | Pilot 186: Lombardy/Venetia, Peshawar/Kashmir; events `italy1`/`italy3` and Kashmir transfer | M | MP4, FD2 | Playable test in the map plan |
+| PF1 | Profile the slowest months (worst single month 1.1 s; JAP and FRA seats 200 ms/month in the 1930s) by system, from the stress seeds | S | QA1 | Table of causes in `docs/PERF.md` |
+| PF2 | Fix the top two causes (caching, quarterly demography for small pops, bounded histories) | M | PF1 | Node p95 ≤ 110 ms |
+| PF3 | Pop merging (SO4) if PF2 is not enough | M | PF2 | Node p95 ≤ 90 ms; outcomes within bands |
+
+### MP Map and provinces (detail: MAP_PROVINCES_PLAN, ART_MAP_GPT_PLAN). M2a crosswalk ✔ (private PR #17; public issue #26 to be re-scoped as MP1a)
+| ID | Ticket | Size | After | Done when |
+|---|---|---|---|---|
+| MP1a/b/c | Historical shapes at 184 with evidence notes: Europe and Middle East / Asia / Americas and Africa | M each | — | `cuts.geojson` notes; ART plan M2 checks |
+| MP2 | Owner checkpoint: preview build, contact sheets, `adj_diff.md` | S | MP1 | Owner approves |
+| MP3 | Adjacency switch and straits table | M | MP2 | 8-seed table not worse by 10% |
+| MP4 | `provinces.csv` generates `world.js` | M | PL4, MP3 | Byte-identical rerun |
+| MP5 | Pilot 186: Lombardy/Venetia, Peshawar/Kashmir | M | MP4, FD2 | Cede Lombardy, Venetia stays Austrian |
 | MP6 | Seam list from COW Territorial Change v6 and the OHM diff | M | owner data | Every 1836–1936 transfer mapped |
-| MP7–MP10 | Batches: Italy and Germany; Balkans and Black Sea; successor-state regions (Baltic, Poland, Bohemia and Slovakia, Hungary and Transylvania); Punjab and North India | M each | MP5, MP6 | Per batch: budgets, tap probe, calibration by decade and region |
-| MP11–MP13 | Batches: Middle East and Africa; East and South-East Asia; Americas | M each | MP10 | Same |
-| MP14 | Small-province play on phone: nearby-province chooser, search, labels from regional zoom | M | MP5 | Tap probe passes at the smallest province |
+| MP7–MP10 | Batches: Italy and Germany; Balkans and Black Sea; successor-state regions; Punjab and North India | M each | MP5, MP6, **PF2** | Budgets, tap probe, calibration by decade and region |
+| MP11–MP13 | Middle East and Africa; East and South-East Asia; Americas | M each | MP10 | Same |
+| MP14 | Small-province play on the phone (chooser, search, labels from regional zoom) | M | MP5 | Tap probe passes |
 
-### WD World data
+### WD World data and NF national flavour (new track NF)
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| WD1 | Nation table as data: tags, capitals, government, civilised status, colours, formables, dormant nations | M | PL4 | Generated; hash identical |
-| WD2 | Culture and religion by province for 1836, with sources | M | MP4 | Regional review table |
-| WD3 | Resources and terrain checked against Natural Earth and HYDE cropland | M | MP4 | Changes listed with reasons |
-| WD4 | Successor states: cores and conditions for Baltic states, Poland, Czechoslovakia, Yugoslavia, Arab states, Ireland; uses the existing dormant-nation path (13 today) | M | MP9 | 1918–22 states appear when the world allows, on at least 6 of 8 seeds after a Great War |
-| WD5 | 1836 population and GDP by province from HYDE and Maddison | M | MP4, owner data | National totals within 10% of Maddison |
+| WD1 | Nation table as data (tags, capitals, government, status, colours, formables, dormant nations) | M | PL4 | Generated; hash identical |
+| WD2 | Culture **and religion** by province for 1836, with sources | M | MP4 | Regional review table |
+| WD3 | Resources and terrain checked against Natural Earth and HYDE cropland | M | MP4 | Changes listed |
+| WD4 | Successor states: cores and conditions (Baltic, Poland, Czechoslovakia, Yugoslavia, Arab states, Ireland) | M | MP9 | 1918–22 states appear on 6 of 8 seeds after a Great War |
+| WD5 | 1836 population and GDP by province from HYDE and Maddison (WD5a issue #11 open) | M | MP4 | Totals within 10% of Maddison |
+| NF0 | Flavour-pack schema and loader: modifiers, AI inclinations, programmes, decisions, start notes, challenge, unit and ship names | M | WD1 | Schema test; packs for 3 nations load |
+| NF1 | Move every nation-specific rule into packs (with FX5) | M | NF0 | No tag tests in core |
+| NF2 | Great-power packs: GBR, FRA, PRU, AUS, RUS, OTT, USA | M | NF1 | Owner check against DESIGN §9.3 |
+| NF3 | Asian packs: JAP, CHI, PUN, SIA, PER, plus the princely-state template | M | NF1 | Owner check |
+| NF4 | Regional templates: German and Italian minors, Balkans, Latin America, Africa, Central Asia | M | NF1 | Every nation has a pack or template |
+| NF5 | Decisions as data (Corn Law repeal, serf emancipation, Alaska sale, Janissary abolition, canal concessions) open to anyone meeting the conditions | M | NF0, HI1 | 20 decisions; same rules |
 
-### FD Food, freight and markets (Release B)
+### DM Demography (new)
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| FD1 | B1 fix, take over PR #25 (#29) | S | — | CI green |
-| FD2 | Freight by route length (#31) | S | FD1 | Split route keeps freight |
-| FD3a | Grain stocks, harvests and storage [B2] | M | FD2 | A silo cannot release more than it holds |
-| FD3b | Relief transfers and emergency imports [B2] | M | FD3a | Relief cannot create grain |
-| FD4 | Punjab grain scenario with four choices through normal commands [B3] | M | FD3b, UI lane free | Playable from the start screen |
-| FD5 | Paired 3- and 24-month runs; famine target 2–8 per century [B4] | S | FD4 | Table of outcomes |
-| FD6 | Freight and prices for all goods, not only grain | M | FD5 | Price indices 0.6–1.8 |
-| FD7 | Freight and trade UI: routes lens, trade ledger | M | FD6 | Phone layout check |
+| DM1 | Religion on pops (data from WD2), with state religion and tolerance laws | M | WD2 | Saves and UI show it |
+| DM2 | Vital rates: births and deaths from nutrition, health services, urbanisation, literacy (demographic transition) | M | DM1 | Population by region and decade within 15% of Maddison on 6 of 8 seeds |
+| DM3 | Promotion and demotion review (factory workers, clerks, bureaucrats) | M | DM2 | Type shares by 1900 within bands |
+| DM4 | Migration and emigration on one rule (with SO1b) | M | DM2 | Conservation test; Atlantic emigration by decade |
+| DM5 | Manpower link: mobilisation and casualties remove workers and change births | M | DM2, MI3 | Fixture: a long war lowers output and population |
+| DM6 | Demography page and lens | M | DM2 | Phone layout check |
 
-### EC Economy and finance (Release C)
+### FD Food, freight and markets (◐ FD1 #22)
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| EC1 | Textile chain with two methods [C1] | M | FD6 | Both feasible; shortages flip profitability |
-| EC2 | Private investment, shares and rival capacity [C3] | M | EC1 | Queued rival changes the decision |
-| EC3 | Debt maturities, refinancing, default; test AI in a cash shortage first [C4] | M | — | AI defaults 2–6 per century; Ottoman 1–3 of 8 |
-| EC4a/b | Commodity coverage: staples and construction / intermediates, strategic, luxuries [G1] | M each | EC1 | Conservation fixtures pass |
-| EC5 | Steel spread fix from calibration (minor powers too high) | S | CA1 | Steel shares within 2× of COW for top 8 |
-| EC6 | Dashboard numbers reconcile with settlements [G2] | S | EC4b | Drill-down sums match |
+| FD1 | B1 freight graph and save/resume comparison ◐ #22 (audited: merge after PL1 so its full run passes the hash gate) | S | — | CI green with PL1 gate |
+| FD2 | Freight by route length (#5) | S | FD1 | Split route keeps freight |
+| FD3a/b | Grain stocks, harvests, storage; relief and emergency imports | M each | FD2 | A silo cannot release more than it holds; relief cannot create grain |
+| FD4 | Punjab grain scenario | M | FD3b | Playable from the start screen |
+| FD5 | Paired 3- and 24-month runs; famine 2–8 per century | S | FD4 | Table |
+| FD6 | Freight and prices for all goods | M | FD5 | Price indices 0.6–1.8 |
+| FD7 | Routes lens and trade ledger UI | M | FD6 | Phone layout check |
 
-### SO Society and population
+### TR Trade policy (new) and FI Finance (new)
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| SO1a | Schools, colleges, skills and method adoption [C2] | M | EC1 | Trained province adopts sooner |
-| SO1b | Migration with funded vacancies, counted once at both ends [C2] | M | SO1a | Conservation test |
-| SO2 | Public health and mortality, famine deaths | M | FD5 | Mortality by decade plausible vs Maddison population |
-| SO3 | Culture acceptance and assimilation; minority grievance | M | WD2 | Regional table |
-| SO4 | Merge tiny same-type pops (only if PL8 shows the phone over budget) | M | PL8 | Month time down, outcomes within bands |
+| TR1 | Tariff schedules by good group; free-trade and protection laws through bills | M | FD6, PO2 | Trade war fixture |
+| TR2 | Canals and straits as conditional world projects (Suez, Panama, Kiel; Straits regime) | M | FD6 | Suez opens 1860–1880 on 6 of 8 when funded |
+| TR3 | Treaty ports, unequal treaties, extraterritoriality, customs unions | M | DP1 | China and Japan fixtures |
+| FI1 | Money standard choice (silver, bimetallic, gold) and central bank | M | EC3 | Panic halves with a central bank |
+| FI2 | Panics spread through creditors and trade partners | M | FI1 | 1873 and 1929 contagion fixtures |
+| FI3 | Creditor control after default (customs administration) | M | EC3 | Ottoman and Egypt fixtures |
 
-### PO Politics
+### EC Economy (detail [archive: engine plan C1–C4, G1–G2])
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| PO1 | Group influence from jobs, ownership, franchise [D1] | M | SO1b | Different provinces react differently to the same bill |
-| PO2 | Bills, coalitions, amendments, votes [D2] | M | PO1 | Pivotal group decides; effect applied once |
-| PO3 | Services and grievances [D3] | M | PO2 | Unfunded mandate shows a shortfall |
-| PO4 | Elections and franchise by government type | M | PO2 | ≥ 10 reforms per century world-wide |
-| PO5 | Rebellion, secession and civil war as one general rule (weak-state gate; replaces the scripted USA-only path) | M | PO1 | Civil wars by decade vs COW intra-state |
+| EC1 | Production methods, textile chain first | M | FD6 | Shortage flips profitability |
+| EC2 | Private investment, shares, rival capacity | M | EC1 | A queued rival changes the decision |
+| EC3 | Debt maturities, refinancing, default (test AI cash shortage first) | M | FX3 | 2–6 defaults per century; Ottoman 1–3 of 8 |
+| EC4a/b | Commodity coverage with conservation fixtures | M each | EC1, QA2 | Fixtures pass |
+| EC5 | Steel spread fix | S | CA1 | Top-8 steel shares within 2× of COW |
+| EC6 | Dashboard numbers reconcile | S | EC4b | Drill-down sums match |
+
+### SO Society and PO Politics
+| ID | Ticket | Size | After | Done when |
+|---|---|---|---|---|
+| SO1a | Schools, colleges, skills, method adoption | M | EC1 | Trained province adopts sooner |
+| SO1b | Migration (merged into DM4) | — | — | — |
+| SO2 | Public health and mortality (merged into DM2) | — | — | — |
+| SO3 | Culture acceptance, assimilation, minority grievance, religion | M | DM1 | Regional table |
+| SO4 | Pop merging (as PF3) | — | — | — |
+| PO1 | Group influence from jobs, ownership, franchise | M | DM3 | Provinces react differently to one bill |
+| PO2 | Bills, coalitions, amendments, votes | M | PO1 | Pivotal group decides |
+| PO3 | Services and grievances | M | PO2 | Unfunded mandate shows a shortfall |
+| PO4 | Elections and franchise | M | PO2 | ≥ 10 reforms per century |
+| PO5 | Rebellion, secession and civil war as one rule (*now* only the scripted US civil war) | M | PO1 | Civil wars by decade vs COW intra-state |
 | PO6 | Cabinet and government review | S | PO2 | Owner check |
 
-### RS Research and national programmes
+### RS Research and programmes (✔ A5, A6, A6b, C0, C1 Tanzimat)
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| RS1 | Technology prerequisites and eras (69 techs have none) | M | — | No tech before its prerequisites on 8 seeds |
-| RS2 | Military tech adoption years vs COW Arms Technology | S | RS1 | Adoption within ±10 years for great powers |
-| RS3 | Meiji on C0 [C2] | M | RS1 | Japan westernises 1866–85 on 6 of 8 |
-| RS4 | German unification routes [C3] | M | MP7 | Germany 1866–75 on 6 of 8 |
-| RS5 | Italian unification phases [C3b] | M | MP7, RS4 | Italy 1859–72 on 6 of 8 |
-| RS6 | Programmes panel UI [C4] | M | RS3 | Phone layout check |
-| RS7 | Programme validation, 8 seeds [C5] | S | RS5, EC3 | All C5 targets |
-| RS8 | Variants: China self-strengthening, Siam, Egypt and Persia tuning | M | RS7 | Each reachable on at least 3 of 8 seeds |
+| RS1 | Tech prerequisites and eras | M | — | No tech before its prerequisites |
+| RS2 | Military tech adoption vs COW | S | RS1 | ±10 years |
+| RS3 | Meiji on the programme engine | M | RS1 | Japan westernises 1866–85 on 6 of 8 (*now* 81% of runs) |
+| RS4 | German unification routes | M | MP7 | Germany 1866–75 on 6 of 8 |
+| RS5 | Italian unification phases | M | MP7, RS4 | Italy 1859–72 on 6 of 8 |
+| RS6 | Programmes panel UI | M | RS3 | Phone check |
+| RS7 | Programme validation, 8 seeds | S | RS5, EC3 | Targets |
+| RS8 | Variants: China, Siam, Egypt, Persia | M | RS7 | Each on ≥ 3 of 8 |
+| RS9 | Diffusion and inventions inside windows | M | RS1 | First adopter varies across seeds |
 
-### DP Diplomacy
+### DP Diplomacy and NV Navy (NV new)
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| DP1 | Executable treaty clauses, transit first [E1] | M | FD6 | Treaty changes actual freight and cash |
-| DP2 | Negotiation: accept, counter, defer, refuse [E2] | M | DP1, AI1 | Worked fixture passes |
-| DP3 | Subjects, blocs, colonial administration [E3] | M | DP2 | Subject can refuse on autonomy |
-| DP4 | Alliances calibrated to COW Formal Alliances by decade | S | CA1 | Within bands |
-| DP5 | Congresses and coalitions (rare today) | M | DP2 | ≥ 3 congresses per century |
-| DP6 | Spheres and great-power ranking review | S | EC6 | Ranking matches NMC top 8 at 1914 on 6 of 8 |
+| DP1 | Executable treaty clauses, transit first | M | FD6 | Treaty changes freight and cash |
+| DP2 | Negotiation: accept, counter, defer, refuse | M | DP1, AI1 | Fixture passes |
+| DP3 | Subjects, blocs, colonial administration (India's princely states as clauses) | M | DP2 | A subject can refuse on autonomy |
+| DP4 | Alliances calibrated to COW | S | CA1 | Within bands |
+| DP5 | Congresses and coalitions | M | DP2 | ≥ 3 congresses per century |
+| DP6 | Spheres and ranking review (*now* China a great power in 49% of runs by 1900) | S | EC6 | NMC top 8 at 1914 on 6 of 8 |
+| DP7 | Influence as a currency (market access, investment rights, crisis backing) | M | DP2 | Fixture |
+| NV1 | Navy acting on freight: blockade cuts deliveries; patrol protects lanes (was MI5) | M | FD6 | Blockade fixture |
+| NV2 | Naval races and arms-limit treaties (repeated game) | M | NV1, AI3 | Race and treaty both occur across seeds |
+| NV3 | Coaling stations and naval bases as reach | M | NV1 | Fleets beyond reach lose readiness |
 
 ### MI Military and war
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| MI1 | War frequency by kind and decade (post-1900 shortfall) | M | CA1 | Inter-state per decade within COW ± 50% |
-| MI2 | Army sizes vs COW NMC (`soldiersWanted`) | S | CA1 | Rank correlation ≥ 0.7 at 1914 |
-| MI3 | Theatre supply through procurement and freight [F2] | M | FD6 | Shipping shortfall changes readiness |
-| MI4 | Peace valuation and clause executor [F3] | M | DP1 | Mutually better settlement accepted |
-| MI5 | Navy, blockade and sea lanes acting on freight | M | FD6 | Blockade cuts deliveries |
-| MI6 | Successor-state wars 1918–22 | M | WD4 | 1910s wars within COW band |
-| MI7 | Great War audit by seed | S | MI1 | Outbreak 1905–1920 on 6 of 8 |
-| MI8 | Colonial wars vs COW extra-state | M | HI4 | Per decade within ± 50% |
+| MI1 | War frequency by kind and decade (*now* 3.5 wars in the 1830s vs COW 0; 2.8 in the 1910s vs 10) | M | CA1, FX2 | Each decade within COW ± 50% |
+| MI2 | Army sizes vs COW NMC (*now* China and the USA in the top 8 in 93–94% of runs) | S | CA1 | Rank correlation ≥ 0.7 at 1914 |
+| MI3 | Theatre supply through procurement and freight | M | FD6 | Shortfall lowers readiness |
+| MI4 | Peace valuation and clause executor | M | DP1 | Mutually better settlement accepted |
+| MI6 | Successor-state wars 1918–22 | M | WD4 | 1910s wars in band |
+| MI7 | Great War audit | S | MI1 | Outbreak 1905–1920 on 6 of 8 |
+| MI8 | Colonial wars (*now* the "take a colony" goal is never used) | M | HI4 | Extra-state wars per decade within ± 50% |
+| MI9 | War goals in use: free a people, make a vassal, humble (*now* 83% of wars are "take a province") | M | MI4 | Goal mix report |
+| MI10 | Casualties and manpower drain (with DM5) | M | DM5 | Long wars cost population |
+| MI11 | Mobilisation economy in total war (factories to arms, rationing) | M | MI3, EC1 | Great War fixture |
 
-### HI History, events and unification
+### HI History and events
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| HI1 | Events as data using region tables | M | PL4 | No province literal in events |
-| HI2 | Journals: stage, actors, deadline, durable outcome [F4] | M | HI1 | Event closes cleanly when its state dies |
-| HI3 | Unification with consent, rival leaders, integration [F1] | M | RS5 | Failed vote leaves state coherent |
-| HI4 | Colonisation and the scramble for Africa | M | MP11 | Partition by 1914 on 6 of 8 |
+| HI1 | Events as data using region tables and actor roles | M | PL4 | No province literal in events |
+| HI2 | Journals: stage, actors, deadline, durable outcome | M | HI1 | Closes cleanly when its state dies |
+| HI3 | Unification with consent and integration | M | RS5 | Failed vote leaves state coherent |
+| HI4 | Colonisation and the Scramble | M | MP11 | Partition by 1914 on 6 of 8 |
 | HI5 | Post-war settlement and new states | M | WD4, MI4 | Owner check |
-| HI6 | Regional anchors (Punjab 1839–49, India 1857, Meiji, Taiping) checked | M | HI2 | Owner check |
+| HI6 | Regional anchors (Punjab 1839–49, India 1857, Meiji, Taiping) | M | HI2 | Owner check |
+| HI7 | Event audit: each of 104 events and 79 dispatches checked for stated = applied effects, history's choice and AI weight | M | HI1 | Table in docs |
 
-### AI Decision evaluator and game theory
+### AI Evaluator
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| AI1 | Evaluator core: legal actions including wait, payoffs by horizon, choice, runner-up, reversal condition | M | — | Fixture passes; same output for player adviser and AI |
-| AI2 | Evaluator for building and budget (old heuristic kept for comparison) | M | AI1 | No AI treasury below zero from construction |
-| AI3 | Evaluator for war and peace | M | AI1, MI4 | War counts within bands |
-| AI4 | Evaluator for bills and programmes | M | AI1, PO2 | Owner check |
-| AI5 | Caching and caps | S | AI3 | Month time within budget |
+| AI1 | Evaluator core (legal actions incl. waiting, payoffs by horizon, runner-up, reversal) | M | — | Fixture; same output for adviser and AI |
+| AI2 | Building and budget through the evaluator | M | AI1, FX3 | No AI treasury below zero from construction |
+| AI3 | War and peace | M | AI1, MI4 | War counts in bands |
+| AI4 | Bills and programmes | M | AI1, PO2 | Owner check |
+| AI5 | Caching and caps | S | AI3 | Month within budget |
+| AI6 | Personalities from pack inclinations | S | AI1, NF0 | Seeds differ by personality, not by tag code |
 
-### UI Interface and dashboard
+### UI Interface
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| UI1a | Comprehensive dashboard: national scorecard and trends | M | SV1 | Phone layout check; owner check |
-| UI1b | Drill-down from nation to province | M | UI1a, EC6 | Sums match |
-| UI2 | Search, region chips, recents, pins [V2b] | M | PL3b | Find any province in ≤ 3 taps |
-| UI3 | Decision sheet: options, payoffs, odds, runner-up | M | AI1 | Owner check |
-| UI4 | Lenses: political, historical (direct, protected, contested), economy, unrest, integration | M | MP2 | Pan budget holds |
-| UI5 | Shared components and page headers [V8] | M | PL3b | First action visible within 520 px |
+| UI1a | Comprehensive dashboard: scorecard and trends | M | SV1 | Phone check |
+| UI1b | Drill-down to provinces | M | UI1a, EC6 | Sums match |
+| UI2 | Search, region chips, recents, pins | M | PL3b | Any province in ≤ 3 taps |
+| UI3 | Decision sheet with the evaluator's table | M | AI1 | Owner check |
+| UI4 | Lenses incl. historical and religion | M | MP2 | Pan budget |
+| UI5 | Shared components and page headers | M | PL3b | First action within 520 px |
 | UI6 | Ledger with debts | S | EC3 | Owner check |
-| UI7 | Diplomacy page treaty builder | M | DP2 | Owner check |
+| UI7 | Treaty builder | M | DP2 | Owner check |
 | UI8 | Military page: theatres and peace offers | M | MI4 | Owner check |
 | UI9 | Coach and tutorial for the Punjab scenario | M | FD4 | 4 of 5 testers finish unaided |
-| UI10 | Accessibility checks (125% text, 44 px, contrast) in CI | S | PL6 | In browser tier |
+| UI10 | Accessibility checks in CI | S | PL6 | Browser tier |
+| UI11 | Page layout sweep in the browser tier (with FX6) | S | FX6 | Required check |
+| UI12 | History ledger: results against real history | M | UI1a | Owner check |
+| UI13 | Chronicle timeline | S | UI1a | Owner check |
 
-### AR Art (detail: `docs/ART_MAP_GPT_PLAN.md`)
+### AR Art, SC Scenarios, CA Calibration, RL Release
 | ID | Ticket | Size | After | Done when |
 |---|---|---|---|---|
-| AR1 | Icon sprite [A1, V3.1] | M | PL3b | Readable at 20 px |
-| AR2 | Emblems and flags [A2] | M | AR1 | Report of plain flags |
-| AR3 | Coasts, sea, rivers [M5] | M | MP3 | Pan budget |
-| AR4 | Relief and terrain [M6] | M | AR3 | Light detail turns it off |
-| AR5 | Cities and infrastructure [A3, V5] | M | AR4 | Node budget at Z2–Z3 |
-| AR6 | War and diplomacy on the map [V6] | M | UI8 | Pan budget |
-| AR7a/b | Scenes [V7] | M each | AR5 | ≤ 4 KB each |
-| AR8 | Credits and licence check [M7] | S | AR7b | Every asset in `ASSETS.md` |
-
-### SC Scenarios and campaign
-| ID | Ticket | Size | After | Done when |
-|---|---|---|---|---|
-| SC1 | Punjab grain scenario packaging for alpha (FD4 plus start screen entry) | S | FD4 | Starts in one tap |
-| SC2 | Every-nation parity runs: industrial power, landlocked minor, subject, late industrialiser [G2] | M | M4 | Same rules; differences explained |
-| SC3 | Start screen: scenarios and nation picker with notes | S | SC1 | Owner check |
-| SC4 | Sikh Empire 1839 scenario (option) | M | HI6, MP10 | Owner check |
-
-### CA Calibration
-| ID | Ticket | Size | After | Done when |
-|---|---|---|---|---|
-| CA1 | Like-for-like comparison (#32) | S | — | Regenerated from clean checkout |
-| CA2 | `docs/TARGETS.md`: §T rewritten from COW and Maddison (wars by kind and decade, states, armies, steel, population, GDP) | S | CA1 | Used by the seeds tier |
-| CA3 | GDP and population by region and decade vs Maddison | M | CA2 | Report |
-| CA4 | Seeds tier weekly report | S | PL7 | In run summary |
-
-### RL Release
-| ID | Ticket | Size | After | Done when |
-|---|---|---|---|---|
-| RL1 | Alpha build and feedback template; five testers | S | M2 tickets | Pass marks recorded |
-| RL2 | Installable web app (PWA) | M | AR4 | Installs and works offline on Android |
+| AR1–AR8 | Icons, emblems and flags, coasts and sea, relief, cities and infrastructure, war on the map, scenes, credits [ART_MAP_GPT_PLAN] | M each | as v1 | As v1 |
+| SC1 | Punjab grain packaging | S | FD4 | One tap |
+| SC2 | Every-nation parity runs | M | S4 | Differences explained |
+| SC3 | Start screen with scenarios and notes | S | SC1 | Owner check |
+| SC4 | Sikh Empire 1839 scenario | M | HI6, MP10 | Owner check |
+| SC5 | Bookmarks 1861, 1871, 1914 from calibrated seeds | M | S6 | Each bookmark's outcomes in bands |
+| CA1 | Like-for-like calibration (wars by kind, India apart) (#6) | S | — | Regenerated from clean checkout |
+| CA2 | `docs/TARGETS.md` from COW, Maddison, HYDE (§T) | S | CA1 | Used by seeds and stress tiers |
+| CA3 | GDP and population by region and decade | M | CA2 | Report |
+| CA4 | Weekly calibration report (merged into the stress report) | S | QA1 | In the report |
+| CA5 | Literacy calibration (*now* 1900 medians GBR 55, FRA 48, RUS 8 against ≥ 60, ≥ 60, 20–45) | S | SO1a | In band on 6 of 8 |
+| RL1 | Alpha build, feedback template, five testers | S | S2 | Pass marks |
+| RL2 | PWA | M | AR4 | Installs offline on Android |
 | RL3 | Phone gate on the Galaxy A56 | S | PL8 | Within budgets |
-| RL4 | (Done by PB1/PB3: raw COW data never enters the public repo) | — | — | — |
-| RL6 | Pages build carries a version stamp and a feedback link | S | PB5 | Owner check |
-| RL5 | Release notes from PR titles | S | PL2 | On each release |
+| RL5 | Release notes from PR titles | S | PL2 | Each release |
+| RL6 | Version stamp and feedback link on the Pages build | S | PB5 | Owner check |
+
+## T. Targets (one table; measured by the seeds and stress tiers)
+
+| Measure | Now (stress, 256 unfuzzed runs) | Target | Source |
+|---|---|---|---|
+| Crashes, invariant breaks | 0, 0 | 0, 0 | — |
+| Save/resume divergence | 40 of 948 checks | 0 | P7 |
+| Inter-state wars per decade | 3.5, 4.9, 5.8, 6.6, 6.0, 5.1, 3.5, 2.9, 2.8, 1.3, 0.6 (1830s–1930s) | COW 0, 4, 5, 8, 4, 3, 3, 6, 10, 2, 4, each ± 50% | COW Inter-State v4 |
+| Wars per century, all kinds | 44.1 (22–72) | inter-state 49 ± 25%; colonial and civil counted apart | COW |
+| War length | median 11, p90 62, max 337 months | p90 ≤ 48, max ≤ 120 | — |
+| States destroyed per century | 17.4 (12–26) | 10–20, with causes reported | COW system membership |
+| New or restored states | 3.2 | ≥ 12 (successor states 1918–22) | COW |
+| Germany forms | seed 7: Aug 1866 (stress figure pending a metric fix) | 1866–1875 on 6 of 8 | — |
+| Italy forms | 70% of runs, all 1859–1870, median 1861 | 1859–1872 on 6 of 8 | — |
+| Japan westernises | 94% of runs; 81% in 1866–85 | 1866–1885 on 6 of 8 | — |
+| Other states westernised by 1914 | 5.5 | 2–6 | — |
+| Defaults per century | 0.6; Ottoman 0% | 2–6; Ottoman 1–3 of 8 | — |
+| Great powers 1900 | GBR, FRA, USA, RUS, PRU ≥ 93%; CHI 49% | CHI ≤ 15% | — |
+| Top-8 armies 1914 | CHI 93%, USA 94% | rank correlation ≥ 0.7 with COW NMC | COW NMC |
+| Literacy 1900 | GBR 55, FRA 48, RUS 8 | GBR, GER, FRA ≥ 60; RUS 20–45 | — |
+| Population by region and decade | to measure (DM2) | within 15% of Maddison | Maddison 2023 |
+| Price indices | 0.70–1.35 | 0.6–1.8 | — |
+| Famines | to measure (FD5) | 2–8 per century | — |
+| Treasury | GBR, CHI negative for years | none below zero > 12 months | — |
+| Month time (Node, CI) 1926–36 | median 109, p95 164 ms | median ≤ 90, p95 ≤ 110 | — |
+| Save size | median 0.98 MB, 26% over 1 MB | ≤ 1 MB until SV1; then time budget | — |
+| Interface | 0 page errors; 8,396 layout violations on 7 pages | 0 | — |
 
 ## 5. Order and pace
 
-1. **Now:** PB1–PB6 (going public), then **M0:** PL1, FD1, SV1, CA1, PL2 in parallel lanes; then PL3a, PL4, PL7, SV2, PL3b, SV3, PL8, SV4, PL5, PL6. Map lane runs MP1 alongside.
-2. **Then M1 → M2:** MP2–MP5, FD2–FD5, AI1, UI1a, UI3, UI9, SC1, RL1, RL3. The alpha comes before the deep systems so testers shape them.
-3. **Then M3–M8** in the order of §2, three lanes at a time.
+1. **Now (S0):** owner settings (PB2 branch protection, Pages on); merge PL1 #23, then FD1 #22 after a full run through the gate, QA1 (stress tier), PB5 #25; FX1 (#27) first among engine tickets (it blocks SV4, QA3 and every resume claim); then SV1 (#4), FX2, FX3, PL2, CA1, PL3a, PL4, PL7, SV2, PL3b, FX6, SV3, PL8, SV4.
+2. **S1 → S2:** map at 184, FD2–FD5, AI1, dashboard, decision sheet, tutorial, alpha. The owner plays every Pages build meanwhile.
+3. **S3:** performance before more provinces.
+4. **S4–S6** in parallel lanes (engine, map/data, interface), three tickets at a time.
+5. **S7–S8.**
 
-Estimate at 4–6 merged tickets a day: M0 in about 4 days, M2 (alpha) in about 2–3 weeks, the full plan (about 120 tickets) in 5–7 weeks. Re-estimated at every review.
+Estimate at 4–6 merged tickets a day: S0 in 5–7 days, the alpha in about 3 weeks, the whole plan (about 150 tickets) in 7–9 weeks. Re-estimated at each review.
 
-## 6. Review routine (Claude, four times a day)
+## 6. Lanes
 
-1. Audit every open PR with finished CI (APPROVE or CHANGES; merge on APPROVE).
-2. Open the issue for each ticket whose "after" list is now merged, so five tickets are always ready, at most one per lane in progress.
-3. Check CI minutes used this month and the projection.
-4. Post a short status on #8: merged, in progress, blocked, owner decisions needed, milestone progress.
+| Lane | Owns | Never touches |
+|---|---|---|
+| E engine | `src/` engine files, `test_*.js`, `century.js` | `ui*.js`, `*.css`, `art/` |
+| M map and data | `art/geo/`, `data/`, `tools/` (data and calibration), generated tables | other engine logic |
+| U interface and art | `src/ui*.js`, `src/*.css`, `src/flags.js`, `art/` (not `art/geo`) | engine files |
+| Q quality (Claude) | `tools/stress/`, `.github/workflows/stress.yml`, docs | game code |
+
+## 7. Review routine (Claude, four times a day; scheduled task "Long Century plan review")
+
+1. Audit every open PR with finished CI (APPROVE or CHANGES, numbered). Merge on APPROVE if permitted; otherwise ask the owner in one line.
+2. Open issues for tickets whose "after" list has merged, keeping five ready and at most one in progress per lane.
+3. Read the latest stress report (weekly, and on any `stress/**` push); turn new failures into FX tickets.
+4. Post a short status on the claims board.
 5. Change this plan only when evidence requires it, as a docs-only PR.

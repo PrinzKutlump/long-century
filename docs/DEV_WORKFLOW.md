@@ -1,5 +1,7 @@
 # The Long Century: Development Workflow and Token Strategy
 
+> Rules and roles now live in `docs/MASTER_PLAN.md` §1 and §6; where this file disagrees (model routing, Actions minutes, Sonnet or Haiku implementers), the master plan wins. The public repository has free Actions minutes; the stress tier (`stress.yml`) runs weekly.
+
 Status: plan (23 Nov 2026). Repository: `PrinzKutlump/long-century` (public). Default branch: `main`.
 First CI run on `main`: all 31 engine test files passed and the seed 7 century run finished; the run took about 19 minutes.
 
@@ -19,7 +21,7 @@ First CI run on `main`: all 31 engine test files passed and the seed 7 century r
 | `tests/engine/` | Node tests (today's `test_*.js`). |
 | `tests/browser/` | Playwright tests (`works_board_test.py`, `build_mode_test.py`, `layout_check.py`, `wrap_test.py`). |
 | `tools/` | `fn.py`, profilers, probes. |
-| `docs/plans/` | Engine, UI/Art, Civilising, GPT plans. The repository becomes the single source; project docs are copies. |
+| `docs/` | `DESIGN.md` (game design), `MASTER_PLAN.md` (rules, stages, tickets, targets), `STATUS.md` (verified state). Superseded plans live in `docs/archive/`. The repository is the single source; project docs are copies. |
 | `docs/tickets/` | One short brief per ticket (about 300 words). |
 | `docs/results/` | Evidence files (today's `validation/results`). Screenshots go to CI artifacts, not into git. |
 | `dist/` | Not tracked any more. CI builds it and attaches it to each run and release. |

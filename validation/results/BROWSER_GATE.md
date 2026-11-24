@@ -41,5 +41,5 @@ At 360 px and 125% text some stat tiles truncate their values: national income o
 
 ## Still for a device
 
-- Firefox for Android and the Claude web view: run the Android Works check in `docs/plans/Long_Century_Claude_Handoff.md`. Firefox could not be installed in this workspace.
+- Firefox for Android and the Claude web view: run the Android Works check in `docs/archive/plans/Long_Century_Claude_Handoff.md`. Firefox could not be installed in this workspace.
 - Advance through December and open the cabinet report on a phone, and check Works → Funding.
