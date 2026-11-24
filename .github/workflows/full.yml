@@ -41,7 +41,7 @@ jobs:
                 echo "- PASS $f" >> "$GITHUB_STEP_SUMMARY"
               else
                 echo "- FAIL $f" >> "$GITHUB_STEP_SUMMARY"
-                echo '```' >> "$GITHUB_STEP_SUMMARY"; tail -20 "/tmp/logs/$f.log" >> "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
+                echo '```' >> "$GITHUB_STEP_SUMMARY"; tail -20 "/tmp/logs/$f.log" | tee -a "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
                 fail=1
               fi
             fi
@@ -67,12 +67,15 @@ jobs:
         run: python3 build.py
       - name: Century run, seed 7
         run: |
-          if node century.js 7 SWI --quiet > /tmp/century.out 2>&1; then
+          if node century.js 7 SWI --quiet > /tmp/century.out 2>&1 &&
+             python3 tools/check_century.py /tmp/lc_last_run.txt >> /tmp/century.out 2>&1; then
             echo "- PASS century 7 SWI" >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "- FAIL century 7 SWI" >> "$GITHUB_STEP_SUMMARY"
+            echo "- FAIL century 7 SWI" | tee -a "$GITHUB_STEP_SUMMARY"
+            tail -20 /tmp/century.out | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 1
           fi
-          cat /tmp/century.out >> "$GITHUB_STEP_SUMMARY"
+          cat /tmp/century.out | tee -a "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
