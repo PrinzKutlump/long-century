@@ -5,6 +5,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+concurrency:
+  group: release-pages
+  cancel-in-progress: false
 permissions:
   contents: read
 jobs:
@@ -22,6 +25,8 @@ jobs:
         with:
           node-version: 22
       - name: Build
+        env:
+          LC_BUILD_NUMBER: ${{ github.run_number }}
         run: |
           if python3 build.py > /tmp/build.log 2>&1; then
             echo "- PASS build" >> "$GITHUB_STEP_SUMMARY"
@@ -49,3 +54,23 @@ jobs:
           else
             echo "- FAIL release $tag" >> "$GITHUB_STEP_SUMMARY"; exit 1
           fi
+      - name: Stage Pages
+        run: |
+          mkdir -p _site
+          cp dist/long-century.html _site/index.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: release
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
