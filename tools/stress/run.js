@@ -19,13 +19,15 @@ const BUILD = opt("build", __dirname + "/../../dist/long-century.html");
 const SRC = fs.readFileSync(BUILD, "utf8").match(/<script>([\s\S]*)<\/script>/)[1];
 
 /* Keys that are not material state (same list as tools/a0_lib.js EXCLUDE) plus "_" scratch keys. */
-const EXCLUDE = ["msgs", "log", "player", "plist", "card", "ai", "agenda", "cabinetBase", "commandSerial", "actorSerial", "orderId",
- "cabinetTreaties", "completedWorks", "constructionLedger", "constructionSequence", "ledgerId", "lastProgress", "tradeReceipts",
- "landUse", "employerAccount", "localMarket", "hist"];
+const { EXCLUDE } = require("../a0_lib");
 
 const INSTR = `
 const __EX=new Set(__X);
-const __rep=(k,v)=>(typeof k==="string"&&(__EX.has(k)||k.charCodeAt(0)===95))?undefined:v;
+const __rep=(k,v)=>{
+ if(__EX.has(k)||k.charCodeAt(0)===95)return undefined;
+ if(!v||typeof v!=="object"||Array.isArray(v))return v;
+ return Object.fromEntries(Object.keys(v).sort().map(key=>[key,v[key]]));
+};
 const __M={endWar:{},defaults:[],spawned:[],rebelWins:[],formed:[],restored:[]};
 {const f=endWar;endWar=function(w,winner){if(w&&G.wars.includes(w))__M.endWar[w.id]={t:G.t,winner};return f.apply(this,arguments);};}
 {const f=defaultDebt;defaultDebt=function(c,v){__M.defaults.push({t:G.t,tag:c.tag,voluntary:!!v,debt:Math.round(c.debt||0)});return f.apply(this,arguments);};}
