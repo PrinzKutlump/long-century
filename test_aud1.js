@@ -5,9 +5,9 @@
 const L = require("./tools/a0_lib");
 
 let failed = 0;
-const check = (ok, text) => { if (ok) console.log("ok   " + text); else { failed++; console.log("FAIL " + text); } };
+const check = (ok, text) => { if (ok) console.log("ok   " + text); else { failed++; console.log("FINDING " + text); } };
 const info = text => console.log("info " + text);
-const guard = (name, fn) => { try { fn(); } catch (e) { failed++; console.log("FAIL " + name + " crashed: " + String(e && e.message || e).slice(0, 160)); } };
+const guard = (name, fn) => { try { fn(); } catch (e) { failed++; console.log("FINDING " + name + " crashed: " + String(e && e.message || e).slice(0, 160)); } };
 
 const API_EXTRA = `;globalThis.API.X={G:()=>G,P,provsOf,bldCan,startBld,bqAdd,BLD,GW,gwState,startGW,names:n=>n.map(x=>{try{return eval("typeof "+x);}catch(e){return "none";}})};`;
 const fresh = (seat, seed = 7) => { const A = L.loadEngine(API_EXTRA); A.newGame(null, seed); A.getG().player = seat || null; return A; };
@@ -72,4 +72,4 @@ guard("A24 great works", () => {
   check(!r.ok && /Already built/.test(r.txt), "A24 a built work (" + w.id + ") cannot be started again: " + r.txt);
 });
 
-console.log(failed ? failed + " check(s) reported FAIL; see the lines above" : "all AUD1 checks ok");
+console.log(failed ? failed + " finding(s) above; see the lines above" : "all AUD1 checks ok");
