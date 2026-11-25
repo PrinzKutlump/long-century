@@ -24,6 +24,7 @@ Closes #
 - [ ] No whole-file reads of src/; functions found with tools/fn.py
 - [ ] No new line over 300 characters; no file over 600 lines
 - [ ] dist/ is not committed
+- [ ] Ledger: `python3 tools/ledger.py --check` passes; rows this PR finishes are set to done with a date and probe (rows are never deleted)
 
 ## Tokens
 - Agent token count for this ticket (approximate): 

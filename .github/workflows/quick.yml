@@ -29,6 +29,13 @@ jobs:
           else
             echo "- FAIL build" >> "$GITHUB_STEP_SUMMARY"; tail -20 /tmp/build.log >> "$GITHUB_STEP_SUMMARY"; exit 1
           fi
+      - name: Feature ledger
+        run: |
+          if python3 tools/ledger.py --check > /tmp/ledger.log 2>&1; then
+            echo "- PASS ledger" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- FAIL ledger" >> "$GITHUB_STEP_SUMMARY"; tail -20 /tmp/ledger.log >> "$GITHUB_STEP_SUMMARY"; exit 1
+          fi
       - name: Syntax check (node --check)
         run: |
           fail=0
