@@ -2,6 +2,8 @@
 
 Roles: Codex/GPT implements every ticket that changes the game. Claude plans, writes ticket issues, supervises and audits (docs/DEV_WORKFLOW.md section 3b), and maintains docs and test tooling (`tools/stress/`, `stress.yml`); Claude does not change game code (`src/`, `build.py`). Plans: `docs/DESIGN.md`, `docs/MASTER_PLAN.md`, `docs/STATUS.md`.
 
+Session start: run `python3 tools/ledger.py --open` and read the open rows of `docs/LEDGER.md`. Every owner ask goes in the ledger (`--add`), rows are never deleted, done rows stay as history, and a PR may not make a done feature stop working (CI probe).
+
 Before editing, check the [shared work-claims issue](https://github.com/PrinzKutlump/long-century/issues?q=is%3Aissue+in%3Atitle+claims) and record your plan-qualified ticket, branch and affected files or functions. Post your handoff or merged PR there when you release the claim.
 
 Plain JS game. `build.py` concatenates `engine-files.json` plus the `ui*.js` files into `dist/long-century.html`.
@@ -57,6 +59,7 @@ Then the flags and interface files (build.py appends these after the engine list
 - ui.css, ui3.css: styles. vendor/pako.js: compression, with its licence.
 
 ## Tools
+- tools/ledger.py: feature ledger (`--open`, `--check`, `--render`, `--add`). Source: docs/LEDGER.json.
 - tools/fn.py: print one function.
 - tools/layout_check.py: Playwright check that every sheet and modal fits (needs dist built).
 - tools/works_board_test.py, tools/build_mode_test.py: acceptance tests for ui9.js and ui8.js.

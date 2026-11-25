@@ -2,7 +2,7 @@
 
 Before editing, check the [shared work-claims issue](https://github.com/PrinzKutlump/long-century/issues?q=is%3Aissue+in%3Atitle+claims) and record your plan-qualified ticket, branch and affected files or functions. Post your handoff or merged PR there when you release the claim.
 
-Follow the shared repository instructions in [CLAUDE.md](CLAUDE.md). New implementer: read [docs/CODEX_START.md](docs/CODEX_START.md) first.
+Follow the shared repository instructions in [CLAUDE.md](CLAUDE.md). Feature ledger: run `python3 tools/ledger.py --open` first; see CLAUDE.md. New implementer: read [docs/CODEX_START.md](docs/CODEX_START.md) first.
 
 Roles: Codex/GPT implements all tickets that change the game (engine, UI, map, art, data tools, CI). Claude plans, writes the ticket issues, audits each PR (protocol in docs/DEV_WORKFLOW.md section 3b) and maintains docs and the stress tier (`tools/stress/`). Take tickets from issues labelled `ticket`; claim on the public claims board first.
 

@@ -1,0 +1,323 @@
+{
+ "audited": "2026-11-25",
+ "groups": [
+  {
+   "id": "A",
+   "title": "Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century"
+  },
+  {
+   "id": "B",
+   "title": "The Long Century asks and decisions"
+  }
+ ],
+ "items": [
+  {
+   "id": "A1",
+   "ask": "Month turns, selectable decisions, comprehensive dashboard",
+   "status": "partial",
+   "note": "pages exist; dashboard depth unverified; needs ticket",
+   "probe": "ui3.js::Nation"
+  },
+  {
+   "id": "A2",
+   "ask": "Cheat button in Settings, +100M per press",
+   "status": "done",
+   "probe": "ui.js::cheat:\\(\\)=>",
+   "done": "2026-11-25"
+  },
+  {
+   "id": "A3",
+   "ask": "Refine gameplay, more historical events, refined military and naval system",
+   "status": "unverified",
+   "note": "audit vs Ottoman artifact"
+  },
+  {
+   "id": "A4",
+   "ask": "Build railways",
+   "status": "done",
+   "probe": "econ.js::RAILK",
+   "done": "2026-11-25"
+  },
+  {
+   "id": "A5",
+   "ask": "Build oil wells",
+   "status": "partial",
+   "note": "oil good exists, no well building found; needs ticket",
+   "probe": "defs.js::oil"
+  },
+  {
+   "id": "A6",
+   "ask": "Trade, resource extraction, industry that produces",
+   "status": "unverified",
+   "note": "audit"
+  },
+  {
+   "id": "A7",
+   "ask": "Refit ships in bulk, not one by one",
+   "status": "missing",
+   "note": "ticket #47"
+  },
+  {
+   "id": "A8",
+   "ask": "Buttons must not jump the page scroll",
+   "status": "partial",
+   "note": "Settings sheet jumps to top, ticket #38; Economy page ok",
+   "probe": "ui.js::scrollTop"
+  },
+  {
+   "id": "A9",
+   "ask": "More unique events, policies and systems, interlinked",
+   "status": "unverified",
+   "note": "audit"
+  },
+  {
+   "id": "A10",
+   "ask": "Map: Balkans, Caucasus, Crimea, Suez, Egypt areas joined to Libya",
+   "status": "unverified",
+   "note": "map has 184 provinces; Egypt/Libya/Crimea/Balkans/Caucasus present as regions (CAI Lower Egypt, ASW, SAE, TRP, ODE, SOF, SRB, BUC, TIF); no Alexandria, Suez, Benghazi, Baku provinces (PR #48)"
+  },
+  {
+   "id": "A11",
+   "ask": "Province tap hits first time",
+   "status": "unverified",
+   "note": "tap_probe: 0 failures at 390 px (2026-11-25)"
+  },
+  {
+   "id": "A12",
+   "ask": "Repay all loans option",
+   "status": "missing",
+   "note": "PR #37 open (repayall command and button)"
+  },
+  {
+   "id": "A13",
+   "ask": "Improve naval training and quality",
+   "status": "missing",
+   "note": "ticket #39"
+  },
+  {
+   "id": "A14",
+   "ask": "Modernise administration, army, navy, education, constitution with historical projects",
+   "status": "partial",
+   "note": "modern.js and prog_tanzimat.js exist; navy, education, constitution unverified",
+   "probe": "modern.js::moderni"
+  },
+  {
+   "id": "A15",
+   "ask": "Red Sea fleet can return to the Mediterranean",
+   "status": "unverified",
+   "note": "audit"
+  },
+  {
+   "id": "A16",
+   "ask": "Mobile-friendly",
+   "status": "unverified",
+   "note": "layout_check 74 of 74 clean (2026-11-25)"
+  },
+  {
+   "id": "A17",
+   "ask": "Second scenario: Bolsheviks publish Sykes-Picot, Arab revolt turns loyal, play through WWII with interwar events, tech, industry, finance",
+   "status": "missing",
+   "note": "ticket #40"
+  },
+  {
+   "id": "A18",
+   "ask": "Liquid-glass old-book look with borders and images",
+   "status": "missing",
+   "note": "ticket #41"
+  },
+  {
+   "id": "A19",
+   "ask": "Small randomness in events and combat; decisions that feel purposeful",
+   "status": "unverified",
+   "note": "audit"
+  },
+  {
+   "id": "A20",
+   "ask": "Conquer Egypt and Libya from Jerusalem; invade Greece by land",
+   "status": "unverified",
+   "note": "regions exist (PR #48); invasion path from Jerusalem not tested"
+  },
+  {
+   "id": "A21",
+   "ask": "Order ships from shipyards; US shipyards and unique ships",
+   "status": "missing",
+   "note": "ticket #42"
+  },
+  {
+   "id": "A22",
+   "ask": "Forts: no queue or build past max level",
+   "status": "partial",
+   "note": "real bug, ticket #36; probes in PR #35",
+   "probe": "build.js::fort"
+  },
+  {
+   "id": "A23",
+   "ask": "Taxes by category with sector effects",
+   "status": "partial",
+   "note": "tax change moves income (PR #35 probe); categories per sector unverified",
+   "probe": "econ.js::tax"
+  },
+  {
+   "id": "A24",
+   "ask": "Great works by history, renovation of old works, historic buildings",
+   "status": "partial",
+   "note": "34 great works, no renovation path",
+   "probe": "build.js::great"
+  },
+  {
+   "id": "A25",
+   "ask": "Great work and city pictures in background",
+   "status": "missing",
+   "note": "ticket #43"
+  },
+  {
+   "id": "A26",
+   "ask": "Sounds and music of the era",
+   "status": "missing",
+   "note": "ticket #44"
+  },
+  {
+   "id": "A27",
+   "ask": "Game theory in turns: deterrence, coalitions, payoffs, score vs real outcome",
+   "status": "partial",
+   "note": "some in diplo.js; scripted decisions unverified",
+   "probe": "diplo.js::coalition|deterren"
+  },
+  {
+   "id": "A28",
+   "ask": "Trade page with treaties, boycotts, tariffs",
+   "status": "missing",
+   "note": "ticket #45"
+  },
+  {
+   "id": "A29",
+   "ask": "Resource deposits (coal, copper, chrome, lead, oil) in three levels",
+   "status": "missing",
+   "note": "ticket #46"
+  },
+  {
+   "id": "A30",
+   "ask": "Citizenship policy, influence, war goals, crises, army supply",
+   "status": "partial",
+   "note": "some present",
+   "probe": "defs.js::citizen"
+  },
+  {
+   "id": "A31",
+   "ask": "Autosave, save slots, export and import",
+   "status": "done",
+   "probe": "ui5.js::autosave|export",
+   "done": "2026-11-25"
+  },
+  {
+   "id": "A32",
+   "ask": "Android APK",
+   "status": "closed",
+   "note": "owner stopped APK; web only"
+  },
+  {
+   "id": "B1",
+   "ask": "Rebuild like Victoria 2; every country same rules; any country 1836 start",
+   "status": "unverified",
+   "note": "rule 1"
+  },
+  {
+   "id": "B2",
+   "ask": "Theatre command with infantry, cavalry, artillery; no army selection",
+   "status": "unverified",
+   "note": "theatre.js exists"
+  },
+  {
+   "id": "B3",
+   "ask": "Flags for every nation",
+   "status": "done",
+   "probe": "flags.js::flag",
+   "done": "2026-11-25"
+  },
+  {
+   "id": "B4",
+   "ask": "Punjab 1836 flag",
+   "status": "unverified",
+   "note": "audit"
+  },
+  {
+   "id": "B5",
+   "ask": "Buildings, great works, decisions the player can use",
+   "status": "partial",
+   "note": "Build mode and Works board exist",
+   "probe": "ui8.js::undo"
+  },
+  {
+   "id": "B6",
+   "ask": "UI at least as good as Devlet-i Aliyye",
+   "status": "unverified",
+   "note": "layout audit fails 7 pages"
+  },
+  {
+   "id": "B7",
+   "ask": "Miller true-Earth map, art, easy navigation",
+   "status": "unverified",
+   "note": "MP and AR tickets"
+  },
+  {
+   "id": "B8",
+   "ask": "About 20 more buildings and 12 more great works",
+   "status": "unverified",
+   "note": "audit"
+  },
+  {
+   "id": "B9",
+   "ask": "About 90 events plus chronicle",
+   "status": "partial",
+   "note": "chronicle exists",
+   "probe": "history.js::chronicle|HISTORY_DISP"
+  },
+  {
+   "id": "B10",
+   "ask": "DeepSeek 12 European events fixed",
+   "status": "unverified",
+   "note": "owner to resend the other 3 deliverables"
+  },
+  {
+   "id": "B11",
+   "ask": "Naval war: interception, blockade by port, generals, supply",
+   "status": "done",
+   "probe": "mil.js::blockade",
+   "done": "2026-11-25"
+  },
+  {
+   "id": "B12",
+   "ask": "Mobilisation strength and general selection",
+   "status": "done",
+   "probe": "mil.js::mobili",
+   "done": "2026-11-25"
+  },
+  {
+   "id": "B13",
+   "ask": "Fix Germany forming too early; one economy for all; 130 ms and 1 MB budgets",
+   "status": "unverified",
+   "note": "Germany forms Mar 1868 (seed 7), Jul 1869 (seed 11): ticket #49; FX and SV tickets for budgets"
+  },
+  {
+   "id": "B14",
+   "ask": "Undo; end-of-year review of choices vs minister",
+   "status": "partial",
+   "note": "Build mode undo only",
+   "probe": "ui8.js::undo"
+  },
+  {
+   "id": "B15",
+   "ask": "Early buyers for wool, rubber, canned goods; quiet opening decades; French debt",
+   "status": "unverified",
+   "note": "from Codex handoff"
+  },
+  {
+   "id": "B16",
+   "ask": "Process: ledger first each session, no silent removal",
+   "status": "done",
+   "note": "this system",
+   "done": "2026-11-25",
+   "nosrc": true
+  }
+ ]
+}

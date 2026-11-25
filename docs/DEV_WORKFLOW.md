@@ -155,3 +155,13 @@ Licences: every asset gets a line in `docs/ASSETS.md` (source, licence, author),
 3. H1 source split (Sonnet, hash-identical), then H2–H5.
 4. Engine A5/A6 as the first ticket through the new flow; measure its tokens against the budget.
 5. Continue: B, C (civilising programmes), V (map art); PWA after V4; store builds when the game is release-ready.
+
+## Feature ledger
+
+Why: asks were lost between chats. `docs/LEDGER.json` lists every owner ask and promised feature with a status (done, partial, missing, unverified, closed).
+- Start of every session: `python3 tools/ledger.py --open`. Pick work from there before inventing new work.
+- A new owner ask is added the same day: `python3 tools/ledger.py --add ID "ask" --src "chat date"`.
+- Rows are never deleted. Finished rows become `done` with a date and a probe (`file.js::regex`) that must match src/. Dropped rows become `closed` with the owner's note.
+- CI (quick tier) runs `--check`: it fails on a removed row, a done row going back, a probe that no longer matches (feature removed), or a stale `docs/LEDGER.md`.
+- A ticket that finishes a row updates the JSON, runs `--render`, and names the row in the PR.
+- Audit: monthly, re-run probes and re-check `unverified` rows against the Ottoman game artifact.
