@@ -18,7 +18,7 @@ Totals: done 7, partial 12, missing 10, unverified 18, closed 1  (audited 2026-1
 | A7 | Refit ships in bulk, not one by one | missing | ticket #47 |  |
 | A8 | Buttons must not jump the page scroll | partial | Settings sheet jumps to top, ticket #38; Economy page ok |  |
 | A9 | More unique events, policies and systems, interlinked | unverified | audit |  |
-| A10 | Map: Balkans, Caucasus, Crimea, Suez, Egypt areas joined to Libya | unverified | map plan MP tickets |  |
+| A10 | Map: Balkans, Caucasus, Crimea, Suez, Egypt areas joined to Libya | unverified | map has 184 provinces; Egypt/Libya/Crimea/Balkans/Caucasus present as regions (CAI Lower Egypt, ASW, SAE, TRP, ODE, SOF, SRB, BUC, TIF); no Alexandria, Suez, Benghazi, Baku provinces (PR #48) |  |
 | A11 | Province tap hits first time | unverified | tap_probe: 0 failures at 390 px (2026-11-25) |  |
 | A12 | Repay all loans option | missing | PR #37 open (repayall command and button) |  |
 | A13 | Improve naval training and quality | missing | ticket #39 |  |
@@ -28,7 +28,7 @@ Totals: done 7, partial 12, missing 10, unverified 18, closed 1  (audited 2026-1
 | A17 | Second scenario: Bolsheviks publish Sykes-Picot, Arab revolt turns loyal, play through WWII with interwar events, tech, industry, finance | missing | ticket #40 |  |
 | A18 | Liquid-glass old-book look with borders and images | missing | ticket #41 |  |
 | A19 | Small randomness in events and combat; decisions that feel purposeful | unverified | audit |  |
-| A20 | Conquer Egypt and Libya from Jerusalem; invade Greece by land | unverified | theatre model; audit |  |
+| A20 | Conquer Egypt and Libya from Jerusalem; invade Greece by land | unverified | regions exist (PR #48); invasion path from Jerusalem not tested |  |
 | A21 | Order ships from shipyards; US shipyards and unique ships | missing | ticket #42 |  |
 | A22 | Forts: no queue or build past max level | partial | real bug, ticket #36; probes in PR #35 |  |
 | A23 | Taxes by category with sector effects | partial | tax change moves income (PR #35 probe); categories per sector unverified |  |
@@ -58,7 +58,7 @@ Totals: done 7, partial 12, missing 10, unverified 18, closed 1  (audited 2026-1
 | B10 | DeepSeek 12 European events fixed | unverified | owner to resend the other 3 deliverables |  |
 | B11 | Naval war: interception, blockade by port, generals, supply | done |  | 2026-11-25 |
 | B12 | Mobilisation strength and general selection | done |  | 2026-11-25 |
-| B13 | Fix Germany forming too early; one economy for all; 130 ms and 1 MB budgets | unverified | FX and SV tickets |  |
+| B13 | Fix Germany forming too early; one economy for all; 130 ms and 1 MB budgets | unverified | Germany forms Mar 1868 (seed 7), Jul 1869 (seed 11): ticket #49; FX and SV tickets for budgets |  |
 | B14 | Undo; end-of-year review of choices vs minister | partial | Build mode undo only |  |
 | B15 | Early buyers for wool, rubber, canned goods; quiet opening decades; French debt | unverified | from Codex handoff |  |
 | B16 | Process: ledger first each session, no silent removal | done | this system | 2026-11-25 |

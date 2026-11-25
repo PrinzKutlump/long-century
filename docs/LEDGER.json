@@ -74,7 +74,7 @@
    "id": "A10",
    "ask": "Map: Balkans, Caucasus, Crimea, Suez, Egypt areas joined to Libya",
    "status": "unverified",
-   "note": "map plan MP tickets"
+   "note": "map has 184 provinces; Egypt/Libya/Crimea/Balkans/Caucasus present as regions (CAI Lower Egypt, ASW, SAE, TRP, ODE, SOF, SRB, BUC, TIF); no Alexandria, Suez, Benghazi, Baku provinces (PR #48)"
   },
   {
    "id": "A11",
@@ -135,7 +135,7 @@
    "id": "A20",
    "ask": "Conquer Egypt and Libya from Jerusalem; invade Greece by land",
    "status": "unverified",
-   "note": "theatre model; audit"
+   "note": "regions exist (PR #48); invasion path from Jerusalem not tested"
   },
   {
    "id": "A21",
@@ -296,7 +296,7 @@
    "id": "B13",
    "ask": "Fix Germany forming too early; one economy for all; 130 ms and 1 MB budgets",
    "status": "unverified",
-   "note": "FX and SV tickets"
+   "note": "Germany forms Mar 1868 (seed 7), Jul 1869 (seed 11): ticket #49; FX and SV tickets for budgets"
   },
   {
    "id": "B14",
