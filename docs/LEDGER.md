@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 7, partial 12, missing 10, unverified 18, closed 1  (audited 2026-11-25)
+Totals: done 10, partial 11, missing 9, unverified 18, closed 1  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -16,11 +16,11 @@ Totals: done 7, partial 12, missing 10, unverified 18, closed 1  (audited 2026-1
 | A5 | Build oil wells | partial | oil good exists, no well building found; needs ticket |  |
 | A6 | Trade, resource extraction, industry that produces | unverified | audit |  |
 | A7 | Refit ships in bulk, not one by one | missing | ticket #47 |  |
-| A8 | Buttons must not jump the page scroll | partial | Settings sheet jumps to top, ticket #38; Economy page ok |  |
+| A8 | Buttons must not jump the page scroll | done | Settings sheet keeps scroll, merged PR #50; Economy page ok | 2026-11-25 |
 | A9 | More unique events, policies and systems, interlinked | unverified | audit |  |
 | A10 | Map: Balkans, Caucasus, Crimea, Suez, Egypt areas joined to Libya | unverified | map has 184 provinces; Egypt/Libya/Crimea/Balkans/Caucasus present as regions (CAI Lower Egypt, ASW, SAE, TRP, ODE, SOF, SRB, BUC, TIF); no Alexandria, Suez, Benghazi, Baku provinces (PR #48) |  |
 | A11 | Province tap hits first time | unverified | tap_probe: 0 failures at 390 px (2026-11-25) |  |
-| A12 | Repay all loans option | missing | PR #37 open (repayall command and button) |  |
+| A12 | Repay all loans option | done | merged PR #37 | 2026-11-25 |
 | A13 | Improve naval training and quality | missing | ticket #39 |  |
 | A14 | Modernise administration, army, navy, education, constitution with historical projects | partial | modern.js and prog_tanzimat.js exist; navy, education, constitution unverified |  |
 | A15 | Red Sea fleet can return to the Mediterranean | unverified | audit |  |
@@ -30,7 +30,7 @@ Totals: done 7, partial 12, missing 10, unverified 18, closed 1  (audited 2026-1
 | A19 | Small randomness in events and combat; decisions that feel purposeful | unverified | audit |  |
 | A20 | Conquer Egypt and Libya from Jerusalem; invade Greece by land | unverified | regions exist (PR #48); invasion path from Jerusalem not tested |  |
 | A21 | Order ships from shipyards; US shipyards and unique ships | missing | ticket #42 |  |
-| A22 | Forts: no queue or build past max level | partial | real bug, ticket #36; probes in PR #35 |  |
+| A22 | Forts: no queue or build past max level | partial | real bug, ticket #36; probes merged PR #35 |  |
 | A23 | Taxes by category with sector effects | partial | tax change moves income (PR #35 probe); categories per sector unverified |  |
 | A24 | Great works by history, renovation of old works, historic buildings | partial | 34 great works, no renovation path |  |
 | A25 | Great work and city pictures in background | missing | ticket #43 |  |
@@ -39,7 +39,7 @@ Totals: done 7, partial 12, missing 10, unverified 18, closed 1  (audited 2026-1
 | A28 | Trade page with treaties, boycotts, tariffs | missing | ticket #45 |  |
 | A29 | Resource deposits (coal, copper, chrome, lead, oil) in three levels | missing | ticket #46 |  |
 | A30 | Citizenship policy, influence, war goals, crises, army supply | partial | some present |  |
-| A31 | Autosave, save slots, export and import | done |  | 2026-11-25 |
+| A31 | Autosave, save slots, export and import | done | IndexedDB store, Worker pack, Save to file: merged PR #34 (ticket #4) | 2026-11-25 |
 | A32 | Android APK | closed | owner stopped APK; web only |  |
 
 ## B. The Long Century asks and decisions
@@ -62,3 +62,4 @@ Totals: done 7, partial 12, missing 10, unverified 18, closed 1  (audited 2026-1
 | B14 | Undo; end-of-year review of choices vs minister | partial | Build mode undo only |  |
 | B15 | Early buyers for wool, rubber, canned goods; quiet opening decades; French debt | unverified | from Codex handoff |  |
 | B16 | Process: ledger first each session, no silent removal | done | this system | 2026-11-25 |
+| B17 | Branch protection and CI that does not starve (admin bypass, light stress on push) | done | PR #51; owner set bypass | 2026-11-25 |
