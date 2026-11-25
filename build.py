@@ -14,7 +14,7 @@ codec = (
     + "\n;return window.pako;\n})({});"
 )
 js="\n;\n".join([codec] + [open("src/"+f,encoding="utf8").read() for f in JS])
-html=f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>The Long Century</title><style>{css}</style></head><body><script>{js}</script></body></html>"""
+html=f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>The Long Century</title><style>{css}</style></head><body><script type="text/plain" id="codec-src">{codec}</script><script>{js}</script></body></html>"""
 os.makedirs("dist",exist_ok=True)
 open("dist/long-century.html","w",encoding="utf8").write(html)
 if os.path.isdir("/mnt/user-data/outputs"):open("/mnt/user-data/outputs/long-century.html","w",encoding="utf8").write(html)

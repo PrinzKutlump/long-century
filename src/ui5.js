@@ -9,10 +9,10 @@ const GERMAN=new Set(["BAV","WUR","SAX","HAN"]),LATIN=new Set(["CHL","ARG","PEU"
 function situation(t){const c=G.c[t];if(SITU[t])return SITU[t];if(GERMAN.has(t))return"A German kingdom in the customs union, which Prussia and Austria both want to lead.";if(LATIN.has(t))return"A young republic, short of money and quarrelling over its borders.";if(!c.civ)return"Not yet recognized as civilized: modernize fast, or the Powers will carve it up.";const p=popOf(t);return p<3000?"A small state among larger neighbours: guard it with treaties and clever diplomacy.":"A middling state with room to grow: build industry and choose your friends with care.";}
 const DIFFO={RUS:"Medium",AUS:"Medium",OTT:"Hard",CHI:"Hard",JAP:"Medium",EGY:"Hard"};
 function difficulty(t){const i=G.rank.indexOf(t)+1,c=G.c[t];return DIFFO[t]||(i<=6?"Easy":i<=31&&(c.civ||i<=10)?"Medium":"Hard");}
-function saveMeta(k){try{return JSON.parse(localStorage.getItem(k)||"null");}catch(e){return null;}}
+function saveMeta(k){try{return JSON.parse(SAVES.get(k)||"null");}catch(e){return null;}}
 function showStart(){setPlay(0);const old=$("#start");if(old)old.remove();newGame(null,Date.now()%100000);const d=document.createElement("div");d.id="start";
  const L=G.rank.filter(t=>G.c[t].alive),grp=[["The Great Powers",L.filter(isGP)],["Secondary powers",L.filter(t=>G.sec.includes(t))],["The rest of the world",L.filter(t=>!isGP(t)&&!G.sec.includes(t))]];
- const am=saveMeta("vic.autoM"),has=(()=>{try{return!!localStorage.getItem("vic.auto");}catch(e){return false;}})(),slots=[1,2,3].map(i=>[i,saveMeta("vic.s"+i+"m")]).filter(x=>x[1]);
+ const am=saveMeta("vic.autoM"),has=(()=>{try{return!!SAVES.get("vic.auto");}catch(e){return false;}})(),slots=[1,2,3].map(i=>[i,saveMeta("vic.s"+i+"m")]).filter(x=>x[1]);
  d.innerHTML=`<div class="band" aria-hidden="true"></div><div class="titlepage">${skyline()}<div class="tkicker">A chronicle of the long nineteenth century</div><h1>The Long Century</h1><div class="tsub">A hundred years of change</div>${HEADORN}<p class="etext">January 1836. The railways are only beginning, the great empires are old, and the factory is a new thing. Within a century the world will be unrecognizable. Lead one of sixty-two nations through industry, reform and war, and try to leave yours stronger than you found it.</p><p class="small muted">Each month, read the dispatches, set your policy, and press End month.</p>
  ${has?`<div class="tbtns"><button class="btn pri" data-a="cont">Continue${am?": "+esc(am.n)+", "+esc(am.d):""}</button></div>`:""}${slots.length?`<h3 style="margin:.6rem 0 0">Saved games</h3>${slots.map(([i,m])=>`<div class="slot"><div class="lm"><b>Slot ${i}: ${esc(m.n)}</b><small>${esc(m.d)}</small></div><button class="btn sm" data-a="slotload" data-s="${i}">Load</button></div>`).join("")}`:""}
  <div class="scen">Choose your nation</div><div class="tdates">January 1836 to 1936</div>
@@ -133,19 +133,47 @@ ACT.goprov=d=>{const p=P(d.p);closeModal();UI.tab="map";closeSheet();render();ce
 /* ================= COMFORT (U9) ================= */
 /* saves: the autosave, three slots, a file out and a file in */
 const dnm=()=>{const c=me();return{n:c.n,d:dateStr(G.t),t:G.t,tag:c.tag};};
+/* SV1: saves live in IndexedDB. A copy in memory keeps reads synchronous; writes report failure. */
+const SAVES=(()=>{const m={};let db=null;
+ const open=()=>new Promise(res=>{try{const r=indexedDB.open("vic",1);r.onupgradeneeded=()=>r.result.createObjectStore("s");r.onsuccess=()=>{db=r.result;res(db);};r.onerror=r.onblocked=()=>res(null);}catch(e){res(null);}});
+ const tx=(mode,f)=>new Promise((ok,no)=>{if(!db)return no(new Error("no store"));try{const t=db.transaction("s",mode);f(t.objectStore("s"));t.oncomplete=()=>ok();t.onerror=t.onabort=()=>no(t.error||new Error("write failed"));}catch(e){no(e);}});
+ const legacy=()=>{try{const o={};for(const k of["vic.auto","vic.autoM","vic.slot","vic.s1","vic.s2","vic.s3","vic.s1m","vic.s2m","vic.s3m"]){const v=localStorage.getItem(k);if(v!=null)o[k]=v;}
+  if(!Object.keys(o).length)return;
+  if(o["vic.auto"]||o["vic.slot"]||o["vic.s1"]||o["vic.s2"]||o["vic.s3"]){let yes=false;try{yes=confirm("Saves from an older version are stored in this browser and will be removed. Download them as a file first?");}catch(e){}
+   if(yes)saveFile("long-century-old-saves.json",JSON.stringify(o));}
+  for(const k in o)localStorage.removeItem(k);}catch(e){}};
+ return{m,
+  async init(){await open();
+   if(db)await new Promise(res=>{const q=db.transaction("s").objectStore("s").openCursor();
+    q.onsuccess=()=>{const c=q.result;if(c){m[c.key]=c.value;c.continue();}else res();};q.onerror=()=>res();});
+   try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist();}catch(e){}
+   legacy();},
+  get:k=>m[k]===undefined?null:m[k],
+  set(k,v){const old=m[k];m[k]=v;return tx("readwrite",s=>s.put(v,k)).catch(e=>{if(old===undefined)delete m[k];else m[k]=old;throw e;});},
+  del(k){delete m[k];return tx("readwrite",s=>s.delete(k)).catch(()=>{});}};})();
+function saveFile(name,text){try{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type:"text/plain"}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);}catch(e){toast("The file could not be made.");}}
+/* Compression runs in a Worker built from the page's own codec text, so a save does not freeze the screen. */
+let SAVE_WORKER=null;
+function packAsync(){
+ const json=saveJSON();
+ return new Promise(res=>{
+  try{
+   if(!SAVE_WORKER){const el=document.getElementById("codec-src");if(!el||typeof Worker!=="function")throw 0;
+    SAVE_WORKER=new Worker(URL.createObjectURL(new Blob([el.textContent+";const LZC="+JSON.stringify(LZC)+";"+encodeSaveBytes.toString()+";onmessage=e=>postMessage('V2:'+encodeSaveBytes(SAVE_COMPRESSION.deflate(e.data,{level:2})));"],{type:"text/javascript"})));}
+   const w=SAVE_WORKER;w.onmessage=e=>res(e.data);w.onerror=()=>{SAVE_WORKER=null;res(compressSave(json));};w.postMessage(json);
+  }catch(e){res(compressSave(json));}
+ });
+}
 let pendingAutosave=null;
 function writeAutosave(request,text){
  if(pendingAutosave!==request||G!==request.game)return;
  pendingAutosave=null;
- try{
-  localStorage.setItem("vic.auto",text);
- }catch{
-  UI.autosaveFailed=true;
-  return;
- }
+ const prev=UI.lastAutosave;
  UI.autosaveFailed=false;
  UI.lastAutosave=request.meta.t;
- try{localStorage.setItem("vic.autoM",JSON.stringify(request.meta));}catch{}
+ return SAVES.set("vic.auto",text).then(
+  ()=>{SAVES.set("vic.autoM",JSON.stringify(request.meta)).catch(()=>{});},
+  ()=>{UI.autosaveFailed=true;if(UI.lastAutosave===request.meta.t)UI.lastAutosave=prev;});
 }
 function flushAutosave(request){
  if(!request||pendingAutosave!==request||G!==request.game)return;
@@ -197,25 +225,25 @@ function autosaveStatus(){
 }
 function afterLoad(){pendingAutosave=null;UI.resumedAt=G.t;UI.previousTabs=[];UI.lastAutosave=null;UI.autosaveFailed=false;UI.lastProvince=null;setPlay(0);thSync();UI.tab="over";UI.thsheet=null;UI.nsheet=null;UI.sel=null;UI.dipT=null;UI.rtp=null;UI._br=null;UI.deal=null;UI.cardHide=0;UI.cardSel=null;UI.readM=G.msgs[0];UI._dm=G.msgs[0];UI._dmOn=1;closeModal();closeSheet();const s=$("#start");if(s)s.remove();buildMap();UI.tab="map";bmRestore();render();atlasHome();}
 function loadText(z,what){try{unpack(z);}catch(e){toast("That save could not be read.");return false;}afterLoad();toast((what||"Loaded")+": "+me().n+", "+dateStr(G.t)+".");return true;}
-function slotSave(i){try{localStorage.setItem("vic.s"+i,pack());localStorage.setItem("vic.s"+i+"m",JSON.stringify(dnm()));toast("Saved in slot "+i+".");}catch(e){toast("This browser has no room to save. Try another slot or export a file.");}}
-function slotLoad(i){let z=null;try{z=localStorage.getItem("vic.s"+i)||(i===1?localStorage.getItem("vic.slot"):null);}catch(e){}if(!z){toast("Slot "+i+" is empty.");return;}loadText(z,"Loaded slot "+i);}
-function slotRow(i){let hasSave=false;try{hasSave=!!(localStorage.getItem("vic.s"+i)||(i===1&&localStorage.getItem("vic.slot")));}catch{}let m=saveMeta("vic.s"+i+"m");if(!m){try{if(i===1&&localStorage.getItem("vic.slot"))m={n:"An older save",d:"saved with an earlier version"};}catch(e){}}
+function slotSave(i){return packAsync().then(z=>SAVES.set("vic.s"+i,z)).then(()=>SAVES.set("vic.s"+i+"m",JSON.stringify(dnm()))).then(()=>{toast("Saved in slot "+i+".");openSettings();},()=>toast("This browser has no room to save. Try another slot or export a file."));}
+function slotLoad(i){let z=null;try{z=SAVES.get("vic.s"+i)||(i===1?SAVES.get("vic.slot"):null);}catch(e){}if(!z){toast("Slot "+i+" is empty.");return;}loadText(z,"Loaded slot "+i);}
+function slotRow(i){let hasSave=false;try{hasSave=!!(SAVES.get("vic.s"+i)||(i===1&&SAVES.get("vic.slot")));}catch{}let m=saveMeta("vic.s"+i+"m");if(!m){try{if(i===1&&SAVES.get("vic.slot"))m={n:"An older save",d:"saved with an earlier version"};}catch(e){}}
  return`<div class="slot"><div class="lm"><b>Slot ${i}${m?": "+esc(m.n):""}</b><small>${hasSave?(m?esc(m.d):"Saved campaign"):"Empty"}</small></div><button class="btn sm" data-a="slotsave" data-s="${i}">Save</button><button class="btn sm" data-a="slotload" data-s="${i}"${hasSave?"":" disabled"}>Load</button></div>`;}
 const swHTML=(k,l,on)=>`<button class="switch" role="switch" aria-checked="${on}" data-a="opt" data-k="${k}"><span class="tr"></span><span>${l}</span></button>`;
 function openSettings(){const dark=(document.documentElement.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))==="dark",tz=UI.tz||1;
  openModal(`<div class="msheet" tabindex="-1"><div class="sh-h"><h2>Settings</h2><button class="x" data-a="close" aria-label="Close">×</button></div>
- <h3>Saved games</h3>${autosaveStatus()}<p class="small muted">The game saves itself every month. Use a slot to keep a game you can come back to.</p>${[1,2,3].map(slotRow).join("")}<div class="setrow"><button class="btn sm pri" data-a="copysave">Copy save</button><button class="btn sm" data-a="import">Load pasted save</button></div><textarea id="svtxt" class="svtxt" rows="3" spellcheck="false" aria-label="Save text" placeholder="Press Copy save and the text appears here. To load a save, paste its text here and press Load pasted save."></textarea><div class="setrow"><button class="btn sm" data-a="importfile">Import a file</button></div><p class="small muted">Some sites block downloads, so copying the text is the sure way. Keep it in a note on your phone.</p><input type="file" id="impf" accept=".txt,text/plain" hidden>
+ <h3>Saved games</h3>${autosaveStatus()}<p class="small muted">The game saves itself every month. Use a slot to keep a game you can come back to.</p>${[1,2,3].map(slotRow).join("")}<div class="setrow"><button class="btn sm pri" data-a="savefile">Save to file</button><button class="btn sm" data-a="copysave">Copy save</button><button class="btn sm" data-a="import">Load pasted save</button></div><textarea id="svtxt" class="svtxt" rows="3" spellcheck="false" aria-label="Save text" placeholder="Press Copy save and the text appears here. To load a save, paste its text here and press Load pasted save."></textarea><div class="setrow"><button class="btn sm" data-a="importfile">Import a file</button></div><p class="small muted">Some sites block downloads, so copying the text is the sure way. Keep it in a note on your phone.</p><input type="file" id="impf" accept=".txt,text/plain" hidden>
  <h3>Play</h3>${swHTML("sum","Show a summary after each month",OPT("sum",1)!==0)}<p class="small muted" style="margin:0 0 .3rem">Fast-forward stops by itself for a decree that needs an answer, a war declared on us, or a lost province.</p>
  <h3>Look</h3><div class="setrow"><div class="seg">${[["Light",0],["Dark",1]].map(([l,v])=>`<button class="btn sm ${dark===!!v?"on":""}" data-a="theme" data-v="${v?"dark":"light"}">${l}</button>`).join("")}</div></div><div class="setrow"><span class="small" style="align-self:center">Text size</span><div class="seg">${[["Small",.9],["Medium",1],["Large",1.12],["Largest",1.25]].map(([l,v])=>`<button class="btn sm ${tz===v?"on":""}" data-a="tz" data-v="${v}">${l}</button>`).join("")}</div></div>
  <h3>The game</h3><div class="setrow"><button class="btn sm" data-a="chronicle">The chronicle so far</button><button class="btn sm" data-a="cabinetreport">Cabinet reports</button><button class="btn sm" data-a="newgame">New game</button></div>
  <h3>Cheats</h3><div class="setrow"><button class="btn sm" data-a="cheat">Add £100 million to the treasury</button></div><p class="small muted">${G.cheat?"Used "+G.cheat+" time"+(G.cheat>1?"s":"")+": £"+G.cheat*100+" million added.":"Each press adds £100 million."}</p></div>`);}
 Object.assign(ACT,{
- slotsave:d=>{slotSave(+d.s);openSettings();},slotload:d=>slotLoad(+d.s),save:()=>slotSave(1),load:()=>slotLoad(1),
+ slotsave:d=>slotSave(+d.s),savefile:()=>{packAsync().then(z=>{saveFile("long-century-"+dateStr(G.t).replace(/\W+/g,"-")+".txt",z);toast("Saved to a file.");});},slotload:d=>slotLoad(+d.s),save:()=>slotSave(1),load:()=>slotLoad(1),
 
  copysave:()=>{const z=pack(),ta=$("#svtxt"),n=Math.round(z.length/1024)+" KB";if(ta){ta.value=z;ta.scrollTop=0;}const fb=()=>{try{if(ta){ta.focus();ta.select();ta.setSelectionRange(0,z.length);}const ok=document.execCommand&&document.execCommand("copy");toast(ok?"Copied the save ("+n+").":"The save is selected: press and hold, then Copy.");}catch(e){toast("The save is in the box: select it all and copy.");}};try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(z).then(()=>toast("Copied the save ("+n+")."),fb);else fb();}catch(e){fb();}},
  importfile:()=>{const f=$("#impf");if(!f)return;f.onchange=()=>{const r=new FileReader();r.onload=()=>loadText(String(r.result).trim(),"Imported");r.readAsText(f.files[0]);};f.click();},
  import:()=>{const ta=$("#svtxt");let z=ta&&ta.value.trim();if(!z){try{z=prompt("Paste a save:");}catch(e){}}if(!z){toast("Paste the save text into the box first.");return;}if(loadText(z.trim(),"Imported"))closeModal();},
- cont:()=>{let z=null;try{z=localStorage.getItem("vic.auto");}catch(e){}if(!z){toast("There is no autosave.");return;}if(loadText(z,"Continued")){UI.lastAutosave=G.t;drawTop();}},
+ cont:()=>{let z=null;try{z=SAVES.get("vic.auto");}catch(e){}if(!z){toast("There is no autosave.");return;}if(loadText(z,"Continued")){UI.lastAutosave=G.t;drawTop();}},
  opt:d=>{OPTS(d.k,OPT(d.k,1)===0?1:0);openSettings();},
  chronicle:()=>{closeModal();showChronicle(false);},
  newgame:()=>{closeModal();askSheet({ti:"Start a new game?",danger:1,lab:"New game",body:"You return to the title page. The autosave is replaced when you begin again; saves in the slots are kept.",go:["newgo",{}]});},

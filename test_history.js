@@ -279,17 +279,13 @@ console.log("PASS: Meiji refusal and reload, construction queue, original holdin
 vm.runInContext(`
 scenario("PUN");
 let failAutosave=false;
-const storage=new Map();
-globalThis.localStorage={
- getItem:key=>storage.get(key)||null,
- setItem(key,value){if(failAutosave)throw Error("Storage full");storage.set(key,value);}
-};
+SAVES.set=(k,v)=>({then(ok,no){if(failAutosave)no&&no(Error("Storage full"));else{SAVES.m[k]=v;ok&&ok();}return this;},catch(){return this;}});
 autosave();
-const originalAutosave=localStorage.getItem("vic.auto");
+const originalAutosave=SAVES.get("vic.auto");
 G.t++; me().tr+=100;
 failAutosave=true;
 autosave();
-assert.equal(localStorage.getItem("vic.auto"),originalAutosave);
+assert.equal(SAVES.get("vic.auto"),originalAutosave);
 assert.match(autosaveStatus(),/Autosave failed/);
 assert.equal(UI.lastAutosave,0);
 const currentCash=me().tr;
@@ -348,15 +344,12 @@ for(const tag of ["PUN","CHL","MEX"]){
  const keys=agendaChoices(me()).map(([key])=>key);
  assert.equal(new Set(keys).size,keys.length);
 }
-const slotData=new Map();
-globalThis.localStorage={
- getItem:k=>slotData.get(k),
- setItem:(k,v)=>{if(k.endsWith("m"))throw Error("Quota");slotData.set(k,v);}
-};
-slotSave(2);
-assert.ok(localStorage.getItem("vic.s2"));
-assert.match(slotRow(2),/Saved campaign/);
-assert.doesNotMatch(slotRow(2),/disabled/);
+SAVES.set=(k,v)=>k.endsWith("m")?Promise.reject(Error("Quota")):(SAVES.m[k]=v,Promise.resolve());
+slotSave(2).then(()=>{
+ assert.ok(SAVES.get("vic.s2"));
+ assert.match(slotRow(2),/Saved campaign/);
+ assert.doesNotMatch(slotRow(2),/disabled/);
+});
 
 function replay(roundTrip){
  scenario("PUN");
