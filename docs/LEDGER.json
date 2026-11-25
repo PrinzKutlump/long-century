@@ -223,7 +223,7 @@
    "id": "B1",
    "ask": "Rebuild like Victoria 2; every country same rules; any country 1836 start",
    "status": "unverified",
-   "note": "rule 1"
+   "note": "SWI, FRA, GBR accept the same fort order alike (PR #53); wider check open"
   },
   {
    "id": "B2",
@@ -241,8 +241,10 @@
   {
    "id": "B4",
    "ask": "Punjab 1836 flag",
-   "status": "unverified",
-   "note": "audit"
+   "status": "done",
+   "note": "every nation has a flag (PR #53)",
+   "done": "2026-11-25",
+   "probe": "flags.js::PUN"
   },
   {
    "id": "B5",
@@ -267,14 +269,15 @@
    "id": "B8",
    "ask": "About 20 more buildings and 12 more great works",
    "status": "unverified",
-   "note": "audit"
+   "note": "25 building kinds, 34 great works (22 non-fair); MASTER_PLAN has no great-works target (PR #53)"
   },
   {
    "id": "B9",
    "ask": "About 90 events plus chronicle",
-   "status": "partial",
-   "note": "chronicle exists",
-   "probe": "history.js::chronicle|HISTORY_DISP"
+   "status": "done",
+   "note": "104 events, 79 dispatches (PR #53)",
+   "probe": "events.js::EVENTS",
+   "done": "2026-11-25"
   },
   {
    "id": "B10",
@@ -313,7 +316,7 @@
    "id": "B15",
    "ask": "Early buyers for wool, rubber, canned goods; quiet opening decades; French debt",
    "status": "unverified",
-   "note": "from Codex handoff"
+   "note": "wool has no consumer: ticket #54 (PR #53)"
   },
   {
    "id": "B16",

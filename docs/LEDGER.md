@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 10, partial 11, missing 9, unverified 18, closed 1  (audited 2026-11-25)
+Totals: done 12, partial 10, missing 9, unverified 17, closed 1  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -46,20 +46,20 @@ Totals: done 10, partial 11, missing 9, unverified 18, closed 1  (audited 2026-1
 
 | ID | Ask | Status | Ticket or evidence | Done on |
 |---|---|---|---|---|
-| B1 | Rebuild like Victoria 2; every country same rules; any country 1836 start | unverified | rule 1 |  |
+| B1 | Rebuild like Victoria 2; every country same rules; any country 1836 start | unverified | SWI, FRA, GBR accept the same fort order alike (PR #53); wider check open |  |
 | B2 | Theatre command with infantry, cavalry, artillery; no army selection | unverified | theatre.js exists |  |
 | B3 | Flags for every nation | done |  | 2026-11-25 |
-| B4 | Punjab 1836 flag | unverified | audit |  |
+| B4 | Punjab 1836 flag | done | every nation has a flag (PR #53) | 2026-11-25 |
 | B5 | Buildings, great works, decisions the player can use | partial | Build mode and Works board exist |  |
 | B6 | UI at least as good as Devlet-i Aliyye | unverified | layout audit fails 7 pages |  |
 | B7 | Miller true-Earth map, art, easy navigation | unverified | MP and AR tickets |  |
-| B8 | About 20 more buildings and 12 more great works | unverified | audit |  |
-| B9 | About 90 events plus chronicle | partial | chronicle exists |  |
+| B8 | About 20 more buildings and 12 more great works | unverified | 25 building kinds, 34 great works (22 non-fair); MASTER_PLAN has no great-works target (PR #53) |  |
+| B9 | About 90 events plus chronicle | done | 104 events, 79 dispatches (PR #53) | 2026-11-25 |
 | B10 | DeepSeek 12 European events fixed | unverified | owner to resend the other 3 deliverables |  |
 | B11 | Naval war: interception, blockade by port, generals, supply | done |  | 2026-11-25 |
 | B12 | Mobilisation strength and general selection | done |  | 2026-11-25 |
 | B13 | Fix Germany forming too early; one economy for all; 130 ms and 1 MB budgets | unverified | Germany forms Mar 1868 (seed 7), Jul 1869 (seed 11): ticket #49; FX and SV tickets for budgets |  |
 | B14 | Undo; end-of-year review of choices vs minister | partial | Build mode undo only |  |
-| B15 | Early buyers for wool, rubber, canned goods; quiet opening decades; French debt | unverified | from Codex handoff |  |
+| B15 | Early buyers for wool, rubber, canned goods; quiet opening decades; French debt | unverified | wool has no consumer: ticket #54 (PR #53) |  |
 | B16 | Process: ledger first each session, no silent removal | done | this system | 2026-11-25 |
 | B17 | Branch protection and CI that does not starve (admin bypass, light stress on push) | done | PR #51; owner set bypass | 2026-11-25 |
