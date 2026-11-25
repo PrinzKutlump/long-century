@@ -55,13 +55,13 @@
    "id": "A7",
    "ask": "Refit ships in bulk, not one by one",
    "status": "missing",
-   "note": "needs ticket"
+   "note": "ticket #47"
   },
   {
    "id": "A8",
    "ask": "Buttons must not jump the page scroll",
-   "status": "unverified",
-   "note": "scroll code exists; test on phone",
+   "status": "partial",
+   "note": "Settings sheet jumps to top, ticket #38; Economy page ok",
    "probe": "ui.js::scrollTop"
   },
   {
@@ -80,19 +80,19 @@
    "id": "A11",
    "ask": "Province tap hits first time",
    "status": "unverified",
-   "note": "tap_probe.py exists"
+   "note": "tap_probe: 0 failures at 390 px (2026-11-25)"
   },
   {
    "id": "A12",
    "ask": "Repay all loans option",
    "status": "missing",
-   "note": "needs ticket"
+   "note": "PR #37 open (repayall command and button)"
   },
   {
    "id": "A13",
    "ask": "Improve naval training and quality",
    "status": "missing",
-   "note": "needs ticket"
+   "note": "ticket #39"
   },
   {
    "id": "A14",
@@ -111,19 +111,19 @@
    "id": "A16",
    "ask": "Mobile-friendly",
    "status": "unverified",
-   "note": "layout_check.py: 7 pages fail audit"
+   "note": "layout_check 74 of 74 clean (2026-11-25)"
   },
   {
    "id": "A17",
    "ask": "Second scenario: Bolsheviks publish Sykes-Picot, Arab revolt turns loyal, play through WWII with interwar events, tech, industry, finance",
    "status": "missing",
-   "note": "no trace in src; needs ticket"
+   "note": "ticket #40"
   },
   {
    "id": "A18",
    "ask": "Liquid-glass old-book look with borders and images",
    "status": "missing",
-   "note": "needs ticket"
+   "note": "ticket #41"
   },
   {
    "id": "A19",
@@ -141,40 +141,40 @@
    "id": "A21",
    "ask": "Order ships from shipyards; US shipyards and unique ships",
    "status": "missing",
-   "note": "ports exist, no shipyards; needs ticket"
+   "note": "ticket #42"
   },
   {
    "id": "A22",
    "ask": "Forts: no queue or build past max level",
-   "status": "unverified",
-   "note": "BLD.fort max 5; test",
+   "status": "partial",
+   "note": "real bug, ticket #36; probes in PR #35",
    "probe": "build.js::fort"
   },
   {
    "id": "A23",
    "ask": "Taxes by category with sector effects",
    "status": "partial",
-   "note": "tax code exists; categories unverified",
+   "note": "tax change moves income (PR #35 probe); categories per sector unverified",
    "probe": "econ.js::tax"
   },
   {
    "id": "A24",
    "ask": "Great works by history, renovation of old works, historic buildings",
    "status": "partial",
-   "note": "great works exist; renovation missing",
+   "note": "34 great works, no renovation path",
    "probe": "build.js::great"
   },
   {
    "id": "A25",
    "ask": "Great work and city pictures in background",
    "status": "missing",
-   "note": "needs ticket"
+   "note": "ticket #43"
   },
   {
    "id": "A26",
    "ask": "Sounds and music of the era",
    "status": "missing",
-   "note": "no audio code; needs ticket"
+   "note": "ticket #44"
   },
   {
    "id": "A27",
@@ -187,13 +187,13 @@
    "id": "A28",
    "ask": "Trade page with treaties, boycotts, tariffs",
    "status": "missing",
-   "note": "needs ticket"
+   "note": "ticket #45"
   },
   {
    "id": "A29",
    "ask": "Resource deposits (coal, copper, chrome, lead, oil) in three levels",
    "status": "missing",
-   "note": "needs ticket"
+   "note": "ticket #46"
   },
   {
    "id": "A30",

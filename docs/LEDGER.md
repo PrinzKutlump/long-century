@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 7, partial 10, missing 10, unverified 20, closed 1  (audited 2026-11-25)
+Totals: done 7, partial 12, missing 10, unverified 18, closed 1  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -15,29 +15,29 @@ Totals: done 7, partial 10, missing 10, unverified 20, closed 1  (audited 2026-1
 | A4 | Build railways | done |  | 2026-11-25 |
 | A5 | Build oil wells | partial | oil good exists, no well building found; needs ticket |  |
 | A6 | Trade, resource extraction, industry that produces | unverified | audit |  |
-| A7 | Refit ships in bulk, not one by one | missing | needs ticket |  |
-| A8 | Buttons must not jump the page scroll | unverified | scroll code exists; test on phone |  |
+| A7 | Refit ships in bulk, not one by one | missing | ticket #47 |  |
+| A8 | Buttons must not jump the page scroll | partial | Settings sheet jumps to top, ticket #38; Economy page ok |  |
 | A9 | More unique events, policies and systems, interlinked | unverified | audit |  |
 | A10 | Map: Balkans, Caucasus, Crimea, Suez, Egypt areas joined to Libya | unverified | map plan MP tickets |  |
-| A11 | Province tap hits first time | unverified | tap_probe.py exists |  |
-| A12 | Repay all loans option | missing | needs ticket |  |
-| A13 | Improve naval training and quality | missing | needs ticket |  |
+| A11 | Province tap hits first time | unverified | tap_probe: 0 failures at 390 px (2026-11-25) |  |
+| A12 | Repay all loans option | missing | PR #37 open (repayall command and button) |  |
+| A13 | Improve naval training and quality | missing | ticket #39 |  |
 | A14 | Modernise administration, army, navy, education, constitution with historical projects | partial | modern.js and prog_tanzimat.js exist; navy, education, constitution unverified |  |
 | A15 | Red Sea fleet can return to the Mediterranean | unverified | audit |  |
-| A16 | Mobile-friendly | unverified | layout_check.py: 7 pages fail audit |  |
-| A17 | Second scenario: Bolsheviks publish Sykes-Picot, Arab revolt turns loyal, play through WWII with interwar events, tech, industry, finance | missing | no trace in src; needs ticket |  |
-| A18 | Liquid-glass old-book look with borders and images | missing | needs ticket |  |
+| A16 | Mobile-friendly | unverified | layout_check 74 of 74 clean (2026-11-25) |  |
+| A17 | Second scenario: Bolsheviks publish Sykes-Picot, Arab revolt turns loyal, play through WWII with interwar events, tech, industry, finance | missing | ticket #40 |  |
+| A18 | Liquid-glass old-book look with borders and images | missing | ticket #41 |  |
 | A19 | Small randomness in events and combat; decisions that feel purposeful | unverified | audit |  |
 | A20 | Conquer Egypt and Libya from Jerusalem; invade Greece by land | unverified | theatre model; audit |  |
-| A21 | Order ships from shipyards; US shipyards and unique ships | missing | ports exist, no shipyards; needs ticket |  |
-| A22 | Forts: no queue or build past max level | unverified | BLD.fort max 5; test |  |
-| A23 | Taxes by category with sector effects | partial | tax code exists; categories unverified |  |
-| A24 | Great works by history, renovation of old works, historic buildings | partial | great works exist; renovation missing |  |
-| A25 | Great work and city pictures in background | missing | needs ticket |  |
-| A26 | Sounds and music of the era | missing | no audio code; needs ticket |  |
+| A21 | Order ships from shipyards; US shipyards and unique ships | missing | ticket #42 |  |
+| A22 | Forts: no queue or build past max level | partial | real bug, ticket #36; probes in PR #35 |  |
+| A23 | Taxes by category with sector effects | partial | tax change moves income (PR #35 probe); categories per sector unverified |  |
+| A24 | Great works by history, renovation of old works, historic buildings | partial | 34 great works, no renovation path |  |
+| A25 | Great work and city pictures in background | missing | ticket #43 |  |
+| A26 | Sounds and music of the era | missing | ticket #44 |  |
 | A27 | Game theory in turns: deterrence, coalitions, payoffs, score vs real outcome | partial | some in diplo.js; scripted decisions unverified |  |
-| A28 | Trade page with treaties, boycotts, tariffs | missing | needs ticket |  |
-| A29 | Resource deposits (coal, copper, chrome, lead, oil) in three levels | missing | needs ticket |  |
+| A28 | Trade page with treaties, boycotts, tariffs | missing | ticket #45 |  |
+| A29 | Resource deposits (coal, copper, chrome, lead, oil) in three levels | missing | ticket #46 |  |
 | A30 | Citizenship policy, influence, war goals, crises, army supply | partial | some present |  |
 | A31 | Autosave, save slots, export and import | done |  | 2026-11-25 |
 | A32 | Android APK | closed | owner stopped APK; web only |  |
