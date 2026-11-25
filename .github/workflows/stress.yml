@@ -1,6 +1,6 @@
 # Stress tier: full centuries on many seeds and seats with invariant checks, save/resume checks and
 # command fuzzing (tools/stress/run.js), plus an interface sweep of every nation and page (tools/stress/ui_sweep.py).
-# Runs on pushes to stress/** branches, weekly on main, and by hand. The public repository has free Actions minutes.
+# Runs on pushes to stress/** branches (light: 2 seeds, 1 fuzz seed, seats SWI,GBR,AI, so it does not starve other CI), weekly on main (full), and by hand with inputs. The public repository has free Actions minutes.
 name: stress
 on:
   push:
@@ -28,9 +28,9 @@ concurrency:
   group: stress-${{ github.ref }}
   cancel-in-progress: true
 env:
-  SEEDS: ${{ inputs.seeds || '16' }}
-  FUZZ_SEEDS: ${{ inputs.fuzz_seeds || '4' }}
-  SEATS: ${{ inputs.seats || '' }}
+  SEEDS: ${{ inputs.seeds || (github.event_name == 'push' && '2' || '16') }}
+  FUZZ_SEEDS: ${{ inputs.fuzz_seeds || (github.event_name == 'push' && '1' || '4') }}
+  SEATS: ${{ inputs.seats || (github.event_name == 'push' && 'SWI,GBR,AI' || '') }}
   UI_MONTHS: ${{ inputs.months || '12' }}
 jobs:
   century:
