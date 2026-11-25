@@ -146,9 +146,10 @@
   {
    "id": "A22",
    "ask": "Forts: no queue or build past max level",
-   "status": "partial",
-   "note": "real bug, ticket #36; probes in PR #35",
-   "probe": "build.js::fort"
+   "status": "done",
+   "note": "Ticket #36: queue admission counts active and waiting levels; AUD1 checks rejection and notices.",
+   "probe": "build.js::Existing orders already reach the highest level",
+   "done": "2026-11-25"
   },
   {
    "id": "A23",
