@@ -269,14 +269,14 @@
    "id": "B9",
    "ask": "About 90 events plus chronicle",
    "status": "partial",
-   "note": "chronicle exists",
+   "note": "chronicle exists; more events: ticket #56",
    "probe": "history.js::chronicle|HISTORY_DISP"
   },
   {
    "id": "B10",
    "ask": "DeepSeek 12 European events fixed",
-   "status": "unverified",
-   "note": "owner to resend the other 3 deliverables"
+   "status": "closed",
+   "note": "owner set DeepSeek files aside 2026-11-25; events built from scratch: ticket #56 (B18)"
   },
   {
    "id": "B11",
@@ -318,6 +318,20 @@
    "note": "this system",
    "done": "2026-11-25",
    "nosrc": true
+  },
+  {
+   "id": "B18",
+   "ask": "Missing historical events (Europe, Americas, Asia) built from scratch, not from DeepSeek files",
+   "status": "missing",
+   "note": "ticket #56"
+  },
+  {
+   "id": "B19",
+   "ask": "Free-licence assets only (CC0, public domain, or our own); manifest and CI check",
+   "status": "done",
+   "done": "2026-11-25",
+   "nosrc": true,
+   "note": "docs/ASSETS.md, docs/assets.json, tools/assets_check.py; asset files themselves still to add for #41, #43, #44"
   }
  ]
 }
