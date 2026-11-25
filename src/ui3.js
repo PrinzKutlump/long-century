@@ -121,7 +121,7 @@ function pgEco(){const c=me(),st=c.stat||{},N=st.N||{},tag=c.tag,H=G.hist&&G.his
   ${(G.tradeReceipts||[]).filter(r=>r.buyer===tag||r.seller===tag).map(r=>kr(GOODS[r.good].n,Math.round(r.quantity)+" units · "+money(r.value)+" goods"+(r.fee!=null?" · "+money(r.fee)+" treasury fee":""))).join("")}
   <p>Customs offices preserve more access to non-priority imports.</p>
   ${IMPORT_POLICIES.map(policy=>`<button class="btn sm" data-a="importpolicy" data-policy="${policy}" aria-pressed="${(c.importPolicy||"balanced")===policy}">${({balanced:"Balanced",industry:"Industry first",essentials:"Essentials first"})[policy]}</button>`).join("")}
-  ${kr("Interest paid",money(st.interest||0))}${kr("Net change in debt",money(st.debtChange||0))}
+  ${kr("Interest paid",money(st.interest||0))}${kr("Net change in debt",money(st.debtChange||0))}${(c.debt||0)>0?`<div class="cta"><button class="btn pri" data-a="repayall">Repay all loans</button></div>`:""}
   ${kr("Foreign dividends received",money(st.dividendsIn||0))}${kr("Dividends remitted abroad",money(st.dividendsOut||0))}</section>`;
  const s0=`<div class="kgrid">${tl("National income",money(inc),"a year",{ex:"inc",sp:spark(H.inc)})}${tl("Capital to invest",money(c.inv||0),"in private hands")}${tl("Imports",money(st.imp||0),"a month",{a:"jumpsec",d:{i:4}})}${tl("Exports",money(st.exp||0),"a month",{a:"jumpsec",d:{i:4}})}</div>
   ${gz("Life needs of the poor",nf.poor,1,pct(nf.poor),{c:nf.poor<.6?"red":"green",mk:.6})}${gz("Everyday needs of the poor",nn?ef/nn:0,1,pct(nn?ef/nn:0),{c:"green"})}${kr("Factory workers",ppl(N.CRA||0))}${kr("Immigrants",ppl(st.immig||0))}${workforce?`<details><summary>Provincial markets and households</summary>${workforce}</details>`:""}${tradePolicy}${companyAccounts}`;
@@ -210,6 +210,7 @@ function pgMil(){thSync();const c=me(),A=G.armies.filter(a=>a.o===c.tag&&a.u.len
   ["Raise","Raise forces",s5]]);}
 
 
+ACT.repayall=()=>{const r=applyCampaignCommand({...issueCampaignCommand(),kind:"repayall"});toast(r.txt||r.why);render();};
 ACT.landvote=d=>{
  if(G.player!=="PUN")return;
  const result=voteOnLandRevenue(me(),d.amended==="1");
