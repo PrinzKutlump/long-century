@@ -2,7 +2,7 @@ import json
 import os
 with open("engine-files.json", encoding="utf8") as manifest:
     JS = json.load(manifest)
-JS += ["flags.js", "ui.js", "ui2.js", "ui3.js", "ui4.js", "ui5.js", "ui6.js", "ui7.js", "ui8.js", "ui9.js"]
+JS += ["flags.js", "ui.js", "ui2.js", "ui3.js", "ui4.js", "ui5.js", "ui6.js", "ui7.js", "ui8.js", "ui9.js", "ui_audio.js"]
 css="\n".join(open("src/"+f,encoding="utf8").read() for f in ["ui.css","ui3.css"])
 with open("src/vendor/pako.js", encoding="utf8") as source:
     compression = source.read()
