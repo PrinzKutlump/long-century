@@ -7,7 +7,7 @@
 const L = require("./tools/a0_lib");
 
 let failed = 0;
-const check = (ok, text) => { if (ok) console.log("ok   " + text); else { failed++; console.log("FAIL " + text); } };
+const check = (ok, text) => { if (ok) console.log("ok   " + text); else { failed++; console.log("FINDING " + text); } };
 const API_EXTRA = ";globalThis.API.Q={newGame,yearOf,formedAlive,monthTick,dateStr,P,provsOf,getG:()=>G};";
 
 /* 1. Germany formation timing */
@@ -44,8 +44,8 @@ const GROUPS = [
 for (const [label, keys] of GROUPS) {
  const hit = names.find(p => keys.some(k => String(p.n).toLowerCase().includes(k.toLowerCase())));
  if (hit) console.log(`ok   found ${label} -> ${hit.n} [${hit.id}]`);
- else console.log(`FAIL missing ${label} (no province name contains ${keys.join(" / ")})`);
+ else console.log(`FINDING missing ${label} (no province name contains ${keys.join(" / ")})`);
 }
 
-if (failed) console.log(`${failed} FAIL line(s)`);
+if (failed) console.log(`${failed} FINDING line(s)`);
 process.exitCode = failed ? 1 : 0;
