@@ -228,7 +228,7 @@ function main() {
  const resumeAt = new Set(RESUME);
  while (A.G().t < END) {
   const G = A.G();
-  if (resumeAt.has(G.t)) { out.resume.push(resumeCheck(A, G.t)); continue; }
+  if (resumeAt.delete(G.t)) { out.resume.push(resumeCheck(A, G.t)); continue; }
   if (FUZZ) fuzzMonth(A);
   const t0 = performance.now();
   step(A);
@@ -265,7 +265,9 @@ catch (e) { out.ok = false; out.error = String(e.stack || e).split("\n").slice(0
 const json = JSON.stringify(out);
 if (OUT) fs.writeFileSync(OUT, json);
 const vio = Object.entries(out.violations).map(([k, v]) => k + ":" + v).join(" ") || "none";
+const resumeFailed = out.resume.some(result => !result.ok);
+const status = !out.ok ? "ERROR " + out.error.split("\n")[0] : resumeFailed ? "RESUME FAILED" : "OK";
 const rs = out.resume.map(r => r.at + (r.ok ? "ok" : "FAIL")).join(",") || "-";
-console.log(`stress seed=${SEED} player=${out.player} fuzz=${FUZZ}: ${out.ok ? "OK" : "ERROR " + out.error.split("\n")[0]}; month=${out.lastMonth};` +
+console.log(`stress seed=${SEED} player=${out.player} fuzz=${FUZZ}: ${status}; month=${out.lastMonth};` +
  ` wars=${out.wars.length}; destroyed=${out.destroyed.length}; violations=${vio}; resume=${rs}`);
-process.exitCode = out.ok ? 0 : 1;
+process.exitCode = out.ok && !resumeFailed ? 0 : 1;
