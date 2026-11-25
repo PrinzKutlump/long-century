@@ -85,7 +85,17 @@ function commitActorSerial(actor,serial){
  else(G.actorSerial||(G.actorSerial={}))[actor]=serial;
 }
 const CMD_KINDS={queueRemove:"queueRemove",bqdel:"queueRemove",queueMove:"queueMove",bqmv:"queueMove",
- rail:"rail",factory:"factory",building:"building",queue:"queue",subject:"subject",research:"research",researchQueue:"researchQueue",reform:"reform",programme:"programme"};
+ rail:"rail",factory:"factory",building:"building",queue:"queue",subject:"subject",research:"research",researchQueue:"researchQueue",reform:"reform",programme:"programme",repayall:"repayall"};
+/* Repay all loans at once: pay the smaller of the debt and the treasury. Refuses when nothing is owed or nothing can be paid.
+ * Shared by the player (applyCampaignCommand) and the AI (aiOrder), so both follow the same rule. */
+function repayAllLoans(country){
+ const owed=country.debt||0;
+ if(owed<=0)return {ok:false,why:"We owe nothing to our creditors."};
+ const pay=Math.min(owed,Math.max(0,country.tr));
+ if(pay<=0)return {ok:false,why:"The treasury is empty, so nothing can be paid toward the debt."};
+ country.debt=owed-pay;country.tr-=pay;
+ return {ok:true,paid:pay,left:country.debt,txt:"We repaid £"+Math.round(pay)+" of our debt"+(country.debt>0?"; £"+Math.round(country.debt)+" remains.":".")};
+}
 /* The first month's materials bill at the nation's base prices: a project may not be started that the treasury
  * cannot pay for in its first month. Computed from the same functions investMonth uses, mutating nothing. */
 function commandFunds(country,kind,province,command){
@@ -139,6 +149,7 @@ function execCommand(actor,command,options){
   commit();
   return {ok:true,txt:proposeSubjectAgreement(country,partner,command.term)};
  }
+ if(kind==="repayall"){const r=repayAllLoans(country);if(r.ok)commit();return r;}
  const province=P(command.province);
  if(!province||province.o!==country.tag||province.ctl!==country.tag)return {ok:false,why:"We do not control this province."};
  let result;
