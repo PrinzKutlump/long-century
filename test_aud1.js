@@ -9,7 +9,7 @@ const check = (ok, text) => { if (ok) console.log("ok   " + text); else { failed
 const info = text => console.log("info " + text);
 const guard = (name, fn) => { try { fn(); } catch (e) { failed++; console.log("FINDING " + name + " crashed: " + String(e && e.message || e).slice(0, 160)); } };
 
-const API_EXTRA = `;globalThis.API.X={G:()=>G,P,provsOf,bldCan,startBld,bqAdd,BLD,GW,gwState,startGW,names:n=>n.map(x=>{try{return eval("typeof "+x);}catch(e){return "none";}})};`;
+const API_EXTRA = `;globalThis.API.X={G:()=>G,P,provsOf,bldCan,startBld,bqAdd,bqMonth,BLD,GW,gwState,startGW,names:n=>n.map(x=>{try{return eval("typeof "+x);}catch(e){return "none";}})};`;
 const fresh = (seat, seed = 7) => { const A = L.loadEngine(API_EXTRA); A.newGame(null, seed); A.getG().player = seat || null; return A; };
 /* a province the GBR holds where a fort can be started at level 0 (same choice in every copy, engines are deterministic) */
 const fortSite = (X, c) => X.provsOf("GBR").find(q => { q.fort = 0; return X.bldCan(c, q, "fort").ok; });
@@ -26,22 +26,32 @@ guard("A22 forts", () => {
   c.tr = Math.max(c.tr, 1e9);
   const first = X.startBld(c, p, "fort", true);
   check(first.ok, "A22 first fort at level 4 started" + (first.ok ? "" : ": " + first.why));
-  /* force skips the slot count only; bldCan sees level 4 (< 5), not the queued level, so the second is judged on level alone */
+  /* force skips the slot count only; bldCan rejects a second active project of the same type */
   const second = X.startBld(c, p, "fort", true);
   check(!second.ok, "A22 second fort while one builds at level 4 (4 + 2 queued would be 6 > 5): " + (second.ok ? "ACCEPTED" : "refused, reason: " + second.why));
+  const whileActive = X.bqAdd(c, p.id, "fort");
+  check(!whileActive.ok && /highest level/.test(whileActive.why), "A22 active final level reserves the last level");
   for (let m = 0; m < 30; m++) A.monthTick();
   check(p.fort <= 5, "A22 fort level after the builds finish is " + p.fort + " (max 5)");
 
   const B = fresh("GBR"), bx = B.X, bc = bx.G().c.GBR, bp = fortSite(bx, bc);
   if (!bp) return check(false, "A22 no site for the queued-fort probe");
-  info("A22 bqAdd of a fort at level 5 returns " + JSON.stringify(bx.bqAdd(bc, bp.id, "fort")).slice(0, 120) + " (bqAdd does not call bldCan)");
   bp.fort = 5;
-  const r = bx.startBld(bc, bp, "fort", false);
-  check(!r.ok, "A22 startBld refuses a fort at level 5: " + r.why);
-  B.monthTick();
-  const left = (bc.bq || []).filter(x => x.b === "fort").length;
-  check(left === 0, "A22 queued fort at max leaves the queue after one month (still queued: " + left + ")");
+  const refused = bx.bqAdd(bc, bp.id, "fort");
+  check(!refused.ok && /highest level/.test(refused.why), "A22 bqAdd refuses a fort already at level 5");
+  check(!(bc.bq || []).length, "A22 refused order does not enter the queue");
+  bp.fort = 4;
+  check(bx.bqAdd(bc, bp.id, "fort").ok, "A22 the fifth level can be queued");
+  const duplicate = bx.bqAdd(bc, bp.id, "fort");
+  check(!duplicate.ok && /highest level/.test(duplicate.why), "A22 queued final level reserves the last level");
+  bp.fort = 5;
+  bx.bqMonth(bc);
+  check(!bc.bq.length, "A22 obsolete fort order is removed");
+  check(bx.G().msgs.some(m => /A queued project was dropped: Fortress/.test(m.txt) && /highest level/.test(m.txt)),
+    "A22 the player is told why the obsolete order was removed");
 });
+
+if (failed) process.exitCode = 1;
 
 /* 2. A23 taxes: change one rate, then one monthTick, and compare monthly tax income */
 guard("A23 taxes", () => {
