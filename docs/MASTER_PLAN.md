@@ -320,6 +320,10 @@ Size: S under 60k tokens; M one day; L split first. "After": tickets that must m
 | Save size | median 0.98 MB, 26% over 1 MB | ≤ 1 MB until SV1; then time budget | — |
 | Interface | 0 page errors; 8,396 layout violations on 7 pages | 0 | — |
 
+## R. Resources and outside drafts (added 2026-11-25)
+- Assets: only `original`, CC0 or public-domain items; rules, sources and the manifest check are in docs/ASSETS.md. The owner or a networked agent downloads; the checker admits.
+- DeepSeek files are set aside and not integrated. The missing events (Europe, Americas, Asia) are built from scratch under the H6 ticket; the determinism tool and roadmap it was to deliver already exist here as `tools/stress/`, `tools/state_hash.txt` and this plan.
+
 ## 5. Order and pace
 
 1. **Now (S0):** owner settings (PB2 branch protection, Pages on); merge PL1 #23, then FD1 #22 after a full run through the gate, QA1 (stress tier), PB5 #25; FX1 (#27) first among engine tickets (it blocks SV4, QA3 and every resume claim); then SV1 (#4), FX2, FX3, PL2, CA1, PL3a, PL4, PL7, SV2, PL3b, FX6, SV3, PL8, SV4.
