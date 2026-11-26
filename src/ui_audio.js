@@ -21,7 +21,7 @@ function sndRow(){const v=+OPT("sound",0);const b=([l,x])=>`<button class="btn s
 Object.assign(ACT,{sndset:d=>{const x=+d.v||0;OPTS("sound",x);if(x){SND.ensure();SND.play("tap");}else if(SND.master)SND.master.gain.value=0;openSettings();}});
 document.addEventListener("click",e=>{const el=e.target&&e.target.closest&&e.target.closest("[data-a]");if(el&&!el.disabled)SND.play("tap");},true);
 {const f=endMonth;endMonth=function(){const t0=G.t,r=f.apply(this,arguments);if(G.t!==t0)SND.play("tick");return r;};}
-{const f=drawCard;drawCard=function(){const had=!!document.getElementById("card");f();if(!had&&document.getElementById("card"))SND.play("bell");};}
+{const f=drawCard;const has=()=>{try{return !!document.getElementById("card");}catch(e){return false;}};drawCard=function(){const had=has();const r=f.apply(this,arguments);if(!had&&has())SND.play("bell");return r;};}
 {const f=ACT.declare;ACT.declare=(d,el)=>{const n=G.wars.length;f(d,el);if(G.wars.length>n)SND.play("drum");};}
 {const f=ACT.peace;ACT.peace=(d,el)=>{const n=G.wars.length;f(d,el);if(G.wars.length<n)SND.play("victory");};}
 {const f=ACT.dealgo;ACT.dealgo=(d,el)=>{const n=G.wars.length;f(d,el);if(G.wars.length<n)SND.play("victory");};}
