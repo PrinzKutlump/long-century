@@ -1,5 +1,7 @@
 # Working on The Long Century
 
+Follow the [execution strategy](docs/EXECUTION_STRATEGY.md) for the implementation order, durable tracking, and acceptance evidence.
+
 Before editing, check the [shared work-claims issue](https://github.com/PrinzKutlump/long-century/issues?q=is%3Aissue+in%3Atitle+claims) and record your plan-qualified ticket, branch and affected files or functions. Post your handoff or merged PR there when you release the claim.
 
 Follow the shared repository instructions in [CLAUDE.md](CLAUDE.md). Feature ledger: run `python3 tools/ledger.py --open` first; see CLAUDE.md. New implementer: read [docs/CODEX_START.md](docs/CODEX_START.md) first.

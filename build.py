@@ -14,7 +14,10 @@ codec = (
     + "\n;return window.pako;\n})({});"
 )
 codec_copy=codec.replace("http://zlib.net/manual.html#Advanced","zlib.net/manual.html#Advanced").replace("const SAVE_COMPRESSION=","var SAVE_COMPRESSION=",1)  # worker copy: comment link only
-js="\n;\n".join([codec] + [open("src/"+f,encoding="utf8").read() for f in JS])
+build_number = os.environ.get("LC_BUILD_NUMBER", "")
+if not build_number.isascii() or not build_number.isdecimal():
+    build_number = ""
+js="\n;\n".join([f"const LC_BUILD_NUMBER = {json.dumps(build_number)};", codec] + [open("src/"+f,encoding="utf8").read() for f in JS])
 html=f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>The Long Century</title><style>{css}</style></head><body><script type="text/plain" id="codec-src">{codec_copy}</script><script>{js}</script></body></html>"""
 os.makedirs("dist",exist_ok=True)
 open("dist/long-century.html","w",encoding="utf8").write(html)

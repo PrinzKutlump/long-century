@@ -60,9 +60,10 @@
   {
    "id": "A8",
    "ask": "Buttons must not jump the page scroll",
-   "status": "partial",
-   "note": "Settings sheet jumps to top, ticket #38; Economy page ok",
-   "probe": "ui.js::scrollTop"
+   "status": "done",
+   "note": "Settings sheet keeps scroll, merged PR #50; Economy page ok",
+   "probe": "ui.js::scrollTop",
+   "done": "2026-11-25"
   },
   {
    "id": "A9",
@@ -85,8 +86,10 @@
   {
    "id": "A12",
    "ask": "Repay all loans option",
-   "status": "missing",
-   "note": "PR #37 open (repayall command and button)"
+   "status": "done",
+   "note": "merged PR #37",
+   "done": "2026-11-25",
+   "probe": "turn.js::repayall"
   },
   {
    "id": "A13",
@@ -147,7 +150,7 @@
    "id": "A22",
    "ask": "Forts: no queue or build past max level",
    "status": "partial",
-   "note": "real bug, ticket #36; probes in PR #35",
+   "note": "real bug, ticket #36; probes merged PR #35",
    "probe": "build.js::fort"
   },
   {
@@ -207,7 +210,8 @@
    "ask": "Autosave, save slots, export and import",
    "status": "done",
    "probe": "ui5.js::autosave|export",
-   "done": "2026-11-25"
+   "done": "2026-11-25",
+   "note": "IndexedDB store, Worker pack, Save to file: merged PR #34 (ticket #4)"
   },
   {
    "id": "A32",
@@ -219,7 +223,7 @@
    "id": "B1",
    "ask": "Rebuild like Victoria 2; every country same rules; any country 1836 start",
    "status": "unverified",
-   "note": "rule 1"
+   "note": "SWI, FRA, GBR accept the same fort order alike (PR #53); wider check open"
   },
   {
    "id": "B2",
@@ -237,8 +241,10 @@
   {
    "id": "B4",
    "ask": "Punjab 1836 flag",
-   "status": "unverified",
-   "note": "audit"
+   "status": "done",
+   "note": "every nation has a flag (PR #53)",
+   "done": "2026-11-25",
+   "probe": "flags.js::PUN"
   },
   {
    "id": "B5",
@@ -263,14 +269,15 @@
    "id": "B8",
    "ask": "About 20 more buildings and 12 more great works",
    "status": "unverified",
-   "note": "audit"
+   "note": "25 building kinds, 34 great works (22 non-fair); MASTER_PLAN has no great-works target (PR #53)"
   },
   {
    "id": "B9",
    "ask": "About 90 events plus chronicle",
-   "status": "partial",
-   "note": "chronicle exists; more events: ticket #56",
-   "probe": "history.js::chronicle|HISTORY_DISP"
+   "status": "done",
+   "note": "104 events, 79 dispatches (PR #53); more events: ticket #56",
+   "probe": "events.js::EVENTS",
+   "done": "2026-11-25"
   },
   {
    "id": "B10",
@@ -309,7 +316,7 @@
    "id": "B15",
    "ask": "Early buyers for wool, rubber, canned goods; quiet opening decades; French debt",
    "status": "unverified",
-   "note": "from Codex handoff"
+   "note": "wool has no consumer: ticket #54 (PR #53)"
   },
   {
    "id": "B16",
@@ -318,6 +325,14 @@
    "note": "this system",
    "done": "2026-11-25",
    "nosrc": true
+  },
+  {
+   "id": "B17",
+   "ask": "Branch protection and CI that does not starve (admin bypass, light stress on push)",
+   "status": "done",
+   "done": "2026-11-25",
+   "nosrc": true,
+   "note": "PR #51; owner set bypass"
   },
   {
    "id": "B18",
@@ -331,7 +346,7 @@
    "status": "done",
    "done": "2026-11-25",
    "nosrc": true,
-   "note": "docs/ASSETS.md, docs/assets.json, tools/assets_check.py; asset files themselves still to add for #41, #43, #44"
+   "note": "docs/ASSETS.md, docs/assets.json, tools/assets_check.py; asset files for #41, #43, #44 still to add"
   }
  ]
 }
