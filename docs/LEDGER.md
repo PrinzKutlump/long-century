@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 18, partial 8, missing 10, unverified 45, closed 2  (audited 2026-11-25)
+Totals: done 18, partial 12, missing 10, unverified 43, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -83,8 +83,8 @@ Totals: done 18, partial 8, missing 10, unverified 45, closed 2  (audited 2026-1
 | B35 | Progression system (owner's words: "Add a newspaper and progression system."); meaning to confirm with the owner: player milestones and achievements, era progression, or both | unverified | owner chose all three layers on 27 Nov ("add all 3."): eras in the campaign (PROG1a), national milestones and beat-history score (PROG1b), player profile with unlocks and online challenges (PROG1c); paid items cosmetic only |  |
 | B36 | Date controller: pause, play and speed controls for the daily clock, the current date always visible | unverified | from owner, Claude chat 27 Nov 2026 ("Add date controller") |  |
 | B37 | Progress indicator (owner's words: "Add progress indicator"); planned as a loading progress bar on the loading screen plus progress bars for construction, research, programmes and wars; meaning to confirm with the owner | unverified | from owner, Claude chat 27 Nov 2026 |  |
-| B38 | Daily ticker controller: an End Day button replaces End Month; each press updates the global date and advances the game world by one day | unverified | from owner, Claude chat 27 Nov 2026 |  |
-| B39 | A small progress bar or indicator beside the date (the #hdr-when header) showing how far the current month has run as days pass | unverified | from owner, Claude chat 27 Nov 2026 |  |
+| B38 | Daily ticker controller: an End Day button replaces End Month; each press updates the global date and advances the game world by one day | partial | from owner, Claude chat 27 Nov 2026; first slice in DAY1a (ui_day.js): End Day, weekday date in #hdr-date, month bar, daily ticker; engine still settles monthly until DAY2-DAY7 |  |
+| B39 | A small progress bar or indicator beside the date (the #hdr-when header) showing how far the current month has run as days pass | partial | from owner, Claude chat 27 Nov 2026; first slice in DAY1a (ui_day.js): End Day, weekday date in #hdr-date, month bar, daily ticker; engine still settles monthly until DAY2-DAY7 |  |
 | B40 | Use Google AI Studio's AI features where the game needs them (images, video, voice, Search data, Maps, chatbot, Three.js 3D, music generation, database and sign-in, transcription), planned and put on the claims board for AI Studio to implement | unverified | from owner, Claude chat 27 Nov 2026 (screenshots of AI Studio's Add AI features); owner 27 Nov: offline rule relaxed (B41), AI art allowed (B42), revenue by ads (B43) |  |
 | B41 | Online features are welcome and encouraged, but the game must still work fully offline | unverified | from owner, Claude chat 27 Nov 2026 ("relax rules about offline, but it should work offline") |  |
 | B42 | AI-made art can be added (replaces the earlier no-AI-images rule) | unverified | from owner, Claude chat 27 Nov 2026 ("ai made art can be added") |  |
@@ -97,3 +97,5 @@ Totals: done 18, partial 8, missing 10, unverified 45, closed 2  (audited 2026-1
 | B49 | Historical great projects added for each region and nation | unverified | from owner, Claude chat 27 Nov 2026 |  |
 | B50 | No 3 MB size limit for the Play Store app; size only within Play's own limits | unverified | from owner, Claude chat 27 Nov 2026 |  |
 | B51 | Remove the cheat option from the public release; keep it in test builds | unverified | from owner, Claude chat 27 Nov 2026 |  |
+| B52 | Daily events: short ticker items for each day's progression, reflecting the day-based turn logic | partial | from owner, Claude chat 27 Nov 2026; first slice in DAY1a (ui_day.js): End Day, weekday date in #hdr-date, month bar, daily ticker; engine still settles monthly until DAY2-DAY7 |  |
+| B53 | The date display (hdr-date) moves from a monthly display to a full day-by-day calendar | partial | from owner, Claude chat 27 Nov 2026; first slice in DAY1a (ui_day.js): End Day, weekday date in #hdr-date, month bar, daily ticker; engine still settles monthly until DAY2-DAY7 |  |

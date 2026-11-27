@@ -468,14 +468,16 @@
   {
    "id": "B38",
    "ask": "Daily ticker controller: an End Day button replaces End Month; each press updates the global date and advances the game world by one day",
-   "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov 2026"
+   "status": "partial",
+   "note": "from owner, Claude chat 27 Nov 2026; first slice in DAY1a (ui_day.js): End Day, weekday date in #hdr-date, month bar, daily ticker; engine still settles monthly until DAY2-DAY7",
+   "probe": "ui_day.js::function endDay"
   },
   {
    "id": "B39",
    "ask": "A small progress bar or indicator beside the date (the #hdr-when header) showing how far the current month has run as days pass",
-   "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov 2026"
+   "status": "partial",
+   "note": "from owner, Claude chat 27 Nov 2026; first slice in DAY1a (ui_day.js): End Day, weekday date in #hdr-date, month bar, daily ticker; engine still settles monthly until DAY2-DAY7",
+   "probe": "ui_day.js::function endDay"
   },
   {
    "id": "B40",
@@ -548,6 +550,20 @@
    "ask": "Remove the cheat option from the public release; keep it in test builds",
    "status": "unverified",
    "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B52",
+   "ask": "Daily events: short ticker items for each day's progression, reflecting the day-based turn logic",
+   "status": "partial",
+   "note": "from owner, Claude chat 27 Nov 2026; first slice in DAY1a (ui_day.js): End Day, weekday date in #hdr-date, month bar, daily ticker; engine still settles monthly until DAY2-DAY7",
+   "probe": "ui_day.js::function endDay"
+  },
+  {
+   "id": "B53",
+   "ask": "The date display (hdr-date) moves from a monthly display to a full day-by-day calendar",
+   "status": "partial",
+   "note": "from owner, Claude chat 27 Nov 2026; first slice in DAY1a (ui_day.js): End Day, weekday date in #hdr-date, month bar, daily ticker; engine still settles monthly until DAY2-DAY7",
+   "probe": "ui_day.js::function endDay"
   }
  ]
 }

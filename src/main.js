@@ -39,6 +39,8 @@ window.EngineState = {
 
 // DOM state synchronizer reacting to game state changes
 function updateGameDOM() {
+  // once a campaign runs, the classic interface owns the header (drawTop and ui_day.js write #hdr-date)
+  if (typeof window !== "undefined" && window.G && window.G.player && typeof window.drawTop === "function") return;
   const state = typeof getPlayerEngineState === "function" && typeof window !== "undefined" && window.G
     ? getPlayerEngineState(window.G)
     : createInitialEngineState();
