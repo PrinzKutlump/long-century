@@ -4,7 +4,7 @@ Status: 27 Nov 2026 (Claude, ledger B26). This file is the **map of everything**
 
 How it stays complete: `python3 tools/coord.py audit` fails if a MASTER_PLAN ticket id is missing here, an open ledger row has no issue, or an issue names no ledger row. Change this file in the same PR that adds or retires a plan id.
 
-**Order of work:** `docs/PLAN_V3.md` (approved 27 Nov 2026) sets milestones M0 to M4 and the 1.0 scope; rows it moves out of 1.0 keep their place here.
+**Order of work:** `docs/PLAN_1_0.md` (tickets by milestone and agent) under `docs/PLAN_V3.md` (approved 27 Nov 2026) sets milestones M0 to M4 and the 1.0 scope; rows it moves out of 1.0 keep their place here.
 
 Legend: ✔ built · ◐ partly built · ○ planned, not started · ? needs design or an owner decision first. `#n` = GitHub issue. Ledger ids are A/B rows.
 
