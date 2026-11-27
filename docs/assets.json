@@ -1,5 +1,10 @@
 {
- "allowed": ["original", "CC0", "PD"],
+ "allowed": [
+  "original",
+  "CC0",
+  "PD",
+  "AI"
+ ],
  "budget_kb": 400,
  "items": []
 }

@@ -127,7 +127,7 @@
    "id": "A18",
    "ask": "Liquid-glass old-book look with borders and images",
    "status": "missing",
-   "note": "ticket #41"
+   "note": "ticket #41; owner 27 Nov: liquid glass is optional, the target is a modern UI (B20)"
   },
   {
    "id": "A19",
@@ -219,7 +219,7 @@
    "id": "A32",
    "ask": "Android APK",
    "status": "closed",
-   "note": "owner stopped APK; web only"
+   "note": "owner stopped APK; web only; reopened 27 Nov for The Long Century: Android first (B20)"
   },
   {
    "id": "B1",
@@ -348,7 +348,7 @@
    "status": "done",
    "done": "2026-11-25",
    "nosrc": true,
-   "note": "docs/ASSETS.md, docs/assets.json, tools/assets_check.py; asset files for #41, #43, #44 still to add"
+   "note": "docs/ASSETS.md, docs/assets.json, tools/assets_check.py; asset files for #41, #43, #44 still to add; owner 27 Nov (B42): AI-made art now allowed, recorded in the manifest with tool, prompt and date"
   },
   {
    "id": "B20",
@@ -359,8 +359,10 @@
   {
    "id": "B21",
    "ask": "Claude may implement game code as well as plan and audit (owner, 27 Nov 2026); AI Studio work goes through a branch and PR, never straight to main",
-   "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov 2026"
+   "status": "done",
+   "note": "from owner, Claude chat 27 Nov 2026; CLAUDE.md and AGENTS.md updated (PR #77); branch protection without bypass set by the owner 27 Nov",
+   "done": "2026-11-27",
+   "nosrc": true
   },
   {
    "id": "B22",
@@ -371,8 +373,130 @@
   {
    "id": "B23",
    "ask": "One GitHub-based coordination system for every AI and the owner: master plan and tickets on a claims board, agents take unclaimed tickets, no feature or planned feature goes missing, a new ask in any tool (AI Studio, Codex, Claude) is recorded in the repo before work, no independent streaks",
+   "status": "done",
+   "note": "from owner, Claude chat 27 Nov 2026; docs/COORDINATION.md, tools/coord.py, coord.yml (PR COORD1); merged PR #87; /claim and board refresh verified live on #88",
+   "done": "2026-11-27",
+   "nosrc": true
+  },
+  {
+   "id": "B24",
+   "ask": "Daily progression: replace the monthly tick with a daily tick, and update every feature and engine system to run on it",
    "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov 2026; docs/COORDINATION.md, tools/coord.py, coord.yml (PR COORD1)"
+   "note": "owner decided 27 Nov 2026 in Claude chat (first asked in AI Studio 26 Nov); design in docs/LIVING_WORLD.md, tickets DAY0-DAY9"
+  },
+  {
+   "id": "B25",
+   "ask": "Commercial release and future security: Google Play release, clean licences, signing key kept safe, privacy policy, pricing model, dependency and security checks",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B26",
+   "ask": "Whole future plan streamlined into features, mechanics and tickets; nothing forgotten or missed",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B27",
+   "ask": "Room for rich media: unit and building pictures or models on the map, era pictures, music and sound, loaded only when needed",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (AI Studio limits list)"
+  },
+  {
+   "id": "B28",
+   "ask": "AI Studio's six platform fixes approved by the owner: multi-file app, larger saves, graphics-chip map, code modules, simulation in a background worker, Android app",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026; 1 multi-file app, 2 saves (already IndexedDB, A31) and 6 Android project done as scaffolding (PR #77); 3 map, 4 modules, 5 worker open"
+  },
+  {
+   "id": "B29",
+   "ask": "Not a text simulator: a content-rich game with animation and a genuine map where armies move on land, fleets move at sea, and buildings and infrastructure appear on the map as they are built",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B30",
+   "ask": "Loading screen with history tidbits and fun details, historical backgrounds and original quotes",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B31",
+   "ask": "Pops by strata with needs and standard of living, radicalism and loyalism, interest groups with clout (landowners, army, clergy, industrialists, intelligentsia, unions, rural folk, petite bourgeoisie), legitimacy and law enactment",
+   "status": "unverified",
+   "note": "from owner in AI Studio 26 Nov 2026 (docs/inbox note, never pushed)"
+  },
+  {
+   "id": "B32",
+   "ask": "Balance guardrails against death spirals: prices kept between 0.25x and 1.75x of base with dampening, shortage and market-access penalties floored at 0.15x, every playable country starts with a positive cash flow and stable radicalism",
+   "status": "unverified",
+   "note": "from owner in AI Studio 26 Nov 2026 (docs/inbox note, never pushed)"
+  },
+  {
+   "id": "B33",
+   "ask": "Causal breakdowns: tapping a key number (treasury, price, market access, standard of living, radicalism, legitimacy) shows 2-3 lines of the modifiers behind it; one deterministic pipeline in strict causal order; keep the visual theme and working features",
+   "status": "unverified",
+   "note": "from owner in AI Studio 26 Nov 2026 (docs/inbox note, never pushed)"
+  },
+  {
+   "id": "B34",
+   "ask": "Newspaper: a period newspaper reporting the world's events, wars, discoveries and the player's deeds",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (\"Add a newspaper and progression system.\")"
+  },
+  {
+   "id": "B35",
+   "ask": "Progression system (owner's words: \"Add a newspaper and progression system.\"); meaning to confirm with the owner: player milestones and achievements, era progression, or both",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B36",
+   "ask": "Date controller: pause, play and speed controls for the daily clock, the current date always visible",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (\"Add date controller\")"
+  },
+  {
+   "id": "B37",
+   "ask": "Progress indicator (owner's words: \"Add progress indicator\"); planned as a loading progress bar on the loading screen plus progress bars for construction, research, programmes and wars; meaning to confirm with the owner",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B38",
+   "ask": "Daily ticker controller: an End Day button replaces End Month; each press updates the global date and advances the game world by one day",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B39",
+   "ask": "A small progress bar or indicator beside the date (the #hdr-when header) showing how far the current month has run as days pass",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B40",
+   "ask": "Use Google AI Studio's AI features where the game needs them (images, video, voice, Search data, Maps, chatbot, Three.js 3D, music generation, database and sign-in, transcription), planned and put on the claims board for AI Studio to implement",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (screenshots of AI Studio's Add AI features); owner 27 Nov: offline rule relaxed (B41), AI art allowed (B42), revenue by ads (B43)"
+  },
+  {
+   "id": "B41",
+   "ask": "Online features are welcome and encouraged, but the game must still work fully offline",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (\"relax rules about offline, but it should work offline\")"
+  },
+  {
+   "id": "B42",
+   "ask": "AI-made art can be added (replaces the earlier no-AI-images rule)",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (\"ai made art can be added\")"
+  },
+  {
+   "id": "B43",
+   "ask": "Revenue through ads and similar (in-app purchases etc.); encourage online use",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (\"revenue generation will be through ads and etc\")"
   }
  ]
 }

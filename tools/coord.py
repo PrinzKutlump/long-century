@@ -106,6 +106,20 @@ def gather():
     return issues, prs, tickets, asks
 
 
+def plan_ids_missing():
+    """Ticket ids from MASTER_PLAN §4 tables that docs/ROADMAP.md does not mention."""
+    try:
+        plan = open("docs/MASTER_PLAN.md", encoding="utf-8").read()
+        road = open("docs/ROADMAP.md", encoding="utf-8").read()
+    except OSError:
+        return []
+    ids = re.findall(r"^\|\s*([A-Z]{2,3}\d[\w/]*(?:[–-][A-Z]{2,3}\d+)?)", plan, re.M)
+    have = set(re.findall(r"[A-Z]{2,3}\d+[a-z/]*", road))
+    for pre, a, b in re.findall(r"\b([A-Z]{2,3})(\d+)[–-]\1?(\d+)\b", road):  # NF0–NF5, MP7–MP10
+        have |= {f"{pre}{k}" for k in range(int(a), int(b) + 1)}
+    return sorted({i for i in ids if i not in road and i not in have})
+
+
 def gaps(ledger, tickets, asks):
     covered = set()
     for t in tickets:
@@ -156,16 +170,19 @@ def render(ledger, issues, prs, tickets, asks):
         "comment `/claim <agent> t/<id>-<slug>` on the ticket. Never push to `main`.",
         "",
     ]
-    if no_ticket or no_row or bad_row or asks or inbox:
+    missing = plan_ids_missing()
+    if no_ticket or no_row or bad_row or asks or inbox or missing:
         out += ["## ⚠️ Gaps to fix first (planner)", ""]
         out += [f"- Ledger {r['id']} ({r['status']}) has no ticket: {r['ask'][:90]}" for r in no_ticket]
         out += [f"- Ticket {row(t)} names no ledger row (add `Ledger: <id>`)" for t in no_row]
         out += [f"- Ticket {row(t)} names unknown ledger ids {', '.join(ids)}" for t, ids in bad_row]
         out += [f"- New owner ask waiting for intake: {row(a)}" for a in asks]
         out += [f"- Inbox file waiting for intake: `docs/inbox/{f}`" for f in inbox]
+        out += [f"- Plan id {i} is missing from docs/ROADMAP.md" for i in missing]
         out.append("")
-    out += [f"## Ready ({len(ready)}): take the first one you can do", "", "| Ticket | Priority | Ledger |", "|---|---|---|"]
-    out += [f"| {row(t)} | {'p'+str(prio(t)) if prio(t) < 4 else '—'} | {led(t)} |" for t in ready] or ["| none | | |"]
+    meant = lambda t: ", ".join(sorted(l[4:] for l in labels(t) if l.startswith("for:"))) or "any"
+    out += [f"## Ready ({len(ready)}): take the first one you can do", "", "| Ticket | Priority | Ledger | For |", "|---|---|---|---|"]
+    out += [f"| {row(t)} | {'p'+str(prio(t)) if prio(t) < 4 else '—'} | {led(t)} | {meant(t)} |" for t in ready] or ["| none | | | |"]
     out += ["", f"## Claimed ({len(claimed)})", "", "| Ticket | Agent | Branch | Since | Last push |", "|---|---|---|---|---|"]
     for t in claimed:
         c = last_claim(t["number"])
@@ -219,7 +236,10 @@ def cmd_audit():
         print(f"INTAKE owner-ask #{a['number']} {a['title']}")
     for f in inbox:
         print(f"INTAKE inbox {f}")
-    n = len(no_ticket) + len(no_row) + len(bad_row) + len(asks) + len(inbox)
+    missing = plan_ids_missing()
+    for i in missing:
+        print(f"GAP plan id {i} (MASTER_PLAN) is missing from docs/ROADMAP.md")
+    n = len(no_ticket) + len(no_row) + len(bad_row) + len(asks) + len(inbox) + len(missing)
     print(f"{n} item(s)" if n else "audit ok")
     return 1 if n else 0
 
