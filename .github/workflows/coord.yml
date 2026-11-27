@@ -55,8 +55,8 @@ jobs:
       - name: Write the board into issue #1
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python3 tools/coord.py board --write
+        run: if [ -f tools/coord.py ]; then python3 tools/coord.py board --write; else echo "main has no tools/coord.py yet"; fi
       - name: Audit (gaps are listed on the board; this step only reports)
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python3 tools/coord.py audit | tee -a "$GITHUB_STEP_SUMMARY" || true
+        run: if [ -f tools/coord.py ]; then python3 tools/coord.py audit | tee -a "$GITHUB_STEP_SUMMARY" || true; fi
