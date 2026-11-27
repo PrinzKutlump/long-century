@@ -5,7 +5,7 @@ const path = require("node:path");
 const app = express();
 const port = Number(process.env.PORT) || 3000;
 const distDir = path.join(__dirname, "dist");
-const entryHtml = path.join(distDir, "long-century.html");
+const entryHtml = path.join(distDir, "index.html");
 
 app.use(express.static(distDir, { index: "index.html" }));
 

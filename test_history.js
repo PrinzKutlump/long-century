@@ -199,8 +199,9 @@ console.log("PASS: advance menu and toggles, actual three-turn cutoff, first rep
 `,context);
 
 // Exercise the shipped script and the shared engine with the same opening state.
+const { readEngineFile } = require("./scripts/transpile-engine.cjs");
 const engine = require("./engine-files.json")
- .map(file => fs.readFileSync("src/" + file, "utf8")).join("\n;\n");
+ .map(file => readEngineFile(__dirname, file)).join("\n;\n");
 const londonEstimates = `
  newGame("GBR", 7);
  JSON.stringify(["dock", "coal"].map(kind => {

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>The Long Century</title>
+    <meta
+      name="description"
+      content="Lead a country from 1836 through 1936 in a single-player historical strategy game. Manage construction, budgets, diplomacy and reform one month at a time."
+    />
+    <meta property="og:title" content="The Long Century" />
+    <meta
+      property="og:description"
+      content="Lead a country from 1836 through 1936 in a single-player historical strategy game. Manage construction, budgets, diplomacy and reform one month at a time."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#141b26" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="LongCentury" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body data-state="title">
+    <div id="lc-boot-splash" class="lc-boot-splash" aria-label="Loading The Long Century">
+      <div class="lc-boot-card">
+        <img src="/icon.svg" alt="" width="64" height="64" />
+        <h1>The Long Century</h1>
+        <p>Preparing the chancelleries of 1836…</p>
+      </div>
+    </div>
+    <div id="app">
+      <header class="top">
+        <div class="band" aria-hidden="true"></div>
+        <div class="hdr" id="hdr" data-country="GBR" data-date="January 1836">
+          <span class="crest" id="hdr-crest"></span>
+          <div class="when" id="hdr-when">
+            <div class="month" id="hdr-date">January 1836</div>
+            <div class="rumi" id="hdr-country">United Kingdom · 1836</div>
+          </div>
+          <div class="acts" id="hdr-acts">
+            <button class="hb" data-a="togglemute" aria-label="Toggle sound">Sound</button>
+            <button class="end" data-a="end" data-month="0">End month</button>
+          </div>
+        </div>
+        <div id="stats" role="region" aria-label="National key metrics">
+          <button class="rc mini-tap ex" id="stat-treasury" data-a="why" data-t="nat" data-k="net" aria-label="Treasury: £1,000">
+            <span>Treasury</span>
+            <b id="val-treasury">£1,000</b>
+            <small id="sub-treasury" class="pos">+£0 a month</small>
+          </button>
+          <button class="rc" id="stat-rank" data-a="why" data-t="dip" data-k="rank">
+            <span>Rank</span>
+            <b>1st</b>
+            <small>Great Power</small>
+          </button>
+          <button class="rc" id="stat-date" data-a="tab" data-t="over">
+            <span>Date</span>
+            <b id="val-date">Jan 1836</b>
+            <small id="sub-date">Turn 1</small>
+          </button>
+        </div>
+      </header>
+      <div id="ticker" role="status" aria-live="polite">
+        <i></i>
+        <span>Welcome to The Long Century.</span>
+      </div>
+      <main>
+        <div id="map"></div>
+        <div id="page"></div>
+        <div id="sheet"></div>
+      </main>
+      <nav class="bnav" aria-label="Sections"></nav>
+    </div>
+    <div id="modal" hidden></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

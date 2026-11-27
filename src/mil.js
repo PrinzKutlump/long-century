@@ -169,7 +169,7 @@ function laneIntercept(a){const u=a.loc,v=a.path[0],tag=armyTag(a);
 function blockadeMonth(){const at={};for(const a of G.armies)if(a.naval&&!a.reb&&a.u.length&&!a.path.length&&a.u.some(isWarship))(at[a.loc]=at[a.loc]||[]).push(a);
  const by={};for(const p of G.plist){if(!p.sea||!p.o||p.waste)continue;const e=by[p.o]=by[p.o]||{tot:0,blk:0,who:{}};e.tot+=p.pop;if(p.ctl!==p.o)continue;const F=at[p.id];if(!F||F.some(a=>friendly(p.o,a.o)))continue;const foes=F.filter(a=>hostile(p.o,a.o));if(!foes.length)continue;e.blk+=p.pop;for(const a of foes)e.who[a.o]=(e.who[a.o]||0)+strength(a);}
  for(const tag in G.c){const c=G.c[tag];if(!c.alive)continue;const e=by[tag],share=e&&e.tot>0?e.blk/e.tot:0;let who=null,bs=0;if(e)for(const t in e.who)if(e.who[t]>bs){bs=e.who[t];who=t;}
-  const was=c.blk?c.blk.share:0;c.blk={share,by:who};c.access=share>0?Math.max(.15,1-share*.85):1;
+  const was=c.blk?c.blk.share:0;c.blk={share,by:who};c.access=share>0?Math.max(.15,1-share*.85):Math.max(.15,c.access??1);
   if(share>0&&who){warScore(who,tag,share);G.c[who].blkIn=(G.c[who].blkIn||0)+share;}
   if(tag===G.player){if(share>=.2&&was<.2)msg("war","Our ports are blockaded by "+nameOf(who)+": trade is strangled.");else if(share<.05&&was>=.2)msg("war","The blockade of our ports is lifted.");}
   else if(who===G.player&&share>=.2&&was<.2)msg("war","Our fleet now blockades "+c.n+".");}}

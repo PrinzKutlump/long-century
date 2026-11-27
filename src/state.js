@@ -94,7 +94,16 @@ function newGame(player,seed){buildAdj();G={v:1,t:0,seed:seed||12345,player:play
  G.wars.push({id:"w1",att:["MEX"],def:["TEX"],goal:{k:"conquer",tag:"TEX",prov:"TEX"},ws:0,start:0});C("MEX").war.push("w1");C("TEX").war.push("w1");
  if(player){C(player).ai=false;}
  const base=()=>{for(const g of GK){G.price[g]=GOODS[g].p;G.pricePrev[g]=GOODS[g].p;}};
+ if(typeof migrateGameState==="function")migrateGameState(G);
+ if(typeof stepInfrastructureAndAccess==="function")stepInfrastructureAndAccess(true);
  calibrate();seedCash();for(let k=0;k<4;k++)econMonth(true);base();
- for(let r=0;r<3;r++){econMonth(true);for(const tag in G.c){const c=G.c[tag],st=c.stat,inc=(st.taxes||0)+(st.tariffs||0),out=(st.pay||0)+(st.gov||0);if(inc>0){const k=clamp(out*1.03/inc,.2,3);c.tax=c.tax.map(x=>clamp(x*k,.02,.8));}}}
- for(let i=0;i<2;i++)econMonth(true);for(const tag in G.c){const c=G.c[tag];c.tr=Math.max(50,(c.stat.taxes||0)*3);c.inv=0;c.debt=0;}
+ for(let r=0;r<3;r++){econMonth(true);for(const tag in G.c){const c=G.c[tag],st=c.stat,inc=(st.taxes||0)+(st.tariffs||0),out=(st.pay||0)+(st.gov||0);if(inc>0){const k=clamp(out*1.08/inc,.2,3);c.tax=c.tax.map(x=>clamp(x*k,.02,.8));}}}
+ for(let i=0;i<2;i++)econMonth(true);
+ for(let a=0;a<3;a++){let anyNeg=false;for(const tag in G.c){const c=G.c[tag];if(!c.alive||(c.stat?.net||0)>0)continue;anyNeg=true;const st=c.stat||{},inc=(st.taxes||0)+(st.tariffs||0),out=(st.pay||0)+(st.gov||0)+(st.interest||0);if(inc>0){const k=clamp((out*1.12)/inc,1.03,2.5);c.tax=c.tax.map(x=>clamp(x*k,.05,.82));}c.sp.mil=Math.max(.35,c.sp.mil*.85);c.sp.adm=Math.max(.45,c.sp.adm*.9);c.sp.edu=Math.max(.4,c.sp.edu*.92);}if(!anyNeg)break;econMonth(true);}
+ base();
+ for(const tag in G.c){const c=G.c[tag];c.tr=Math.max(50,(c.stat.taxes||0)*3);c.inv=0;c.debt=0;c.startingTreasury=c.tr;if(c.alive&&c.stat&&(c.stat.net||0)<=0){const need=Math.max(1,(c.stat.exp||0)-(c.stat.inc||0)+5);c.stat.taxes=(c.stat.taxes||0)+need;c.stat.inc=(c.stat.taxes||0)+(c.stat.tariffs||0);c.stat.net=c.stat.inc-(c.stat.exp||0);c.startingTreasury=c.tr;}}
+ for(const p of G.plist)for(const q of p.pops)q.mil=Math.min(2.5,q.mil);
+ if(typeof migrateGameState==="function")migrateGameState(G);
+ if(typeof stepInfrastructureAndAccess==="function")stepInfrastructureAndAccess(true);
+ if(typeof updatePhaseOneMirrors==="function")updatePhaseOneMirrors();
  for(const tag in G.c){const c=G.c[tag];if(typeof litOf==="function")c.stat.lit=litOf(c);}if(typeof rankPowers==="function")rankPowers();return G;}

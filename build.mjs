@@ -1,6 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
+import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
+
+const require = createRequire(import.meta.url);
+const { readEngineFile } = require("./scripts/transpile-engine.cjs");
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
 const readUtf8 = (relPath) => fs.readFileSync(path.join(rootDir, relPath), "utf8");
@@ -47,7 +51,7 @@ if (!/^[0-9]+$/.test(buildNumber)) {
 const js = [
   `const LC_BUILD_NUMBER = ${JSON.stringify(buildNumber)};`,
   codec,
-  ...jsFiles.map((f) => readUtf8(path.join("src", f))),
+  ...jsFiles.map((f) => readEngineFile(rootDir, f)),
 ].join("\n;\n");
 
 const description =

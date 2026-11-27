@@ -1,0 +1,131 @@
+export {};
+
+declare global {
+  interface CountryRecord extends Record<string, any> {
+    tag: string;
+    n: string;
+    adj: string;
+    cap: string;
+    alive: boolean;
+    ai: boolean;
+    civ: boolean;
+    tr: number;
+    inv: number;
+    debt: number;
+    access?: number;
+    blk?: { share: number; by?: string | null };
+    stat: Record<string, any>;
+    rel: Record<string, number>;
+    war: string[];
+    bp: Record<string, number>;
+    fill: Record<string, number>;
+    sold: Record<string, number>;
+    impSh: Record<string, number>;
+    bq?: any[];
+    commercialRoute?: any;
+  }
+
+  interface ProvinceRecord extends Record<string, any> {
+    id: string;
+    n: string;
+    o: string | null;
+    ctl: string | null;
+    t: string;
+    pop: number;
+    sea?: number;
+    rail: number;
+    fort: number;
+    port?: number;
+    waste?: boolean;
+    col?: number;
+    farm?: string;
+    mine?: string;
+    factories: any[];
+    build: any[];
+    pops: any[];
+  }
+
+  var G: Record<string, any> & {
+    v: number;
+    t: number;
+    seed: number;
+    player: string | null;
+    c: Record<string, CountryRecord>;
+    prov: Record<string, ProvinceRecord>;
+    plist: ProvinceRecord[];
+    armies: any[];
+    wars: any[];
+    price: Record<string, number>;
+    pricePrev: Record<string, number>;
+    tight?: Record<string, number>;
+    rank: string[];
+    msgs: any[];
+    log: any[];
+    card?: any;
+    tradeReceipts?: any[];
+  };
+
+  var WORLD: Record<string, any>;
+  var GOODS: Record<string, { n: string; p: number; [k: string]: any }>;
+  var GK: string[];
+  var RECIPE: Record<string, { O: number; I: Record<string, number> }>;
+  var TERRAIN: Record<string, { n: string; sup: number; farm: number; width: number }>;
+  var BLD: Record<string, { n: string; m?: number; cost: Record<string, number>; up: (p: any) => void }>;
+  var TECHS: any[];
+  var TF: Record<string, any>;
+  var ADJ: Record<string, string[]>;
+  var SEAADJ: Record<string, [string, number][]>;
+  var SEAR_OF: Record<string, any>;
+  var RAILK: number;
+  var UI: Record<string, any> | undefined;
+
+  function P(id: string): ProvinceRecord;
+  function C(tag: string): CountryRecord;
+  function clamp(v: number, a: number, b: number): number;
+  function sum<T>(arr: T[], fn?: (x: T) => number): number;
+  function r2(v: number): number;
+  function rng(): number;
+  function provsOf(tag: string): ProvinceRecord[];
+  function atWarWith(a: any, b: any): boolean;
+  function hostile(a: string, b: string): boolean;
+  function friendly(a: string, b: string): boolean;
+  function bxl(p: ProvinceRecord, id: string): number;
+  function counts(p: ProvinceRecord): Record<string, number>;
+  function mobOf(c: CountryRecord): any;
+  function bqMonth(c: CountryRecord): void;
+  function investMonth(): void;
+  function purgeWars(): void;
+  function econMonth(warm?: boolean): void;
+  function socMonth(): void;
+  function researchMonth(): void;
+  function modMonth(): void;
+  function polMonth(): void;
+  function eventsMonth(): void;
+  function gwMonth(): void;
+  function decMonth(): void;
+  function diploMonth(): void;
+  function thMonth(): void;
+  function aiNavy(c: CountryRecord): void;
+  function aiMob(c: CountryRecord): void;
+  function aiRecruit(c: CountryRecord): void;
+  function aiBld(c: CountryRecord): void;
+  function armyMonth(): void;
+  function aiMonth(): void;
+  function progMonth(): void;
+  function acceptCultures(): void;
+  function histYear(): void;
+  function roundHouseholdState(): void;
+  function cardDefault(): void;
+  function governedIndia(c: CountryRecord): ProvinceRecord[];
+  function strength(a: any): number;
+  function creditInvestmentFactor(c: CountryRecord): number;
+  function costOf(b: any): Record<string, number>;
+  function goodOK(c: CountryRecord, g: string): boolean;
+  function importOrderShare(c: CountryRecord, g: string): number;
+  function nameOf(tag: string): string;
+  function pct(v: number): string;
+  function money(v: number): string;
+  function moneyS(v: number): string;
+  function dateStr(t: number): string;
+  function syncInitialEngineState(g?: any, playerTag?: string | null): any;
+}

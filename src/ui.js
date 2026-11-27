@@ -64,11 +64,11 @@ const PAGES={};
 /* ---------- decision cards: the game waits here ---------- */
 function render(){if(UI.tab!=="map"){const f=document.getElementById("tkf");if(f)f.hidden=true;}armCampaignBack();dispSweep();drawTop();drawCard();if(UI.tab==="map"){$("#page").classList.remove("open");drawMap();}else{const pg=$("#page"),y=pg.scrollTop;pg.innerHTML=(PAGES[UI.tab]||PAGES.over)();enhance(pg);pg.classList.add("open");pg.scrollTop=y;}}
 /* ---------- turns ---------- */
-function setPlay(v){if(v&&G&&G.card){UI.cardHide=0;drawCard();toast("A decree awaits your seal.");v=0;}UI.play=v;if(!v)UI.advanceTo=null;clearInterval(UI.timer);if(v)UI.timer=setInterval(()=>{if(document.hidden)return;endMonth();},700);if(G&&G.player)drawTop();}
+function setPlay(v){if(v&&G&&G.card){UI.cardHide=0;drawCard();toast("A decree awaits your seal.");v=0;}UI.play=v;if(!v)UI.advanceTo=null;clearInterval(UI.timer);if(v)UI.timer=setInterval(()=>{if(document.hidden||UI._advancing)return;endMonth();},700);if(G&&G.player)drawTop();}
 /* ---------- saves ---------- */
 // These values are produced and consumed within the economy pass.
 const SKIP=new Set(["grainFreight","plist","_n","_craUn","_a","_gross","_art","_im","_inc",
- "_ari","_cap","_gdp","_govPay","_works",
+ "_ari","_cap","_gdp","_govPay","_works","_causes","_bqDoneMonth","_playerState",
  /* A3: the household market runs in every province, so its per-month report rows are rebuilt each month. They are saved only for the
     provinces of the nation being played (the Economy page shows them straight after a load); everyone else's are not saved. */
  "employerAccount"]);
@@ -135,6 +135,7 @@ function unpack(z){
   }
  }
  const defaults=applySaveDefaults(g);
+ if(typeof migrateGameState==="function")migrateGameState(g);
  G=g;
  LOADED_REV=savedRev;
  LAST_LOAD={savedRev,modelRev:MODEL_REV,defaults};
@@ -280,38 +281,39 @@ const ACT={
  facmenu:d=>{const c=me(),p=P(d.p);openSheet(`<h2>A factory in ${esc(p.n)}</h2><p class="small muted">The state pays for timber, cement and machine parts as they are delivered, about £17k in all.</p><div class="list">${Object.keys(RECIPE).filter(g=>goodOK(c,g)).map(g=>`<div><span>${GOODS[g].n}<br><span class="small muted">margin ${pct(facMargin(c,g))}; needs ${Object.keys(RECIPE[g].i).map(x=>GOODS[x].n.toLowerCase()).join(", ")}</span></span><button class="btn sm" data-a="build" data-p="${p.id}" data-g="${g}">Build</button></div>`).join("")}</div>`);},
  chgood:d=>{const cur=(UI.cg||CG0).slice(),i=cur.indexOf(d.g);if(i>=0)cur.splice(i,1);else{if(cur.length>=6)cur.shift();cur.push(d.g);}UI.cg=cur;render();},
  lsort:d=>{if((UI.lk||"rank")===d.k)UI.ld=-(UI.ld||1);else{UI.lk=d.k;UI.ld=d.k==="rank"?1:-1;}render();},lall:()=>{UI.lall=!UI.lall;render();},
- dflt:()=>{const c=me();if(c.debt<=0)return;if(!confirm("Default on "+money(c.debt)+" of debt? Creditors will be furious and no one will lend to us for ten years."))return;defaultDebt(c,true);toast("We have defaulted on our debts.");render();},
- upg:d=>{const c=me(),p=P(d.p),f=p.factories[+d.i];if(!f||p.o!==c.tag)return;const ok=upgCan(c,p,f);if(!ok.ok){toast(ok.why);return;}const C=upgCost(f);startUpgrade(c,p,f,true);toast("Work begins to modernize the "+GOODS[f.g].n.toLowerCase()+" works ("+costTxt(C)+").");openSheet(provHTML(p));},
- build:d=>{startFactory(me(),P(d.p),d.g,true);toast("Work begins on a "+GOODS[d.g].n.toLowerCase()+" factory.");openSheet(provHTML(P(d.p)));},
- recmenu:d=>{const c=me(),p=P(d.p);openSheet(`<h2>Raise forces at ${esc(p.n)}</h2><div class="list">${Object.keys(UNITS).filter(k=>(!UNITS[k].tech||c.tech[UNITS[k].tech])&&(UNITS[k].land||p.sea)).map(k=>`<div><span>${UNITS[k].n}</span><button class="btn sm" data-a="recruit" data-k="${k}" data-p="${p.id}">Raise</button></div>`).join("")}</div>`);},
- recruit:d=>{const r=recruit(me(),d.k,d.p);toast(r.txt);if(UI.tab!=="map")render();},
- colonize:d=>{const r=colonize(me(),P(d.p));toast(r.txt);openSheet(provHTML(P(d.p)));},
- fab:d=>{const p=P(d.p),r=fabricate(me(),p.o,p.id);toast(r.txt);},
- reform:d=>{const r=passReform(me(),d.id,d.concession==="1");toast(r.ok?"The reform is passed.":r.why);render();},
- party:d=>{setRuling(me(),d.k);render();},research:d=>{const r=applyCampaignCommand({...issueCampaignCommand(),kind:"research",tech:d.id});toast(r.txt||r.why);render();},
- modreform:d=>{const r=applyCampaignCommand({...issueCampaignCommand(),kind:"reform",reform:d.id});toast(r.txt||r.why);render();},
- rqadd:d=>{const r=applyCampaignCommand({...issueCampaignCommand(),kind:"researchQueue",op:"add",tech:d.id});toast(r.txt||r.why);render();},
- rqdel:d=>{const r=applyCampaignCommand({...issueCampaignCommand(),kind:"researchQueue",op:"remove",tech:d.id});toast(r.txt||r.why);render();},
- rqmv:d=>{const r=applyCampaignCommand({...issueCampaignCommand(),kind:"researchQueue",op:"move",tech:d.id,direction:+d.dir});toast(r.txt||r.why);render();},
- declare:d=>{const c=me();if(c.war.length){toast("Finish the war we are already fighting first.");return;}const ei=estInf(c,{k:d.k,t:d.t,prov:d.p||null,why:""});if(c.infamy<=COAL_AT&&c.infamy+ei>COAL_AT&&!confirm("This war would raise our infamy by about "+Math.round(ei)+", from "+Math.round(c.infamy)+" to "+Math.round(c.infamy+ei)+". Above "+COAL_AT+" our neighbours and the Great Powers will form a coalition against us. Declare war anyway?"))return;const w=declareWar(c.tag,d.t,{k:d.k,tag:d.t,prov:d.p||null,cul:d.c||null,fab:false});toast(w?"War is declared.":G.card?"The Great Powers call a congress first.":"We cannot declare war on them now.");render();},
- dealopen:d=>{const w=G.wars.find(x=>x.id===d.w);if(!w)return;UI.deal={w:w.id,sel:w.att.includes(me().tag)?["goal"]:[]};openSheet(dealHTML());},
- dealtog:d=>{const s=UI.deal.sel,i=s.indexOf(d.k);if(i<0)s.push(d.k);else s.splice(i,1);openSheet(dealHTML());},
- dealgo:()=>{const w=G.wars.find(x=>x.id===UI.deal.w);if(!w)return;const r=peaceOffer(w,"deal",UI.deal.sel);toast(r.txt);if(r.ok){closeSheet();render();}else openSheet(dealHTML());},
- peace:d=>{const w=G.wars.find(x=>x.id===d.w);if(!w)return;const r=peaceOffer(w,d.k);toast(r.txt);render();},
- guar:d=>{const r=guarantee(me(),d.t);toast(r.ok?r.txt+" If it is attacked, we go to war.":r.txt);render();},unguar:d=>{revokeGuar(me(),d.t);toast("The guarantee is withdrawn.");render();},dipnat:d=>{UI.dipT=d.t;if(UI.tab!=="dip"){UI.tab="dip";closeSheet();}render();$("#page").scrollTop=0;},dipback:()=>{UI.dipT=null;render();$("#page").scrollTop=0;},unally:d=>{if(confirm("Break the alliance? Relations with them fall by 25."))toast(unallyDo(me(),d.t).txt);render();},
-improve:d=>{const r=improveDo(me(),d.t);toast(r.txt||r.why);render();},
-ally:d=>{const r=allyDo(me(),d.t);toast(r.txt||r.why);render();},
-influence:d=>{const r=influenceDo(me(),d.t);toast(r.txt||r.why);render();},
- cheat:()=>{me().tr+=1e8;G.cheat=(G.cheat||0)+1;toast("£100 million added to the treasury.");render();},
- bld:d=>{const p=P(d.p),r=d.b==="rail"?(railCan(me(),p).ok?(startRail(me(),p),{ok:true,txt:"Railway works begin in "+p.n+"."}):{ok:false,txt:railCan(me(),p).why}):startBld(me(),p,d.b);toast(r.txt||r.why);openSheet(provHTML(p));},
- gw:d=>{const r=startGW(me(),d.id);toast(r.txt);render();},dec:d=>{const r=takeDecision(me(),d.id);toast(r.txt);if(r.ok&&window.AUD)AUD.sfx&&AUD.sfx("seal");render();},
- save:()=>{SAVES.set("vic.slot",pack()).then(()=>toast("Saved."),()=>toast("This browser will not let us save."));},load:()=>{let z=null;try{z=SAVES.get("vic.slot");}catch(e){}if(!z){toast("No save.");return;}try{unpack(z);buildMap();render();toast("Loaded.");}catch(e){toast("That save could not be read.");}},
- export:()=>{const z=pack();navigator.clipboard&&navigator.clipboard.writeText(z).then(()=>toast("Copied the save to the clipboard ("+Math.round(z.length/1024)+" KB)."),()=>prompt("Copy this save:",z));},
- import:()=>{const z=prompt("Paste a save:");if(!z)return;try{unpack(z.trim());buildMap();render();toast("Loaded.");}catch(e){toast("That save could not be read.");}},
- theme:()=>{const r=document.documentElement,cur=r.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");r.dataset.theme=cur==="dark"?"light":"dark";try{localStorage.setItem("vic.theme",r.dataset.theme);}catch(e){}},
- newgame:()=>{if(confirm("Start a new game? The autosave will be replaced."))showStart();},
- pick:d=>{G.player=d.t;if(typeof bmLeave==="function"){UI.bm.on=false;UI.bm.proj=null;UI.bm.sel=[];bmSave();}for(const t in G.c)G.c[t].ai=t!==d.t;$("#start").remove();UI.tab="map";UI.readM=G.msgs[0];UI._dm=G.msgs[0];UI._dmOn=1;buildMap();render();atlasHome();autosave();toast("You lead "+me().n+". "+dateStr(G.t)+".");},
- cont:()=>{try{unpack(SAVES.get("vic.auto"));$("#start").remove();buildMap();render();}catch(e){toast("The autosave could not be read.");}}};
+ dflt:()=>{const c=me();if(c.debt<=0)return;askSheet({ti:"Default on our debts?",danger:1,lab:"Default",body:"Default on "+money(c.debt)+" of debt? Creditors will be furious and no one will lend to us for ten years.",go:["dflt",{}]});},
+  upg:d=>{const c=me(),p=P(d.p),f=p.factories[+d.i];if(!f||p.o!==c.tag)return;const ok=upgCan(c,p,f);if(!ok.ok){toast(ok.why);return;}const C=upgCost(f);startUpgrade(c,p,f,true);toast("Work begins to modernize the "+GOODS[f.g].n.toLowerCase()+" works ("+costTxt(C)+").");openSheet(provHTML(p));},
+  build:d=>{startFactory(me(),P(d.p),d.g,true);toast("Work begins on a "+GOODS[d.g].n.toLowerCase()+" factory.");openSheet(provHTML(P(d.p)));},
+  recmenu:d=>{const c=me(),p=P(d.p);openSheet(`<h2>Raise forces at ${esc(p.n)}</h2><div class="list">${Object.keys(UNITS).filter(k=>(!UNITS[k].tech||c.tech[UNITS[k].tech])&&(UNITS[k].land||p.sea)).map(k=>`<div><span>${UNITS[k].n}</span><button class="btn sm" data-a="recruit" data-k="${k}" data-p="${p.id}">Raise</button></div>`).join("")}</div>`);},
+  recruit:d=>{const r=recruit(me(),d.k,d.p);toast(r.txt);if(UI.tab!=="map")render();},
+  colonize:d=>{const r=colonize(me(),P(d.p));toast(r.txt);openSheet(provHTML(P(d.p)));},
+  fab:d=>{const p=P(d.p),r=fabricate(me(),p.o,p.id);toast(r.txt);},
+  reform:d=>{const r=passReform(me(),d.id,d.concession==="1");toast(r.ok?"The reform is passed.":r.why);render();},
+  party:d=>{setRuling(me(),d.k);render();},research:d=>{const r=applyCampaignCommand({...issueCampaignCommand(),kind:"research",tech:d.id});toast(r.txt||r.why);render();},
+  modreform:d=>{const r=applyCampaignCommand({...issueCampaignCommand(),kind:"reform",reform:d.id});toast(r.txt||r.why);render();},
+  rqadd:d=>{const r=applyCampaignCommand({...issueCampaignCommand(),kind:"researchQueue",op:"add",tech:d.id});toast(r.txt||r.why);render();},
+  rqdel:d=>{const r=applyCampaignCommand({...issueCampaignCommand(),kind:"researchQueue",op:"remove",tech:d.id});toast(r.txt||r.why);render();},
+  rqmv:d=>{const r=applyCampaignCommand({...issueCampaignCommand(),kind:"researchQueue",op:"move",tech:d.id,direction:+d.dir});toast(r.txt||r.why);render();},
+  declare:d=>{const c=me();if(c.war.length){toast("Finish the war we are already fighting first.");return;}const w=declareWar(c.tag,d.t,{k:d.k,tag:d.t,prov:d.p||null,cul:d.c||null,fab:false});toast(w?"War is declared.":G.card?"The Great Powers call a congress first.":"We cannot declare war on them now.");render();},
+  dealopen:d=>{const w=G.wars.find(x=>x.id===d.w);if(!w)return;UI.deal={w:w.id,sel:w.att.includes(me().tag)?["goal"]:[]};openSheet(dealHTML());},
+  dealtog:d=>{const s=UI.deal.sel,i=s.indexOf(d.k);if(i<0)s.push(d.k);else s.splice(i,1);openSheet(dealHTML());},
+  dealgo:()=>{const w=G.wars.find(x=>x.id===UI.deal.w);if(!w)return;const r=peaceOffer(w,"deal",UI.deal.sel);toast(r.txt);if(r.ok){closeSheet();render();}else openSheet(dealHTML());},
+  peace:d=>{const w=G.wars.find(x=>x.id===d.w);if(!w)return;const r=peaceOffer(w,d.k);toast(r.txt);render();},
+  guar:d=>{const r=guarantee(me(),d.t);toast(r.ok?r.txt+" If it is attacked, we go to war.":r.txt);render();},unguar:d=>{revokeGuar(me(),d.t);toast("The guarantee is withdrawn.");render();},dipnat:d=>{UI.dipT=d.t;if(UI.tab!=="dip"){UI.tab="dip";closeSheet();}render();$("#page").scrollTop=0;},dipback:()=>{UI.dipT=null;render();$("#page").scrollTop=0;},unally:d=>{toast(unallyDo(me(),d.t).txt);render();},
+  improve:d=>{const r=improveDo(me(),d.t);toast(r.txt||r.why);render();},
+  ally:d=>{const r=allyDo(me(),d.t);toast(r.txt||r.why);render();},
+  influence:d=>{const r=influenceDo(me(),d.t);toast(r.txt||r.why);render();},
+  cheat:()=>{me().tr+=1e8;G.cheat=(G.cheat||0)+1;toast("£100 million added to the treasury.");render();},
+  bld:d=>{const p=P(d.p),r=d.b==="rail"?(railCan(me(),p).ok?(startRail(me(),p),{ok:true,txt:"Railway works begin in "+p.n+"."}):{ok:false,txt:railCan(me(),p).why}):startBld(me(),p,d.b);toast(r.txt||r.why);openSheet(provHTML(p));},
+  gw:d=>{const r=startGW(me(),d.id);toast(r.txt);render();},dec:d=>{const r=takeDecision(me(),d.id);toast(r.txt);if(r.ok&&window.AUD)AUD.sfx&&AUD.sfx("seal");render();},
+  save:()=>{SAVES.set("vic.slot",pack()).then(()=>toast("Saved."),()=>toast("This browser will not let us save."));},load:()=>{let z=null;try{z=SAVES.get("vic.slot");}catch(e){}if(!z){toast("No save.");return;}try{unpack(z);buildMap();render();toast("Loaded.");}catch(e){toast("That save could not be read.");}},
+  export:()=>{const z=pack();if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(z).then(()=>toast("Copied the save to the clipboard ("+Math.round(z.length/1024)+" KB)."),()=>{openSettings();const ta=$("#svtxt");if(ta)ta.value=z;toast("Copy the save from the box in Settings.");});else{openSettings();const ta=$("#svtxt");if(ta)ta.value=z;toast("Copy the save from the box in Settings.");}},
+  import:()=>{openSettings();toast("Paste your save text into Settings to load.");},
+  theme:()=>{const r=document.documentElement,cur=r.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");r.dataset.theme=cur==="dark"?"light":"dark";try{localStorage.setItem("vic.theme",r.dataset.theme);}catch(e){}},
+  newgame:()=>{askSheet({ti:"Start a new game?",danger:1,lab:"New game",body:"You return to the title page. The autosave is replaced when you begin again; saves in the slots are kept.",go:["newgo",{}]});},
+  pick:d=>{G.player=d.t;if(typeof bmLeave==="function"){UI.bm.on=false;UI.bm.proj=null;UI.bm.sel=[];bmSave();}for(const t in G.c)G.c[t].ai=t!==d.t;const st=$("#start");if(st)st.remove();document.body.dataset.state="playing";UI.tab="map";UI.readM=G.msgs[0];UI._dm=G.msgs[0];UI._dmOn=1;if(window.AUD)AUD.sfx("seal");buildMap();render();atlasHome();autosave();toast("You lead "+me().n+". "+dateStr(G.t)+".");},
+  cont:()=>{try{unpack(SAVES.get("vic.auto"));const st=$("#start");if(st)st.remove();document.body.dataset.state="playing";if(window.AUD)AUD.sfx("seal");buildMap();render();}catch(e){toast("The autosave could not be read.");}},
+  togglemute:()=>{if(window.AUD){const m=AUD.toggleMute();toast(m?"Sound muted.":"Sound enabled.");drawTop();}}};
 /* ================= THE NEW SHELL: header, ticker, navigation, Overview, sheets ================= */
 Object.assign(ICON,{over:'<rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/>',disp:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>',more:'<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>',
  ledger:'<path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M9 9h6M9 13h6"/>',guide:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7v.5"/><path d="M12 17h.01"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>'});
@@ -335,20 +337,26 @@ function toast(t){const e=$("#ticker");if(!e)return;UI.tk=t;e.className="flash";
 function hdrX(v){UI.hx=v;if(v){const f=$("#tkf");if(f)f.hidden=true;}const a=$("#app");if(a)a.classList.toggle("hx",!!v);const b=$("#hdr .xp");if(b)b.setAttribute("aria-expanded",String(!!v));}
 ACT.hdrx=()=>hdrX(!UI.hx);
 function unreadN(){if(UI.readM===undefined)return 0;let n=0;for(const m of G.msgs){if(m===UI.readM)break;if(m.txt.includes(me().n)&&++n>=9)break;}return n;}
-function drawTop(){const c=me(),st=c.stat,war=c.war.length,rank=G.rank.indexOf(c.tag)+1,N=st.N||{},nf=natFig(c),net=st.net||0,atlas=UI.tab==="map",app=$("#app");
+function drawTop(){const c=me(),st=c.stat,war=c.war.length,rank=G.rank.indexOf(c.tag)+1,N=st.N||{},nf=natFig(c),net=st.net||0,atlas=UI.tab==="map",app=$("#app"),muted=window.AUD?.isMuted?.()||false;
+ const engState=typeof getPlayerEngineState==="function"?getPlayerEngineState(G):null;
+ const dateDisplay=engState?engState.dateLabel:dateStr(G.t);
+ const countryName=engState?engState.countryName:(c.n||c.tag);
+ const treasuryVal=engState?engState.treasury:c.tr;
+ const muteIc='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path class="lc-snd-on" d="M15.5 8.5a5 5 0 0 1 0 7"/><path class="lc-snd-off" d="M22 9l-6 6M16 9l6 6"/></svg>';
  if(app.classList.contains("atlas")!==atlas){app.classList.toggle("atlas",atlas);UI.mr=null;}if(!atlas&&UI.hx)UI.hx=false;app.classList.toggle("hx",!!UI.hx);
- if(atlas)$("#hdr").innerHTML=`<span class="crest">${flagSVG(c.formed||c.tag,"cf")}</span><button class="when xp" data-a="hdrx" aria-expanded="${!!UI.hx}" aria-label="National figures: treasury ${esc(moneyS(c.tr))}${war?", at war":""}. Tap to ${UI.hx?"fold":"unfold"}."><span class="month">${MONTHS[monthOf(G.t)].slice(0,3)} ${yearOf(G.t)}</span><span class="hsum"><span class="st">${esc(moneyS(c.tr))}</span>${war?'<span class="wr">at war</span>':""}${CHEV}</span></button><div class="acts"><button class="hb ${UI.play?"on":""}" data-a="play" aria-label="${UI.play?"Pause":"Advance time"}">${UI.play?"❚❚":"»"}</button><button class="hb" data-a="more" aria-label="More pages and settings">${ic("disp")}${UI.autosaveFailed?'<span class="bdg" aria-label="Autosave failed">!</span>':""}</button><button class="end" data-a="end" data-month="${G.t}">End month</button></div>`;
- else $("#hdr").innerHTML=`<span class="crest">${flagSVG(c.formed||c.tag,"cf")}</span><div class="when"><div class="month">${dateStr(G.t)}</div><div class="rumi">${esc(GOVS[c.gov].n)}, month ${G.t+1}</div></div><div class="acts"><button class="hb" data-a="more" aria-label="Campaign pages">${ic("disp")}</button><button class="hb" data-a="settings" aria-label="Settings and saves">${ic("gear")}${UI.autosaveFailed?'<span class="bdg" aria-label="Autosave failed">!</span>':""}</button><button class="hb ${UI.play?"on":""}" data-a="play" aria-label="${UI.play?"Pause":"Advance time"}">${UI.play?"❚❚":"»"}</button><button class="end" data-a="end" data-month="${G.t}">End month</button></div>`;
- const tiles=[["nat","Treasury",moneyS(c.tr),(net>=0?"+":"−")+money(Math.abs(net))+" a month",c.tr<0||(net<0&&c.tr<-net*6),net<0],["dip","Rank",ord(rank),isGP(c.tag)?"Great Power":"",0,0],["dip","Prestige",Math.round(c.pres),"",0,0],["pol","Militancy",nf.mil.toFixed(1),"of 10",nf.mil>=4,0],["mil","Army",ppl(N.SOL||0),"men",0,0],["dip","Infamy",c.infamy.toFixed(1),"limit "+COAL_AT,c.infamy>COAL_AT-6,0],["mil","War",war?war+" war"+(war>1?"s":""):"Peace","exhaustion "+Math.round(c.we),c.we>=40,0]];
+ if(atlas)$("#hdr").innerHTML=`<span class="crest" id="hdr-crest">${flagSVG(c.formed||c.tag,"cf")}</span><button class="when xp" id="hdr-when" data-a="hdrx" aria-expanded="${!!UI.hx}" aria-label="National figures: ${esc(countryName)}, treasury ${esc(moneyS(treasuryVal))}${war?", at war":""}. Tap to ${UI.hx?"fold":"unfold"}."><span class="month" id="hdr-date">${MONTHS[monthOf(G.t)].slice(0,3)} ${yearOf(G.t)}</span><span class="hsum"><span class="st" id="hdr-tr">${esc(moneyS(treasuryVal))}</span>${war?'<span class="wr">at war</span>':""}${CHEV}</span></button><div class="acts" id="hdr-acts"><button class="hb lc-mute-btn ${muted?"is-muted":""}" data-a="togglemute" data-audio-mute="1" aria-pressed="${muted}" aria-label="Toggle sound (M)">${muteIc}<span class="lc-mute-lbl">${muted?"Muted [M]":"Sound [M]"}</span></button><button class="hb" data-a="tab" data-t="tech" aria-label="Research">${ic("tech")}</button><button class="hb ${UI.play?"on":""}" data-a="play" aria-label="${UI.play?"Pause":"Advance time"}">${UI.play?"❚❚":"»"}</button><button class="hb" data-a="more" aria-label="More pages and settings">${ic("disp")}${UI.autosaveFailed?'<span class="bdg" aria-label="Autosave failed">!</span>':""}</button><button class="end" data-a="end" data-month="${G.t}" aria-busy="${!!UI._advancing}">${UI._advancing?"Working…":"End month"}</button></div>`;
+ else $("#hdr").innerHTML=`<span class="crest" id="hdr-crest">${flagSVG(c.formed||c.tag,"cf")}</span><div class="when" id="hdr-when"><div class="month" id="hdr-date">${esc(dateDisplay)}</div><div class="rumi" id="hdr-country">${esc(countryName)} · ${esc(GOVS[c.gov].n)}, month ${G.t+1}</div></div><div class="acts" id="hdr-acts"><button class="hb lc-mute-btn ${muted?"is-muted":""}" data-a="togglemute" data-audio-mute="1" aria-pressed="${muted}" aria-label="Toggle sound (M)">${muteIc}<span class="lc-mute-lbl">${muted?"Muted [M]":"Sound [M]"}</span></button><button class="hb" data-a="tab" data-t="tech" aria-label="Research">${ic("tech")}</button><button class="hb" data-a="more" aria-label="Campaign pages">${ic("disp")}</button><button class="hb" data-a="settings" aria-label="Settings and saves">${ic("gear")}${UI.autosaveFailed?'<span class="bdg" aria-label="Autosave failed">!</span>':""}</button><button class="hb ${UI.play?"on":""}" data-a="play" aria-label="${UI.play?"Pause":"Advance time"}">${UI.play?"❚❚":"»"}</button><button class="end" data-a="end" data-month="${G.t}" aria-busy="${!!UI._advancing}">${UI._advancing?"Working…":"End month"}</button></div>`;
+ const tiles=[["nat","Treasury",moneyS(treasuryVal),(net>=0?"+":"−")+money(Math.abs(net))+" a month",treasuryVal<0||(net<0&&treasuryVal<-net*6),net<0],["dip","Rank",ord(rank),isGP(c.tag)?"Great Power":"",0,0],["dip","Prestige",Math.round(c.pres),"",0,0],["pol","Militancy",nf.mil.toFixed(1),"of 10",nf.mil>=4,0],["mil","Army",ppl(N.SOL||0),"men",0,0],["dip","Infamy",c.infamy.toFixed(1),"limit "+COAL_AT,c.infamy>COAL_AT-6,0],["mil","War",war?war+" war"+(war>1?"s":""):"Peace","exhaustion "+Math.round(c.we),c.we>=40,0]];
  const sc=$("#stats"),sl=sc.scrollLeft;sc.innerHTML=tiles.map(([t,k,v,s,bad,sneg])=>`${exTile(k,t,bad)}<span>${k}</span><b>${esc(v)}</b>${s?`<small class="${sneg?"neg":""}">${esc(s)}</small>`:""}</button>`).join("");sc.scrollLeft=sl;if(atlas)sc.insertAdjacentHTML("beforeend",`<button class="rc" data-a="settings"><span>Game</span><b>Settings and saves</b></button>`+(UI.tk?`<p class="tkl">${esc(UI.tk)}</p>`:""));
  {const sm=$("#hdr .hsum"),w=sm&&sm.querySelector(".wr");if(w&&sm.scrollWidth>sm.clientWidth+1)w.remove();}
  const bd=dispUnread();
- const current=["over","map","eco","pol","works"].includes(UI.tab)?UI.tab:UI.tab==="news"?"over":"pol";
+ const current=["over","map","eco","works","mil","dip"].includes(UI.tab)?UI.tab:UI.tab==="news"?"over":UI.tab==="ledger"?"dip":UI.tab==="nat"?"over":"over";
  const month=$("#hdr .month");
  if(month&&month.scrollWidth>month.clientWidth+1)month.textContent=MONTHS[monthOf(G.t)].slice(0,3)+" "+yearOf(G.t);
- $(".bnav").innerHTML=[["over","Cabinet"],["map","Atlas"],["eco","Economy"],["works","Works"],["pol","Government"]].map(([key,label])=>
+ $(".bnav").innerHTML=[["over","Cabinet"],["map","Atlas"],["eco","Economy"],["works","Works"],["mil","Military"],["dip","World"]].map(([key,label])=>
   `<button class="bn" ${current===key?'aria-current="page"':""} data-a="tab" data-t="${key}">${ic(key)}<span class="l">${label}</span>${key==="over"&&bd?`<span class="badge">${bd}</span>`:""}</button>`
- ).join("");}
+ ).join("");
+ if(window.AUD)AUD.syncBadges();}
 
 /* ---------- alerts: each one plain sentence, tap to go where it is fixed ---------- */
 function overAlerts(){const c=me(),st=c.stat||{},A=[],tag=c.tag,net=st.net||0,add=(sev,txt,a,o)=>A.push(Object.assign({sev,txt,a},o||{}));
@@ -464,9 +472,22 @@ function returnCampaignView(){
  return true;
 }
 document.addEventListener("keydown",event=>{
- if(event.key==="Escape"&&returnCampaignView())event.preventDefault();
+ if(event.key==="Escape"&&returnCampaignView()){event.preventDefault();return;}
+ const tag=event.target?.tagName;
+ if(tag==="INPUT"||tag==="TEXTAREA"||tag==="SELECT")return;
+ if((event.key==="m"||event.key==="M")&&window.AUD){event.preventDefault();ACT.togglemute();return;}
+ if(document.body.dataset.state==="title"&&(event.key==="Enter"||event.key===" ")){
+  const cta=document.querySelector('[data-start="true"]');
+  if(cta){event.preventDefault();cta.click();}
+ }
 });
 /* Back is the on-screen arrow (and Escape). The History API is not used: inside the claude.ai wrapper a pushed entry could navigate the host page. */
 function armCampaignBack(){}
-function boot(){try{const th=localStorage.getItem("vic.theme");if(th)document.documentElement.dataset.theme=th;const z=+localStorage.getItem("vic.tz");if(z>=.8&&z<=1.3){UI.tz=z;document.documentElement.style.setProperty("--tz",z);}}catch(e){}(function(h){const o=document.getElementById("app");if(o){let n=o;while(n){const x=n.nextSibling;if(n.nodeType!==1||!/^(STYLE|SCRIPT|META|TITLE|LINK)$/.test(n.tagName))n.remove();n=x;}}document.body.insertAdjacentHTML("beforeend",h);})(`<div id="app"><header class="top"><div class="band" aria-hidden="true"></div><div class="hdr" id="hdr"></div><div id="stats"></div></header><div id="ticker" role="status" aria-live="polite"><i></i><span>Welcome to The Long Century.</span></div><main><div id="map"></div><div id="page"></div><div id="sheet"></div></main><nav class="bnav" aria-label="Sections"></nav></div><div id="modal" hidden></div>`);showStart();}
-window.addEventListener("load",()=>SAVES.init().then(boot,boot));
+function initialLayoutHTML(){
+ const s=typeof createInitialEngineState==="function"?createInitialEngineState():{countryTag:"GBR",countryName:"United Kingdom",startingTreasury:1000,treasury:1000,dateLabel:"January 1836",startYear:1836};
+ const crest=typeof flagSVG==="function"?flagSVG(s.countryTag||"GBR","cf"):"";
+ return `<div id="app"><header class="top"><div class="band" aria-hidden="true"></div><div class="hdr" id="hdr" data-country="${esc(s.countryTag||'GBR')}" data-date="${esc(s.dateLabel)}"><span class="crest" id="hdr-crest">${crest}</span><div class="when" id="hdr-when"><div class="month" id="hdr-date">${esc(s.dateLabel)}</div><div class="rumi" id="hdr-country">${esc(s.countryName)} · ${s.startYear||1836}</div></div><div class="acts" id="hdr-acts"><button class="hb lc-mute-btn" data-a="togglemute" data-audio-mute="1" aria-label="Toggle sound (M)"><span class="lc-mute-lbl">Sound [M]</span></button><button class="hb" data-a="tab" data-t="tech" aria-label="Research">${ic("tech")}</button><button class="hb" data-a="more" aria-label="Campaign pages">${ic("disp")}</button><button class="hb" data-a="settings" aria-label="Settings and saves">${ic("gear")}</button><button class="hb" data-a="play" aria-label="Advance time">»</button><button class="end" data-a="end" data-month="0" aria-busy="false">End month</button></div></div><div id="stats" role="region" aria-label="National key metrics"><button class="rc mini-tap ex" id="stat-treasury" data-a="why" data-t="nat" data-k="net" aria-label="Treasury: £${(s.treasury||1000).toLocaleString()}. Tap for breakdown."><span>Treasury</span><b id="val-treasury">£${(s.treasury||1000).toLocaleString()}</b><small id="sub-treasury" class="pos">+£0 a month</small></button><button class="rc" id="stat-rank" data-a="why" data-t="dip" data-k="rank"><span>Rank</span><b>1st</b><small>Great Power</small></button><button class="rc" id="stat-date" data-a="tab" data-t="over"><span>Date</span><b id="val-date">Jan 1836</b><small id="sub-date">Turn 1</small></button></div></header><div id="ticker" role="status" aria-live="polite"><i></i><span>Welcome to The Long Century.</span></div><main><div id="map"></div><div id="page"></div><div id="sheet"></div></main><nav class="bnav" aria-label="Sections"></nav></div><div id="modal" hidden></div>`;
+}
+function boot(){try{const th=localStorage.getItem("vic.theme");if(th)document.documentElement.dataset.theme=th;const z=+localStorage.getItem("vic.tz");if(z>=.8&&z<=1.3){UI.tz=z;document.documentElement.style.setProperty("--tz",z);}}catch(e){}(function(h){const o=document.getElementById("app");if(o){let n=o;while(n){const x=n.nextSibling;if(n.nodeType!==1||!/^(STYLE|SCRIPT|META|TITLE|LINK)$/.test(n.tagName))n.remove();n=x;}}document.body.insertAdjacentHTML("beforeend",h);})(initialLayoutHTML());showStart();
+ try{const sp=new URLSearchParams(window.location.search);if(sp.get("autostart")==="1"){const cta=document.querySelector('[data-start="true"]');if(cta)cta.click();}}catch(e){}}
+const _startLC=()=>SAVES.init().then(boot,boot);

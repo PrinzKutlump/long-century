@@ -1,6 +1,8 @@
 [
   "world.js",
   "defs.js",
+  "engine/migrate.ts",
+  "engine/state.ts",
   "state.js",
   "econ.js",
   "freight.js",
@@ -19,5 +21,6 @@
   "campaign.js",
   "programmes.js",
   "prog_tanzimat.js",
+  "engine/simulation.ts",
   "turn.js"
 ]

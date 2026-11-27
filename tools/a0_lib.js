@@ -8,6 +8,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
 const loadTestEngine = require("../load_test_engine");
+const { readEngineFile } = require("../scripts/transpile-engine.cjs");
 
 const ROOT = path.join(__dirname, "..");
 /* Keys that are not material state: UI selection, report caches, messages/dispatches, control flags.
@@ -68,7 +69,7 @@ function patchSource(source, names) {
 function loadPatched(names, cf) {
  const { compileFunction } = require("node:vm");
  const files = require("../engine-files.json");
- const src = files.map(f => fs.readFileSync(path.join(ROOT, "src", f), "utf8")).join("\n;\n");
+ const src = files.map(f => readEngineFile(ROOT, f)).join("\n;\n");
  const fn = compileFunction(patchSource(src, names) + "\n;\n" + API_SOURCE, ["globalThis"]);
  const scope = { __CF: cf || {} };
  fn(scope);

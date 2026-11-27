@@ -52,7 +52,7 @@ function econMonth(warm){
   pilotDemand[p.id]={grain:0,timber:0,fabric:0,clothes:0,livestock:0};
  }
  /* production */
- for(const p of G.plist){if(!p.o||!G.c[p.o].alive)continue;const c=G.c[p.o],s=S[p.o],n=counts(p),rail=RAILK*p.rail,om=occMult(p),un=1-p.un/200;p._n=n;
+ for(const p of G.plist){if(!p.o||!G.c[p.o].alive)continue;const c=G.c[p.o],s=S[p.o],n=counts(p),rail=RAILK*p.rail,om=occMult(p),un=1-p.un/200,infraAcc=Math.max(.15,p.infra?.marketAccess??1);p._n=n;
   const ps=pilotSupply[p.id],previous=ps&&{grain:s.grain,timber:s.timber,fabric:s.fabric,clothes:s.clothes,livestock:s.livestock};
   const farmW=n.FAR+n.SLA+(p.mine?0:n.LAB*.6),mineW=p.mine?n.LAB:0;p._out={};
   {
@@ -62,17 +62,17 @@ function econMonth(warm){
    p.landUse={capacity,subsistence,commercial:utilisation-subsistence,fallow:capacity-utilisation};
   }
   const mq=mobLoss(c,p,farmW+(p.mine?n.LAB:0));
-  if(p.farm&&farmW>0){const q=RGO_OUT[p.farm]*rgoK(p.farm)*p.farmCap*Math.pow(farmW/p.farmCap,.7)*TERRAIN[p.t].farm*(1+.12*(p.irr||0))*(1+c.fx.rgo+rail)*om*un*mq*PE[p.farm];
+  if(p.farm&&farmW>0){const q=RGO_OUT[p.farm]*rgoK(p.farm)*p.farmCap*Math.pow(farmW/p.farmCap,.7)*TERRAIN[p.t].farm*(1+.12*(p.irr||0))*(1+c.fx.rgo+rail)*om*un*mq*infraAcc*PE[p.farm];
    if(p.farm!=="grain"&&p.t!=="d"&&!warm){const rel=(G.price.grain/GOODS.grain.p)/(G.price[p.farm]/GOODS[p.farm].p),tgt=clamp((rel-1)*.6,0,.7);p.sw=(p.sw||0)+(tgt-(p.sw||0))*.08;}else p.sw=0;
    const sw=p.sw||0,qm=q*(1-sw),qg=q*sw*(RGO_OUT.grain*rgoK("grain"))/(RGO_OUT[p.farm]*rgoK(p.farm));s[p.farm]+=qm;p._out.farm=qm;if(qg>0){s.grain+=qg;p._out.grain=qg;}}
-  if(p.mine&&mineW>0){const q=RGO_OUT[p.mine]*rgoK(p.mine)*p.mineCap*Math.pow(mineW/p.mineCap,.7)*(1+.15*(p.minew||0))*(1+c.fx.rgo+rail)*om*un*mq*PE[p.mine];s[p.mine]+=q;p._out.mine=q;}
+  if(p.mine&&mineW>0){const q=RGO_OUT[p.mine]*rgoK(p.mine)*p.mineCap*Math.pow(mineW/p.mineCap,.7)*(1+.15*(p.minew||0))*(1+c.fx.rgo+rail)*om*un*mq*infraAcc*PE[p.mine];s[p.mine]+=q;p._out.mine=q;}
   let reqC=0,reqK=0;for(const f of p.factories){reqC+=f.lv*FAC_WORK*.9;reqK+=f.lv*FAC_WORK*.1;}
   const staff=reqC?Math.min(1,n.CRA/reqC)*(.7+.3*Math.min(1,n.CLK/Math.max(.01,reqK))):0;p._staff=staff;p._craUn=reqC?Math.max(0,n.CRA-reqC)/Math.max(.01,n.CRA):1;
-  for(const f of p.factories){if(f.lv<=0||!goodOK(c,f.g))continue;const r=RECIPE[f.g];let fi=1;f._limitingInput=null;
+  for(const f of p.factories){if(f.lv<=0||!goodOK(c,f.g)){f._out=0;f._e=0;f._im=0;f._limitingInput=null;continue;}const r=RECIPE[f.g];let fi=1;f._limitingInput=null;
    for(const x in r.I){const fill=c.fill[x]??1;if(fill<fi){fi=fill;f._limitingInput=x;}}
    f._inputFill=fi;
-   const e=staff*Math.max(.05,fi)*om*un,mult=1+c.fx.fac+rail*.5+(p.id===c.cap&&c.gwx&&c.gwx.capfac||0)+.08*bxl(p,"power");f._e=e;const method=f.activeMethod??f.m??0,mm=1+.2*method,im=mm*(1-.1*method);f._im=im;f._out=r.O*f.lv*e*mult*mm*methodOperation(f,c.fill);s[f.g]+=f._out;for(const x in r.I)D[p.o][x]+=r.I[x]*f.lv*e*im;}
-  p._art={};if(n.ART>0){const W=p.artW||G.artW;for(const g in W){const w=W[g];if(w<=0||!goodOK(c,g))continue;const r=RECIPE[g],k=n.ART*w*G.artK/FAC_WORK*om;const o=r.O*k;p._art[g]=o;s[g]+=o;for(const x in r.I)D[p.o][x]+=r.I[x]*k*1.1;}}
+   const e=staff*Math.max(.15,fi)*om*un*infraAcc,mult=1+c.fx.fac+rail*.5+(p.id===c.cap&&c.gwx&&c.gwx.capfac||0)+.08*bxl(p,"power");f._e=e;const method=f.activeMethod??f.m??0,mm=1+.2*method,im=mm*(1-.1*method);f._im=im;f._out=r.O*f.lv*e*mult*mm*methodOperation(f,c.fill);s[f.g]+=f._out;for(const x in r.I)D[p.o][x]+=r.I[x]*f.lv*e*im;}
+  p._art={};if(n.ART>0){const W=p.artW||G.artW;for(const g in W){const w=W[g];if(w<=0||!goodOK(c,g))continue;const r=RECIPE[g],k=n.ART*w*G.artK/FAC_WORK*om*infraAcc;const o=r.O*k;p._art[g]=o;s[g]+=o;for(const x in r.I)D[p.o][x]+=r.I[x]*k*1.1;}}
   if(previous)for(const g of PILOT_GOODS)pilotSupply[p.id][g]=s[g]-previous[g];}
  /* demand: needs, bought with last month's money */
  G._popD={};for(const g of GK)G._popD[g]=0;
@@ -87,8 +87,8 @@ function econMonth(warm){
  {const SPM=[];for(const m of Object.values(G.c)){if(!m.alive||!m.sphere||!S[m.tag])continue;const L=G.c[m.sphere];if(L&&L.alive&&L.tag!==m.tag&&S[L.tag]&&!atWarWith(m,L)&&m.civ)SPM.push([L.tag,m.tag]);}
   if(SPM.length)for(const g of GK){let wd0=0;for(const t in S)wd0+=Math.max(0,D[t][g]-S[t][g]*(G.c[t].access==null?1:G.c[t].access));for(const[a,b]of SPM)for(const[x,y]of[[a,b],[b,a]]){const ax=G.c[x].access==null?1:G.c[x].access,ay=G.c[y].access==null?1:G.c[y].access;
    const sur=Math.max(0,S[x][g]*ax-D[x][g]-(EXs[x][g]||0)),def=Math.max(0,D[y][g]-S[y][g]*ay-(IMs[y][g]||0));if(sur<=1e-6||def<=1e-6)continue;
-   const ship=Math.min(sur,def/Math.max(.05,ay),sur*SPH_CALL*def/Math.max(1,wd0));EXs[x][g]=(EXs[x][g]||0)+ship;IMs[y][g]=(IMs[y][g]||0)+ship*ay;}}}
- if(!warm)G.tradeReceipts=bilateralOrders(S,D,EXs,IMs);
+   const ship=Math.min(sur,def/Math.max(.15,ay),sur*SPH_CALL*def/Math.max(1,wd0));EXs[x][g]=(EXs[x][g]||0)+ship;IMs[y][g]=(IMs[y][g]||0)+ship*ay;}}}
+ if(!warm)G.tradeReceipts=typeof stepTradeRoutesAndTariffs==="function"?stepTradeRoutesAndTariffs(S,D,EXs,IMs,warm):bilateralOrders(S,D,EXs,IMs);
  const WS={},WD={},TS={},TD={};
  for(const g of GK){WS[g]=0;WD[g]=0;TS[g]=0;TD[g]=0;for(const tag in S){const s=S[tag][g]*(G.c[tag].access==null?1:G.c[tag].access)-(EXs[tag][g]||0),d=D[tag][g]-(IMs[tag][g]||0);TS[g]+=S[tag][g];TD[g]+=d;if(s>d)WS[g]+=s-d;else WD[g]+=(d-s)*importOrderShare(G.c[tag],g);}}
  
@@ -97,9 +97,9 @@ function econMonth(warm){
   for(const g of GK){const s=S[tag][g],sa=s*acc,d=D[tag][g],ex=EXs[tag][g]||0,im=IMs[tag][g]||0,home=Math.min(sa,d),got=home+im+Math.max(0,d-sa-im)*wf[g]*acc*importOrderShare(c,g);c.fill[g]=d>0?got/d:1;
    const soldQ=home+ex+Math.max(0,sa-d-ex)*ws[g];c.sold[g]=s>0?soldQ/s:1;c.home[g]=soldQ>0?home/soldQ:1;const mq=Math.max(0,got-home),xq=Math.max(0,soldQ-home);c.impSh[g]=d>0?Math.max(0,mq-im)/d:0;imp+=mq*G.price[g];impS+=im*G.price[g];exp+=xq*G.price[g];if(im>1e-6)c.sphI[g]=im;if(tag===G.player){if(mq>1e-6)(c._tIm=c._tIm||{})[g]=[mq,im];if(xq>1e-6)(c._tEx=c._tEx||{})[g]=[xq,ex];}}
   c.stat.imp=imp;c.exportValue=exp;c.stat.exp=exp;c.stat.impS=impS;c.stat.tariffs=(imp-impS)*c.tariff*c.eff.tax*(1+(c._bx?c._bx.cust:0))*modTradeX(c);}
- /* prices move toward balance */
- for(const g of GK){const s=TS[g],d=TD[g];G.pricePrev[g]=G.price[g];if(s+d<=0)continue;const ex=clamp((d-s)/Math.max(s,d),-1,1);let fl=GOODS[g].p*.2;const R=RECIPE[g];if(R){let ci=0;for(const x in R.I)ci+=R.I[x]*G.price[x];fl=Math.max(fl,1.02*ci/R.O);} // nobody sells below the cost of the inputs for long
-  G.price[g]=clamp(G.price[g]*(1+.04*ex),fl,Math.max(fl,GOODS[g].p*5));if(!G.tight)G.tight={};G.tight[g]=(G.tight[g]||1)*.9+.1*(s>0?d/s:1);} // how short the world is of a good, smoothed: investors read it
+ /* prices move toward balance (strictly clamped 0.25x..1.75x basePrice) */
+ if(typeof stepDynamicMarketPrices==="function"){stepDynamicMarketPrices(TS,TD,warm);}
+ else{for(const g of GK){const s=TS[g],d=TD[g];G.pricePrev[g]=G.price[g];if(s+d<=0)continue;const ex=clamp((d-s)/Math.max(s,d),-1,1);let fl=GOODS[g].p*.25;const R=RECIPE[g];if(R){let ci=0;for(const x in R.I)ci+=R.I[x]*G.price[x];fl=clamp(Math.max(fl,1.02*ci/R.O),GOODS[g].p*.25,GOODS[g].p*1.75);}G.price[g]=clamp(G.price[g]*(1+.04*ex),fl,GOODS[g].p*1.75);if(!G.tight)G.tight={};G.tight[g]=(G.tight[g]||1)*.9+.1*(s>0?d/s:1);}}
  for(const tag of participants)allocateLocalHouseholds(G.c[tag],provinces(tag),pilotSupply,pilotDemand);
  if(!warm)freightMonth(pilotSupply,pilotDemand); // B1: grain freight receipts
  for(const c of Object.values(G.c))if(c.alive){c.stat.dividendsIn=0;c.stat.dividendsOut=0;}
@@ -192,7 +192,7 @@ function econMonth(warm){
   else{c.insol=0;if(c.debt>0&&c.tr>inc*(c.ai?3:6)){const r=Math.min(c.debt,c.tr-inc*(c.ai?3:6));c.debt-=r;c.tr-=r;}}
   Object.assign(c.stat,{taxes,inc,exp,gov:govCost,pay:c._govPay,interest,debtChange:c.debt-openingDebt,net:inc-exp,gdp:c._gdp});
   const admRatio=c.stat.N.BUR/Math.max(1,c.stat.pop)/.01;c.eff.tax=clamp((c.civ?.45:.25)+techFx(c,"tax")+(c.gwx&&c.gwx.tax||0)+.5*(c._bx?c._bx.admin:0)+.15*Math.min(1.3,admRatio*c.sp.adm),.15,1);c.eff.admin=clamp(.4+techFx(c,"admin")+(c.gwx&&c.gwx.admin||0)+(c._bx?c._bx.admin:0)+.4*Math.min(1.2,admRatio*c.sp.adm),.2,1.2);}
- moneyMonth(TS,warm);if(!warm)investMonth();}
+ moneyMonth(TS,warm);if(!warm){if(typeof stepConstructionQueue==="function")stepConstructionQueue(warm);else investMonth();}else if(typeof stepInvestmentPoolSync==="function"){stepInvestmentPoolSync();}}
 /* ---- debt: lenders lend up to about five years of income; the rate rises with the debt and falls with the borrower's rank; a state that stays below zero for six months defaults ---- */
 const CREDIT_MONTHS=60;
 function creditLimit(c){return Math.max(500,(c.stat.inc||0)*CREDIT_MONTHS);}

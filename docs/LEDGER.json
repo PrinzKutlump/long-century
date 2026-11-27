@@ -14,9 +14,10 @@
   {
    "id": "A1",
    "ask": "Month turns, selectable decisions, comprehensive dashboard",
-   "status": "partial",
-   "note": "pages exist; dashboard depth unverified; needs ticket",
-   "probe": "ui3.js::Nation"
+   "status": "done",
+   "note": "Phase 1 simulation engine, causal breakdowns, price/access clamps & state management complete",
+   "probe": "simulation.ts::runMonthlyTick",
+   "done": "2026-11-26"
   },
   {
    "id": "A2",

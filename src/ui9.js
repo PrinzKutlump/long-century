@@ -235,3 +235,16 @@ document.addEventListener("input",e=>{if(e.target&&e.target.dataset&&e.target.da
 
 /* the Works entry on the bar: one tap from every tab */
 {const _pick=ACT.pick;ACT.pick=(d,el)=>{_pick(d,el);wbClear();};}
+if(typeof window!=="undefined"){
+ Object.defineProperty(window,"G",{get:()=>G,set:v=>{G=v;},configurable:true});
+ Object.defineProperty(window,"UI",{get:()=>UI,configurable:true});
+ Object.assign(window,{
+  WORLD,ADJ,SEAADJ,SEAR_OF,REG_OF,REGION,ACT,P,me,friendly,bmOn,
+  provPts,provColor,seenSet,labelLayout,provLabelItems,bbOf,edgeDist,
+  navSheet,pickProv,returnCampaignView,dateStr,advanceCampaign
+ });
+}
+if(typeof _startLC==="function"){
+ if(typeof document!=="undefined"&&document.readyState==="complete")_startLC();
+ else if(typeof window!=="undefined")window.addEventListener("load",_startLC);
+}

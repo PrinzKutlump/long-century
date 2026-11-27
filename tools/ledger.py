@@ -35,9 +35,12 @@ def render(d):
 
 def src_text():
     t = {}
-    for p in glob.glob(os.path.join(ROOT, "src", "*.js")):
+    for p in glob.glob(os.path.join(ROOT, "src", "**", "*.js"), recursive=True) + glob.glob(os.path.join(ROOT, "src", "**", "*.ts"), recursive=True):
+        rel = os.path.relpath(p, os.path.join(ROOT, "src"))
         with open(p, encoding="utf-8", errors="replace") as f:
-            t[os.path.basename(p)] = f.read()
+            content = f.read()
+            t[rel] = content
+            t[os.path.basename(p)] = content
     return t
 
 def base_ids():

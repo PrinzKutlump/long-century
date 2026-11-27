@@ -1,0 +1,14 @@
+{
+  "appId": "com.longcentury.strategy",
+  "appName": "The Long Century",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": true,
+      "backgroundColor": "#141b26"
+    }
+  }
+}
