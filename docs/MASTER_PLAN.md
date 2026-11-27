@@ -2,13 +2,13 @@
 
 Status: plan, 24 Nov 2026 (Claude), after a full audit, a cleanup of all plans and a 316-century stress run. **Supersedes** master plan v1 and every plan now in `docs/archive/` (GPT plan, engine plan, UI/art plan, civilising plan, PLAN.md, checkpoint plans, the 24 Nov review). Detail that still applies is cited as "[archive: file §]". Game design: `docs/DESIGN.md`. Verified state and stress results: `docs/STATUS.md`. Map detail: `docs/MAP_PROVINCES_PLAN.md`, `docs/ART_MAP_GPT_PLAN.md` (their rules sections yield to §1 below).
 
-Roles: Codex/GPT implements game code; Claude plans, writes ticket issues, writes test tooling and docs, audits every PR and reviews this plan four times a day; the owner decides, plays and merges where Claude's merge is not permitted.
+Roles (owner, 27 Nov 2026, ledger B21): Codex, Claude and Google AI Studio may all implement tickets; Claude also plans, writes ticket issues, audits PRs and maintains docs and the stress tier; the owner decides, plays and merges. **Order of work: plan v3 (`docs/PLAN_V3.md`, approved 27 Nov 2026, ledger B54) governs milestones and 1.0 scope; this file remains the ticket catalogue and targets.**
 
 ## 1. Rules (one list; the archived plans' rule lists are retired)
 
 1. **Same rules for every nation**, player and AI. Differences come from data (flavour packs, region tables, events). No nation tag in core code.
 2. **Game theory on every major decision**: one evaluator for adviser and AI (DESIGN §10).
-3. **War by theatre**: no selecting or dragging individual armies; infantry, cavalry and artillery stay distinct.
+3. **War by theatre**: orders go to theatres, with armies and fleets visible and moving on a 2.5D map (owner, 27 Nov 2026); infantry, cavalry and artillery stay distinct.
 4. **Phone first**: 360 and 390 px, 100% and 125% text, 44 px targets, no sideways page scroll, map ≥ 640 px, controls ≤ 8%.
 5. **Offline first** (owner 27 Nov, B41): the whole game works without a connection; online extras (ads, cloud saves, the Historian, store) are welcome but optional and never inside the simulation. **The single HTML file** (Pages and tests), plain global JavaScript built by `build.py`, no network calls **in the simulation**, one `<style>` element, wrapper-safe (no `document.write`, no `document.body.innerHTML=`). Served by GitHub Pages and Releases.
 6. **Saves**: old saves need not load until the first alpha (owner, 24 Nov). A save made by a build must load in that build and continue **exactly** (the stress tier checks this). From the alpha on, saves of the same release line load (SV5).
@@ -18,7 +18,7 @@ Roles: Codex/GPT implements game code; Claude plans, writes ticket issues, write
 10. **Conservation**: goods, money and people have a source and a sink.
 11. **Art from allowed sources only**: our own, AI-made with prompt on record (owner 27 Nov, B42), PD, CC0, OFL, MIT, ISC, Apache-2.0 or BSD, each in `docs/ASSETS.md`. No raw Correlates of War files in the public repository.
 12. **Plain English** on screen; a disabled button says why.
-13. **Owner's standing wishes**: nation flags; a Settings cheat adding £100 million per press; the Devlet-i Âliyye look; web only, no APK.
+13. **Owner's standing wishes**: nation flags; a Settings cheat adding £100 million per press; the Devlet-i Âliyye look; Android first (B20), with the cheat in test builds only.
 14. **Budgets** (until PL8 measures a phone): Node month median ≤ 90 ms on the CI runner at 1926–36, browser ≤ 130 ms; save ≤ 1 MB until SV1, then save ≤ 300 ms blocked screen and load ≤ 3 s.
 15. **Process**: one ticket, one branch `t/<id>-<slug>`, one PR; a ticket names its state-hash change and why; CI decides pass or fail; no merge with a red stress run on the same base (from QA1).
 
