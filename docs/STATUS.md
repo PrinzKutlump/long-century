@@ -1,5 +1,7 @@
 # The Long Century: verified status, 24 Nov 2026
 
+> Superseded on 27 Nov 2026 by the evidence section of `docs/PLAN_V3.md`. Kept as history.
+
 Written by Claude after an audit of both repositories, every plan, the open PRs and a 316-century stress run on GitHub Actions. Replaces `REVIEW_2026-11-24.md` (archived). Updated at each review.
 
 ## 1. Verdict

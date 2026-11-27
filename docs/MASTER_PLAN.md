@@ -2,7 +2,7 @@
 
 Status: plan, 24 Nov 2026 (Claude), after a full audit, a cleanup of all plans and a 316-century stress run. **Supersedes** master plan v1 and every plan now in `docs/archive/` (GPT plan, engine plan, UI/art plan, civilising plan, PLAN.md, checkpoint plans, the 24 Nov review). Detail that still applies is cited as "[archive: file §]". Game design: `docs/DESIGN.md`. Verified state and stress results: `docs/STATUS.md`. Map detail: `docs/MAP_PROVINCES_PLAN.md`, `docs/ART_MAP_GPT_PLAN.md` (their rules sections yield to §1 below).
 
-Roles: Codex/GPT implements game code; Claude plans, writes ticket issues, writes test tooling and docs, audits every PR and reviews this plan four times a day; the owner decides, plays and merges where Claude's merge is not permitted.
+Roles (owner, 27 Nov 2026, ledger B21): Codex, Claude and Google AI Studio may all implement tickets; Claude also plans, writes ticket issues, audits PRs and maintains docs and the stress tier; the owner decides, plays and merges. **Order of work: plan v3 (`docs/PLAN_V3.md`, approved 27 Nov 2026, ledger B58) governs milestones and 1.0 scope; this file remains the ticket catalogue and targets.**
 
 ## 1. Rules (one list; the archived plans' rule lists are retired)
 
@@ -414,9 +414,9 @@ Estimate at 4–6 merged tickets a day: S0 in 5–7 days, the alpha in about 3 w
 | U interface and art | `src/ui*.js`, `src/*.css`, `src/flags.js`, `art/` (not `art/geo`) | engine files |
 | Q quality (Claude) | `tools/stress/`, `.github/workflows/stress.yml`, docs | game code |
 
-## 7. Review routine (Claude, four times a day; scheduled task "Long Century plan review")
+## 7. Review routine (Claude, once a day and on PR events, per plan v3; scheduled task "Long Century plan review")
 
-1. Audit every open PR with finished CI (APPROVE or CHANGES, numbered). Merge on APPROVE if permitted; otherwise ask the owner in one line.
+1. Audit every open PR with finished CI (APPROVE or CHANGES, numbered). The owner merges; ask in one line.
 2. Open issues for tickets whose "after" list has merged, keeping five ready and at most one in progress per lane.
 3. Read the latest stress report (weekly, and on any `stress/**` push); turn new failures into FX tickets.
 4. Post a short status on the claims board.

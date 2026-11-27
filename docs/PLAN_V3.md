@@ -1,6 +1,6 @@
-# Plan v3 proposal: phone-first 1.0, then updates
+# Plan v3: phone-first 1.0, then updates
 
-Status: **proposal**, written by Claude on 27 Nov 2026 after a director's review of main at commit f1b5323. The full review with charts and diagrams is the doc "The Long Century: Director's Review and Plan v3" (https://claude.ai/artifact/TG19Tp2BfUiXUdaFZLSSoP). Items marked **(owner decision)** wait for the owner's yes. Until then ROADMAP.md stays in force; the M0 work below already fits its Stage A.
+Status: **approved by the owner on 27 Nov 2026** (ledger B58): plan v3, daily clock option B, hero nations Britain, Ottoman Empire, Sikh Empire, Prussia and the United States. Written by Claude on 27 Nov 2026 after a director's review of main at commit f1b5323. The full review with charts and diagrams is the doc "The Long Century: Director's Review and Plan v3" (https://claude.ai/artifact/TG19Tp2BfUiXUdaFZLSSoP). Items marked **(owner decision)** wait for the owner's yes. Until then ROADMAP.md stays in force; the M0 work below already fits its Stage A.
 
 ## 0. Owner's words (intake, 27 Nov 2026, Claude chat)
 
@@ -25,7 +25,7 @@ Planner: add a ledger row for this ask (suggested B44, "Director's review and pl
 |---|---|---|---|
 | M0 Phone proof | 30 Nov to 13 Dec 2026 | FX1 merged; CI builds the APK; PixiJS map connected to the Atlas; phone basics (AND6); doc contradictions fixed; board cleaned | APK installs on the A56; owner's map go or no-go; one in-game year on the phone without a crash |
 | M1 Living map | 14 Dec 2026 to 17 Jan 2027 | Daily clock layer (option B); End Day, pause, speeds 1 to 5; month progress bar; armies, fleets and railways drawn and moving; tick in the worker (AND7); exact resume | Pan at 30 fps or more on the A56 during play; 0 resume drift in the stress tier |
-| M2 Vertical slice | 18 Jan to 14 Feb 2027 | Three hero nations polished (proposed: Britain, Ottoman Empire, Sikh Empire); design system and 6 core screens; newspaper; loading screen with history; art style guide and about 40 pictures; tutorial; adviser with the rival's best reply on war, peace, alliance, tariff and reform | Five outside testers play 2 hours each and rate fun 7/10 or better |
+| M2 Vertical slice | 18 Jan to 14 Feb 2027 | Five hero nations polished (owner, 27 Nov: Britain, Ottoman Empire, Sikh Empire, Prussia, United States); design system and 6 core screens; newspaper; loading screen with history; art style guide and about 40 pictures; tutorial; adviser with the rival's best reply on war, peace, alliance, tariff and reform | Five outside testers play 2 hours each and rate fun 7/10 or better |
 | M3 Closed test | 15 Feb to 21 Mar 2027 | All 62 nations under the same rules; wars that end (FX2); fair battles (#76); achievements; rewarded ads and one unlock behind a switch; consent, privacy policy, Data safety; crash reporting | 25 testers for 14 days; 99.5% crash-free sessions; Play production access |
 | M4 Launch | 22 Mar to 12 Apr 2027 | Listing, trailer, launch posts, 1.0 | 1.0 live on Google Play |
 | 1.x updates | every 4 to 6 weeks from May 2027 | Demography and society, trade policy and finance, more provinces, navy depth, 1917 scenario, Steam | Crash-free rate and rating hold |
@@ -45,11 +45,11 @@ Ledger rows are never deleted. Rows whose work moves out of 1.0 get the tag "1.x
 | Economy | Current economy, FX1 to FX6, BAL1 guardrails, oil wells (A5), deposits in three grades (A29) | EC1 to EC4, FI1 to FI3, TR3 |
 | Society and politics | Current reforms and programmes | SOC2, DM1 to DM6, PO4 elections |
 | War and navy | Theatre orders with visible armies, FX2, #76 fair battles, A7 bulk refit | NV2, NV3, MI11, A21 named yards |
-| History and AI | 104 events plus about 40 for the hero nations; AI1 evaluator for adviser and AI on war, peace and budget | NF packs for every nation, AI5 personalities, #40 1917 scenario |
+| History and AI | 104 events plus about 60 for the five hero nations; AI1 evaluator for adviser and AI on war, peace and budget | NF packs for every nation, AI5 personalities, #40 1917 scenario |
 | Art and sound | Style guide, about 40 AI-made pictures with prompts in ASSETS.md, unit tokens, 6 music tracks | Portraits for all, AIS8 video |
 | Online and money | Rewarded ads, one unlock, consent (REV1 to REV3) | AIS3 Historian, AIS4 voice, AIS5 cloud saves |
 
-## 4. Daily clock: option B (owner decision)
+## 4. Daily clock: option B (owner chose it, 27 Nov 2026)
 
 Daily layer: G.day, End Day, speeds, movement, battles, sieges, supply and construction progress run daily (DAY1, DAY3, DAY4, DAY8). Economy, pops, politics and research keep their calibrated monthly settlement, shown to the player as daily accrual. Calibration and saves stay valid. Option A (full daily, DAY0 to DAY9) remains in the ledger as a 1.x choice.
 
@@ -67,9 +67,9 @@ Daily layer: G.day, End Day, speeds, movement, battles, sieges, supply and const
 
 ## 6. Owner decisions
 
-- [ ] Approve plan v3 milestones and the 1.0 scope cut.
-- [ ] Daily clock option B (recommended) or A.
-- [ ] Hero nations for M2.
+- [x] Approve plan v3 milestones and the 1.0 scope cut (27 Nov).
+- [x] Daily clock option B (27 Nov).
+- [x] Hero nations: Britain, Ottoman Empire, Sikh Empire, Prussia, United States (27 Nov). Risk: five instead of three adds work to M2; if M2 slips, Prussia and the United States finish in M3.
 - [ ] Play account: personal (12 testers for 14 days) or organisation (D-U-N-S number).
 - [ ] Unlock price (suggested $4.99 with regional pricing); rewarded ads only.
 - [ ] Tick "Do not allow bypassing" on main.
@@ -79,7 +79,7 @@ Daily layer: G.day, End Day, speeds, movement, battles, sieges, supply and const
 
 ## 7. Planner actions (next agent with GitHub access)
 
-1. Ledger row for this ask; delete this inbox file in the same PR.
+1. Ledger rows B44, B45 and B58 (done in PRs #154 and this one).
 2. Create labels M0 to M4, Backlog and Parking; move tickets outside M0 out of Ready.
 3. Fix doc contradictions: MASTER_PLAN roles line and rules 3, 5 and 13; EXECUTION_STRATEGY lines on the APK and Claude being paused; mark STATUS.md superseded.
 4. Fix the board gaps: ticket for B26; ledger ids for #95, #114, #136, #137, #141 to #151; intake of #153; tickets for PRs #72 and #73; release stale claims on #78 and #79; record Codex's claim on #27 (draft PR #30).
@@ -96,5 +96,5 @@ Planner: add a ledger row and one ticket per lead. Board: "The Long Century: pla
 |---|---|
 | Music developer | Research era styles by region, 1836 to 1936; find public-domain scores and CC0 recordings; arrange PD scores and make AI music with prompts logged; log every licence in ASSETS.md; 6 tracks for 1.0 (menu, peace, war, crisis); music follows era, region and war |
 | Creative and art developer | Research period maps, uniforms and art (PD only); style guide for map, UI and pictures; map plan (2.5D terrain, coasts, cities, rail); animations (march, sail, battle, build); unit tokens and building icons; 40 event pictures for 1.0 with prompts logged |
-| History researcher | Timeline of key events per region with sources; dated, ranked event list per nation; about 40 new events for the hero nations first; each event a real choice with history's outcome; same rules for every nation; audit the 104 events and 79 dispatches (HI7) |
+| History researcher | Timeline of key events per region with sources; dated, ranked event list per nation; about 60 new events for the five hero nations first; each event a real choice with history's outcome; same rules for every nation; audit the 104 events and 79 dispatches (HI7) |
 | Quality-of-life developer | Undo before End Day and confirmation of costly orders; any province in 3 taps; why-breakdown on every key number; alerts inbox with optional auto-build and auto-trade; autosave and quick save; settings for text size, speed and sound |

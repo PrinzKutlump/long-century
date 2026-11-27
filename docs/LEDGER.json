@@ -584,6 +584,12 @@
    "note": "from owner, Claude chat 27 Nov 2026; every open ticket labelled for:claude (25), for:codex (64) or for:aistudio (12); #83 waits for the owner's file; COORDINATION.md §5 takes the first Ready ticket with your label",
    "done": "2026-11-27",
    "nosrc": true
+  },
+  {
+   "id": "B58",
+   "ask": "Approve plan v3; daily clock option B; hero nations Britain, Ottoman Empire, Sikh Empire, Prussia and the United States",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov"
   }
  ]
 }

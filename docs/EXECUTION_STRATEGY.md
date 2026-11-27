@@ -2,7 +2,7 @@
 
 > Coordination (who works on what, intake of new asks, claims, the board) follows [COORDINATION.md](COORDINATION.md), which wins where this file differs.
 
-Use the public Long Century repository for project continuity. The owner reviews and merges changes. Codex carries the queue while Claude is paused.
+Use the public Long Century repository for project continuity. The owner reviews and merges changes. **Superseded for order of work by `docs/PLAN_V3.md` (27 Nov 2026); Codex, Claude and AI Studio all implement (B21).**
 
 ## Where work lives
 
