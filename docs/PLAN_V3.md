@@ -1,5 +1,7 @@
 # Plan v3: phone-first 1.0, then updates
 
+> The detailed work plan is `docs/PLAN_1_0.md` (who does what, night shift, every ticket by milestone); after launch, `docs/PLAN_1_1.md`.
+
 Status: **approved by the owner on 27 Nov 2026** (ledger B58): plan v3, daily clock option B, hero nations Britain, Ottoman Empire, Sikh Empire, Prussia and the United States. Written by Claude on 27 Nov 2026 after a director's review of main at commit f1b5323. The full review with charts and diagrams is the doc "The Long Century: Director's Review and Plan v3" (https://claude.ai/artifact/TG19Tp2BfUiXUdaFZLSSoP). Items marked **(owner decision)** wait for the owner's yes. Until then ROADMAP.md stays in force; the M0 work below already fits its Stage A.
 
 ## 0. Owner's words (intake, 27 Nov 2026, Claude chat)
