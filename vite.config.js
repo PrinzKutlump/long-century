@@ -20,7 +20,8 @@ const uiFiles = [
   "ui6.js",
   "ui7.js",
   "ui8.js",
-  "ui9.js"
+  "ui9.js",
+  "ui_audio.js"
 ];
 
 function readSrc(file) {
@@ -163,10 +164,12 @@ export default defineConfig({
       },
       workbox: {
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,jpg,jpeg,webp,woff2,mp3,ogg,json}"],
+        globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2,json}"],
+        // media under public/assets/ loads only when shown, then stays cached (runtimeCaching below)
+        globIgnores: ["assets/pictures/**", "assets/audio/**", "assets/models/**"],
         runtimeCaching: [
           {
-            urlPattern: /^\/assets\/.*/i,
+            urlPattern: ({ url }) => /^\/assets\/(pictures|audio|models)\//.test(url.pathname),
             handler: "CacheFirst",
             options: {
               cacheName: "lc-media-assets",

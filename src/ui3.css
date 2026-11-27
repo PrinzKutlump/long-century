@@ -111,9 +111,7 @@ button.lrb:active{background:color-mix(in srgb,var(--gold) 12%,transparent)}
 .phf svg{display:block;width:44px;height:29px}
 .phf.none{width:50px;height:35px;background:var(--panel2)}
 .mini{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:.3rem 0 .5rem}
-.mini>div,.mini>button.mini-tap{border:1px solid var(--line);border-radius:2px;background:color-mix(in srgb,var(--panel2) 88%,transparent);padding:.35rem .3rem;min-width:0;min-height:44px;text-align:left;color:inherit;font:inherit}
-.mini>button.mini-tap{border-style:dashed;border-color:color-mix(in srgb,var(--gold) 65%,var(--line2));position:relative}
-.mini>button.mini-tap::after{content:"i";position:absolute;top:2px;right:4px;font:italic 600 .65rem/1 var(--serif);color:var(--gold)}
+.mini>div{border:1px solid var(--line);border-radius:2px;background:color-mix(in srgb,var(--panel2) 88%,transparent);padding:.35rem .3rem;min-width:0}
 .mini span{display:block;font:400 .72rem/1.2 var(--display);font-variant-caps:small-caps;color:var(--muted);white-space:normal;overflow-wrap:anywhere}
 .mini b{display:block;font:600 1.12rem/1.2 var(--serif);white-space:nowrap}
 .mini .bad b{color:var(--red)}
@@ -524,12 +522,3 @@ html body{margin:0;height:100%;background-color:var(--bg);color:var(--ink);font:
 .wb-bar{flex-wrap:nowrap;align-items:center;padding:.25rem .4rem;gap:.3rem}
 .wb-bar .wb-bt{flex:1 1 0;min-width:0;font-size:.74rem;line-height:1.2}
 .wb-bar .wb-bb{flex:0 0 auto}.wb-bar .wb-bb .btn{flex:0 0 auto;white-space:nowrap;padding:.2rem .55rem;font-size:.86rem}
-/* Phase 1: Causal Breakdown Sheet */
-.causal-head{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;margin:.2rem 0 .5rem;padding:.45rem .6rem;border:1px solid var(--line2);border-radius:8px;background:color-mix(in srgb,var(--gold) 10%,var(--panel2))}
-.causal-head b{font:700 1.3rem/1.1 var(--serif);color:var(--ink)}
-.causal-list{list-style:none;margin:.2rem 0 .6rem;padding:0;display:flex;flex-direction:column;gap:.35rem}
-.causal-item{display:flex;justify-content:space-between;align-items:center;gap:.5rem;min-height:44px;padding:.35rem .55rem;border-left:3px solid var(--line2);border-radius:4px;background:color-mix(in srgb,var(--panel2) 88%,transparent);font:normal .92rem/1.25 var(--serif);overflow-wrap:anywhere}
-.causal-item.good{border-left-color:var(--turq)}.causal-item.bad{border-left-color:var(--red)}
-.causal-item span{flex:1 1 auto;color:var(--muted)}
-.causal-item b{flex:0 1 auto;text-align:right;font-weight:600;color:var(--ink)}
-.causal-item.good b{color:var(--turq)}.causal-item.bad b{color:var(--red)}

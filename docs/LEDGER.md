@@ -3,13 +3,13 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 14, partial 9, missing 10, unverified 16, closed 2  (audited 2026-11-25)
+Totals: done 15, partial 8, missing 10, unverified 19, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
 | ID | Ask | Status | Ticket or evidence | Done on |
 |---|---|---|---|---|
-| A1 | Month turns, selectable decisions, comprehensive dashboard | partial | pages exist; dashboard depth unverified; needs ticket |  |
+| A1 | Month turns, selectable decisions, comprehensive dashboard | done | Phase 1 simulation engine, causal breakdowns, price/access clamps & state management complete | 2026-11-26 |
 | A2 | Cheat button in Settings, +100M per press | done |  | 2026-11-25 |
 | A3 | Refine gameplay, more historical events, refined military and naval system | unverified | audit vs Ottoman artifact |  |
 | A4 | Build railways | done |  | 2026-11-25 |
@@ -65,3 +65,6 @@ Totals: done 14, partial 9, missing 10, unverified 16, closed 2  (audited 2026-1
 | B17 | Branch protection and CI that does not starve (admin bypass, light stress on push) | done | PR #51; owner set bypass | 2026-11-25 |
 | B18 | Missing historical events (Europe, Americas, Asia) built from scratch, not from DeepSeek files | missing | ticket #56 |  |
 | B19 | Free-licence assets only (CC0, public domain, or our own); manifest and CI check | done | docs/ASSETS.md, docs/assets.json, tools/assets_check.py; asset files for #41, #43, #44 still to add | 2026-11-25 |
+| B20 | Android game first; finished game has a dynamic map and modern UI; new features easy to add. Chosen path (option 1): keep the JavaScript engine, Vite multi-file build, Capacitor Android app, PixiJS map; switch to Godot only if the PixiJS map fails a phone test on the Galaxy A56 | unverified | from owner, Claude chat 27 Nov 2026 |  |
+| B21 | Claude may implement game code as well as plan and audit (owner, 27 Nov 2026); AI Studio work goes through a branch and PR, never straight to main | unverified | from owner, Claude chat 27 Nov 2026 |  |
+| B22 | Review AI Studio's 27 Nov engine changes (runMonthlyTick in src/engine/simulation.ts, price clamps, market access, construction queue, tax calibration) that reached main without a PR | unverified | seed 7 SWI before (ad5aaa3) vs after (2fc1e64): Germany Aug 1866 vs Sep 1880; wars 68 vs 51; states destroyed 20 vs 16; save 977 KB vs 943 KB; worst month 96 vs 84 ms; hash dda070bb vs 0592088d (PR AND1); owner 27 Nov: revert. PR #77 restores the engine and interface files to ad5aaa3 (hash dda070bb, save/reload passes again) and keeps AI Studio's build, Android, PWA, map and worker files. Ideas to redo as reviewed tickets: market access, price limits, construction queue, askSheet instead of confirm() |  |

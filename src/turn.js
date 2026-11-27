@@ -1,8 +1,6 @@
 "use strict";
 /* ================= ONE MONTH ================= */
-function monthTick(){
- if(typeof runMonthlyTick==="function"){runMonthlyTick();return;}
- if(G.card&&(typeof UI==="undefined"||!G.player||G.c[G.player].ai))cardDefault(); /* nobody is there to answer: the default is taken, so headless runs never wait */
+function monthTick(){if(G.card&&(typeof UI==="undefined"||!G.player||G.c[G.player].ai))cardDefault(); /* nobody is there to answer: the default is taken, so headless runs never wait */
  purgeWars();econMonth(false);socMonth();researchMonth();modMonth();polMonth();eventsMonth();gwMonth();decMonth();diploMonth();
  if(G.c.GBR?.indiaConcessionUntil>G.t)for(const p of governedIndia(G.c.GBR))
   for(const group of p.pops)group.mil=Math.max(0,group.mil-.1);

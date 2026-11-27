@@ -3,22 +3,22 @@ export function buildAssetManifest(imageUrls = {}) {
     version: 2,
     pictures: {
       titleBackdrop: {
-        src: imageUrls.titleBackdrop || "/assets/pictures/title_backdrop.jpg",
+        src: imageUrls.titleBackdrop || "",
         alt: "European admiralty map room overlooking an industrial harbor",
         fallbackGradient: "linear-gradient(135deg, #172130 0%, #27374b 52%, #4a3520 100%)"
       },
       capitalScene: {
-        src: imageUrls.capitalScene || "/assets/pictures/capital_city_scene.jpg",
+        src: imageUrls.capitalScene || "",
         alt: "Nineteenth-century industrial capital with railway viaducts and ministry dome",
         fallbackGradient: "linear-gradient(135deg, #3c2c1c 0%, #7d532d 55%, #b68445 100%)"
       },
       navalFleet: {
-        src: imageUrls.navalFleet || "/assets/pictures/naval_fleet_scene.jpg",
+        src: imageUrls.navalFleet || "",
         alt: "Armored steam warships cruising in formation across open seas",
         fallbackGradient: "linear-gradient(135deg, #142233 0%, #2b445e 60%, #4e6378 100%)"
       },
       emblem: {
-        src: imageUrls.emblem || "/assets/pictures/app_emblem_icon.jpg",
+        src: imageUrls.emblem || "",
         alt: "The Long Century heraldic compass emblem",
         fallbackGradient: "radial-gradient(circle, #7e1928 0%, #141b26 75%)"
       }
