@@ -1,6 +1,6 @@
 # Plan v3: phone-first 1.0, then updates
 
-Status: **approved by the owner on 27 Nov 2026** (ledger B54): plan v3, daily clock option B, hero nations Britain, Ottoman Empire, Sikh Empire, Prussia and the United States. Written by Claude on 27 Nov 2026 after a director's review of main at commit f1b5323. The full review with charts and diagrams is the doc "The Long Century: Director's Review and Plan v3" (https://claude.ai/artifact/TG19Tp2BfUiXUdaFZLSSoP). Items marked **(owner decision)** wait for the owner's yes. Until then ROADMAP.md stays in force; the M0 work below already fits its Stage A.
+Status: **approved by the owner on 27 Nov 2026** (ledger B58): plan v3, daily clock option B, hero nations Britain, Ottoman Empire, Sikh Empire, Prussia and the United States. Written by Claude on 27 Nov 2026 after a director's review of main at commit f1b5323. The full review with charts and diagrams is the doc "The Long Century: Director's Review and Plan v3" (https://claude.ai/artifact/TG19Tp2BfUiXUdaFZLSSoP). Items marked **(owner decision)** wait for the owner's yes. Until then ROADMAP.md stays in force; the M0 work below already fits its Stage A.
 
 ## 0. Owner's words (intake, 27 Nov 2026, Claude chat)
 
@@ -79,7 +79,7 @@ Daily layer: G.day, End Day, speeds, movement, battles, sieges, supply and const
 
 ## 7. Planner actions (next agent with GitHub access)
 
-1. Ledger rows B44, B45 and B54 (done in PRs #154 and this one).
+1. Ledger rows B44, B45 and B58 (done in PRs #154 and this one).
 2. Create labels M0 to M4, Backlog and Parking; move tickets outside M0 out of Ready.
 3. Fix doc contradictions: MASTER_PLAN roles line and rules 3, 5 and 13; EXECUTION_STRATEGY lines on the APK and Claude being paused; mark STATUS.md superseded.
 4. Fix the board gaps: ticket for B26; ledger ids for #95, #114, #136, #137, #141 to #151; intake of #153; tickets for PRs #72 and #73; release stale claims on #78 and #79; record Codex's claim on #27 (draft PR #30).

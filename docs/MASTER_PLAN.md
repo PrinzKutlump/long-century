@@ -2,7 +2,7 @@
 
 Status: plan, 24 Nov 2026 (Claude), after a full audit, a cleanup of all plans and a 316-century stress run. **Supersedes** master plan v1 and every plan now in `docs/archive/` (GPT plan, engine plan, UI/art plan, civilising plan, PLAN.md, checkpoint plans, the 24 Nov review). Detail that still applies is cited as "[archive: file §]". Game design: `docs/DESIGN.md`. Verified state and stress results: `docs/STATUS.md`. Map detail: `docs/MAP_PROVINCES_PLAN.md`, `docs/ART_MAP_GPT_PLAN.md` (their rules sections yield to §1 below).
 
-Roles (owner, 27 Nov 2026, ledger B21): Codex, Claude and Google AI Studio may all implement tickets; Claude also plans, writes ticket issues, audits PRs and maintains docs and the stress tier; the owner decides, plays and merges. **Order of work: plan v3 (`docs/PLAN_V3.md`, approved 27 Nov 2026, ledger B54) governs milestones and 1.0 scope; this file remains the ticket catalogue and targets.**
+Roles (owner, 27 Nov 2026, ledger B21): Codex, Claude and Google AI Studio may all implement tickets; Claude also plans, writes ticket issues, audits PRs and maintains docs and the stress tier; the owner decides, plays and merges. **Order of work: plan v3 (`docs/PLAN_V3.md`, approved 27 Nov 2026, ledger B58) governs milestones and 1.0 scope; this file remains the ticket catalogue and targets.**
 
 ## 1. Rules (one list; the archived plans' rule lists are retired)
 

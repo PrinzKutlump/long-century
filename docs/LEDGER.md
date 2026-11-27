@@ -91,4 +91,4 @@ Totals: done 17, partial 8, missing 10, unverified 41, closed 2  (audited 2026-1
 | B43 | Revenue through ads and similar (in-app purchases etc.); encourage online use | unverified | from owner, Claude chat 27 Nov 2026 ("revenue generation will be through ads and etc") |  |
 | B44 | Director's review and plan v3: status, assignments, pending and why, technical path to a commercial game, market research, ratings, recommendations and options; modify the plan | unverified | from owner, Claude chat 27 Nov |  |
 | B45 | Specialist leads under the main dev: music developer (era-accurate and licence-free music), creative and art developer (images, animation, map plans), history researcher (historical events for each country and region), quality-of-life developer | unverified | from owner, Claude chat 27 Nov |  |
-| B54 | Approve plan v3; daily clock option B; hero nations Britain, Ottoman Empire, Sikh Empire, Prussia and the United States | unverified | from owner, Claude chat 27 Nov |  |
+| B58 | Approve plan v3; daily clock option B; hero nations Britain, Ottoman Empire, Sikh Empire, Prussia and the United States | unverified | from owner, Claude chat 27 Nov |  |
