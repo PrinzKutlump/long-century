@@ -336,6 +336,15 @@ Size: S under 60k tokens; M one day; L split first. "After": tickets that must m
 | SOC2 | Strata, standard of living, radicalism, interest groups, legitimacy, laws | L | DAY6, PO1 | Groups react differently to one law |
 | BAL1 | Balance guardrails (price band, penalty floors, positive opening cash flow) | S | DAY5 | Fixture per guardrail |
 
+### AIS Google AI Studio features (owner, 27 Nov 2026: B40; plan in AI_FEATURES.md; suggested agent AI Studio)
+| ID | Ticket | Size | After | Done when |
+|---|---|---|---|---|
+| AIS1 (#125) | Historical research assistant with Search grounding | M | — | 50 quotes and 50 facts with checked sources |
+| AIS2 (#126) | Newspaper templates built offline | M | — | 300 reviewed templates; filled deterministically |
+| AIS3 (#127) | Design optional "Ask the Historian" | S | CAUSE1 | Owner approves or drops |
+| AIS4 (#128) | Voice minister and voice orders | M | AIS3 | Owner check |
+| AIS5 (#129) | Optional cloud save backup and sign-in | M | REL1 | Owner approves privacy and cost |
+
 ## T. Targets (one table; measured by the seeds and stress tiers)
 
 | Measure | Now (stress, 256 unfuzzed runs) | Target | Source |

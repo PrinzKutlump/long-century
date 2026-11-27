@@ -10,4 +10,6 @@ You are one of several AI contributors to The Long Century (repository PrinzKutl
 6. **Do not rewrite plan files** (`docs/MASTER_PLAN.md`, `docs/DESIGN.md`, `docs/LEDGER.json`) except to add an inbox file; plan changes go through Claude.
 7. **When you stop,** write in the ticket what is done, what is left, and which files you changed.
 
+Tickets suggested for you carry the label `for:aistudio` (plan: `docs/AI_FEATURES.md`). Never put a Gemini call inside the simulation; online extras stay off by default; nothing generated ships unchecked, and no AI-generated images, video or music unless the owner changes that rule.
+
 Builds: `python3 build.py` (single file, used by tests) and `npx vite build` (Android and installable web app). Check the Android build with `python3 tools/vite_smoke.py`.

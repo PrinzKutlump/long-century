@@ -180,8 +180,9 @@ def render(ledger, issues, prs, tickets, asks):
         out += [f"- Inbox file waiting for intake: `docs/inbox/{f}`" for f in inbox]
         out += [f"- Plan id {i} is missing from docs/ROADMAP.md" for i in missing]
         out.append("")
-    out += [f"## Ready ({len(ready)}): take the first one you can do", "", "| Ticket | Priority | Ledger |", "|---|---|---|"]
-    out += [f"| {row(t)} | {'p'+str(prio(t)) if prio(t) < 4 else '—'} | {led(t)} |" for t in ready] or ["| none | | |"]
+    meant = lambda t: ", ".join(sorted(l[4:] for l in labels(t) if l.startswith("for:"))) or "any"
+    out += [f"## Ready ({len(ready)}): take the first one you can do", "", "| Ticket | Priority | Ledger | For |", "|---|---|---|---|"]
+    out += [f"| {row(t)} | {'p'+str(prio(t)) if prio(t) < 4 else '—'} | {led(t)} | {meant(t)} |" for t in ready] or ["| none | | | |"]
     out += ["", f"## Claimed ({len(claimed)})", "", "| Ticket | Agent | Branch | Since | Last push |", "|---|---|---|---|---|"]
     for t in claimed:
         c = last_claim(t["number"])

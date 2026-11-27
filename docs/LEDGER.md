@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 17, partial 8, missing 10, unverified 34, closed 2  (audited 2026-11-25)
+Totals: done 17, partial 8, missing 10, unverified 35, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -85,3 +85,4 @@ Totals: done 17, partial 8, missing 10, unverified 34, closed 2  (audited 2026-1
 | B37 | Progress indicator (owner's words: "Add progress indicator"); planned as a loading progress bar on the loading screen plus progress bars for construction, research, programmes and wars; meaning to confirm with the owner | unverified | from owner, Claude chat 27 Nov 2026 |  |
 | B38 | Daily ticker controller: an End Day button replaces End Month; each press updates the global date and advances the game world by one day | unverified | from owner, Claude chat 27 Nov 2026 |  |
 | B39 | A small progress bar or indicator beside the date (the #hdr-when header) showing how far the current month has run as days pass | unverified | from owner, Claude chat 27 Nov 2026 |  |
+| B40 | Use Google AI Studio's AI features where the game needs them (images, video, voice, Search data, Maps, chatbot, Three.js 3D, music generation, database and sign-in, transcription), planned and put on the claims board for AI Studio to implement | unverified | from owner, Claude chat 27 Nov 2026 (screenshots of AI Studio's Add AI features) |  |

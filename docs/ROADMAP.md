@@ -284,6 +284,17 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 | One roadmap, nothing missed | This file and the audit check | B26, #88 | ✔ with this PR |
 | Ledger catches up with audits | A6, A15, A16, B2, A26; A1 back to partial | #82 LED3 | ○ |
 
+### F23. Google AI Studio's AI features (B40) — plan: [AI_FEATURES.md](AI_FEATURES.md)
+
+| Feature | Mechanics | Tracked in | Status |
+|---|---|---|---|
+| Historical research with Search grounding | Drafts quotes, facts and event briefs with sources; people check each before it ships | AIS1 #125 | ○ for AI Studio |
+| Newspaper templates | Built once with Gemini, shipped as data, filled offline | AIS2 #126 | ○ for AI Studio |
+| Ask the Historian (optional, online) | Design, server, cost and privacy first | AIS3 #127 | ? owner |
+| Voice minister and voice orders | After AIS3 | AIS4 #128 | ○ later |
+| Cloud save backup and sign-in | After the release plan | AIS5 #129 | ○ later |
+| AI images, video, music | Not allowed under the owner's current art rule (B19) | — | owner decision |
+
 ## 4. Still to design before tickets can be written
 
 1. **Map stack decision** (#81): PixiJS go or Godot no-go, on the owner's phone.
@@ -307,3 +318,5 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 | Add `ottoman1911.html` to the repo | #83 | Ottoman parity tickets |
 | Free or paid, and store account | #95 | Stage I |
 | Synthesised or recorded music | #94 | Music work |
+| Allow AI-generated images, video or music (currently not allowed) | B19, B40 | Any AI art |
+| Online extras (Ask the Historian, voice, cloud saves): yes or no, and budget | #127 | AIS3–AIS5 |

@@ -473,6 +473,12 @@
    "ask": "A small progress bar or indicator beside the date (the #hdr-when header) showing how far the current month has run as days pass",
    "status": "unverified",
    "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B40",
+   "ask": "Use Google AI Studio's AI features where the game needs them (images, video, voice, Search data, Maps, chatbot, Three.js 3D, music generation, database and sign-in, transcription), planned and put on the claims board for AI Studio to implement",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (screenshots of AI Studio's Add AI features)"
   }
  ]
 }
