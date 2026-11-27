@@ -19,10 +19,10 @@ The stages of MASTER_PLAN §3 stay, with two Android stages put in front of the 
 | Stage | Goal for the player | Tickets | Gate |
 |---|---|---|---|
 | **A. Stable base on a phone** | The game never crashes, saves always reload, and installs on the Galaxy A56 | #27 FX1, #74, #75, #76, #98 SV4, #97 QA2, #99 FX2, #100 FX3, #101 FX5, #102 PF1, #80 AND3, #82 LED3, #96 SEC1, #7 PL2, #10 PL7, FX4, FX6, QA3, QA4, PB2, PB3 #13, PB4 #14, PB5, PL1, SV1, SV2 #8 | Stress tier green (MASTER_PLAN S0 gate); APK installs on the A56 |
-| **B. Dynamic map and modern UI** | A smooth living map and a clean modern interface | #81 AND4 (go/no-go for Godot), #92 AND8, #91 AND7, #90 AND6, #89 DEC1, #9 PL3a, PL3b, PL4, PL5, PL6, PL8, MP1a/b/c–MP5, #26, #85, UI5, UI2, UI4, FX6, #69 UI1a, UI1b, AR1–AR8 start, #93 MED1 | Owner says "go" on the A56 map; 7 failing pages pass the layout sweep |
-| **C. Alpha on Android** | A first playable slice others can test | FD3a/b, FD4, FD5, AI1, UI3, UI9, UI11, SC1, SC3, RL1, RL2, RL3, QA5, #61 | Five testers' pass marks; owner played three builds |
+| **B. Daily clock, living map, modern UI** | Time runs day by day; armies, fleets and buildings move and appear on a real map; a clean modern interface | DAY0–DAY9, MAP1–MAP4, PROG2, CAUSE1, BAL1, #81 AND4 (go/no-go for Godot), #92 AND8, #91 AND7, #90 AND6, #89 DEC1, #9 PL3a, PL3b, PL4, PL5, PL6, PL8, MP1a/b/c–MP5, #26, #85, UI5, UI2, UI4, FX6, #69 UI1a, UI1b, AR1–AR8 start, #93 MED1 | Owner says "go" on the A56 map; daily engine in calibration bands at 4 ms/day; 7 failing pages pass the layout sweep |
+| **C. Alpha on Android** | A first playable slice others can test | LOAD1, NEWS1, PROG1, FD3a/b, FD4, FD5, AI1, UI3, UI9, UI11, SC1, SC3, RL1, RL2, RL3, QA5, #61 | Five testers' pass marks; owner played three builds |
 | **D. Performance and provinces** | More provinces without slowing down | PF2, PF3, SO4, MP6, MP7–MP10, #84, WD1–WD4, #11 WD5a, MI6, HI5 | MASTER_PLAN S3 gate |
-| **E. Economy, demography, society** | Living population and economy | DM1–DM6, EC1–EC6, FI1–FI3, TR1–TR3, #45, #46, #64, #65, SO1a, SO1b, SO2, SO3, FD6, FD7, #5 FD2, #54 | MASTER_PLAN S4 gate |
+| **E. Economy, demography, society** | Living population and economy | SOC2, DM1–DM6, EC1–EC6, FI1–FI3, TR1–TR3, #45, #46, #64, #65, SO1a, SO1b, SO2, SO3, FD6, FD7, #5 FD2, #54 | MASTER_PLAN S4 gate |
 | **F. Politics, programmes, flavour** | Each nation feels different | PO1–PO6, RS1–RS9, NF0–NF5, HI1–HI4, #67, #56, #83, #49 | MASTER_PLAN S5 gate |
 | **G. Diplomacy, war, navy, AI** | Wars and diplomacy that follow history's patterns | DP1–DP7, MI1–MI11, NV1–NV3, AI2–AI6, HI6, HI7, #68, #39, #42, #47 | MASTER_PLAN S6 gate |
 | **H. Whole world, art and sound** | Every corner of the map and the era's look and sound | MP11–MP14, AR1–AR8, UI2, UI4, UI6, UI7, UI8, UI10, UI12, UI13, SC2, SC4, CA2–CA5, #6 CA1, #43, #94 MUS1, #41, #70, #66 | Art budgets; every nation playable |
@@ -50,8 +50,10 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 
 | Feature | Mechanics | Tracked in | Status |
 |---|---|---|---|
-| Dynamic living map | PixiJS on the graphics chip: province fills, borders that change, pan and pinch-zoom; go/no-go test on the A56, Godot only on no-go | B20, #81 AND4 | ? test first |
-| Units, trains and fronts on the map | Sprite tokens per theatre and fleet, moving trains on railways, front lines | B27, AR6, #93 MED1 | ○ |
+| Dynamic living map | PixiJS on the graphics chip: terrain, rivers, sea, borders that change, pan and pinch-zoom, level of detail; go/no-go test on the A56, Godot only on no-go | B20, B29, #81 AND4, MAP1 | ? test first |
+| Armies and fleets that move | Positions and paths, day-by-day travel by terrain, rail and sea lanes, battles and sieges shown; command model to confirm (theatre orders with visible armies, or direct control) | B29, B2, DAY3, MAP2 | ? owner choice |
+| Buildings and infrastructure appear | Railway segments drawn as built, trains running, scaffolding and progress rings, cities sized by population, canals | B29, DAY4, MAP3, MAP4 | ○ |
+| Unit, train and front sprites | Sprite tokens per unit type and ship class, trains, front lines (art) | B27, AR6, #93 MED1 | ○ |
 | True-Earth map (Miller) | Historical province shapes from evidence, adjacency and straits from data, provinces generated from CSV | B7, MP1a/b/c, MP2, MP3, MP4, #26 | ◐ crosswalk done |
 | More provinces where history needs them | Pilot 186 (Lombardy/Venetia, Peshawar/Kashmir), then batches by region | A10, #84, MP5, MP6, MP7–MP10, MP11–MP13 | ○ |
 | Easy to use on a phone | First tap hits, search, region chips, recents, pins, small-province chooser | A11, #85, UI2, MP14 | ◐ |
@@ -72,12 +74,20 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 | Buttons keep the scroll | — | A8 | ✔ |
 | Cheat, flags | £100 million per press; flags for every nation | A2, B3, B4 | ✔ |
 
-### F4. Time and turns (B24, A1)
+### F4. Time, clock and presentation (B24, B29, B30, B33–B39, A1) — design: [LIVING_WORLD.md](LIVING_WORLD.md)
 
 | Feature | Mechanics | Tracked in | Status |
 |---|---|---|---|
-| Monthly turns with fast-forward | One month per turn; fast-forward stops for decrees | A1 | ✔ |
-| Daily progression (asked in AI Studio) | Light daily step (movement, sieges, timers) plus the monthly economy; speed buttons; save change | B24, #89 DEC1 | ? owner decision |
+| Daily clock for every system (owner decision 27 Nov) | `G.day` on the real calendar; one scheduler; systems daily, staggered daily or smoothed daily; monthly chances become daily hazards | B24, DAY0–DAY9 | ○ design written |
+| End Day button and date controller | End Day replaces End Month; pause, speeds 1–5, auto-pause rules, date always shown | B38, B36, DAY1, DAY8 | ○ |
+| Month progress indicator | A small bar beside the date filling as the days of the month pass | B39, B37, DAY8 | ○ |
+| Loading screen with history | Public-domain pictures, real quotes with sources (published before 1929), did-you-know facts, loading bar | B30, B37, LOAD1 | ○ |
+| Newspaper | Weekly or monthly front page from the game's own events, period style | B34, NEWS1 | ○ |
+| Progression system | Meaning to confirm: milestones and achievements, eras, or both | B35, PROG1 | ? owner |
+| Progress indicators | Bars and rings on construction, research, programmes, war score, unification | B37, PROG2 | ○ |
+| Causal breakdowns | Tap a key number to see its top causes | B33, CAUSE1 | ◐ some "why" sheets exist |
+| Monthly turns (until DAY1) | One month per turn; fast-forward stops for decrees | A1 | ✔ (being replaced) |
+| Decision note on the time model | Superseded: the owner decided daily on 27 Nov | #89 DEC1 | ✔ decided |
 
 ### F5. Saves and performance (A31, B13, B11 budgets)
 
@@ -100,6 +110,7 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 | Taxes by category | Separate rates per sector with sector effects | A23, #65 | ◐ |
 | Steel and output in historical bands | Calibration fixes | EC5, CA3 | ○ |
 | Numbers that add up | Dashboard sums reconcile; no phantom income | EC6, #27 FX1 | ○ |
+| No death spirals | Price band 0.25–1.75x with dampening, shortage and access penalties floored at 0.15x, positive opening cash flow and stable radicalism for every country | B32, BAL1 | ○ |
 
 ### F7. Food, freight and markets (FD)
 
@@ -145,6 +156,7 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 | Feature | Mechanics | Tracked in | Status |
 |---|---|---|---|
 | Interest groups and bills | Group influence from jobs and ownership; bills, coalitions, votes with a pivotal group | PO1, PO2 | ◐ reforms exist |
+| Strata, standard of living, radicalism, legitimacy, laws (asked in AI Studio) | Needs by strata drive standard of living; radicalism against expectations; eight interest groups with clout; legitimacy and law enactment | B31, SOC2 | ○ |
 | Services and grievances | Unfunded mandates show shortfalls | PO3 | ○ |
 | Elections and franchise | ≥ 10 reforms per century | PO4 | ○ |
 | Revolts, secession, civil war | One rule (now only the scripted US civil war) | PO5 | ◐ |
@@ -275,7 +287,7 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 ## 4. Still to design before tickets can be written
 
 1. **Map stack decision** (#81): PixiJS go or Godot no-go, on the owner's phone.
-2. **Time model** (#89): monthly turns stay, or daily progression with speeds.
+2. **Daily clock** (DAY0): decided daily by the owner; design in LIVING_WORLD.md awaits approval and the command-model choice.
 3. **Modern UI design system** (#92): owner approves the look before pages are rebuilt.
 4. **Media plan** (#93, #94): sprite style for units, buildings and trains; picture sources; synthesised or recorded music.
 5. **1917 scenario** (#40): the divergence, entry state and a playable path to 1945.
@@ -288,7 +300,8 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 
 | Decision | Ticket | Needed before |
 |---|---|---|
-| Daily progression or monthly turns | #89 | Stage B UI work on time controls |
+| Command model: theatre orders with visible armies, or direct control | DAY0 | DAY3 and MAP2 |
+| What "progression system" means | PROG1 | PROG1 |
 | Map: PixiJS go or Godot | #81 | Stage B map and art work |
 | Modern UI design approval | #92 | Page rebuilds |
 | Add `ottoman1911.html` to the repo | #83 | Ottoman parity tickets |

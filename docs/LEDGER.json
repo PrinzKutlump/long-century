@@ -380,9 +380,9 @@
   },
   {
    "id": "B24",
-   "ask": "Daily progression instead of one-month turns (asked in AI Studio 26-27 Nov; AI Studio drafted a 4-phase plan; the design says one month per turn): needs an owner decision before any build",
+   "ask": "Daily progression: replace the monthly tick with a daily tick, and update every feature and engine system to run on it",
    "status": "unverified",
-   "note": "from owner in AI Studio, 26-27 Nov 2026"
+   "note": "owner decided 27 Nov 2026 in Claude chat (first asked in AI Studio 26 Nov); design in docs/LIVING_WORLD.md, tickets DAY0-DAY9"
   },
   {
    "id": "B25",
@@ -407,6 +407,72 @@
    "ask": "AI Studio's six platform fixes approved by the owner: multi-file app, larger saves, graphics-chip map, code modules, simulation in a background worker, Android app",
    "status": "unverified",
    "note": "from owner, Claude chat 27 Nov 2026; 1 multi-file app, 2 saves (already IndexedDB, A31) and 6 Android project done as scaffolding (PR #77); 3 map, 4 modules, 5 worker open"
+  },
+  {
+   "id": "B29",
+   "ask": "Not a text simulator: a content-rich game with animation and a genuine map where armies move on land, fleets move at sea, and buildings and infrastructure appear on the map as they are built",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B30",
+   "ask": "Loading screen with history tidbits and fun details, historical backgrounds and original quotes",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B31",
+   "ask": "Pops by strata with needs and standard of living, radicalism and loyalism, interest groups with clout (landowners, army, clergy, industrialists, intelligentsia, unions, rural folk, petite bourgeoisie), legitimacy and law enactment",
+   "status": "unverified",
+   "note": "from owner in AI Studio 26 Nov 2026 (docs/inbox note, never pushed)"
+  },
+  {
+   "id": "B32",
+   "ask": "Balance guardrails against death spirals: prices kept between 0.25x and 1.75x of base with dampening, shortage and market-access penalties floored at 0.15x, every playable country starts with a positive cash flow and stable radicalism",
+   "status": "unverified",
+   "note": "from owner in AI Studio 26 Nov 2026 (docs/inbox note, never pushed)"
+  },
+  {
+   "id": "B33",
+   "ask": "Causal breakdowns: tapping a key number (treasury, price, market access, standard of living, radicalism, legitimacy) shows 2-3 lines of the modifiers behind it; one deterministic pipeline in strict causal order; keep the visual theme and working features",
+   "status": "unverified",
+   "note": "from owner in AI Studio 26 Nov 2026 (docs/inbox note, never pushed)"
+  },
+  {
+   "id": "B34",
+   "ask": "Newspaper: a period newspaper reporting the world's events, wars, discoveries and the player's deeds",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (\"Add a newspaper and progression system.\")"
+  },
+  {
+   "id": "B35",
+   "ask": "Progression system (owner's words: \"Add a newspaper and progression system.\"); meaning to confirm with the owner: player milestones and achievements, era progression, or both",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B36",
+   "ask": "Date controller: pause, play and speed controls for the daily clock, the current date always visible",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (\"Add date controller\")"
+  },
+  {
+   "id": "B37",
+   "ask": "Progress indicator (owner's words: \"Add progress indicator\"); planned as a loading progress bar on the loading screen plus progress bars for construction, research, programmes and wars; meaning to confirm with the owner",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B38",
+   "ask": "Daily ticker controller: an End Day button replaces End Month; each press updates the global date and advances the game world by one day",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B39",
+   "ask": "A small progress bar or indicator beside the date (the #hdr-when header) showing how far the current month has run as days pass",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
   }
  ]
 }

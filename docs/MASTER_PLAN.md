@@ -304,12 +304,37 @@ Size: S under 60k tokens; M one day; L split first. "After": tickets that must m
 | AND6 (#90) | Android app basics: back button, sound pause, storage, splash | S | AND3 | Checked on the A56 |
 | AND7 (#91) | Month in a background worker | M | PL3a | Hash identical; 60 fps during a month |
 | AND8 (#92) | Modern UI design system (liquid glass optional) | M | — | Owner approves; child tickets per page |
-| DEC1 (#89) | Decide daily progression or monthly turns | S | — | Owner decision in B24 |
+| DEC1 (#89) | Decide daily progression or monthly turns | S | — | Decided daily by the owner, 27 Nov (B24) |
 | MED1 (#93) | Media pipeline: pictures, unit and building sprites, budgets | M | AND4 | Sample sprite and picture through the pipeline |
 | MUS1 (#94) | Music of the era | M | MED1 | 3 tracks per era, off by default |
 | SEC1 (#96) | Security baseline (dependency checks, secret scanning, CSP, no network calls) | S | — | CI fails on a high advisory |
 | REL1 (#95) | Commercial release plan for Google Play | S | — | docs/RELEASE.md with owner decisions |
 | RL4 | Google Play release build: signing, closed test, listing | M | REL1, RL3 | Closed test passes |
+
+### DAY Daily clock, MAP living map, presentation (owner, 27 Nov 2026: B24, B29, B30–B39; design in LIVING_WORLD.md)
+| ID | Ticket | Size | After | Done when |
+|---|---|---|---|---|
+| DAY0 (#104) | Living-world design approved; DESIGN §2.1, §7, §11 and rules 3 and 14 updated | S | — | Owner approves; command model chosen |
+| DAY1 (#105) | Calendar and clock (`G.day`), End Day button replaces End Month, durations as dates, save epoch | M | DAY0 | 30 End Day presses equal one old month; hash change stated |
+| DAY2 | Scheduler: daily, staggered daily, smoothed daily systems in causal order | M | DAY1 | Registry test; outcomes in bands |
+| DAY3 | Movement and war daily | L | DAY2 | War counts and lengths in bands |
+| DAY4 | Construction daily, railway segments | M | DAY2 | Build counts in bands |
+| DAY5 | Economy daily (staggered production, smoothed prices, daily cash flow) | L | DAY2 | §T economy targets in bands |
+| DAY6 | Pops, society, politics daily | M | DAY5 | Population, literacy, reforms in bands |
+| DAY7 | Research, diplomacy, events and AI daily | M | DAY2 | Event counts and war frequency in bands |
+| DAY8 (#112) | Date controller: pause, speeds, auto-pause, month progress bar | S | DAY1 | Owner check on the A56 |
+| DAY9 | Remove `G.t`, rebalance, 4 ms per day budget | M | DAY3–DAY7 | Stress tier green |
+| MAP1 | PixiJS map renderer, layers, level of detail | L | AND4 | Pan p95 ≤ 25 ms on the A56 |
+| MAP2 | Armies and fleets moving on the map, battles, sieges | L | DAY3, MAP1 | Owner check |
+| MAP3 | Infrastructure and buildings on the map, scaffolding, trains | M | DAY4, MAP1 | Owner check |
+| MAP4 | Fronts, occupation, cities by size, canals | M | MAP2 | Owner check |
+| LOAD1 | Loading screen: public-domain pictures, sourced quotes, facts, progress bar | M | MED1 | 50 quotes and 50 facts with sources |
+| NEWS1 | Newspaper front page from game events | M | DAY7 | Owner check |
+| PROG1 | Progression system (meaning confirmed by the owner) | M | UI12 | Owner check |
+| PROG2 | Progress indicators on everything that grows | S | DAY4 | Owner check |
+| CAUSE1 | Causal breakdown on every key number | M | UI1a | Sums match |
+| SOC2 | Strata, standard of living, radicalism, interest groups, legitimacy, laws | L | DAY6, PO1 | Groups react differently to one law |
+| BAL1 | Balance guardrails (price band, penalty floors, positive opening cash flow) | S | DAY5 | Fixture per guardrail |
 
 ## T. Targets (one table; measured by the seeds and stress tiers)
 
