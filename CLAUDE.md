@@ -1,6 +1,6 @@
 # The Long Century: agent guide
 
-Roles (owner, 27 Nov 2026, ledger B21): Codex/GPT, Claude and Google AI Studio may all implement tickets that change the game; Claude also plans, writes ticket issues, audits PRs (docs/DEV_WORKFLOW.md section 3b) and maintains docs and the stress tier. Every agent, AI Studio included, works on a `t/` branch and opens a PR; nobody pushes to `main`. Plans: `docs/DESIGN.md`, `docs/MASTER_PLAN.md`, `docs/STATUS.md`.
+Roles (owner, 27 Nov 2026, ledger B21): Codex/GPT, Claude and Google AI Studio may all implement tickets that change the game; Claude also plans, writes ticket issues, audits PRs (docs/DEV_WORKFLOW.md section 3b) and maintains docs and the stress tier. Every agent, AI Studio included, works on a `t/` branch and opens a PR; nobody pushes to `main`. Plans: `docs/ROADMAP.md` (map of every feature, mechanic and ticket; start here), `docs/DESIGN.md`, `docs/MASTER_PLAN.md`, `docs/STATUS.md`.
 
 Direction (owner, ledger B20): Android game first, dynamic map, modern UI, features easy to add. Path: keep the JavaScript engine; Vite multi-file build; Capacitor Android app; PixiJS map; switch to Godot only if the PixiJS map fails the phone test on a Galaxy A56.
 

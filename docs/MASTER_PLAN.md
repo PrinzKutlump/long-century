@@ -37,6 +37,8 @@ Roles: Codex/GPT implements game code; Claude plans, writes ticket issues, write
 
 ## 3. Stages and gates
 
+> **Order from 27 Nov 2026:** Android first. Two stages, A (stable base on a phone) and B (dynamic map and modern UI), now come before the alpha; the stage order with every ticket is in [ROADMAP.md](ROADMAP.md) §2. The gates below still apply.
+
 | Stage | Contents | Gate (all must hold) |
 |---|---|---|
 | **S0 Foundations and stability** | Open PRs (#22 FD1, #23 PL1, #25 PB5), QA1, FX1–FX6, PB2 owner settings, PB3–PB4, PL2, PL3a/b, PL4, PL7, SV1–SV4, CA1 | Stress tier green: 0 crashes, 0 invariant breaks, 0 resume divergences, 0 phantom income; saves in IndexedDB; no line over 300 chars; ids in data |
@@ -292,6 +294,22 @@ Size: S under 60k tokens; M one day; L split first. "After": tickets that must m
 | RL3 | Phone gate on the Galaxy A56 | S | PL8 | Within budgets |
 | RL5 | Release notes from PR titles | S | PL2 | Each release |
 | RL6 | Version stamp and feedback link on the Pages build | S | PB5 | Owner check |
+
+### AN Android and platform, MD media, RL release additions (owner, 27 Nov 2026: ledger B20, B24, B25, B27, B28)
+| ID | Ticket | Size | After | Done when |
+|---|---|---|---|---|
+| AND3 (#80) | Debug APK built by CI on every merge | S | — | APK installs on the A56 |
+| AND4 (#81) | PixiJS map phone test: go, or plan Godot | M | AND3 | Owner's go or no-go on the A56 |
+| AND5 (#86) | Redo AI Studio's reverted ideas as reviewed tickets | S | — | One child ticket per idea |
+| AND6 (#90) | Android app basics: back button, sound pause, storage, splash | S | AND3 | Checked on the A56 |
+| AND7 (#91) | Month in a background worker | M | PL3a | Hash identical; 60 fps during a month |
+| AND8 (#92) | Modern UI design system (liquid glass optional) | M | — | Owner approves; child tickets per page |
+| DEC1 (#89) | Decide daily progression or monthly turns | S | — | Owner decision in B24 |
+| MED1 (#93) | Media pipeline: pictures, unit and building sprites, budgets | M | AND4 | Sample sprite and picture through the pipeline |
+| MUS1 (#94) | Music of the era | M | MED1 | 3 tracks per era, off by default |
+| SEC1 (#96) | Security baseline (dependency checks, secret scanning, CSP, no network calls) | S | — | CI fails on a high advisory |
+| REL1 (#95) | Commercial release plan for Google Play | S | — | docs/RELEASE.md with owner decisions |
+| RL4 | Google Play release build: signing, closed test, listing | M | REL1, RL3 | Closed test passes |
 
 ## T. Targets (one table; measured by the seeds and stress tiers)
 

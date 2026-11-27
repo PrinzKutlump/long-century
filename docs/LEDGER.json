@@ -127,7 +127,7 @@
    "id": "A18",
    "ask": "Liquid-glass old-book look with borders and images",
    "status": "missing",
-   "note": "ticket #41"
+   "note": "ticket #41; owner 27 Nov: liquid glass is optional, the target is a modern UI (B20)"
   },
   {
    "id": "A19",
@@ -219,7 +219,7 @@
    "id": "A32",
    "ask": "Android APK",
    "status": "closed",
-   "note": "owner stopped APK; web only"
+   "note": "owner stopped APK; web only; reopened 27 Nov for The Long Century: Android first (B20)"
   },
   {
    "id": "B1",
@@ -359,8 +359,10 @@
   {
    "id": "B21",
    "ask": "Claude may implement game code as well as plan and audit (owner, 27 Nov 2026); AI Studio work goes through a branch and PR, never straight to main",
-   "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov 2026"
+   "status": "done",
+   "note": "from owner, Claude chat 27 Nov 2026; CLAUDE.md and AGENTS.md updated (PR #77); branch protection without bypass set by the owner 27 Nov",
+   "done": "2026-11-27",
+   "nosrc": true
   },
   {
    "id": "B22",
@@ -371,8 +373,40 @@
   {
    "id": "B23",
    "ask": "One GitHub-based coordination system for every AI and the owner: master plan and tickets on a claims board, agents take unclaimed tickets, no feature or planned feature goes missing, a new ask in any tool (AI Studio, Codex, Claude) is recorded in the repo before work, no independent streaks",
+   "status": "done",
+   "note": "from owner, Claude chat 27 Nov 2026; docs/COORDINATION.md, tools/coord.py, coord.yml (PR COORD1); merged PR #87; /claim and board refresh verified live on #88",
+   "done": "2026-11-27",
+   "nosrc": true
+  },
+  {
+   "id": "B24",
+   "ask": "Daily progression instead of one-month turns (asked in AI Studio 26-27 Nov; AI Studio drafted a 4-phase plan; the design says one month per turn): needs an owner decision before any build",
    "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov 2026; docs/COORDINATION.md, tools/coord.py, coord.yml (PR COORD1)"
+   "note": "from owner in AI Studio, 26-27 Nov 2026"
+  },
+  {
+   "id": "B25",
+   "ask": "Commercial release and future security: Google Play release, clean licences, signing key kept safe, privacy policy, pricing model, dependency and security checks",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B26",
+   "ask": "Whole future plan streamlined into features, mechanics and tickets; nothing forgotten or missed",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B27",
+   "ask": "Room for rich media: unit and building pictures or models on the map, era pictures, music and sound, loaded only when needed",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (AI Studio limits list)"
+  },
+  {
+   "id": "B28",
+   "ask": "AI Studio's six platform fixes approved by the owner: multi-file app, larger saves, graphics-chip map, code modules, simulation in a background worker, Android app",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026; 1 multi-file app, 2 saves (already IndexedDB, A31) and 6 Android project done as scaffolding (PR #77); 3 map, 4 modules, 5 worker open"
   }
  ]
 }
