@@ -19,14 +19,14 @@ The stages of MASTER_PLAN §3 stay, with two Android stages put in front of the 
 | Stage | Goal for the player | Tickets | Gate |
 |---|---|---|---|
 | **A. Stable base on a phone** | The game never crashes, saves always reload, and installs on the Galaxy A56 | #27 FX1, #74, #75, #76, #98 SV4, #97 QA2, #99 FX2, #100 FX3, #101 FX5, #102 PF1, #80 AND3, #82 LED3, #96 SEC1, #7 PL2, #10 PL7, FX4, FX6, QA3, QA4, PB2, PB3 #13, PB4 #14, PB5, PL1, SV1, SV2 #8 | Stress tier green (MASTER_PLAN S0 gate); APK installs on the A56 |
-| **B. Daily clock, living map, modern UI** | Time runs day by day; armies, fleets and buildings move and appear on a real map; a clean modern interface | DAY0–DAY9, MAP1–MAP4, PROG2, CAUSE1, BAL1, #81 AND4 (go/no-go for Godot), #92 AND8, #91 AND7, #90 AND6, #89 DEC1, #9 PL3a, PL3b, PL4, PL5, PL6, PL8, MP1a/b/c–MP5, #26, #85, UI5, UI2, UI4, FX6, #69 UI1a, UI1b, AR1–AR8 start, #93 MED1 | Owner says "go" on the A56 map; daily engine in calibration bands at 4 ms/day; 7 failing pages pass the layout sweep |
-| **C. Alpha on Android** | A first playable slice others can test | LOAD1, NEWS1, PROG1, FD3a/b, FD4, FD5, AI1, UI3, UI9, UI11, SC1, SC3, RL1, RL2, RL3, QA5, #61 | Five testers' pass marks; owner played three builds |
-| **D. Performance and provinces** | More provinces without slowing down | PF2, PF3, SO4, MP6, MP7–MP10, #84, WD1–WD4, #11 WD5a, MI6, HI5 | MASTER_PLAN S3 gate |
+| **B. Daily clock, living map, modern UI** | Time runs day by day; armies, fleets and buildings move and appear on a 2.5D map with easy theatre controls; a clean modern interface | DAY0–DAY9, MAP1–MAP5, PROG2, CAUSE1, BAL1, #81 AND4 (go/no-go for Godot), #92 AND8, #91 AND7, #90 AND6, #89 DEC1, #9 PL3a, PL3b, PL4, PL5, PL6, PL8, MP1a/b/c–MP5, #26, #85, UI5, UI2, UI4, FX6, #69 UI1a, UI1b, AR1–AR8 start, #93 MED1 | Owner says "go" on the A56 map; daily engine in calibration bands at 4 ms/day; 7 failing pages pass the layout sweep |
+| **C. Alpha on Android** | A first playable slice others can test | LOAD1, NEWS1, PROG1a, PROG1b, FD3a/b, FD4, FD5, AI1, UI3, UI9, UI11, SC1, SC3, RL1, RL2, RL3, QA5, #61 | Five testers' pass marks; owner played three builds |
+| **D. Performance and provinces** | The historical number of provinces and sea areas without slowing down | #147 HP1, #148 HP2, #149 SEA1, PF2, PF3, SO4, MP6, MP7–MP10, #84, WD1–WD4, #11 WD5a, MI6, HI5 | MASTER_PLAN S3 gate |
 | **E. Economy, demography, society** | Living population and economy | SOC2, DM1–DM6, EC1–EC6, FI1–FI3, TR1–TR3, #45, #46, #64, #65, SO1a, SO1b, SO2, SO3, FD6, FD7, #5 FD2, #54 | MASTER_PLAN S4 gate |
 | **F. Politics, programmes, flavour** | Each nation feels different | PO1–PO6, RS1–RS9, NF0–NF5, HI1–HI4, #67, #56, #83, #49 | MASTER_PLAN S5 gate |
 | **G. Diplomacy, war, navy, AI** | Wars and diplomacy that follow history's patterns | DP1–DP7, MI1–MI11, NV1–NV3, AI2–AI6, HI6, HI7, #68, #39, #42, #47 | MASTER_PLAN S6 gate |
 | **H. Whole world, art and sound** | Every corner of the map and the era's look and sound | MP11–MP14, AR1–AR8, UI2, UI4, UI6, UI7, UI8, UI10, UI12, UI13, SC2, SC4, CA2–CA5, #6 CA1, #43, #94 MUS1, #41, #70, #66 | Art budgets; every nation playable |
-| **I. Release** | On Google Play | RL4, RL5, RL6, SC5, #95 REL1, #40 (1917 scenario) | Phone gate, licences, store checks |
+| **I. Release** | On Google Play | PROG1c, RL4, RL5, RL6, SC5, #95 REL1, #40 (1917 scenario) | Phone gate, licences, store checks |
 
 ## 3. Feature map
 
@@ -51,11 +51,14 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 | Feature | Mechanics | Tracked in | Status |
 |---|---|---|---|
 | Dynamic living map | PixiJS on the graphics chip: terrain, rivers, sea, borders that change, pan and pinch-zoom, level of detail; go/no-go test on the A56, Godot only on no-go | B20, B29, #81 AND4, MAP1 | ? test first |
-| Armies and fleets that move | Positions and paths, day-by-day travel by terrain, rail and sea lanes, battles and sieges shown; command model to confirm (theatre orders with visible armies, or direct control) | B29, B2, DAY3, MAP2 | ? owner choice |
+| Armies and fleets that move | Positions and paths, day-by-day travel by terrain, rail and sea lanes, battles and sieges shown; unit figures that walk, ride and sail | B29, B56, DAY3, MAP2 | ○ |
+| Easy, enjoyable theatre controls | Draw-an-arrow orders, one-tap stances with the expected result, army card, battle moments, undo | B57, B2, MAP5 | ○ |
+| 2.5D look | Shaded relief, shadows, slight tilt up close, illustrated cities and buildings; clear colours far out | B56, MAP1 | ○ |
 | Buildings and infrastructure appear | Railway segments drawn as built, trains running, scaffolding and progress rings, cities sized by population, canals | B29, DAY4, MAP3, MAP4 | ○ |
 | Unit, train and front sprites | Sprite tokens per unit type and ship class, trains, front lines (art) | B27, AR6, #93 MED1 | ○ |
 | True-Earth map (Miller) | Historical province shapes from evidence, adjacency and straits from data, provinces generated from CSV | B7, MP1a/b/c, MP2, MP3, MP4, #26 | ◐ crosswalk done |
-| More provinces where history needs them | Pilot 186 (Lombardy/Venetia, Peshawar/Kashmir), then batches by region | A10, #84, MP5, MP6, MP7–MP10, MP11–MP13 | ○ |
+| Historical number of provinces (owner, B47) | Census of 1836 administrative units with sources, then regional batches at that count | B47, #147 HP1, #148 HP2, A10, #84, MP5, MP6, MP7–MP10, MP11–MP13 | ? census first |
+| Sea areas (owner, B48) | Named sea zones with straits and canals; fleets, battles, blockades and trade by zone | B48, #149 SEA1 | ○ |
 | Easy to use on a phone | First tap hits, search, region chips, recents, pins, small-province chooser | A11, #85, UI2, MP14 | ◐ |
 | Map lenses | Political, diplomatic, population, unrest, industry, railways, terrain, build, trade, supply, culture and religion, naval, fronts, historical | UI4, DM6, FD7 | ◐ some lenses exist |
 
@@ -72,7 +75,7 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 | Tutorial and coach | Punjab scenario walkthrough | UI9 | ○ |
 | Accessibility | Checks in CI | UI10 | ○ |
 | Buttons keep the scroll | — | A8 | ✔ |
-| Cheat, flags | £100 million per press; flags for every nation | A2, B3, B4 | ✔ |
+| Cheat, flags | £100 million per press (test builds only from release, B51); flags for every nation | A2, B3, B4, #146 | ✔ |
 
 ### F4. Time, clock and presentation (B24, B29, B30, B33–B39, A1) — design: [LIVING_WORLD.md](LIVING_WORLD.md)
 
@@ -83,7 +86,9 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 | Month progress indicator | A small bar beside the date filling as the days of the month pass | B39, B37, DAY8 | ○ |
 | Loading screen with history | Public-domain pictures, real quotes with sources (published before 1929), did-you-know facts, loading bar | B30, B37, LOAD1 | ○ |
 | Newspaper | Weekly or monthly front page from the game's own events, period style | B34, NEWS1 | ○ |
-| Progression system | Meaning to confirm: milestones and achievements, eras, or both | B35, PROG1 | ? owner |
+| Progression: eras | Six eras change the map style, units, music, newspaper and options as the world reaches them | B35, PROG1a #120 | ○ |
+| Progression: milestones and beat-history score | 40 milestones; yearly and final score against real history | B35, PROG1b #139 | ○ |
+| Progression: player profile | Level across campaigns; unlocks scenarios, flavour nations, cosmetics; online weekly challenges; paid items cosmetic only | B35, PROG1c #140 | ○ |
 | Progress indicators | Bars and rings on construction, research, programmes, war score, unification | B37, PROG2 | ○ |
 | Causal breakdowns | Tap a key number to see its top causes | B33, CAUSE1 | ◐ some "why" sheets exist |
 | Monthly turns (until DAY1) | One month per turn; fast-forward stops for decrees | A1 | ✔ (being replaced) |
@@ -137,6 +142,7 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 | Build mode and Works board | One basket for province and national orders | B5, #31 | ✔ / ◐ playtest fixes |
 | Railways, forts with level caps | — | A4, A22 | ✔ |
 | More buildings and great works | About 20 more buildings, 12 more works by history | B8, #70 | ○ |
+| Great projects for every region and nation (owner, B49) | Canals, railways, bridges, dams, harbours, city rebuilding by history, with sources | B49, #150 GW2 | ○ |
 | Renovate and restore old works | Renovation path for existing works | A24, #66 | ○ |
 
 ### F10. Demography and society (DM, SO)
@@ -302,6 +308,35 @@ Owner 27 Nov: online features encouraged, the game must still work fully offline
 | Ads and purchases in the app | AdMob, Google Play Billing, offline fallback | REV2 #134 | ○ |
 | Consent and privacy | Consent screen, privacy policy, Play forms | REV3 #135 | ○ |
 
+## 3a. Earlier features re-planned for the full game (B46)
+
+What was built or planned for a 1 MB single-file, monthly, text-first web game, and how it changes now that the game is a full Android app with a daily clock and a living 2.5D map.
+
+| Earlier feature or rule | Why it must change | New plan | Ticket |
+|---|---|---|---|
+| One self-contained HTML file (`build.py`) | The full game needs pictures, sprites, music and video loaded on demand | Vite multi-file app is the game; single file kept only for tests until they move | Rule 5, #141 PL9 |
+| GitHub Pages and releases publish the single file | Players install the app | Pages serves the Vite build; releases carry the APK | #142 DEP1, #80 AND3 |
+| 11 test tools and the stress tier read `dist/long-century.html` | They must test what players get | Node engine bundle and `vite preview` | #141 PL9 |
+| "Web only, no APK"; old-book look as the target | Owner: Android first, modern UI | Android first; old-book an optional theme | Rule 13, #92, #41 |
+| Budgets per month, 1 MB save cap, 1.5 MB art cap, HTML size | Daily clock, media on demand | 4 ms per day; frame budget on the A56; app within Google Play limits (base ≤ 200 MB, asset packs for large media; owner: no 3 MB cap, B50); save timed, not capped | Rule 14, DAY9 #113, #93 MED1 |
+| SVG Atlas (`ui5.js`: applyView, placeLabels, tapAt) with paths inside `world.js` | Cannot animate units, buildings and terrain smoothly | PixiJS 2.5D map; geometry as a data asset | #81, MAP1 #114, #144 MAPDATA1 |
+| Art and map plan (ART_MAP_GPT_PLAN: inline SVG art, AR1–AR8 under a 1.5 MB cap, no AI art) | Sprites, textures and AI art are now allowed | Texture and sprite pipeline; AI art with prompts on record | AR1–AR8 re-scoped by #93, #130 |
+| Map probes (tap_probe, map_probe) | Written for the SVG map | Rewritten for PixiJS | #141, #85 |
+| Theatre war without visible armies (theatre.js W1–W3) | Armies must march and sail on the map | Armies already store a province and a path (`mil.js`); add daily movement, theatre controls on the map | DAY3 #107, MAP2 #115, MAP5 #136 |
+| Everything monthly: harvests, vital rates, debt, elections, programmes, journals, AI caching, events, dispatches, autosave | Daily clock for every system | Each moves in DAY2–DAY7; durations become dates | #106–#111 |
+| End Month, fast-forward and stop rules (`campaign.js` advanceStop) | Replaced by the date controller | End Day, pause, speeds, auto-pause | #105, #112 |
+| Pages built as HTML strings (Nation, Economy, Politics, Military, World, Ledger, Research, News, Build mode, Works board, cabinet report, brief, coach) | Modern UI on a map-first screen | Rebuilt page by page on the design system | #92, #145 UIR1 |
+| News page and dispatches as text | Living, illustrated world | Newspaper, event pictures | #119, #130 |
+| Two sound systems (SND cues, AI Studio's AUD) | One audio service with music | Merge, then music | #143 AUD3, #131 |
+| Saves tuned to a 1 MB cap; legacy save code | Daily state, cloud backup | New epoch with the day clock; compact encoding; cloud backup | #8, SV3, #105, #129 |
+| Coach and Punjab tutorial (UI9) | Controls change to map-first | Rebuilt after MAP5 and UIR1 | UI9 |
+| Undo before End Month (B14, Build mode) | No month turn any more | Undo until an order starts | #61, MAP5 #136 |
+| Cheat in Settings | Public release with achievements, leaderboards, paid items | Test builds only; removed from the Play release (owner, B51) | #146 CHEAT1 |
+| Province count capped at 230–360 (MAP_PROVINCES_PLAN) | Owner: match the historical number (B47) | Census with sources, then regional rollout at that count with performance work | #147 HP1, #148 HP2 |
+| Ships on lanes between coastal provinces | Owner: sea areas needed (B48) | Named sea zones, straits and canals as links | #149 SEA1 |
+| 34 great works (22 not world fairs) | Owner: historical great projects for every region and nation (B49) | Researched list with sources, pictures, newspaper stories | #150 GW2, #70, #66 |
+| Flags (`flags.js`, SVG geometry) | Drawn on the map at many sizes | Render to textures; data stays | MAP1 #114 |
+
 ## 4. Still to design before tickets can be written
 
 1. **Map stack decision** (#81): PixiJS go or Godot no-go, on the owner's phone.
@@ -318,8 +353,6 @@ Owner 27 Nov: online features encouraged, the game must still work fully offline
 
 | Decision | Ticket | Needed before |
 |---|---|---|
-| Command model: theatre orders with visible armies, or direct control | DAY0 | DAY3 and MAP2 |
-| What "progression system" means | PROG1 | PROG1 |
 | Map: PixiJS go or Godot | #81 | Stage B map and art work |
 | Modern UI design approval | #92 | Page rebuilds |
 | Add `ottoman1911.html` to the repo | #83 | Ottoman parity tickets |

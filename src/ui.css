@@ -252,3 +252,8 @@ table.brt{width:100%;border-collapse:collapse;table-layout:fixed;font-size:.82re
 /* coach cards */
 .coach{margin:0 0 .75rem;padding:.6rem .8rem;border:1px solid color-mix(in srgb,var(--gold) 45%,var(--line));border-left:4px solid var(--gold);background:color-mix(in srgb,var(--gold) 9%,var(--panel));border-radius:2px}
 .coach b{font:400 1.1rem var(--display);font-variant-caps:small-caps;color:var(--gold);letter-spacing:.03em}.coach p{margin:.2rem 0}
+
+/* DAY1: month progress beside the date (ui_day.js) */
+#hdr .mbar{display:block;height:3px;margin-top:2px;background:color-mix(in srgb,currentColor 18%,transparent);border-radius:2px;overflow:hidden;max-width:160px}
+#hdr .mbar i{display:block;height:100%;background:var(--gold,#b8860b);transition:width .2s}
+#hdr .when .mbar{max-width:none}

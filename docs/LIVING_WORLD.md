@@ -54,10 +54,16 @@ PixiJS on the graphics chip (go/no-go on the A56: #81 AND4; Godot only on no-go)
 
 - Each army and fleet has a position (province or sea zone) and, when moving, a path and a progress in days. Travel time depends on terrain, roads, railways (much faster), rivers, season and supply; fleets follow sea lanes and straits.
 - On the map a unit token (sprite by type: infantry, cavalry, artillery, guards; ships by class) slides along its path each day; battles show where they happen and how they go; sieges show around the fort.
-- **Command (owner decision needed, B2):** today the player gives orders to a **theatre** and never selects single armies (owner rule from earlier). Two ways forward:
-  1. **Keep theatre command, show the armies.** The theatre's orders move the armies on their own, visible on the map; the player can tap an army to see it. Keeps the owner's earlier rule.
-  2. **Direct control.** The player also selects and moves armies like Europa Universalis or Victoria 2, with theatres as an option.
-  Recommendation: 1 first (smaller change, keeps earlier decision); 2 can be added later.
+- **Command (owner decided 27 Nov, B57): theatre orders, made enjoyable.** The player never drags single armies; the theatre's orders move the armies, which march and sail visibly on the map. Controls:
+  1. **Draw the plan on the map:** drag an arrow from a theatre's front to a target province (attack), tap a province to hold it (defend), or circle a region to occupy; the theatre turns the arrow into marching orders.
+  2. **One-tap stances** on the theatre card: attack, hold, fall back, siege, with the expected result in words ("likely to take Lombardy in about 40 days, losses moderate").
+  3. **Tap an army** to see its men, morale, supply, general and destination; swap the general or send reinforcements from there.
+  4. **Battle moments:** a short battle view on the map (units clash, the front bends), the result in the newspaper; auto-pause is optional.
+  5. **Advice and undo:** the minister's suggested order is one tap; an order can be changed until the armies set off.
+
+### 3.2a 2.5D look (owner decided 27 Nov, B56)
+
+The map is 2D with depth: shaded relief and hills, rivers and coasts with soft shadows, a slight camera tilt at close zoom, cities and buildings drawn as small illustrated pieces standing on the map, unit figures (not flat counters) that walk, ride, haul guns and sail, with flags, dust and smoke. Far zoom shows national colours and front lines for clarity; close zoom shows the detail. A 3D globe or battle scenes can be added later without changing the game logic.
 
 ### 3.3 Building and infrastructure on the map
 
@@ -76,7 +82,7 @@ All sprites, icons and terrain art are our own, AI-made (owner 27 Nov, B42, with
 | **Date controller** | Date with day, month, year; pause; speeds 1–5; auto-pause on wars, events and finished buildings (each switchable) | Speed = days per second; pause states saved | B36 |
 | **Loading screen** | A historical picture of the era or the chosen nation, a real quote with speaker, year and source, and a short "did you know" fact; a progress bar while loading | Quotes and facts in a data file, each with its source; only quotes published before 1929 by their authors (public domain); pictures public domain (museum collections), our own art or AI-made scenes (B42), each in `docs/ASSETS.md`; no invented quotes | B30, B37 |
 | **Newspaper** | A front page every week or month: headlines about wars, treaties, inventions, elections, disasters and the player's deeds, in period style, with a masthead per nation | Built from the game's own events and numbers; each headline links to the event or province | B34 |
-| **Progression** | Meaning to confirm with the owner: national milestones and achievements (first railway, industrialised, great power, history goals beaten), era changes, or both | Tracked from the history ledger (UI12) | B35 |
+| **Progression** (owner chose all three, 27 Nov) | 1. Six eras (1836 Revolutions, 1850s Railways, 1870s Nations and Empires, 1890s Steel and Electricity, 1914 Great War, 1920s Interwar) that change the map style, units, music, newspaper and options. 2. National milestones and a beat-history score per campaign. 3. A player profile that unlocks scenarios, flavour nations and cosmetics, with optional online weekly challenges and leaderboards | Eras arrive when the world reaches them; score from the history ledger (UI12); paid items cosmetic only | B35 |
 | **Progress indicators** | Bars and rings on construction, research, programmes, war score, unification and loading | Read from existing progress values | B37 |
 | **Causal breakdowns** | Tap any key number to see the 2–3 biggest causes | One breakdown function per number | B33 |
 
@@ -86,7 +92,7 @@ Stage A (stable base) comes first: the daily conversion multiplies any existing 
 
 | ID | Ticket | After | Done when |
 |---|---|---|---|
-| DAY0 | This design approved; DESIGN §2.1, §7, §11 and MASTER_PLAN rules 3 and 14 updated | — | Owner approves; command option chosen (§3.2) |
+| DAY0 | This design approved; DESIGN §2.1, §7, §11 and MASTER_PLAN rules 3 and 14 updated | — | Owner approves (command model chosen 27 Nov: theatre orders, B57; 2.5D map, B56) |
 | DAY1 | Calendar and clock: `G.day`, date helpers, `G.t` derived, durations as dates, save epoch, tools in days | DAY0, FX1, SV4 | Same outcomes as monthly in a 1-day-per-month mode; hash change stated |
 | DAY2 | Scheduler: systems register as daily, staggered or smoothed; causal order; one rng | DAY1 | Registry test; month made of 30 daily steps reproduces DAY1 in bands |
 | DAY3 | Movement and war daily: positions, paths, travel time, battles on contact, sieges, supply, blockades | DAY2 | War counts and lengths in bands; armies never teleport |
@@ -98,11 +104,14 @@ Stage A (stable base) comes first: the daily conversion multiplies any existing 
 | DAY9 | Remove `G.t`; rebalance; 4 ms/day budget; stress tier green | DAY3–DAY7 | Stress tier green; calibration in bands |
 | MAP1 | PixiJS map renderer with layers and level of detail (extends AND4 #81) | AND4 go | Pan p95 ≤ 25 ms on the A56 |
 | MAP2 | Armies and fleets drawn and moving, battles and sieges shown | DAY3, MAP1 | Owner check |
+| MAP5 | Theatre controls on the map: draw-an-arrow orders, one-tap stances with expected result, army card, battle moments, order undo (§3.2) | MAP2, DAY3 | Owner finds it easy on the A56 |
 | MAP3 | Infrastructure and buildings on the map, scaffolding, trains | DAY4, MAP1 | Owner check |
 | MAP4 | Fronts, occupation, cities by size, canals | MAP2 | Owner check |
 | LOAD1 | Loading screen: pictures, verified quotes, facts, progress bar | MED1 | 50 quotes and 50 facts with sources; owner check |
 | NEWS1 | Newspaper front page from game events | DAY7 | Owner check |
-| PROG1 | Progression system (after the owner says what it means) | UI12 | Owner check |
+| PROG1a | Eras that change the campaign | DAY7, AIS6 | Eras arrive in historical windows across seeds |
+| PROG1b | National milestones and beat-history score | UI12, NEWS1 | 40 milestones; score each year |
+| PROG1c | Player profile, unlocks, online challenges | PROG1b, AIS5, REV1 | Unlocks work offline |
 | PROG2 | Progress indicators everywhere something grows | DAY4 | Owner check |
 | CAUSE1 | Causal breakdown on every key number | UI1a | Sums match the number |
 | SOC2 | Strata, needs, standard of living, radicalism, interest groups, legitimacy, laws (AI Studio Phase 2 asks) | DAY6, PO1 | Owner check; groups react differently to one law |

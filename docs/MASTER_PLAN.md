@@ -8,9 +8,9 @@ Roles: Codex/GPT implements game code; Claude plans, writes ticket issues, write
 
 1. **Same rules for every nation**, player and AI. Differences come from data (flavour packs, region tables, events). No nation tag in core code.
 2. **Game theory on every major decision**: one evaluator for adviser and AI (DESIGN §10).
-3. **War by theatre**: no selecting or dragging individual armies; infantry, cavalry and artillery stay distinct.
+3. **War by theatre**: no selecting or dragging individual armies; infantry, cavalry and artillery stay distinct; armies are visible and move on the map, and theatre orders are given with easy map controls (owner 27 Nov, B57; LIVING_WORLD §3.2).
 4. **Phone first**: 360 and 390 px, 100% and 125% text, 44 px targets, no sideways page scroll, map ≥ 640 px, controls ≤ 8%.
-5. **Offline first** (owner 27 Nov, B41): the whole game works without a connection; online extras (ads, cloud saves, the Historian, store) are welcome but optional and never inside the simulation. **The single HTML file** (Pages and tests), plain global JavaScript built by `build.py`, no network calls **in the simulation**, one `<style>` element, wrapper-safe (no `document.write`, no `document.body.innerHTML=`). Served by GitHub Pages and Releases.
+5. **Offline first** (owner 27 Nov, B41): the whole game works without a connection; online extras (ads, cloud saves, the Historian, store) are welcome but never inside the simulation. **Full app** (B20, B46): the Vite multi-file build is the game (web app and Capacitor Android); `build.py`'s single HTML file stays only for tests and tools until PL9 moves them. Plain global JavaScript in the engine for now (modules: PL3a), wrapper-safe (no `document.write`, no `document.body.innerHTML=`).
 6. **Saves**: old saves need not load until the first alpha (owner, 24 Nov). A save made by a build must load in that build and continue **exactly** (the stress tier checks this). From the alpha on, saves of the same release line load (SV5).
 7. **Randomness only from `rng()`**; previews never draw from it. No scratch value is read in a month in which it was not recomputed.
 8. **Stated effects are applied effects**, no more and no less.
@@ -18,8 +18,8 @@ Roles: Codex/GPT implements game code; Claude plans, writes ticket issues, write
 10. **Conservation**: goods, money and people have a source and a sink.
 11. **Art from allowed sources only**: our own, AI-made with prompt on record (owner 27 Nov, B42), PD, CC0, OFL, MIT, ISC, Apache-2.0 or BSD, each in `docs/ASSETS.md`. No raw Correlates of War files in the public repository.
 12. **Plain English** on screen; a disabled button says why.
-13. **Owner's standing wishes**: nation flags; a Settings cheat adding £100 million per press; the Devlet-i Âliyye look; web only, no APK.
-14. **Budgets** (until PL8 measures a phone): Node month median ≤ 90 ms on the CI runner at 1926–36, browser ≤ 130 ms; save ≤ 1 MB until SV1, then save ≤ 300 ms blocked screen and load ≤ 3 s.
+13. **Owner's standing wishes**: nation flags; a Settings cheat adding £100 million per press in **test builds only**, removed from the public release (B51, CHEAT1); Android first (B20, replaces "web only, no APK"); a modern UI with the Devlet-i Âliyye old-book look as an optional theme (A18).
+14. **Budgets** (until PL8 measures a phone; rewritten for the daily clock by DAY0/DAY9): simulation ≤ 4 ms per day in Node at 1926–36 (today ≤ 90 ms per month median on CI, browser ≤ 130 ms); map frame ≤ 17 ms median, ≤ 25 ms p95 on the A56; app package within Google Play's limits (base module ≤ 200 MB compressed; large media in asset packs or loaded on demand; owner 27 Nov, B50: no 3 MB cap), kept as small as practical because big installs lose players; save ≤ 300 ms blocked screen and load ≤ 3 s (the old 1 MB save cap retires with SV1/SV3).
 15. **Process**: one ticket, one branch `t/<id>-<slug>`, one PR; a ticket names its state-hash change and why; CI decides pass or fail; no merge with a red stress run on the same base (from QA1).
 
 ## 2. Re-evaluation of the previous plan
@@ -310,6 +310,16 @@ Size: S under 60k tokens; M one day; L split first. "After": tickets that must m
 | SEC1 (#96) | Security baseline (dependency checks, secret scanning, CSP, network only from online extras) | S | — | CI fails on a high advisory |
 | REL1 (#95) | Commercial release plan for Google Play | S | — | docs/RELEASE.md with owner decisions |
 | RL4 | Google Play release build: signing, closed test, listing | M | REL1, RL3 | Closed test passes |
+| PL9 (#141) | Tests and tools on the full app, single file retired | M | AND3 | Every tool runs on the Vite build |
+| DEP1 (#142) | Publish the Vite build on Pages and the APK on releases | S | AND3, PL9 | Pages installs as an app on the A56 |
+| AUD3 (#143) | One sound system (SND cues + AUD + music) | S | — | One setting controls all sound |
+| MAPDATA1 (#144) | Province geometry as a data asset for the PixiJS map | M | MP4 | Same shapes in both maps; hash unchanged |
+| UIR1 (#145) | Rebuild every page on the modern design system (child ticket per page) | L | AND8 | Layout sweep passes; features keep working |
+| CHEAT1 (#146) | Cheat only in test builds, removed from the Play release | S | RL4 | Release build has no cheat; test build keeps it |
+| HP1 (#147) | Historical province census with sources; owner sets the target count | M | — | Table with sources; owner approves |
+| HP2 (#148) | Map and engine at the historical province count; regional rollout | L | HP1, DAY2, MAP1 | Budgets hold at the HP1 count |
+| SEA1 (#149) | Sea areas (zones) for fleets, trade and blockades | M | MAPDATA1 | Fleets move zone to zone; fixtures pass |
+| GW2 (#150) | Historical great projects for every region and nation | M | B8, AIS1 | 3 per major nation, 1 per region |
 
 ### DAY Daily clock, MAP living map, presentation (owner, 27 Nov 2026: B24, B29, B30–B39; design in LIVING_WORLD.md)
 | ID | Ticket | Size | After | Done when |
@@ -328,9 +338,12 @@ Size: S under 60k tokens; M one day; L split first. "After": tickets that must m
 | MAP2 | Armies and fleets moving on the map, battles, sieges | L | DAY3, MAP1 | Owner check |
 | MAP3 | Infrastructure and buildings on the map, scaffolding, trains | M | DAY4, MAP1 | Owner check |
 | MAP4 | Fronts, occupation, cities by size, canals | M | MAP2 | Owner check |
+| MAP5 (#136) | Theatre controls on the map (draw-an-arrow orders, one-tap stances, army card, battle moments, undo) | M | MAP2, DAY3 | Owner finds it easy on the A56 |
 | LOAD1 | Loading screen: public-domain pictures, sourced quotes, facts, progress bar | M | MED1 | 50 quotes and 50 facts with sources |
 | NEWS1 | Newspaper front page from game events | M | DAY7 | Owner check |
-| PROG1 | Progression system (meaning confirmed by the owner) | M | UI12 | Owner check |
+| PROG1a (#120) | Eras that change the campaign | M | DAY7, AIS6 | Eras arrive in historical windows |
+| PROG1b (#139) | National milestones and beat-history score | M | UI12, NEWS1 | 40 milestones; yearly score |
+| PROG1c (#140) | Player profile, unlocks, online challenges | M | PROG1b, AIS5, REV1 | Unlocks work offline |
 | PROG2 | Progress indicators on everything that grows | S | DAY4 | Owner check |
 | CAUSE1 | Causal breakdown on every key number | M | UI1a | Sums match |
 | SOC2 | Strata, standard of living, radicalism, interest groups, legitimacy, laws | L | DAY6, PO1 | Groups react differently to one law |

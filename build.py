@@ -3,7 +3,7 @@ import os
 import subprocess
 with open("engine-files.json", encoding="utf8") as manifest:
     JS = json.load(manifest)
-JS += ["flags.js", "ui.js", "ui2.js", "ui3.js", "ui4.js", "ui5.js", "ui6.js", "ui7.js", "ui8.js", "ui9.js", "ui_audio.js"]
+JS += ["flags.js", "ui.js", "ui2.js", "ui3.js", "ui4.js", "ui5.js", "ui6.js", "ui7.js", "ui8.js", "ui9.js", "ui_audio.js", "ui_day.js"]
 def read_src(f):
     """Plain JS is read as is; TypeScript engine files (src/engine/*.ts) are stripped to JS by Node, the same way build.mjs and Vite do."""
     if not f.endswith(".ts"):

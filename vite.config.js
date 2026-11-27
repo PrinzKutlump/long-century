@@ -21,7 +21,8 @@ const uiFiles = [
   "ui7.js",
   "ui8.js",
   "ui9.js",
-  "ui_audio.js"
+  "ui_audio.js",
+  "ui_day.js"
 ];
 
 function readSrc(file) {
