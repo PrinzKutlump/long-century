@@ -14,13 +14,19 @@ Rules for every wave:
 | AUD5 interface and content | A3, A9, A11, A16, B6, B7 | compare with the Ottoman audit (PR #60): which events, policies and systems are missing; tap_probe and layout_check results recorded (A11 and A16 can close now); page-by-page gap list for B6; map navigation checks for B7 |
 Each passing row becomes done with a probe. Each failure becomes a ticket and joins the wave that fits it.
 
+## Wave 0 result (2026-11-27, PRs #72 and #73)
+Done: A6, A11, A15, A16, B2. New tickets: #74 declareWar crash (A20), #75 recruit through execCommand (B1), #76 battle spread (A19). All 8 missing Ottoman items were already ticketed. Owner: add ottoman1911.html to the repo for the event-level audit.
+
 ## Wave 1: small engine fixes (hash changes, one at a time, Sonnet or Codex)
+0. #74 declareWar crash (A20), first: it blocks conquest of Egypt, Libya and Greece
 1. #49 Germany forms too early (B13)
 2. #54 wool has no buyer (B15)
 3. #64 oil wells (A5)
 4. #65 taxes by category (A23)
 5. #66 renovate great works (A24)
 6. #61 annual review and wider undo (B14)
+7. #75 recruitment through execCommand (B1)
+8. #76 battle spread (A19)
 FX1 #30 and playtest #32 (Codex) land before or between these.
 
 ## Wave 2: systems (hash changes, one at a time; designs first where marked)

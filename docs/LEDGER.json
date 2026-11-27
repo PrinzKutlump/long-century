@@ -1,5 +1,5 @@
 {
- "audited": "2026-11-25",
+ "audited": "2026-11-27",
  "groups": [
   {
    "id": "A",
@@ -29,7 +29,7 @@
    "id": "A3",
    "ask": "Refine gameplay, more historical events, refined military and naval system",
    "status": "unverified",
-   "note": "audit vs Ottoman artifact"
+   "note": "Ottoman handoff: 8 of 15 items missing, all ticketed (#39 #40 #43 #45 #46 #47 #68); event-level audit needs ottoman1911.html in the repo (PR #72)"
   },
   {
    "id": "A4",
@@ -48,8 +48,10 @@
   {
    "id": "A6",
    "ask": "Trade, resource extraction, industry that produces",
-   "status": "unverified",
-   "note": "audit"
+   "status": "done",
+   "note": "GBR/FRA/RUS output 1.36M to 1.40M over 24 months (PR #73)",
+   "done": "2026-11-27",
+   "probe": "econ.js::RAILK"
   },
   {
    "id": "A7",
@@ -69,7 +71,7 @@
    "id": "A9",
    "ask": "More unique events, policies and systems, interlinked",
    "status": "unverified",
-   "note": "audit"
+   "note": "see A3; events batches ticket #56"
   },
   {
    "id": "A10",
@@ -80,8 +82,10 @@
   {
    "id": "A11",
    "ask": "Province tap hits first time",
-   "status": "unverified",
-   "note": "tap_probe: 0 failures at 390 px (2026-11-25)"
+   "status": "done",
+   "note": "tap_probe 0 misses; chooser opens for dense provinces by design (PR #72)",
+   "done": "2026-11-27",
+   "probe": "ui5.js::tapAt"
   },
   {
    "id": "A12",
@@ -107,14 +111,18 @@
   {
    "id": "A15",
    "ask": "Red Sea fleet can return to the Mediterranean",
-   "status": "unverified",
-   "note": "audit"
+   "status": "done",
+   "note": "sea route ASW to CAI exists; Suez canal adds the lane (PR #73)",
+   "done": "2026-11-27",
+   "probe": "build.js::suez|Suez"
   },
   {
    "id": "A16",
    "ask": "Mobile-friendly",
-   "status": "unverified",
-   "note": "layout_check 74 of 74 clean (2026-11-25)"
+   "status": "done",
+   "note": "layout_check 74 of 74 clean at 360x740 and 390x844 (PR #72)",
+   "done": "2026-11-27",
+   "probe": "ui.js::scrollTop"
   },
   {
    "id": "A17",
@@ -131,14 +139,16 @@
   {
    "id": "A19",
    "ask": "Small randomness in events and combat; decisions that feel purposeful",
-   "status": "unverified",
-   "note": "audit"
+   "status": "partial",
+   "note": "randomness present but battle spread 5.6 of 8: ticket #76",
+   "probe": "mil.js::rng\\("
   },
   {
    "id": "A20",
    "ask": "Conquer Egypt and Libya from Jerusalem; invade Greece by land",
-   "status": "unverified",
-   "note": "regions exist (PR #48); invasion path from Jerusalem not tested"
+   "status": "partial",
+   "note": "land paths DAM>CAI>TRP and IST>SOF>SAL>ATH exist; declareWar crash: ticket #74",
+   "probe": "diplo.js::declareWar"
   },
   {
    "id": "A21",
@@ -225,13 +235,15 @@
    "id": "B1",
    "ask": "Rebuild like Victoria 2; every country same rules; any country 1836 start",
    "status": "unverified",
-   "note": "SWI, FRA, GBR accept the same fort order alike (PR #53); wider check open"
+   "note": "same answers for 5 nations on forts; no recruit command kind: ticket #75"
   },
   {
    "id": "B2",
    "ask": "Theatre command with infantry, cavalry, artillery; no army selection",
-   "status": "unverified",
-   "note": "theatre.js exists"
+   "status": "done",
+   "note": "defender 7.81 infantry, 2.24 with cavalry, 2.19 with artillery (PR #73)",
+   "done": "2026-11-27",
+   "probe": "theatre.js::STANCES"
   },
   {
    "id": "B3",
@@ -259,13 +271,13 @@
    "id": "B6",
    "ask": "UI at least as good as Devlet-i Aliyye",
    "status": "unverified",
-   "note": "layout audit fails 7 pages; ticket #69"
+   "note": "page gaps inferred in docs/AUD5.md; ticket #69"
   },
   {
    "id": "B7",
    "ask": "Miller true-Earth map, art, easy navigation",
    "status": "unverified",
-   "note": "MP and AR tickets"
+   "note": "pan and labels fine, 0 overlaps; no Miller projection yet, Atlas covers 7.9 %: map plan MP tickets (PR #72)"
   },
   {
    "id": "B8",
@@ -305,7 +317,7 @@
    "id": "B13",
    "ask": "Fix Germany forming too early; one economy for all; 130 ms and 1 MB budgets",
    "status": "unverified",
-   "note": "Germany forms Mar 1868 (seed 7), Jul 1869 (seed 11): ticket #49; FX and SV tickets for budgets"
+   "note": "Germany ticket #49; seed 7 save 976 KB ok; one local run 150.9 ms/month at 1846 while two agents shared the machine, CI is the budget check"
   },
   {
    "id": "B14",
