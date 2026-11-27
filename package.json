@@ -1,0 +1,18 @@
+{
+  "name": "the-long-century",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lead a country from 1836 through 1936 in a single-player historical strategy game.",
+  "scripts": {
+    "dev": "node build.mjs && node server.js",
+    "build": "node build.mjs",
+    "start": "node server.js",
+    "lint": "node --check server.js && node --check build.mjs"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
