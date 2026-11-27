@@ -511,6 +511,12 @@
    "ask": "Theatre orders stay, but commanding must be enjoyable with easy controls",
    "status": "unverified",
    "note": "from owner, Claude chat 27 Nov 2026 (\"theater orders but make it enjoyable and easy controls\")"
+  },
+  {
+   "id": "B46",
+   "ask": "Re-plan every earlier feature for the new scope (living 2.5D map, daily clock, Android app, online, AI art) and the move from the 1 MB single HTML file to a full game",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
   }
  ]
 }

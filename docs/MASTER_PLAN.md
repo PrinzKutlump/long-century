@@ -10,7 +10,7 @@ Roles: Codex/GPT implements game code; Claude plans, writes ticket issues, write
 2. **Game theory on every major decision**: one evaluator for adviser and AI (DESIGN §10).
 3. **War by theatre**: no selecting or dragging individual armies; infantry, cavalry and artillery stay distinct; armies are visible and move on the map, and theatre orders are given with easy map controls (owner 27 Nov, B45; LIVING_WORLD §3.2).
 4. **Phone first**: 360 and 390 px, 100% and 125% text, 44 px targets, no sideways page scroll, map ≥ 640 px, controls ≤ 8%.
-5. **Offline first** (owner 27 Nov, B41): the whole game works without a connection; online extras (ads, cloud saves, the Historian, store) are welcome but optional and never inside the simulation. **The single HTML file** (Pages and tests), plain global JavaScript built by `build.py`, no network calls **in the simulation**, one `<style>` element, wrapper-safe (no `document.write`, no `document.body.innerHTML=`). Served by GitHub Pages and Releases.
+5. **Offline first** (owner 27 Nov, B41): the whole game works without a connection; online extras (ads, cloud saves, the Historian, store) are welcome but never inside the simulation. **Full app** (B20, B46): the Vite multi-file build is the game (web app and Capacitor Android); `build.py`'s single HTML file stays only for tests and tools until PL9 moves them. Plain global JavaScript in the engine for now (modules: PL3a), wrapper-safe (no `document.write`, no `document.body.innerHTML=`).
 6. **Saves**: old saves need not load until the first alpha (owner, 24 Nov). A save made by a build must load in that build and continue **exactly** (the stress tier checks this). From the alpha on, saves of the same release line load (SV5).
 7. **Randomness only from `rng()`**; previews never draw from it. No scratch value is read in a month in which it was not recomputed.
 8. **Stated effects are applied effects**, no more and no less.
@@ -18,8 +18,8 @@ Roles: Codex/GPT implements game code; Claude plans, writes ticket issues, write
 10. **Conservation**: goods, money and people have a source and a sink.
 11. **Art from allowed sources only**: our own, AI-made with prompt on record (owner 27 Nov, B42), PD, CC0, OFL, MIT, ISC, Apache-2.0 or BSD, each in `docs/ASSETS.md`. No raw Correlates of War files in the public repository.
 12. **Plain English** on screen; a disabled button says why.
-13. **Owner's standing wishes**: nation flags; a Settings cheat adding £100 million per press; the Devlet-i Âliyye look; web only, no APK.
-14. **Budgets** (until PL8 measures a phone): Node month median ≤ 90 ms on the CI runner at 1926–36, browser ≤ 130 ms; save ≤ 1 MB until SV1, then save ≤ 300 ms blocked screen and load ≤ 3 s.
+13. **Owner's standing wishes**: nation flags; a Settings cheat adding £100 million per press (how it fits achievements and revenue: CHEAT1); Android first (B20, replaces "web only, no APK"); a modern UI with the Devlet-i Âliyye old-book look as an optional theme (A18).
+14. **Budgets** (until PL8 measures a phone; rewritten for the daily clock by DAY0/DAY9): simulation ≤ 4 ms per day in Node at 1926–36 (today ≤ 90 ms per month median on CI, browser ≤ 130 ms); map frame ≤ 17 ms median, ≤ 25 ms p95 on the A56; first download ≤ 3 MB, media loaded on demand with per-file budgets (MED1); save ≤ 300 ms blocked screen and load ≤ 3 s (the old 1 MB save cap retires with SV1/SV3).
 15. **Process**: one ticket, one branch `t/<id>-<slug>`, one PR; a ticket names its state-hash change and why; CI decides pass or fail; no merge with a red stress run on the same base (from QA1).
 
 ## 2. Re-evaluation of the previous plan
@@ -310,6 +310,12 @@ Size: S under 60k tokens; M one day; L split first. "After": tickets that must m
 | SEC1 (#96) | Security baseline (dependency checks, secret scanning, CSP, network only from online extras) | S | — | CI fails on a high advisory |
 | REL1 (#95) | Commercial release plan for Google Play | S | — | docs/RELEASE.md with owner decisions |
 | RL4 | Google Play release build: signing, closed test, listing | M | REL1, RL3 | Closed test passes |
+| PL9 (#141) | Tests and tools on the full app, single file retired | M | AND3 | Every tool runs on the Vite build |
+| DEP1 (#142) | Publish the Vite build on Pages and the APK on releases | S | AND3, PL9 | Pages installs as an app on the A56 |
+| AUD3 (#143) | One sound system (SND cues + AUD + music) | S | — | One setting controls all sound |
+| MAPDATA1 (#144) | Province geometry as a data asset for the PixiJS map | M | MP4 | Same shapes in both maps; hash unchanged |
+| UIR1 (#145) | Rebuild every page on the modern design system (child ticket per page) | L | AND8 | Layout sweep passes; features keep working |
+| CHEAT1 (#146) | Cheat rule for achievements, leaderboards and revenue | S | — | Owner's rule recorded |
 
 ### DAY Daily clock, MAP living map, presentation (owner, 27 Nov 2026: B24, B29, B30–B39; design in LIVING_WORLD.md)
 | ID | Ticket | Size | After | Done when |

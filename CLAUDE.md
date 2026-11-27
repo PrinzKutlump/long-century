@@ -79,8 +79,8 @@ Then the flags and interface files (build.py appends these after the engine list
 - Century has no year limit; a partial run is not available.
 
 ## Budgets
-- At most 130 ms per month at 1936 (century.js msPerMonth).
-- Save file at most 1 MB (century.js saveBytes).
+- At most 130 ms per month at 1936 (century.js msPerMonth); becomes 4 ms per day with the daily clock (DAY9).
+- Save file at most 1 MB (century.js saveBytes) until SV3; then save time ≤ 300 ms and load ≤ 3 s.
 - Map at least 640 px tall.
 - Controls at most 8% of the screen.
 

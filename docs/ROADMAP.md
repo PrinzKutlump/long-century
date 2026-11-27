@@ -306,6 +306,32 @@ Owner 27 Nov: online features encouraged, the game must still work fully offline
 | Ads and purchases in the app | AdMob, Google Play Billing, offline fallback | REV2 #134 | ○ |
 | Consent and privacy | Consent screen, privacy policy, Play forms | REV3 #135 | ○ |
 
+## 3a. Earlier features re-planned for the full game (B46)
+
+What was built or planned for a 1 MB single-file, monthly, text-first web game, and how it changes now that the game is a full Android app with a daily clock and a living 2.5D map.
+
+| Earlier feature or rule | Why it must change | New plan | Ticket |
+|---|---|---|---|
+| One self-contained HTML file (`build.py`) | The full game needs pictures, sprites, music and video loaded on demand | Vite multi-file app is the game; single file kept only for tests until they move | Rule 5, #141 PL9 |
+| GitHub Pages and releases publish the single file | Players install the app | Pages serves the Vite build; releases carry the APK | #142 DEP1, #80 AND3 |
+| 11 test tools and the stress tier read `dist/long-century.html` | They must test what players get | Node engine bundle and `vite preview` | #141 PL9 |
+| "Web only, no APK"; old-book look as the target | Owner: Android first, modern UI | Android first; old-book an optional theme | Rule 13, #92, #41 |
+| Budgets per month, 1 MB save cap, 1.5 MB art cap, HTML size | Daily clock, media on demand | 4 ms per day; frame budget on the A56; 3 MB first download; per-file media budgets; save timed, not capped | Rule 14, DAY9 #113, #93 MED1 |
+| SVG Atlas (`ui5.js`: applyView, placeLabels, tapAt) with paths inside `world.js` | Cannot animate units, buildings and terrain smoothly | PixiJS 2.5D map; geometry as a data asset | #81, MAP1 #114, #144 MAPDATA1 |
+| Art and map plan (ART_MAP_GPT_PLAN: inline SVG art, AR1–AR8 under a 1.5 MB cap, no AI art) | Sprites, textures and AI art are now allowed | Texture and sprite pipeline; AI art with prompts on record | AR1–AR8 re-scoped by #93, #130 |
+| Map probes (tap_probe, map_probe) | Written for the SVG map | Rewritten for PixiJS | #141, #85 |
+| Theatre war without visible armies (theatre.js W1–W3) | Armies must march and sail on the map | Armies already store a province and a path (`mil.js`); add daily movement, theatre controls on the map | DAY3 #107, MAP2 #115, MAP5 #136 |
+| Everything monthly: harvests, vital rates, debt, elections, programmes, journals, AI caching, events, dispatches, autosave | Daily clock for every system | Each moves in DAY2–DAY7; durations become dates | #106–#111 |
+| End Month, fast-forward and stop rules (`campaign.js` advanceStop) | Replaced by the date controller | End Day, pause, speeds, auto-pause | #105, #112 |
+| Pages built as HTML strings (Nation, Economy, Politics, Military, World, Ledger, Research, News, Build mode, Works board, cabinet report, brief, coach) | Modern UI on a map-first screen | Rebuilt page by page on the design system | #92, #145 UIR1 |
+| News page and dispatches as text | Living, illustrated world | Newspaper, event pictures | #119, #130 |
+| Two sound systems (SND cues, AI Studio's AUD) | One audio service with music | Merge, then music | #143 AUD3, #131 |
+| Saves tuned to a 1 MB cap; legacy save code | Daily state, cloud backup | New epoch with the day clock; compact encoding; cloud backup | #8, SV3, #105, #129 |
+| Coach and Punjab tutorial (UI9) | Controls change to map-first | Rebuilt after MAP5 and UIR1 | UI9 |
+| Undo before End Month (B14, Build mode) | No month turn any more | Undo until an order starts | #61, MAP5 #136 |
+| Cheat in Settings | Achievements, leaderboards, paid bonuses | Rule decided by the owner | #146 CHEAT1 |
+| Flags (`flags.js`, SVG geometry) | Drawn on the map at many sizes | Render to textures; data stays | MAP1 #114 |
+
 ## 4. Still to design before tickets can be written
 
 1. **Map stack decision** (#81): PixiJS go or Godot no-go, on the owner's phone.

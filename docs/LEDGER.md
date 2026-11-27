@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 18, partial 8, missing 10, unverified 39, closed 2  (audited 2026-11-25)
+Totals: done 18, partial 8, missing 10, unverified 40, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -91,3 +91,4 @@ Totals: done 18, partial 8, missing 10, unverified 39, closed 2  (audited 2026-1
 | B43 | Revenue through ads and similar (in-app purchases etc.); encourage online use | unverified | from owner, Claude chat 27 Nov 2026 ("revenue generation will be through ads and etc") |  |
 | B44 | 2.5D map: a rich 2D map with depth (shaded terrain, shadows, slight tilt), with units visible on the map that feel good and raise engagement | unverified | from owner, Claude chat 27 Nov 2026 ("2.5d but having units on map feel good and get more engagement") |  |
 | B45 | Theatre orders stay, but commanding must be enjoyable with easy controls | unverified | from owner, Claude chat 27 Nov 2026 ("theater orders but make it enjoyable and easy controls") |  |
+| B46 | Re-plan every earlier feature for the new scope (living 2.5D map, daily clock, Android app, online, AI art) and the move from the 1 MB single HTML file to a full game | unverified | from owner, Claude chat 27 Nov 2026 |  |
