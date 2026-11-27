@@ -8,7 +8,7 @@ Roles: Codex/GPT implements game code; Claude plans, writes ticket issues, write
 
 1. **Same rules for every nation**, player and AI. Differences come from data (flavour packs, region tables, events). No nation tag in core code.
 2. **Game theory on every major decision**: one evaluator for adviser and AI (DESIGN §10).
-3. **War by theatre**: no selecting or dragging individual armies; infantry, cavalry and artillery stay distinct; armies are visible and move on the map, and theatre orders are given with easy map controls (owner 27 Nov, B45; LIVING_WORLD §3.2).
+3. **War by theatre**: no selecting or dragging individual armies; infantry, cavalry and artillery stay distinct; armies are visible and move on the map, and theatre orders are given with easy map controls (owner 27 Nov, B57; LIVING_WORLD §3.2).
 4. **Phone first**: 360 and 390 px, 100% and 125% text, 44 px targets, no sideways page scroll, map ≥ 640 px, controls ≤ 8%.
 5. **Offline first** (owner 27 Nov, B41): the whole game works without a connection; online extras (ads, cloud saves, the Historian, store) are welcome but never inside the simulation. **Full app** (B20, B46): the Vite multi-file build is the game (web app and Capacitor Android); `build.py`'s single HTML file stays only for tests and tools until PL9 moves them. Plain global JavaScript in the engine for now (modules: PL3a), wrapper-safe (no `document.write`, no `document.body.innerHTML=`).
 6. **Saves**: old saves need not load until the first alpha (owner, 24 Nov). A save made by a build must load in that build and continue **exactly** (the stress tier checks this). From the alpha on, saves of the same release line load (SV5).

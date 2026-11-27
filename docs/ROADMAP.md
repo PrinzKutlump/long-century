@@ -51,9 +51,9 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 | Feature | Mechanics | Tracked in | Status |
 |---|---|---|---|
 | Dynamic living map | PixiJS on the graphics chip: terrain, rivers, sea, borders that change, pan and pinch-zoom, level of detail; go/no-go test on the A56, Godot only on no-go | B20, B29, #81 AND4, MAP1 | ? test first |
-| Armies and fleets that move | Positions and paths, day-by-day travel by terrain, rail and sea lanes, battles and sieges shown; unit figures that walk, ride and sail | B29, B44, DAY3, MAP2 | ○ |
-| Easy, enjoyable theatre controls | Draw-an-arrow orders, one-tap stances with the expected result, army card, battle moments, undo | B45, B2, MAP5 | ○ |
-| 2.5D look | Shaded relief, shadows, slight tilt up close, illustrated cities and buildings; clear colours far out | B44, MAP1 | ○ |
+| Armies and fleets that move | Positions and paths, day-by-day travel by terrain, rail and sea lanes, battles and sieges shown; unit figures that walk, ride and sail | B29, B56, DAY3, MAP2 | ○ |
+| Easy, enjoyable theatre controls | Draw-an-arrow orders, one-tap stances with the expected result, army card, battle moments, undo | B57, B2, MAP5 | ○ |
+| 2.5D look | Shaded relief, shadows, slight tilt up close, illustrated cities and buildings; clear colours far out | B56, MAP1 | ○ |
 | Buildings and infrastructure appear | Railway segments drawn as built, trains running, scaffolding and progress rings, cities sized by population, canals | B29, DAY4, MAP3, MAP4 | ○ |
 | Unit, train and front sprites | Sprite tokens per unit type and ship class, trains, front lines (art) | B27, AR6, #93 MED1 | ○ |
 | True-Earth map (Miller) | Historical province shapes from evidence, adjacency and straits from data, provinces generated from CSV | B7, MP1a/b/c, MP2, MP3, MP4, #26 | ◐ crosswalk done |

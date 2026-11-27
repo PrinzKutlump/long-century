@@ -1,6 +1,6 @@
 # The Long Century: Art and Earth-Map Plan (written for GPT/Codex to implement)
 
-> **Re-planned 27 Nov 2026 (B42, B44, B46):** the map moves to PixiJS (2.5D), media load on demand, and AI art is allowed. Inline-SVG rules, the 1.5 MB total art cap and "no AI art" below are retired; the geodata, projection and province-shape work (M0–M4) still applies, with output as a geometry asset (MAPDATA1 #144). See ROADMAP §3a.
+> **Re-planned 27 Nov 2026 (B42, B56, B46):** the map moves to PixiJS (2.5D), media load on demand, and AI art is allowed. Inline-SVG rules, the 1.5 MB total art cap and "no AI art" below are retired; the geodata, projection and province-shape work (M0–M4) still applies, with output as a geometry asset (MAPDATA1 #144). See ROADMAP §3a.
 
 > Current rules, ticket ids and order: `docs/MASTER_PLAN.md` (v2). Where this plan's rules or ticket names differ, the master plan wins; this file keeps the map and art detail.
 
