@@ -596,6 +596,12 @@
    "ask": "Final structured plan for 1.0 and a 1.1 plan; Claude used minimally after today, most work divided between GPT/Codex and AI Studio; use GitHub's free resources extensively, especially at night when the owner is not working",
    "status": "unverified",
    "note": "from owner, Claude chat 27 Nov"
+  },
+  {
+   "id": "B60",
+   "ask": "Province count must be historical in 1.0 (confirms B47 for the launch, not 1.1)",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov"
   }
  ]
 }
