@@ -44,7 +44,19 @@ const bldActive=c=>{let n=0;for(const p of provsOf(c.tag))for(const b of p.build
 function bldCan(c,p,k){const B=BLD[k];if(p.o!==c.tag||p.ctl!==p.o)return{ok:false,why:"Only in provinces we hold."};if(p.waste)return{ok:false,why:"Not possible here."};if(B.ok&&!B.ok(p))return{ok:false,why:B.okw||"Not possible here."};if(B.lv(p)>=B.max)return{ok:false,why:"At the highest level."};if(B.tech&&!c.tech[B.tech])return{ok:false,why:needT(c,B.tech)};const w=B.chk&&B.chk(c,p);if(w)return{ok:false,why:w};if(p.build.some(b=>b.k==="bld"&&b.b===k))return{ok:false,why:"Already under construction."};return{ok:true};}
 function startBld(c,p,k,force,pid){const ok=bldCan(c,p,k);if(!ok.ok)return ok;if(!force&&bldActive(c)>=buildSlots(c))return{ok:false,full:true,why:"All "+buildSlots(c)+" building slots are busy.",txt:"All "+buildSlots(c)+" building slots are busy."};const C=bldCost(p,k);const nb={k:"bld",b:k,left:Object.assign({},C),cost:C,state:true,pid:pid||newPid()};p.build.push(nb);return{ok:true,txt:"Work begins on "+(k==="minew"?"the mine works":"a "+BLD[k].n.toLowerCase())+" in "+p.n+"."};}
 /* the player's waiting list: first in, first out as slots free up */
-function bqAdd(c,pid,k){c.bq=c.bq||[];if(c.bq.some(x=>x.p===pid&&x.b===k))return{ok:false,txt:"Already in the queue."};c.bq.push({p:pid,b:k,id:"q"+(c.queueSequence=(c.queueSequence||0)+1)});return{ok:true,txt:BLD[k].n+" in "+P(pid).n+" is queued."};}
+function bqAdd(c,pid,k){
+ const p=P(pid),B=BLD[k];
+ const waiting=(c.bq||[]).filter(order=>order.p===pid&&order.b===k).length;
+ const active=p.build.filter(project=>project.k==="bld"&&project.b===k).length;
+ if(B.lv(p)+waiting+active>=B.max){
+  const why=B.lv(p)>=B.max?"At the highest level.":"Existing orders already reach the highest level.";
+  return{ok:false,why,txt:why};
+ }
+ if(waiting)return{ok:false,why:"Already in the queue.",txt:"Already in the queue."};
+ c.bq=c.bq||[];
+ c.bq.push({p:pid,b:k,id:"q"+(c.queueSequence=(c.queueSequence||0)+1)});
+ return{ok:true,txt:B.n+" in "+p.n+" is queued."};
+}
 function bqMonth(c){if(!c.bq||!c.bq.length||bldActive(c)>=buildSlots(c))return;const it=c.bq[0],p=P(it.p),r=startBld(c,p,it.b,false,queuePid(c,it));if(r.ok){if(it.orderId!=null)p.build.at(-1).orderId=it.orderId;c.bq.shift();if(c.tag===G.player)msg("economy",r.txt);}else if(!r.full){c.bq.shift();queueEnd(c,it,r.why);if(c.tag===G.player)msg("economy","A queued project was dropped: "+BLD[it.b].n+" in "+p.n+". "+r.why);}}
 function bxAgg(){for(const t in G.c){const c=G.c[t];if(c.alive)c._bx={admin:0,inv:0,cust:0,pres:0,rp:0,up:0};}
  for(const p of G.plist){if(!p.o||!p.bx)continue;const c=G.c[p.o],a=c&&c._bx;if(!a)continue;for(const k in p.bx){const l=p.bx[k];if(!l||!BLD[k])continue;a.up+=BLD[k].upk*l;if(p.ctl!==p.o)continue;if(k==="telegraph")a.admin+=.02*l;else if(k==="court")a.admin+=.01*l;else if(k==="customs")a.cust+=.08*l;else if(k==="bank")a.inv+=.06*l;else if(k==="exchange")a.inv+=.15*l;else if(k==="theatre")a.pres+=.003*l;else if(k==="college")a.rp+=3*l;}}

@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 13, partial 10, missing 10, unverified 16, closed 2  (audited 2026-11-25)
+Totals: done 14, partial 9, missing 10, unverified 16, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -30,7 +30,7 @@ Totals: done 13, partial 10, missing 10, unverified 16, closed 2  (audited 2026-
 | A19 | Small randomness in events and combat; decisions that feel purposeful | unverified | audit |  |
 | A20 | Conquer Egypt and Libya from Jerusalem; invade Greece by land | unverified | regions exist (PR #48); invasion path from Jerusalem not tested |  |
 | A21 | Order ships from shipyards; US shipyards and unique ships | missing | ticket #42 |  |
-| A22 | Forts: no queue or build past max level | partial | real bug, ticket #36; probes merged PR #35 |  |
+| A22 | Forts: no queue or build past max level | done | Ticket #36: queue admission counts active and waiting levels; AUD1 checks rejection and notices. | 2026-11-25 |
 | A23 | Taxes by category with sector effects | partial | tax change moves income (PR #35 probe); categories per sector unverified |  |
 | A24 | Great works by history, renovation of old works, historic buildings | partial | 34 great works, no renovation path |  |
 | A25 | Great work and city pictures in background | missing | ticket #43 |  |
