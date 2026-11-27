@@ -54,14 +54,14 @@ PixiJS on the graphics chip (go/no-go on the A56: #81 AND4; Godot only on no-go)
 
 - Each army and fleet has a position (province or sea zone) and, when moving, a path and a progress in days. Travel time depends on terrain, roads, railways (much faster), rivers, season and supply; fleets follow sea lanes and straits.
 - On the map a unit token (sprite by type: infantry, cavalry, artillery, guards; ships by class) slides along its path each day; battles show where they happen and how they go; sieges show around the fort.
-- **Command (owner decided 27 Nov, B45): theatre orders, made enjoyable.** The player never drags single armies; the theatre's orders move the armies, which march and sail visibly on the map. Controls:
+- **Command (owner decided 27 Nov, B57): theatre orders, made enjoyable.** The player never drags single armies; the theatre's orders move the armies, which march and sail visibly on the map. Controls:
   1. **Draw the plan on the map:** drag an arrow from a theatre's front to a target province (attack), tap a province to hold it (defend), or circle a region to occupy; the theatre turns the arrow into marching orders.
   2. **One-tap stances** on the theatre card: attack, hold, fall back, siege, with the expected result in words ("likely to take Lombardy in about 40 days, losses moderate").
   3. **Tap an army** to see its men, morale, supply, general and destination; swap the general or send reinforcements from there.
   4. **Battle moments:** a short battle view on the map (units clash, the front bends), the result in the newspaper; auto-pause is optional.
   5. **Advice and undo:** the minister's suggested order is one tap; an order can be changed until the armies set off.
 
-### 3.2a 2.5D look (owner decided 27 Nov, B44)
+### 3.2a 2.5D look (owner decided 27 Nov, B56)
 
 The map is 2D with depth: shaded relief and hills, rivers and coasts with soft shadows, a slight camera tilt at close zoom, cities and buildings drawn as small illustrated pieces standing on the map, unit figures (not flat counters) that walk, ride, haul guns and sail, with flags, dust and smoke. Far zoom shows national colours and front lines for clarity; close zoom shows the detail. A 3D globe or battle scenes can be added later without changing the game logic.
 
@@ -92,7 +92,7 @@ Stage A (stable base) comes first: the daily conversion multiplies any existing 
 
 | ID | Ticket | After | Done when |
 |---|---|---|---|
-| DAY0 | This design approved; DESIGN §2.1, §7, §11 and MASTER_PLAN rules 3 and 14 updated | — | Owner approves (command model chosen 27 Nov: theatre orders, B45; 2.5D map, B44) |
+| DAY0 | This design approved; DESIGN §2.1, §7, §11 and MASTER_PLAN rules 3 and 14 updated | — | Owner approves (command model chosen 27 Nov: theatre orders, B57; 2.5D map, B56) |
 | DAY1 | Calendar and clock: `G.day`, date helpers, `G.t` derived, durations as dates, save epoch, tools in days | DAY0, FX1, SV4 | Same outcomes as monthly in a 1-day-per-month mode; hash change stated |
 | DAY2 | Scheduler: systems register as daily, staggered or smoothed; causal order; one rng | DAY1 | Registry test; month made of 30 daily steps reproduces DAY1 in bands |
 | DAY3 | Movement and war daily: positions, paths, travel time, battles on contact, sieges, supply, blockades | DAY2 | War counts and lengths in bands; armies never teleport |

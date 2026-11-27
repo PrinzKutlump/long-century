@@ -232,7 +232,7 @@
    "id": "B2",
    "ask": "Theatre command with infantry, cavalry, artillery; no army selection",
    "status": "unverified",
-   "note": "theatre.js exists; owner 27 Nov (B45): theatre orders kept, armies visible and moving on the map, easy enjoyable controls"
+   "note": "theatre.js exists; owner 27 Nov (B57): theatre orders kept, armies visible and moving on the map, easy enjoyable controls"
   },
   {
    "id": "B3",
@@ -504,16 +504,28 @@
    "note": "from owner, Claude chat 27 Nov 2026 (\"revenue generation will be through ads and etc\")"
   },
   {
-   "id": "B44",
+   "id": "B56",
    "ask": "2.5D map: a rich 2D map with depth (shaded terrain, shadows, slight tilt), with units visible on the map that feel good and raise engagement",
    "status": "unverified",
    "note": "from owner, Claude chat 27 Nov 2026 (\"2.5d but having units on map feel good and get more engagement\")"
   },
   {
-   "id": "B45",
+   "id": "B57",
    "ask": "Theatre orders stay, but commanding must be enjoyable with easy controls",
    "status": "unverified",
    "note": "from owner, Claude chat 27 Nov 2026 (\"theater orders but make it enjoyable and easy controls\")"
+  },
+  {
+   "id": "B44",
+   "ask": "Director's review and plan v3: status, assignments, pending and why, technical path to a commercial game, market research, ratings, recommendations and options; modify the plan",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov"
+  },
+  {
+   "id": "B45",
+   "ask": "Specialist leads under the main dev: music developer (era-accurate and licence-free music), creative and art developer (images, animation, map plans), history researcher (historical events for each country and region), quality-of-life developer",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov"
   },
   {
    "id": "B46",

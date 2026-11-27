@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 19, partial 12, missing 10, unverified 43, closed 2  (audited 2026-11-25)
+Totals: done 19, partial 12, missing 10, unverified 45, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -47,7 +47,7 @@ Totals: done 19, partial 12, missing 10, unverified 43, closed 2  (audited 2026-
 | ID | Ask | Status | Ticket or evidence | Done on |
 |---|---|---|---|---|
 | B1 | Rebuild like Victoria 2; every country same rules; any country 1836 start | unverified | SWI, FRA, GBR accept the same fort order alike (PR #53); wider check open |  |
-| B2 | Theatre command with infantry, cavalry, artillery; no army selection | unverified | theatre.js exists; owner 27 Nov (B45): theatre orders kept, armies visible and moving on the map, easy enjoyable controls |  |
+| B2 | Theatre command with infantry, cavalry, artillery; no army selection | unverified | theatre.js exists; owner 27 Nov (B57): theatre orders kept, armies visible and moving on the map, easy enjoyable controls |  |
 | B3 | Flags for every nation | done |  | 2026-11-25 |
 | B4 | Punjab 1836 flag | done | every nation has a flag (PR #53) | 2026-11-25 |
 | B5 | Buildings, great works, decisions the player can use | partial | Build mode and Works board exist |  |
@@ -89,8 +89,10 @@ Totals: done 19, partial 12, missing 10, unverified 43, closed 2  (audited 2026-
 | B41 | Online features are welcome and encouraged, but the game must still work fully offline | unverified | from owner, Claude chat 27 Nov 2026 ("relax rules about offline, but it should work offline") |  |
 | B42 | AI-made art can be added (replaces the earlier no-AI-images rule) | unverified | from owner, Claude chat 27 Nov 2026 ("ai made art can be added") |  |
 | B43 | Revenue through ads and similar (in-app purchases etc.); encourage online use | unverified | from owner, Claude chat 27 Nov 2026 ("revenue generation will be through ads and etc") |  |
-| B44 | 2.5D map: a rich 2D map with depth (shaded terrain, shadows, slight tilt), with units visible on the map that feel good and raise engagement | unverified | from owner, Claude chat 27 Nov 2026 ("2.5d but having units on map feel good and get more engagement") |  |
-| B45 | Theatre orders stay, but commanding must be enjoyable with easy controls | unverified | from owner, Claude chat 27 Nov 2026 ("theater orders but make it enjoyable and easy controls") |  |
+| B56 | 2.5D map: a rich 2D map with depth (shaded terrain, shadows, slight tilt), with units visible on the map that feel good and raise engagement | unverified | from owner, Claude chat 27 Nov 2026 ("2.5d but having units on map feel good and get more engagement") |  |
+| B57 | Theatre orders stay, but commanding must be enjoyable with easy controls | unverified | from owner, Claude chat 27 Nov 2026 ("theater orders but make it enjoyable and easy controls") |  |
+| B44 | Director's review and plan v3: status, assignments, pending and why, technical path to a commercial game, market research, ratings, recommendations and options; modify the plan | unverified | from owner, Claude chat 27 Nov |  |
+| B45 | Specialist leads under the main dev: music developer (era-accurate and licence-free music), creative and art developer (images, animation, map plans), history researcher (historical events for each country and region), quality-of-life developer | unverified | from owner, Claude chat 27 Nov |  |
 | B46 | Re-plan every earlier feature for the new scope (living 2.5D map, daily clock, Android app, online, AI art) and the move from the 1 MB single HTML file to a full game | unverified | from owner, Claude chat 27 Nov 2026 |  |
 | B47 | The number of provinces must match the historical number | unverified | from owner, Claude chat 27 Nov 2026 |  |
 | B48 | Sea areas are needed (sea zones for fleets, trade and blockades) | unverified | from owner, Claude chat 27 Nov 2026 |  |
