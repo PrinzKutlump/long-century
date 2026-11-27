@@ -13,4 +13,4 @@ Take tickets only from issues labelled `ticket`, claim with a `/claim codex t/<i
 - Old saves need not load (owner decision); a save from the same build must load and continue exactly (the stress tier checks this).
 - No credentials or personal details in code, issues or PRs. Never commit raw Correlates of War files to the public repo.
 - PR body: commit, hash before and after with the reason, ms/month at 1936, save bytes, tests run, first remaining risk.
-- Claude posts APPROVE or CHANGES (numbered, each tied to a failing check) on your PR, four times a day, and merges approved PRs with green CI where permitted (otherwise the owner merges). Fix CHANGES on the same branch.
+- Claude posts APPROVE or CHANGES (numbered, each tied to a failing check) on your PR (daily review and on PR events, plan v3); the owner merges. Fix CHANGES on the same branch.

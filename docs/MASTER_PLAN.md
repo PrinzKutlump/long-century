@@ -401,9 +401,9 @@ Estimate at 4–6 merged tickets a day: S0 in 5–7 days, the alpha in about 3 w
 | U interface and art | `src/ui*.js`, `src/*.css`, `src/flags.js`, `art/` (not `art/geo`) | engine files |
 | Q quality (Claude) | `tools/stress/`, `.github/workflows/stress.yml`, docs | game code |
 
-## 7. Review routine (Claude, four times a day; scheduled task "Long Century plan review")
+## 7. Review routine (Claude, once a day and on PR events, per plan v3; scheduled task "Long Century plan review")
 
-1. Audit every open PR with finished CI (APPROVE or CHANGES, numbered). Merge on APPROVE if permitted; otherwise ask the owner in one line.
+1. Audit every open PR with finished CI (APPROVE or CHANGES, numbered). The owner merges; ask in one line.
 2. Open issues for tickets whose "after" list has merged, keeping five ready and at most one in progress per lane.
 3. Read the latest stress report (weekly, and on any `stress/**` push); turn new failures into FX tickets.
 4. Post a short status on the claims board.
