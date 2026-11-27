@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 17, partial 8, missing 10, unverified 38, closed 2  (audited 2026-11-25)
+Totals: done 17, partial 8, missing 10, unverified 40, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -89,3 +89,5 @@ Totals: done 17, partial 8, missing 10, unverified 38, closed 2  (audited 2026-1
 | B41 | Online features are welcome and encouraged, but the game must still work fully offline | unverified | from owner, Claude chat 27 Nov 2026 ("relax rules about offline, but it should work offline") |  |
 | B42 | AI-made art can be added (replaces the earlier no-AI-images rule) | unverified | from owner, Claude chat 27 Nov 2026 ("ai made art can be added") |  |
 | B43 | Revenue through ads and similar (in-app purchases etc.); encourage online use | unverified | from owner, Claude chat 27 Nov 2026 ("revenue generation will be through ads and etc") |  |
+| B44 | Director's review and plan v3: status, assignments, pending and why, technical path to a commercial game, market research, ratings, recommendations and options; modify the plan | unverified | from owner, Claude chat 27 Nov |  |
+| B45 | Specialist leads under the main dev: music developer (era-accurate and licence-free music), creative and art developer (images, animation, map plans), history researcher (historical events for each country and region), quality-of-life developer | unverified | from owner, Claude chat 27 Nov |  |
