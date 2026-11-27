@@ -497,6 +497,18 @@
    "ask": "Revenue through ads and similar (in-app purchases etc.); encourage online use",
    "status": "unverified",
    "note": "from owner, Claude chat 27 Nov 2026 (\"revenue generation will be through ads and etc\")"
+  },
+  {
+   "id": "B44",
+   "ask": "Director's review and plan v3: status, assignments, pending and why, technical path to a commercial game, market research, ratings, recommendations and options; modify the plan",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov"
+  },
+  {
+   "id": "B45",
+   "ask": "Specialist leads under the main dev: music developer (era-accurate and licence-free music), creative and art developer (images, animation, map plans), history researcher (historical events for each country and region), quality-of-life developer",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov"
   }
  ]
 }
