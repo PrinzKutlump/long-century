@@ -1,0 +1,62 @@
+# Coordination (docs/COORDINATION.md): claim commands, the board in issue #1, PR rules.
+name: coord
+on:
+  issue_comment:
+    types: [created]
+  issues:
+    types: [opened, closed, reopened, labeled, unlabeled, edited]
+  pull_request:
+    types: [opened, edited, synchronize, reopened, closed]
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+concurrency:
+  group: coord-board
+  cancel-in-progress: false
+jobs:
+  command:
+    name: claim command
+    if: github.event_name == 'issue_comment' && !github.event.issue.pull_request && startsWith(github.event.comment.body, '/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Apply /claim, /release, /blocked, /unblock
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BODY: ${{ github.event.comment.body }}
+        run: |
+          printf '%s' "$BODY" > /tmp/comment.txt
+          python3 tools/coord.py command ${{ github.event.issue.number }} /tmp/comment.txt
+  pr-check:
+    name: coord
+    if: github.event_name == 'pull_request' && github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: PR names a ticket and a ledger row; no ledger row removed or weakened
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/coord.py pr-check ${{ github.event.pull_request.number }} | tee -a "$GITHUB_STEP_SUMMARY"; exit ${PIPESTATUS[0]}
+  board:
+    name: refresh board
+    needs: [command]
+    if: always() && (github.event_name != 'pull_request' || github.event.action == 'opened' || github.event.action == 'closed')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - name: Write the board into issue #1
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/coord.py board --write
+      - name: Audit (gaps are listed on the board; this step only reports)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/coord.py audit | tee -a "$GITHUB_STEP_SUMMARY" || true

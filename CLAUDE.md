@@ -6,7 +6,7 @@ Direction (owner, ledger B20): Android game first, dynamic map, modern UI, featu
 
 Session start: run `python3 tools/ledger.py --open` and read the open rows of `docs/LEDGER.md`. Every owner ask goes in the ledger (`--add`), rows are never deleted, done rows stay as history, and a PR may not make a done feature stop working (CI probe).
 
-Before editing, check the [shared work-claims issue](https://github.com/PrinzKutlump/long-century/issues?q=is%3Aissue+in%3Atitle+claims) and record your plan-qualified ticket, branch and affected files or functions. Post your handoff or merged PR there when you release the claim.
+Coordination: follow [docs/COORDINATION.md](docs/COORDINATION.md). Session start: read the board (issue #1, generated), `python3 tools/ledger.py --open`, record any new owner ask (Owner request issue, or `docs/inbox/`), then resume your claim or claim the first Ready ticket you can do by commenting `/claim <agent> t/<id>-<slug>` on it. A PR needs `Closes #<ticket>` and `Ledger: <id>` (CI job `coord`). At session end, comment on the ticket what is done and what is left.
 
 Plain JS game with a few TypeScript engine files (`src/engine/*.ts`, stripped to JS at build time by `scripts/transpile-engine.cjs`, Node 22.13 or later). Two builds read the same sources:
 - `python3 build.py` (or `node build.mjs`): one file, `dist/long-century.html`. Used by CI, `century.js`, the tests and GitHub Pages.
@@ -17,7 +17,7 @@ Plain JS game with a few TypeScript engine files (`src/engine/*.ts`, stripped to
 - One ticket, one branch: `t/<id>-<slug>`, for example `t/a5-research-balance`. One agent per ticket.
 - Work in your own worktree. Never switch branches in a shared folder.
 - Never push to `main`. Open a PR to `main` that links the issue and fills `.github/pull_request_template.md`.
-- Use the current public claims-board issue number when reading or recording claims through the GitHub REST API.
+- Claims are `/claim` comments on the ticket issue (not on the board); the board in issue #1 is generated.
 - Each ticket names its hash change and why.
 - Target: under 40 tool calls per ticket. Split big tickets before starting.
 - CI: read only the pass/fail summary on the run page. On a failure, read only the failing test's last 20 lines.
@@ -64,6 +64,7 @@ Then the flags and interface files (build.py appends these after the engine list
 
 ## Tools
 - tools/ledger.py: feature ledger (`--open`, `--check`, `--render`, `--add`). Source: docs/LEDGER.json.
+- tools/coord.py: coordination board, gap audit, claim commands, PR check (`board`, `audit`, `pr-check`). Rules: docs/COORDINATION.md.
 - tools/fn.py: print one function.
 - tools/layout_check.py: Playwright check that every sheet and modal fits (needs dist built).
 - tools/works_board_test.py, tools/build_mode_test.py: acceptance tests for ui9.js and ui8.js.
