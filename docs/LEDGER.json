@@ -24,7 +24,8 @@
    "ask": "Cheat button in Settings, +100M per press",
    "status": "done",
    "probe": "ui.js::cheat:\\(\\)=>",
-   "done": "2026-11-25"
+   "done": "2026-11-25",
+   "note": "; owner 27 Nov (B51): test builds only, removed from the public Play release"
   },
   {
    "id": "A3",
@@ -515,6 +516,36 @@
   {
    "id": "B46",
    "ask": "Re-plan every earlier feature for the new scope (living 2.5D map, daily clock, Android app, online, AI art) and the move from the 1 MB single HTML file to a full game",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B47",
+   "ask": "The number of provinces must match the historical number",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B48",
+   "ask": "Sea areas are needed (sea zones for fleets, trade and blockades)",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B49",
+   "ask": "Historical great projects added for each region and nation",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B50",
+   "ask": "No 3 MB size limit for the Play Store app; size only within Play's own limits",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B51",
+   "ask": "Remove the cheat option from the public release; keep it in test builds",
    "status": "unverified",
    "note": "from owner, Claude chat 27 Nov 2026"
   }

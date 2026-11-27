@@ -3,14 +3,14 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 18, partial 8, missing 10, unverified 40, closed 2  (audited 2026-11-25)
+Totals: done 18, partial 8, missing 10, unverified 45, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
 | ID | Ask | Status | Ticket or evidence | Done on |
 |---|---|---|---|---|
 | A1 | Month turns, selectable decisions, comprehensive dashboard | done | Phase 1 simulation engine, causal breakdowns, price/access clamps & state management complete | 2026-11-26 |
-| A2 | Cheat button in Settings, +100M per press | done |  | 2026-11-25 |
+| A2 | Cheat button in Settings, +100M per press | done | ; owner 27 Nov (B51): test builds only, removed from the public Play release | 2026-11-25 |
 | A3 | Refine gameplay, more historical events, refined military and naval system | unverified | audit vs Ottoman artifact |  |
 | A4 | Build railways | done |  | 2026-11-25 |
 | A5 | Build oil wells | partial | oil good exists, no well building found; needs ticket |  |
@@ -92,3 +92,8 @@ Totals: done 18, partial 8, missing 10, unverified 40, closed 2  (audited 2026-1
 | B44 | 2.5D map: a rich 2D map with depth (shaded terrain, shadows, slight tilt), with units visible on the map that feel good and raise engagement | unverified | from owner, Claude chat 27 Nov 2026 ("2.5d but having units on map feel good and get more engagement") |  |
 | B45 | Theatre orders stay, but commanding must be enjoyable with easy controls | unverified | from owner, Claude chat 27 Nov 2026 ("theater orders but make it enjoyable and easy controls") |  |
 | B46 | Re-plan every earlier feature for the new scope (living 2.5D map, daily clock, Android app, online, AI art) and the move from the 1 MB single HTML file to a full game | unverified | from owner, Claude chat 27 Nov 2026 |  |
+| B47 | The number of provinces must match the historical number | unverified | from owner, Claude chat 27 Nov 2026 |  |
+| B48 | Sea areas are needed (sea zones for fleets, trade and blockades) | unverified | from owner, Claude chat 27 Nov 2026 |  |
+| B49 | Historical great projects added for each region and nation | unverified | from owner, Claude chat 27 Nov 2026 |  |
+| B50 | No 3 MB size limit for the Play Store app; size only within Play's own limits | unverified | from owner, Claude chat 27 Nov 2026 |  |
+| B51 | Remove the cheat option from the public release; keep it in test builds | unverified | from owner, Claude chat 27 Nov 2026 |  |

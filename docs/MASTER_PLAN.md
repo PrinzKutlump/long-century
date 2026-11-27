@@ -18,8 +18,8 @@ Roles: Codex/GPT implements game code; Claude plans, writes ticket issues, write
 10. **Conservation**: goods, money and people have a source and a sink.
 11. **Art from allowed sources only**: our own, AI-made with prompt on record (owner 27 Nov, B42), PD, CC0, OFL, MIT, ISC, Apache-2.0 or BSD, each in `docs/ASSETS.md`. No raw Correlates of War files in the public repository.
 12. **Plain English** on screen; a disabled button says why.
-13. **Owner's standing wishes**: nation flags; a Settings cheat adding £100 million per press (how it fits achievements and revenue: CHEAT1); Android first (B20, replaces "web only, no APK"); a modern UI with the Devlet-i Âliyye old-book look as an optional theme (A18).
-14. **Budgets** (until PL8 measures a phone; rewritten for the daily clock by DAY0/DAY9): simulation ≤ 4 ms per day in Node at 1926–36 (today ≤ 90 ms per month median on CI, browser ≤ 130 ms); map frame ≤ 17 ms median, ≤ 25 ms p95 on the A56; first download ≤ 3 MB, media loaded on demand with per-file budgets (MED1); save ≤ 300 ms blocked screen and load ≤ 3 s (the old 1 MB save cap retires with SV1/SV3).
+13. **Owner's standing wishes**: nation flags; a Settings cheat adding £100 million per press in **test builds only**, removed from the public release (B51, CHEAT1); Android first (B20, replaces "web only, no APK"); a modern UI with the Devlet-i Âliyye old-book look as an optional theme (A18).
+14. **Budgets** (until PL8 measures a phone; rewritten for the daily clock by DAY0/DAY9): simulation ≤ 4 ms per day in Node at 1926–36 (today ≤ 90 ms per month median on CI, browser ≤ 130 ms); map frame ≤ 17 ms median, ≤ 25 ms p95 on the A56; app package within Google Play's limits (base module ≤ 200 MB compressed; large media in asset packs or loaded on demand; owner 27 Nov, B50: no 3 MB cap), kept as small as practical because big installs lose players; save ≤ 300 ms blocked screen and load ≤ 3 s (the old 1 MB save cap retires with SV1/SV3).
 15. **Process**: one ticket, one branch `t/<id>-<slug>`, one PR; a ticket names its state-hash change and why; CI decides pass or fail; no merge with a red stress run on the same base (from QA1).
 
 ## 2. Re-evaluation of the previous plan
@@ -315,7 +315,11 @@ Size: S under 60k tokens; M one day; L split first. "After": tickets that must m
 | AUD3 (#143) | One sound system (SND cues + AUD + music) | S | — | One setting controls all sound |
 | MAPDATA1 (#144) | Province geometry as a data asset for the PixiJS map | M | MP4 | Same shapes in both maps; hash unchanged |
 | UIR1 (#145) | Rebuild every page on the modern design system (child ticket per page) | L | AND8 | Layout sweep passes; features keep working |
-| CHEAT1 (#146) | Cheat rule for achievements, leaderboards and revenue | S | — | Owner's rule recorded |
+| CHEAT1 (#146) | Cheat only in test builds, removed from the Play release | S | RL4 | Release build has no cheat; test build keeps it |
+| HP1 (#147) | Historical province census with sources; owner sets the target count | M | — | Table with sources; owner approves |
+| HP2 (#148) | Map and engine at the historical province count; regional rollout | L | HP1, DAY2, MAP1 | Budgets hold at the HP1 count |
+| SEA1 (#149) | Sea areas (zones) for fleets, trade and blockades | M | MAPDATA1 | Fleets move zone to zone; fixtures pass |
+| GW2 (#150) | Historical great projects for every region and nation | M | B8, AIS1 | 3 per major nation, 1 per region |
 
 ### DAY Daily clock, MAP living map, presentation (owner, 27 Nov 2026: B24, B29, B30–B39; design in LIVING_WORLD.md)
 | ID | Ticket | Size | After | Done when |
