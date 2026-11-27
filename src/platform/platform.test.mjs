@@ -11,7 +11,8 @@ const require = createRequire(import.meta.url);
 const ROOT = process.cwd();
 const { readEngineFile } = require(path.join(ROOT, "scripts/transpile-engine.cjs"));
 
-test("FX1: closed factories (lv <= 0) zero stale output metrics in economy pass", () => {
+/* skipped: AI Studio's econ.js change was reverted (ledger B22); FX1 is PR #30 */
+test.skip("FX1: closed factories (lv <= 0) zero stale output metrics in economy pass", () => {
   const loadTestEngine = require(path.join(ROOT, "load_test_engine.js"));
   const ctx = loadTestEngine(`
     newGame("GBR", 7);
@@ -70,7 +71,8 @@ test("Storage v2 silently migrates legacy localStorage keys without blocking pro
   }
 });
 
-test("Source tree eliminates window.confirm, window.prompt, and window.alert calls", () => {
+/* skipped: AI Studio's confirm() removal in ui.js was reverted (ledger B22); ticket to redo it with askSheet */
+test.skip("Source tree eliminates window.confirm, window.prompt, and window.alert calls", () => {
   const srcFiles = fs.readdirSync(path.join(ROOT, "src")).filter(f => f.endsWith(".js"));
   for (const file of srcFiles) {
     const raw = fs.readFileSync(path.join(ROOT, "src", file), "utf8");

@@ -137,7 +137,7 @@ for(let d=1860;d<=1930;d+=10)GW.push({id:"fair"+d,n:"The world's fair of the "+d
 function addLane(a,b,m){if(SEAADJ[a].some(x=>x[0]===b))return;SEAADJ[a].push([b,m]);SEAADJ[b].push([a,m]);G.lanes=G.lanes||[];G.lanes.push([a,b,m]);}
 function gwState(c,w){if(G.gwDone&&G.gwDone[w.id]&&(w.uniq||G.gwDone[w.id].includes(c.tag)))return"done";if(c.gw&&c.gw[w.id])return"building";if(yearOf(G.t)<w.y)return"date";if(!w.ok(c))return"cond";return"ok";}
 function startGW(c,id){const w=GW.find(x=>x.id===id),st=gwState(c,w);if(st!=="ok")return{ok:false,txt:st==="done"?"Already built.":st==="date"?"Not before "+w.y+".":st==="building"?"Already under way.":"We do not meet the conditions."};c.gw=c.gw||{};c.gw[id]={left:w.m,pay:w.cost/w.m};return{ok:true,txt:w.n+": work begins. "+w.m+" months."};}
-function gwMonth(){for(const tag in G.c){const c=G.c[tag];if(!c.alive)continue;c.gwx=c.gwx||{};if(c._bx&&c._bx.pres)c.pres+=c._bx.pres;if(c.bq&&G._bqDoneMonth!==G.t)bqMonth(c);
+function gwMonth(){for(const tag in G.c){const c=G.c[tag];if(!c.alive)continue;c.gwx=c.gwx||{};if(c._bx&&c._bx.pres)c.pres+=c._bx.pres;if(c.bq)bqMonth(c);
   if(G.canal){if(G.canal.suez===tag)c.tr+=3000;if(G.canal.panama===tag)c.tr+=4000;}
   for(const id in c.gw||{}){const w=GW.find(x=>x.id===id),g=c.gw[id];if(w.uniq&&G.gwDone&&G.gwDone[id]){delete c.gw[id];if(tag===G.player)msg("economy","Another nation finished "+w.n+" first; our works are abandoned.");continue;}
    if(c.tr<g.pay)continue;c.tr-=g.pay;g.left--;if(g.left<=0){c.projectDoneAt=G.t;delete c.gw[id];G.gwDone=G.gwDone||{};const fst=!(G.gwDone[id]||[]).length;(G.gwDone[id]=G.gwDone[id]||[]).push(tag);w.fx(c);if(w.first&&fst)c.pres+=w.first;const txt=c.n+" completes "+w.n+".";msg("economy",txt);G.log.unshift({t:G.t,txt});}}

@@ -36,7 +36,9 @@ def main():
             page.on("response", lambda r: r.status >= 400 and problems.append(f"HTTP {r.status} {r.url}"))
             page.goto(URL)
             page.wait_for_function("typeof newGame === 'function' && !document.getElementById('lc-boot-splash')", timeout=30000)
-            page.evaluate("ACT.pick({t:'GBR'})")
+            # start a game the way a player does: the first nation button on the start screen
+            page.wait_for_selector("#start [data-a=pick]", timeout=30000)
+            page.click("#start [data-a=pick]")
             page.wait_for_timeout(500)
             try:
                 page.evaluate("openSettings()")

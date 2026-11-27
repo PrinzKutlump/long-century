@@ -283,15 +283,10 @@ function proposeSubjectAgreement(proposer, partner, term){
 function proposeCommercialTransit(buyer,seller,good,renew=false){
  if(!buyer?.alive||!seller?.alive||buyer===seller||!GK.includes(good))return "Invalid commercial offer.";
  if(atWarWith(buyer,seller)||(seller.rel[buyer.tag]||0)<0)return "The partner refuses commercial transit.";
- const routes=Array.isArray(G.tradeRoutes)?G.tradeRoutes:(G.tradeRoutes=[]);
- const same=routes.find(r=>r.buyer===buyer.tag&&r.seller===seller.tag&&r.good===good&&r.until>G.t);
  const active=buyer.commercialRoute;
- if(same&&!renew)return "An active route already exists.";
- if(renew&&((!same&&!(active?.until>G.t&&active.seller===seller.tag&&active.good===good))||(same?same.until:active.until)>G.t+12))
-  return "Renewal opens in the last year of the agreement.";
- const until=G.t+24;
- if(same)same.until=until;
- else routes.push({id:"tr-"+buyer.tag+"-"+seller.tag+"-"+good,seller:seller.tag,buyer:buyer.tag,good,until,rights:["trade"],volumeCap:20,tariffRate:0});
- buyer.commercialRoute={seller:seller.tag,good,until,rights:["trade"]};
+ if(active?.until>G.t&&(!renew||active.seller!==seller.tag||active.good!==good))
+  return "An active route already exists.";
+ if(renew&&active?.until>G.t+12)return "Renewal opens in the last year of the agreement.";
+ buyer.commercialRoute={seller:seller.tag,good,until:G.t+24,rights:["trade"]};
  return "Commercial transit agreed for 24 months.";
 }
