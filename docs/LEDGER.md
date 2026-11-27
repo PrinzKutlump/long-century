@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 17, partial 8, missing 10, unverified 38, closed 2  (audited 2026-11-25)
+Totals: done 18, partial 8, missing 10, unverified 39, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -47,7 +47,7 @@ Totals: done 17, partial 8, missing 10, unverified 38, closed 2  (audited 2026-1
 | ID | Ask | Status | Ticket or evidence | Done on |
 |---|---|---|---|---|
 | B1 | Rebuild like Victoria 2; every country same rules; any country 1836 start | unverified | SWI, FRA, GBR accept the same fort order alike (PR #53); wider check open |  |
-| B2 | Theatre command with infantry, cavalry, artillery; no army selection | unverified | theatre.js exists |  |
+| B2 | Theatre command with infantry, cavalry, artillery; no army selection | unverified | theatre.js exists; owner 27 Nov (B45): theatre orders kept, armies visible and moving on the map, easy enjoyable controls |  |
 | B3 | Flags for every nation | done |  | 2026-11-25 |
 | B4 | Punjab 1836 flag | done | every nation has a flag (PR #53) | 2026-11-25 |
 | B5 | Buildings, great works, decisions the player can use | partial | Build mode and Works board exist |  |
@@ -71,7 +71,7 @@ Totals: done 17, partial 8, missing 10, unverified 38, closed 2  (audited 2026-1
 | B23 | One GitHub-based coordination system for every AI and the owner: master plan and tickets on a claims board, agents take unclaimed tickets, no feature or planned feature goes missing, a new ask in any tool (AI Studio, Codex, Claude) is recorded in the repo before work, no independent streaks | done | from owner, Claude chat 27 Nov 2026; docs/COORDINATION.md, tools/coord.py, coord.yml (PR COORD1); merged PR #87; /claim and board refresh verified live on #88 | 2026-11-27 |
 | B24 | Daily progression: replace the monthly tick with a daily tick, and update every feature and engine system to run on it | unverified | owner decided 27 Nov 2026 in Claude chat (first asked in AI Studio 26 Nov); design in docs/LIVING_WORLD.md, tickets DAY0-DAY9 |  |
 | B25 | Commercial release and future security: Google Play release, clean licences, signing key kept safe, privacy policy, pricing model, dependency and security checks | unverified | from owner, Claude chat 27 Nov 2026 |  |
-| B26 | Whole future plan streamlined into features, mechanics and tickets; nothing forgotten or missed | unverified | from owner, Claude chat 27 Nov 2026 |  |
+| B26 | Whole future plan streamlined into features, mechanics and tickets; nothing forgotten or missed | done | from owner, Claude chat 27 Nov 2026; docs/ROADMAP.md merged in PR #103; tools/coord.py audit checks plan coverage | 2026-11-27 |
 | B27 | Room for rich media: unit and building pictures or models on the map, era pictures, music and sound, loaded only when needed | unverified | from owner, Claude chat 27 Nov 2026 (AI Studio limits list) |  |
 | B28 | AI Studio's six platform fixes approved by the owner: multi-file app, larger saves, graphics-chip map, code modules, simulation in a background worker, Android app | unverified | from owner, Claude chat 27 Nov 2026; 1 multi-file app, 2 saves (already IndexedDB, A31) and 6 Android project done as scaffolding (PR #77); 3 map, 4 modules, 5 worker open |  |
 | B29 | Not a text simulator: a content-rich game with animation and a genuine map where armies move on land, fleets move at sea, and buildings and infrastructure appear on the map as they are built | unverified | from owner, Claude chat 27 Nov 2026 |  |
@@ -80,7 +80,7 @@ Totals: done 17, partial 8, missing 10, unverified 38, closed 2  (audited 2026-1
 | B32 | Balance guardrails against death spirals: prices kept between 0.25x and 1.75x of base with dampening, shortage and market-access penalties floored at 0.15x, every playable country starts with a positive cash flow and stable radicalism | unverified | from owner in AI Studio 26 Nov 2026 (docs/inbox note, never pushed) |  |
 | B33 | Causal breakdowns: tapping a key number (treasury, price, market access, standard of living, radicalism, legitimacy) shows 2-3 lines of the modifiers behind it; one deterministic pipeline in strict causal order; keep the visual theme and working features | unverified | from owner in AI Studio 26 Nov 2026 (docs/inbox note, never pushed) |  |
 | B34 | Newspaper: a period newspaper reporting the world's events, wars, discoveries and the player's deeds | unverified | from owner, Claude chat 27 Nov 2026 ("Add a newspaper and progression system.") |  |
-| B35 | Progression system (owner's words: "Add a newspaper and progression system."); meaning to confirm with the owner: player milestones and achievements, era progression, or both | unverified | from owner, Claude chat 27 Nov 2026 |  |
+| B35 | Progression system (owner's words: "Add a newspaper and progression system."); meaning to confirm with the owner: player milestones and achievements, era progression, or both | unverified | from owner, Claude chat 27 Nov 2026; Claude proposed three layers on 27 Nov (eras in the campaign, national milestones and beat-history score, player profile with unlocks); awaiting owner choice |  |
 | B36 | Date controller: pause, play and speed controls for the daily clock, the current date always visible | unverified | from owner, Claude chat 27 Nov 2026 ("Add date controller") |  |
 | B37 | Progress indicator (owner's words: "Add progress indicator"); planned as a loading progress bar on the loading screen plus progress bars for construction, research, programmes and wars; meaning to confirm with the owner | unverified | from owner, Claude chat 27 Nov 2026 |  |
 | B38 | Daily ticker controller: an End Day button replaces End Month; each press updates the global date and advances the game world by one day | unverified | from owner, Claude chat 27 Nov 2026 |  |
@@ -89,3 +89,5 @@ Totals: done 17, partial 8, missing 10, unverified 38, closed 2  (audited 2026-1
 | B41 | Online features are welcome and encouraged, but the game must still work fully offline | unverified | from owner, Claude chat 27 Nov 2026 ("relax rules about offline, but it should work offline") |  |
 | B42 | AI-made art can be added (replaces the earlier no-AI-images rule) | unverified | from owner, Claude chat 27 Nov 2026 ("ai made art can be added") |  |
 | B43 | Revenue through ads and similar (in-app purchases etc.); encourage online use | unverified | from owner, Claude chat 27 Nov 2026 ("revenue generation will be through ads and etc") |  |
+| B44 | 2.5D map: a rich 2D map with depth (shaded terrain, shadows, slight tilt), with units visible on the map that feel good and raise engagement | unverified | from owner, Claude chat 27 Nov 2026 ("2.5d but having units on map feel good and get more engagement") |  |
+| B45 | Theatre orders stay, but commanding must be enjoyable with easy controls | unverified | from owner, Claude chat 27 Nov 2026 ("theater orders but make it enjoyable and easy controls") |  |

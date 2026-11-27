@@ -8,7 +8,7 @@ Roles: Codex/GPT implements game code; Claude plans, writes ticket issues, write
 
 1. **Same rules for every nation**, player and AI. Differences come from data (flavour packs, region tables, events). No nation tag in core code.
 2. **Game theory on every major decision**: one evaluator for adviser and AI (DESIGN §10).
-3. **War by theatre**: no selecting or dragging individual armies; infantry, cavalry and artillery stay distinct.
+3. **War by theatre**: no selecting or dragging individual armies; infantry, cavalry and artillery stay distinct; armies are visible and move on the map, and theatre orders are given with easy map controls (owner 27 Nov, B45; LIVING_WORLD §3.2).
 4. **Phone first**: 360 and 390 px, 100% and 125% text, 44 px targets, no sideways page scroll, map ≥ 640 px, controls ≤ 8%.
 5. **Offline first** (owner 27 Nov, B41): the whole game works without a connection; online extras (ads, cloud saves, the Historian, store) are welcome but optional and never inside the simulation. **The single HTML file** (Pages and tests), plain global JavaScript built by `build.py`, no network calls **in the simulation**, one `<style>` element, wrapper-safe (no `document.write`, no `document.body.innerHTML=`). Served by GitHub Pages and Releases.
 6. **Saves**: old saves need not load until the first alpha (owner, 24 Nov). A save made by a build must load in that build and continue **exactly** (the stress tier checks this). From the alpha on, saves of the same release line load (SV5).
@@ -328,6 +328,7 @@ Size: S under 60k tokens; M one day; L split first. "After": tickets that must m
 | MAP2 | Armies and fleets moving on the map, battles, sieges | L | DAY3, MAP1 | Owner check |
 | MAP3 | Infrastructure and buildings on the map, scaffolding, trains | M | DAY4, MAP1 | Owner check |
 | MAP4 | Fronts, occupation, cities by size, canals | M | MAP2 | Owner check |
+| MAP5 (#136) | Theatre controls on the map (draw-an-arrow orders, one-tap stances, army card, battle moments, undo) | M | MAP2, DAY3 | Owner finds it easy on the A56 |
 | LOAD1 | Loading screen: public-domain pictures, sourced quotes, facts, progress bar | M | MED1 | 50 quotes and 50 facts with sources |
 | NEWS1 | Newspaper front page from game events | M | DAY7 | Owner check |
 | PROG1 | Progression system (meaning confirmed by the owner) | M | UI12 | Owner check |

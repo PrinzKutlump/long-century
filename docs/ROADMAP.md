@@ -19,7 +19,7 @@ The stages of MASTER_PLAN §3 stay, with two Android stages put in front of the 
 | Stage | Goal for the player | Tickets | Gate |
 |---|---|---|---|
 | **A. Stable base on a phone** | The game never crashes, saves always reload, and installs on the Galaxy A56 | #27 FX1, #74, #75, #76, #98 SV4, #97 QA2, #99 FX2, #100 FX3, #101 FX5, #102 PF1, #80 AND3, #82 LED3, #96 SEC1, #7 PL2, #10 PL7, FX4, FX6, QA3, QA4, PB2, PB3 #13, PB4 #14, PB5, PL1, SV1, SV2 #8 | Stress tier green (MASTER_PLAN S0 gate); APK installs on the A56 |
-| **B. Daily clock, living map, modern UI** | Time runs day by day; armies, fleets and buildings move and appear on a real map; a clean modern interface | DAY0–DAY9, MAP1–MAP4, PROG2, CAUSE1, BAL1, #81 AND4 (go/no-go for Godot), #92 AND8, #91 AND7, #90 AND6, #89 DEC1, #9 PL3a, PL3b, PL4, PL5, PL6, PL8, MP1a/b/c–MP5, #26, #85, UI5, UI2, UI4, FX6, #69 UI1a, UI1b, AR1–AR8 start, #93 MED1 | Owner says "go" on the A56 map; daily engine in calibration bands at 4 ms/day; 7 failing pages pass the layout sweep |
+| **B. Daily clock, living map, modern UI** | Time runs day by day; armies, fleets and buildings move and appear on a 2.5D map with easy theatre controls; a clean modern interface | DAY0–DAY9, MAP1–MAP5, PROG2, CAUSE1, BAL1, #81 AND4 (go/no-go for Godot), #92 AND8, #91 AND7, #90 AND6, #89 DEC1, #9 PL3a, PL3b, PL4, PL5, PL6, PL8, MP1a/b/c–MP5, #26, #85, UI5, UI2, UI4, FX6, #69 UI1a, UI1b, AR1–AR8 start, #93 MED1 | Owner says "go" on the A56 map; daily engine in calibration bands at 4 ms/day; 7 failing pages pass the layout sweep |
 | **C. Alpha on Android** | A first playable slice others can test | LOAD1, NEWS1, PROG1, FD3a/b, FD4, FD5, AI1, UI3, UI9, UI11, SC1, SC3, RL1, RL2, RL3, QA5, #61 | Five testers' pass marks; owner played three builds |
 | **D. Performance and provinces** | More provinces without slowing down | PF2, PF3, SO4, MP6, MP7–MP10, #84, WD1–WD4, #11 WD5a, MI6, HI5 | MASTER_PLAN S3 gate |
 | **E. Economy, demography, society** | Living population and economy | SOC2, DM1–DM6, EC1–EC6, FI1–FI3, TR1–TR3, #45, #46, #64, #65, SO1a, SO1b, SO2, SO3, FD6, FD7, #5 FD2, #54 | MASTER_PLAN S4 gate |
@@ -51,7 +51,9 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 | Feature | Mechanics | Tracked in | Status |
 |---|---|---|---|
 | Dynamic living map | PixiJS on the graphics chip: terrain, rivers, sea, borders that change, pan and pinch-zoom, level of detail; go/no-go test on the A56, Godot only on no-go | B20, B29, #81 AND4, MAP1 | ? test first |
-| Armies and fleets that move | Positions and paths, day-by-day travel by terrain, rail and sea lanes, battles and sieges shown; command model to confirm (theatre orders with visible armies, or direct control) | B29, B2, DAY3, MAP2 | ? owner choice |
+| Armies and fleets that move | Positions and paths, day-by-day travel by terrain, rail and sea lanes, battles and sieges shown; unit figures that walk, ride and sail | B29, B44, DAY3, MAP2 | ○ |
+| Easy, enjoyable theatre controls | Draw-an-arrow orders, one-tap stances with the expected result, army card, battle moments, undo | B45, B2, MAP5 | ○ |
+| 2.5D look | Shaded relief, shadows, slight tilt up close, illustrated cities and buildings; clear colours far out | B44, MAP1 | ○ |
 | Buildings and infrastructure appear | Railway segments drawn as built, trains running, scaffolding and progress rings, cities sized by population, canals | B29, DAY4, MAP3, MAP4 | ○ |
 | Unit, train and front sprites | Sprite tokens per unit type and ship class, trains, front lines (art) | B27, AR6, #93 MED1 | ○ |
 | True-Earth map (Miller) | Historical province shapes from evidence, adjacency and straits from data, provinces generated from CSV | B7, MP1a/b/c, MP2, MP3, MP4, #26 | ◐ crosswalk done |
@@ -318,7 +320,6 @@ Owner 27 Nov: online features encouraged, the game must still work fully offline
 
 | Decision | Ticket | Needed before |
 |---|---|---|
-| Command model: theatre orders with visible armies, or direct control | DAY0 | DAY3 and MAP2 |
 | What "progression system" means | PROG1 | PROG1 |
 | Map: PixiJS go or Godot | #81 | Stage B map and art work |
 | Modern UI design approval | #92 | Page rebuilds |

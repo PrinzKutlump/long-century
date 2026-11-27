@@ -231,7 +231,7 @@
    "id": "B2",
    "ask": "Theatre command with infantry, cavalry, artillery; no army selection",
    "status": "unverified",
-   "note": "theatre.js exists"
+   "note": "theatre.js exists; owner 27 Nov (B45): theatre orders kept, armies visible and moving on the map, easy enjoyable controls"
   },
   {
    "id": "B3",
@@ -393,8 +393,10 @@
   {
    "id": "B26",
    "ask": "Whole future plan streamlined into features, mechanics and tickets; nothing forgotten or missed",
-   "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov 2026"
+   "status": "done",
+   "note": "from owner, Claude chat 27 Nov 2026; docs/ROADMAP.md merged in PR #103; tools/coord.py audit checks plan coverage",
+   "done": "2026-11-27",
+   "nosrc": true
   },
   {
    "id": "B27",
@@ -448,7 +450,7 @@
    "id": "B35",
    "ask": "Progression system (owner's words: \"Add a newspaper and progression system.\"); meaning to confirm with the owner: player milestones and achievements, era progression, or both",
    "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov 2026"
+   "note": "from owner, Claude chat 27 Nov 2026; Claude proposed three layers on 27 Nov (eras in the campaign, national milestones and beat-history score, player profile with unlocks); awaiting owner choice"
   },
   {
    "id": "B36",
@@ -497,6 +499,18 @@
    "ask": "Revenue through ads and similar (in-app purchases etc.); encourage online use",
    "status": "unverified",
    "note": "from owner, Claude chat 27 Nov 2026 (\"revenue generation will be through ads and etc\")"
+  },
+  {
+   "id": "B44",
+   "ask": "2.5D map: a rich 2D map with depth (shaded terrain, shadows, slight tilt), with units visible on the map that feel good and raise engagement",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (\"2.5d but having units on map feel good and get more engagement\")"
+  },
+  {
+   "id": "B45",
+   "ask": "Theatre orders stay, but commanding must be enjoyable with easy controls",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (\"theater orders but make it enjoyable and easy controls\")"
   }
  ]
 }
