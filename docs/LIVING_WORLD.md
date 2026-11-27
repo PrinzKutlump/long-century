@@ -67,14 +67,14 @@ PixiJS on the graphics chip (go/no-go on the A56: #81 AND4; Godot only on no-go)
 
 ### 3.4 Art
 
-All sprites, icons and terrain art are our own or CC0/public domain, listed in `docs/ASSETS.md` (B19); no AI-generated images. One unit sprite style for the whole game, designed first (MED1 #93).
+All sprites, icons and terrain art are our own, AI-made (owner 27 Nov, B42, with prompt on record) or CC0/public domain, each listed in `docs/ASSETS.md`. One unit sprite style for the whole game, designed first (MED1 #93).
 
 ## 4. Presentation
 
 | Feature | What the player sees | Data and rules | Ledger |
 |---|---|---|---|
 | **Date controller** | Date with day, month, year; pause; speeds 1–5; auto-pause on wars, events and finished buildings (each switchable) | Speed = days per second; pause states saved | B36 |
-| **Loading screen** | A historical picture of the era or the chosen nation, a real quote with speaker, year and source, and a short "did you know" fact; a progress bar while loading | Quotes and facts in a data file, each with its source; only quotes published before 1929 by their authors (public domain); pictures public domain (museum collections) or our own art, each in `docs/ASSETS.md`; no invented quotes | B30, B37 |
+| **Loading screen** | A historical picture of the era or the chosen nation, a real quote with speaker, year and source, and a short "did you know" fact; a progress bar while loading | Quotes and facts in a data file, each with its source; only quotes published before 1929 by their authors (public domain); pictures public domain (museum collections), our own art or AI-made scenes (B42), each in `docs/ASSETS.md`; no invented quotes | B30, B37 |
 | **Newspaper** | A front page every week or month: headlines about wars, treaties, inventions, elections, disasters and the player's deeds, in period style, with a masthead per nation | Built from the game's own events and numbers; each headline links to the event or province | B34 |
 | **Progression** | Meaning to confirm with the owner: national milestones and achievements (first railway, industrialised, great power, history goals beaten), era changes, or both | Tracked from the history ledger (UI12) | B35 |
 | **Progress indicators** | Bars and rings on construction, research, programmes, war score, unification and loading | Read from existing progress values | B37 |

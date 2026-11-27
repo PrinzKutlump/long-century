@@ -245,7 +245,7 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 
 | Feature | Mechanics | Tracked in | Status |
 |---|---|---|---|
-| Original art only | Our own, public domain or CC0; manifest and CI check | B19 | ✔ |
+| Art from allowed sources | Our own, AI-made with prompt on record (B42), public domain or CC0; manifest and CI check | B19, B42 | ✔ check updated |
 | Map art | Icons, emblems and flags, coasts and sea, relief, cities and infrastructure, war on the map, scenes, credits | AR1–AR8 | ○ |
 | Pictures and sprites | Media pipeline, loaded when shown | B27, #93 MED1, A25, #43 | ○ |
 | Old-book look | Optional theme (owner 27 Nov) | A18, #41 | ○ optional |
@@ -284,16 +284,23 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 | One roadmap, nothing missed | This file and the audit check | B26, #88 | ✔ with this PR |
 | Ledger catches up with audits | A6, A15, A16, B2, A26; A1 back to partial | #82 LED3 | ○ |
 
-### F23. Google AI Studio's AI features (B40) — plan: [AI_FEATURES.md](AI_FEATURES.md)
+### F23. Google AI Studio's AI features and revenue (B40–B43) — plan: [AI_FEATURES.md](AI_FEATURES.md)
+
+Owner 27 Nov: online features encouraged, the game must still work fully offline (B41); AI art allowed (B42); revenue from ads and similar (B43).
 
 | Feature | Mechanics | Tracked in | Status |
 |---|---|---|---|
 | Historical research with Search grounding | Drafts quotes, facts and event briefs with sources; people check each before it ships | AIS1 #125 | ○ for AI Studio |
 | Newspaper templates | Built once with Gemini, shipped as data, filled offline | AIS2 #126 | ○ for AI Studio |
-| Ask the Historian (optional, online) | Design, server, cost and privacy first | AIS3 #127 | ? owner |
-| Voice minister and voice orders | After AIS3 | AIS4 #128 | ○ later |
-| Cloud save backup and sign-in | After the release plan | AIS5 #129 | ○ later |
-| AI images, video, music | Not allowed under the owner's current art rule (B19) | — | owner decision |
+| Ask the Historian (online, offline fallback) | Design, server, cost and privacy first | AIS3 #127 | ○ for AI Studio |
+| Voice minister and voice orders | After AIS3 | AIS4 #128 | ○ for AI Studio |
+| Cloud save backup and sign-in | Firebase; local saves stay the default | AIS5 #129 | ○ for AI Studio |
+| AI art: backgrounds, event pictures, portraits, sprites | Style guide first; each file reviewed and in the manifest with its prompt | AIS6 #130, B42 | ○ for AI Studio |
+| AI music by era | Lyria, reviewed, loaded on demand | AIS7 #131 | ○ for AI Studio |
+| AI video: intro and event clips | Short; game identical without them | AIS8 #132 | ○ for AI Studio |
+| Revenue model | Rewarded and between-session ads, ad-free purchase, packs; never during a decision | REV1 #133 | ? owner |
+| Ads and purchases in the app | AdMob, Google Play Billing, offline fallback | REV2 #134 | ○ |
+| Consent and privacy | Consent screen, privacy policy, Play forms | REV3 #135 | ○ |
 
 ## 4. Still to design before tickets can be written
 
@@ -316,7 +323,7 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 | Map: PixiJS go or Godot | #81 | Stage B map and art work |
 | Modern UI design approval | #92 | Page rebuilds |
 | Add `ottoman1911.html` to the repo | #83 | Ottoman parity tickets |
-| Free or paid, and store account | #95 | Stage I |
+| Store account and release timing | #95 | Stage I |
 | Synthesised or recorded music | #94 | Music work |
-| Allow AI-generated images, video or music (currently not allowed) | B19, B40 | Any AI art |
-| Online extras (Ask the Historian, voice, cloud saves): yes or no, and budget | #127 | AIS3–AIS5 |
+| Revenue model: which ads where, what to sell, how the cheat fits | #133 REV1 | REV2, REV3 |
+| Online server budget for the Historian and voice | #127 | AIS3, AIS4 |

@@ -7,7 +7,7 @@ Every shipped asset: file, source, licence, author.
 
 Geodata above is tracked by the geodata workflow; files under assets/ are covered by the checker below.
 
-## Free-licence rules for pictures, audio and other assets (2026-11-25)
+## Free-licence rules for pictures, audio and other assets (2026-11-25, AI art added 2026-11-27)
 
 Owner rule (2026-11-25): pictures, audio and other assets must be free of licence strings. Only three kinds are allowed in this repo:
 
@@ -16,8 +16,11 @@ Owner rule (2026-11-25): pictures, audio and other assets must be free of licenc
 | `original` | Made by us in code or by hand (SVG borders, CSS paper, WebAudio sounds, tunes played by our synth from public-domain notes). Dedicated CC0. | nothing |
 | `CC0` | Creator or museum waived rights (Creative Commons Zero). | source URL, author, retrieved date |
 | `PD` | Public domain by age or by government author. | source URL, rights line, retrieved date |
+| `AI` | Made with an AI tool (owner decision 27 Nov 2026, ledger B42), for example Gemini image, video or music generation in AI Studio. A person reviews each file before it ships. | tool and model, prompt, created date, reviewed_by; the tool's terms must allow commercial use |
 
-Never allowed: CC BY, CC BY-SA, CC BY-NC, ND, "free for personal use", AI-generated images or music with unclear terms, anything with a visible brand, and portraits of living people. If an item needs credit, it is out.
+Never allowed: CC BY, CC BY-SA, CC BY-NC, ND, "free for personal use", AI output from a tool whose terms forbid commercial use, prompts that name a living artist or copy a known artwork, character or brand, anything with a visible brand, and portraits of living people. Historical figures may be shown, as period-style illustration, never as a fake photograph. If an item needs credit, it is out.
+
+AI art notes: AI-made pictures and music may not be protected by copyright, so others could reuse them; keep the prompt and the date so their origin is on record, and prefer AI output that a person has edited or composed into a larger piece. Google Play asks about AI-generated content in its policy forms (REL1 #95).
 
 ## Order of preference
 1. **Make it ourselves** (kind `original`). Old-book borders, paper grain, seals, rules and flourishes are SVG and CSS. Cues and music are WebAudio. This costs no bytes of licence risk and almost no file size.

@@ -10,13 +10,13 @@ Roles: Codex/GPT implements game code; Claude plans, writes ticket issues, write
 2. **Game theory on every major decision**: one evaluator for adviser and AI (DESIGN §10).
 3. **War by theatre**: no selecting or dragging individual armies; infantry, cavalry and artillery stay distinct.
 4. **Phone first**: 360 and 390 px, 100% and 125% text, 44 px targets, no sideways page scroll, map ≥ 640 px, controls ≤ 8%.
-5. **One self-contained HTML file**, plain global JavaScript built by `build.py`, no network calls, one `<style>` element, wrapper-safe (no `document.write`, no `document.body.innerHTML=`). Served by GitHub Pages and Releases.
+5. **Offline first** (owner 27 Nov, B41): the whole game works without a connection; online extras (ads, cloud saves, the Historian, store) are welcome but optional and never inside the simulation. **The single HTML file** (Pages and tests), plain global JavaScript built by `build.py`, no network calls **in the simulation**, one `<style>` element, wrapper-safe (no `document.write`, no `document.body.innerHTML=`). Served by GitHub Pages and Releases.
 6. **Saves**: old saves need not load until the first alpha (owner, 24 Nov). A save made by a build must load in that build and continue **exactly** (the stress tier checks this). From the alpha on, saves of the same release line load (SV5).
 7. **Randomness only from `rng()`**; previews never draw from it. No scratch value is read in a month in which it was not recomputed.
 8. **Stated effects are applied effects**, no more and no less.
 9. **Ids from data**: provinces, nations and regions are read from tables; an event whose actors no longer exist does not fire.
 10. **Conservation**: goods, money and people have a source and a sink.
-11. **Original art only**; shipped assets only under PD, CC0, OFL, MIT, ISC, Apache-2.0 or BSD, each in `docs/ASSETS.md`. No raw Correlates of War files in the public repository.
+11. **Art from allowed sources only**: our own, AI-made with prompt on record (owner 27 Nov, B42), PD, CC0, OFL, MIT, ISC, Apache-2.0 or BSD, each in `docs/ASSETS.md`. No raw Correlates of War files in the public repository.
 12. **Plain English** on screen; a disabled button says why.
 13. **Owner's standing wishes**: nation flags; a Settings cheat adding £100 million per press; the Devlet-i Âliyye look; web only, no APK.
 14. **Budgets** (until PL8 measures a phone): Node month median ≤ 90 ms on the CI runner at 1926–36, browser ≤ 130 ms; save ≤ 1 MB until SV1, then save ≤ 300 ms blocked screen and load ≤ 3 s.
@@ -307,7 +307,7 @@ Size: S under 60k tokens; M one day; L split first. "After": tickets that must m
 | DEC1 (#89) | Decide daily progression or monthly turns | S | — | Decided daily by the owner, 27 Nov (B24) |
 | MED1 (#93) | Media pipeline: pictures, unit and building sprites, budgets | M | AND4 | Sample sprite and picture through the pipeline |
 | MUS1 (#94) | Music of the era | M | MED1 | 3 tracks per era, off by default |
-| SEC1 (#96) | Security baseline (dependency checks, secret scanning, CSP, no network calls) | S | — | CI fails on a high advisory |
+| SEC1 (#96) | Security baseline (dependency checks, secret scanning, CSP, network only from online extras) | S | — | CI fails on a high advisory |
 | REL1 (#95) | Commercial release plan for Google Play | S | — | docs/RELEASE.md with owner decisions |
 | RL4 | Google Play release build: signing, closed test, listing | M | REL1, RL3 | Closed test passes |
 
@@ -343,7 +343,13 @@ Size: S under 60k tokens; M one day; L split first. "After": tickets that must m
 | AIS2 (#126) | Newspaper templates built offline | M | — | 300 reviewed templates; filled deterministically |
 | AIS3 (#127) | Design optional "Ask the Historian" | S | CAUSE1 | Owner approves or drops |
 | AIS4 (#128) | Voice minister and voice orders | M | AIS3 | Owner check |
-| AIS5 (#129) | Optional cloud save backup and sign-in | M | REL1 | Owner approves privacy and cost |
+| AIS5 (#129) | Cloud save backup and sign-in | M | REL1 | Save round-trip identical; works offline |
+| AIS6 (#130) | AI art pipeline: style guide, backgrounds, event pictures, portraits, sprites | M | MED1 | Style guide approved; first 20 pictures and a sprite sheet in the manifest |
+| AIS7 (#131) | AI music for each era | M | MED1 | 3 tracks per era reviewed |
+| AIS8 (#132) | AI video: intro and event cinematics | M | AIS6 | Intro under 30 s; game identical without it |
+| REV1 (#133) | Revenue design (ads, purchases) | S | — | Owner approves the model |
+| REV2 (#134) | Ads and in-app purchases in the Android app | M | REV1, AND3 | Test ad and purchase on the A56; offline unaffected |
+| REV3 (#135) | Consent screen, privacy policy, Play forms | S | REV1 | Consent shown in the EU test region |
 
 ## T. Targets (one table; measured by the seeds and stress tiers)
 

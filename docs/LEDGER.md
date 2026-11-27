@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 17, partial 8, missing 10, unverified 35, closed 2  (audited 2026-11-25)
+Totals: done 17, partial 8, missing 10, unverified 38, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -64,7 +64,7 @@ Totals: done 17, partial 8, missing 10, unverified 35, closed 2  (audited 2026-1
 | B16 | Process: ledger first each session, no silent removal | done | this system | 2026-11-25 |
 | B17 | Branch protection and CI that does not starve (admin bypass, light stress on push) | done | PR #51; owner set bypass | 2026-11-25 |
 | B18 | Missing historical events (Europe, Americas, Asia) built from scratch, not from DeepSeek files | missing | ticket #56 |  |
-| B19 | Free-licence assets only (CC0, public domain, or our own); manifest and CI check | done | docs/ASSETS.md, docs/assets.json, tools/assets_check.py; asset files for #41, #43, #44 still to add | 2026-11-25 |
+| B19 | Free-licence assets only (CC0, public domain, or our own); manifest and CI check | done | docs/ASSETS.md, docs/assets.json, tools/assets_check.py; asset files for #41, #43, #44 still to add; owner 27 Nov (B42): AI-made art now allowed, recorded in the manifest with tool, prompt and date | 2026-11-25 |
 | B20 | Android game first; finished game has a dynamic map and modern UI; new features easy to add. Chosen path (option 1): keep the JavaScript engine, Vite multi-file build, Capacitor Android app, PixiJS map; switch to Godot only if the PixiJS map fails a phone test on the Galaxy A56 | unverified | from owner, Claude chat 27 Nov 2026 |  |
 | B21 | Claude may implement game code as well as plan and audit (owner, 27 Nov 2026); AI Studio work goes through a branch and PR, never straight to main | done | from owner, Claude chat 27 Nov 2026; CLAUDE.md and AGENTS.md updated (PR #77); branch protection without bypass set by the owner 27 Nov | 2026-11-27 |
 | B22 | Review AI Studio's 27 Nov engine changes (runMonthlyTick in src/engine/simulation.ts, price clamps, market access, construction queue, tax calibration) that reached main without a PR | unverified | seed 7 SWI before (ad5aaa3) vs after (2fc1e64): Germany Aug 1866 vs Sep 1880; wars 68 vs 51; states destroyed 20 vs 16; save 977 KB vs 943 KB; worst month 96 vs 84 ms; hash dda070bb vs 0592088d (PR AND1); owner 27 Nov: revert. PR #77 restores the engine and interface files to ad5aaa3 (hash dda070bb, save/reload passes again) and keeps AI Studio's build, Android, PWA, map and worker files. Ideas to redo as reviewed tickets: market access, price limits, construction queue, askSheet instead of confirm() |  |
@@ -85,4 +85,7 @@ Totals: done 17, partial 8, missing 10, unverified 35, closed 2  (audited 2026-1
 | B37 | Progress indicator (owner's words: "Add progress indicator"); planned as a loading progress bar on the loading screen plus progress bars for construction, research, programmes and wars; meaning to confirm with the owner | unverified | from owner, Claude chat 27 Nov 2026 |  |
 | B38 | Daily ticker controller: an End Day button replaces End Month; each press updates the global date and advances the game world by one day | unverified | from owner, Claude chat 27 Nov 2026 |  |
 | B39 | A small progress bar or indicator beside the date (the #hdr-when header) showing how far the current month has run as days pass | unverified | from owner, Claude chat 27 Nov 2026 |  |
-| B40 | Use Google AI Studio's AI features where the game needs them (images, video, voice, Search data, Maps, chatbot, Three.js 3D, music generation, database and sign-in, transcription), planned and put on the claims board for AI Studio to implement | unverified | from owner, Claude chat 27 Nov 2026 (screenshots of AI Studio's Add AI features) |  |
+| B40 | Use Google AI Studio's AI features where the game needs them (images, video, voice, Search data, Maps, chatbot, Three.js 3D, music generation, database and sign-in, transcription), planned and put on the claims board for AI Studio to implement | unverified | from owner, Claude chat 27 Nov 2026 (screenshots of AI Studio's Add AI features); owner 27 Nov: offline rule relaxed (B41), AI art allowed (B42), revenue by ads (B43) |  |
+| B41 | Online features are welcome and encouraged, but the game must still work fully offline | unverified | from owner, Claude chat 27 Nov 2026 ("relax rules about offline, but it should work offline") |  |
+| B42 | AI-made art can be added (replaces the earlier no-AI-images rule) | unverified | from owner, Claude chat 27 Nov 2026 ("ai made art can be added") |  |
+| B43 | Revenue through ads and similar (in-app purchases etc.); encourage online use | unverified | from owner, Claude chat 27 Nov 2026 ("revenue generation will be through ads and etc") |  |

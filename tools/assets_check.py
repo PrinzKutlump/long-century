@@ -5,11 +5,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 man = json.load(open(os.path.join(ROOT, "docs", "assets.json"), encoding="utf-8"))
 bad, total = [], 0
 files = set()
-adir = os.path.join(ROOT, "assets")
-for base, _, names in os.walk(adir):
-    for n in names:
-        if n != ".gitkeep":
-            files.add(os.path.relpath(os.path.join(base, n), ROOT).replace(os.sep, "/"))
+for adir in (os.path.join(ROOT, "assets"), os.path.join(ROOT, "public", "assets")):
+    for base, _, names in os.walk(adir):
+        for n in names:
+            if n not in (".gitkeep", "README.md"):
+                files.add(os.path.relpath(os.path.join(base, n), ROOT).replace(os.sep, "/"))
 listed = set()
 for it in man["items"]:
     p = it.get("path", "")
@@ -18,8 +18,10 @@ for it in man["items"]:
         bad.append(f"{p}: licence {it.get('license')} not allowed")
     if it.get("license") in ("CC0", "PD") and not (it.get("source_url") and it.get("author") and it.get("retrieved")):
         bad.append(f"{p}: CC0 and PD items need source_url, author, retrieved")
+    if it.get("license") == "AI" and not all(it.get(k) for k in ("tool", "prompt", "created", "reviewed_by")):
+        bad.append(f"{p}: AI items need tool, prompt, created, reviewed_by (docs/ASSETS.md)")
     full = os.path.join(ROOT, p)
-    if p.startswith("assets/"):
+    if p.startswith(("assets/", "public/assets/")):
         if not os.path.exists(full):
             bad.append(f"{p}: file missing")
             continue

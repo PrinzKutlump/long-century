@@ -348,7 +348,7 @@
    "status": "done",
    "done": "2026-11-25",
    "nosrc": true,
-   "note": "docs/ASSETS.md, docs/assets.json, tools/assets_check.py; asset files for #41, #43, #44 still to add"
+   "note": "docs/ASSETS.md, docs/assets.json, tools/assets_check.py; asset files for #41, #43, #44 still to add; owner 27 Nov (B42): AI-made art now allowed, recorded in the manifest with tool, prompt and date"
   },
   {
    "id": "B20",
@@ -478,7 +478,25 @@
    "id": "B40",
    "ask": "Use Google AI Studio's AI features where the game needs them (images, video, voice, Search data, Maps, chatbot, Three.js 3D, music generation, database and sign-in, transcription), planned and put on the claims board for AI Studio to implement",
    "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov 2026 (screenshots of AI Studio's Add AI features)"
+   "note": "from owner, Claude chat 27 Nov 2026 (screenshots of AI Studio's Add AI features); owner 27 Nov: offline rule relaxed (B41), AI art allowed (B42), revenue by ads (B43)"
+  },
+  {
+   "id": "B41",
+   "ask": "Online features are welcome and encouraged, but the game must still work fully offline",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (\"relax rules about offline, but it should work offline\")"
+  },
+  {
+   "id": "B42",
+   "ask": "AI-made art can be added (replaces the earlier no-AI-images rule)",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (\"ai made art can be added\")"
+  },
+  {
+   "id": "B43",
+   "ask": "Revenue through ads and similar (in-app purchases etc.); encourage online use",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (\"revenue generation will be through ads and etc\")"
   }
  ]
 }
