@@ -564,6 +564,14 @@
    "status": "partial",
    "note": "from owner, Claude chat 27 Nov 2026; first slice in DAY1a (ui_day.js): End Day, weekday date in #hdr-date, month bar, daily ticker; engine still settles monthly until DAY2-DAY7",
    "probe": "ui_day.js::function endDay"
+  },
+  {
+   "id": "B54",
+   "ask": "Assign every task to AI Studio, Codex or Claude; tell the owner when assignment is done so he can ask them to start; keep token use efficient for all",
+   "status": "done",
+   "note": "from owner, Claude chat 27 Nov 2026; every open ticket labelled for:claude (25), for:codex (64) or for:aistudio (12); #83 waits for the owner's file; COORDINATION.md §5 takes the first Ready ticket with your label",
+   "done": "2026-11-27",
+   "nosrc": true
   }
  ]
 }
