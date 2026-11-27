@@ -1,6 +1,6 @@
 # Working on The Long Century
 
-Follow the [execution strategy](docs/EXECUTION_STRATEGY.md) for the implementation order, durable tracking, and acceptance evidence.
+Order of work: [docs/PLAN_1_0.md](docs/PLAN_1_0.md) (27 Nov 2026, ledger B59). Take the first Ready ticket labelled `for:codex` in the lowest open milestone (`M0` first), p1 before p2. Before new work, read the latest morning report on the Night report issue and fix red night jobs first. Review AI Studio PRs that touch `src/` against their acceptance checks (APPROVE or numbered CHANGES). [EXECUTION_STRATEGY](docs/EXECUTION_STRATEGY.md) is history for acceptance evidence only.
 
 Coordination: follow [docs/COORDINATION.md](docs/COORDINATION.md). Session start: read the board (issue #1, generated), `python3 tools/ledger.py --open`, record any new owner ask (Owner request issue, or `docs/inbox/`), then resume your claim or claim the first Ready ticket you can do by commenting `/claim <agent> t/<id>-<slug>` on it. A PR needs `Closes #<ticket>` and `Ledger: <id>` (CI job `coord`). At session end, comment on the ticket what is done and what is left.
 
