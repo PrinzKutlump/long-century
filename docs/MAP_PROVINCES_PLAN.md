@@ -4,6 +4,8 @@
 
 Status: proposal for owner approval, revision 4 (24 Nov 2026). Revision 4: the owner dropped compatibility with existing saves, so ids may be renumbered and split migration of old saves is no longer required; ticket ids now follow `docs/MASTER_PLAN.md` (MP, FD, SV). Revision 2 adopted the first Codex/GPT review (finish at 184, pilot 186, evidence-led batches). Revision 3 adopts the second: saves move off localStorage, no lossy save changes, freight by distance, and the province range is decided after the pilot, not before. Replaces the "184 ids" scope of M2b in `docs/ART_MAP_GPT_PLAN.md`; M2a (crosswalk) stands.
 
+> **Owner, 27 Nov 2026 (B47, B48):** the province count must match the historical number, and sea areas are needed. The 230–260 working range and 360 ceiling below are superseded by the census in HP1 (#147) and the rollout in HP2 (#148); sea zones in SEA1 (#149). The batch rules, evidence notes and calibration checks below still apply.
+
 ## 1. Recommendation
 
 1. **Fix CI first.** The full workflow's century step writes "FAIL" but still exits green, and it never checks the time or save budgets. No province change is approved on a green check until this is fixed.

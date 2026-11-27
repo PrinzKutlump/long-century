@@ -24,7 +24,8 @@
    "ask": "Cheat button in Settings, +100M per press",
    "status": "done",
    "probe": "ui.js::cheat:\\(\\)=>",
-   "done": "2026-11-25"
+   "done": "2026-11-25",
+   "note": "; owner 27 Nov (B51): test builds only, removed from the public Play release"
   },
   {
    "id": "A3",
@@ -231,7 +232,7 @@
    "id": "B2",
    "ask": "Theatre command with infantry, cavalry, artillery; no army selection",
    "status": "unverified",
-   "note": "theatre.js exists"
+   "note": "theatre.js exists; owner 27 Nov (B57): theatre orders kept, armies visible and moving on the map, easy enjoyable controls"
   },
   {
    "id": "B3",
@@ -393,8 +394,10 @@
   {
    "id": "B26",
    "ask": "Whole future plan streamlined into features, mechanics and tickets; nothing forgotten or missed",
-   "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov 2026"
+   "status": "done",
+   "note": "from owner, Claude chat 27 Nov 2026; docs/ROADMAP.md merged in PR #103; tools/coord.py audit checks plan coverage",
+   "done": "2026-11-27",
+   "nosrc": true
   },
   {
    "id": "B27",
@@ -448,7 +451,7 @@
    "id": "B35",
    "ask": "Progression system (owner's words: \"Add a newspaper and progression system.\"); meaning to confirm with the owner: player milestones and achievements, era progression, or both",
    "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov 2026"
+   "note": "owner chose all three layers on 27 Nov (\"add all 3.\"): eras in the campaign (PROG1a), national milestones and beat-history score (PROG1b), player profile with unlocks and online challenges (PROG1c); paid items cosmetic only"
   },
   {
    "id": "B36",
@@ -465,14 +468,16 @@
   {
    "id": "B38",
    "ask": "Daily ticker controller: an End Day button replaces End Month; each press updates the global date and advances the game world by one day",
-   "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov 2026"
+   "status": "partial",
+   "note": "from owner, Claude chat 27 Nov 2026; first slice in DAY1a (ui_day.js): End Day, weekday date in #hdr-date, month bar, daily ticker; engine still settles monthly until DAY2-DAY7",
+   "probe": "ui_day.js::function endDay"
   },
   {
    "id": "B39",
    "ask": "A small progress bar or indicator beside the date (the #hdr-when header) showing how far the current month has run as days pass",
-   "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov 2026"
+   "status": "partial",
+   "note": "from owner, Claude chat 27 Nov 2026; first slice in DAY1a (ui_day.js): End Day, weekday date in #hdr-date, month bar, daily ticker; engine still settles monthly until DAY2-DAY7",
+   "probe": "ui_day.js::function endDay"
   },
   {
    "id": "B40",
@@ -499,6 +504,18 @@
    "note": "from owner, Claude chat 27 Nov 2026 (\"revenue generation will be through ads and etc\")"
   },
   {
+   "id": "B56",
+   "ask": "2.5D map: a rich 2D map with depth (shaded terrain, shadows, slight tilt), with units visible on the map that feel good and raise engagement",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (\"2.5d but having units on map feel good and get more engagement\")"
+  },
+  {
+   "id": "B57",
+   "ask": "Theatre orders stay, but commanding must be enjoyable with easy controls",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026 (\"theater orders but make it enjoyable and easy controls\")"
+  },
+  {
    "id": "B44",
    "ask": "Director's review and plan v3: status, assignments, pending and why, technical path to a commercial game, market research, ratings, recommendations and options; modify the plan",
    "status": "unverified",
@@ -509,6 +526,64 @@
    "ask": "Specialist leads under the main dev: music developer (era-accurate and licence-free music), creative and art developer (images, animation, map plans), history researcher (historical events for each country and region), quality-of-life developer",
    "status": "unverified",
    "note": "from owner, Claude chat 27 Nov"
+  },
+  {
+   "id": "B46",
+   "ask": "Re-plan every earlier feature for the new scope (living 2.5D map, daily clock, Android app, online, AI art) and the move from the 1 MB single HTML file to a full game",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B47",
+   "ask": "The number of provinces must match the historical number",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B48",
+   "ask": "Sea areas are needed (sea zones for fleets, trade and blockades)",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B49",
+   "ask": "Historical great projects added for each region and nation",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B50",
+   "ask": "No 3 MB size limit for the Play Store app; size only within Play's own limits",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B51",
+   "ask": "Remove the cheat option from the public release; keep it in test builds",
+   "status": "unverified",
+   "note": "from owner, Claude chat 27 Nov 2026"
+  },
+  {
+   "id": "B52",
+   "ask": "Daily events: short ticker items for each day's progression, reflecting the day-based turn logic",
+   "status": "partial",
+   "note": "from owner, Claude chat 27 Nov 2026; first slice in DAY1a (ui_day.js): End Day, weekday date in #hdr-date, month bar, daily ticker; engine still settles monthly until DAY2-DAY7",
+   "probe": "ui_day.js::function endDay"
+  },
+  {
+   "id": "B53",
+   "ask": "The date display (hdr-date) moves from a monthly display to a full day-by-day calendar",
+   "status": "partial",
+   "note": "from owner, Claude chat 27 Nov 2026; first slice in DAY1a (ui_day.js): End Day, weekday date in #hdr-date, month bar, daily ticker; engine still settles monthly until DAY2-DAY7",
+   "probe": "ui_day.js::function endDay"
+  },
+  {
+   "id": "B54",
+   "ask": "Assign every task to AI Studio, Codex or Claude; tell the owner when assignment is done so he can ask them to start; keep token use efficient for all",
+   "status": "done",
+   "note": "from owner, Claude chat 27 Nov 2026; every open ticket labelled for:claude (25), for:codex (64) or for:aistudio (12); #83 waits for the owner's file; COORDINATION.md §5 takes the first Ready ticket with your label",
+   "done": "2026-11-27",
+   "nosrc": true
   },
   {
    "id": "B58",

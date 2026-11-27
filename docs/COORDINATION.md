@@ -47,7 +47,8 @@ Release a claim you cannot finish: `/release <what is done, what is left>`. A ti
 1. Read the board (issue #1).
 2. `python3 tools/ledger.py --open` (or read `docs/LEDGER.md`).
 3. Do intake for any ask the owner gave you in this session (§3 step 2).
-4. Resume your own claimed ticket if you have one; otherwise claim the first Ready ticket you can do.
+4. Resume your own claimed ticket if you have one; otherwise claim the first Ready ticket labelled `for:<you>` (`for:claude`, `for:codex`, `for:aistudio`; the board's For column), p1 before p2 before p3. Take another agent's ticket only if it has waited a week or the owner says so.
+5. Token use: one ticket at a time; read the ticket, CLAUDE.md's source rules and only the functions you change (`tools/fn.py`); run only the tests for those files; short PR reports (CLAUDE.md report format).
 
 ## 6. Agents and how each one connects
 
