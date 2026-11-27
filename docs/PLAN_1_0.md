@@ -28,7 +28,7 @@ The repository is public, so standard GitHub Actions runners cost nothing. Heavy
 | Actions, on push and PR (day) | quick tier on pushes; full tier, coord and browser checks on PRs only (PL2 #7 keeps the day light) |
 | Releases | `nightly` APK every night; numbered test APKs for the closed test; 1.0 build artifacts |
 | Pages | the web build (`/nightly/` and the latest release) for quick checks and the itch.io demo source |
-| Issues and issue forms | tickets, owner requests, tester feedback form (TEST1 #165), the pinned Night report issue |
+| Issues and issue forms | tickets, owner requests, tester feedback form (TEST1 #165), the Night report issue (#167) |
 | Discussions | tester community during the closed test (owner turns it on in Settings) |
 | Labels and the board (issue #1) | milestones M0 to M4 and v1.1, agent labels, generated board |
 | Dependabot and CodeQL | dependency updates and code scanning, both free for public repositories (SEC1 #96) |
