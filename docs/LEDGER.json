@@ -15,7 +15,7 @@
    "id": "A1",
    "ask": "Month turns, selectable decisions, comprehensive dashboard",
    "status": "partial",
-   "note": "pages exist; dashboard depth unverified; needs ticket",
+   "note": "pages exist; dashboard depth unverified; ticket #69",
    "probe": "ui3.js::Nation"
   },
   {
@@ -42,7 +42,7 @@
    "id": "A5",
    "ask": "Build oil wells",
    "status": "partial",
-   "note": "oil good exists, no well building found; needs ticket",
+   "note": "oil good exists, no well building found; ticket #64",
    "probe": "defs.js::oil"
   },
   {
@@ -101,7 +101,7 @@
    "id": "A14",
    "ask": "Modernise administration, army, navy, education, constitution with historical projects",
    "status": "partial",
-   "note": "modern.js and prog_tanzimat.js exist; navy, education, constitution unverified",
+   "note": "modern.js and prog_tanzimat.js exist; navy, education, constitution unverified; ticket #67",
    "probe": "modern.js::moderni"
   },
   {
@@ -158,14 +158,14 @@
    "id": "A23",
    "ask": "Taxes by category with sector effects",
    "status": "partial",
-   "note": "tax change moves income (PR #35 probe); categories per sector unverified",
+   "note": "tax change moves income (PR #35 probe); categories per sector unverified; ticket #65",
    "probe": "econ.js::tax"
   },
   {
    "id": "A24",
    "ask": "Great works by history, renovation of old works, historic buildings",
    "status": "partial",
-   "note": "34 great works, no renovation path",
+   "note": "34 great works, no renovation path; ticket #66",
    "probe": "build.js::great"
   },
   {
@@ -177,14 +177,15 @@
   {
    "id": "A26",
    "ask": "Sounds and music of the era",
-   "status": "missing",
-   "note": "ticket #44"
+   "status": "partial",
+   "note": "five synthesized cues merged PR #55; era music still open, ticket #44",
+   "probe": "ui_audio.js::AudioContext"
   },
   {
    "id": "A27",
    "ask": "Game theory in turns: deterrence, coalitions, payoffs, score vs real outcome",
    "status": "partial",
-   "note": "some in diplo.js; scripted decisions unverified",
+   "note": "some in diplo.js; scripted decisions unverified; ticket #68",
    "probe": "diplo.js::coalition|deterren"
   },
   {
@@ -203,7 +204,7 @@
    "id": "A30",
    "ask": "Citizenship policy, influence, war goals, crises, army supply",
    "status": "partial",
-   "note": "some present",
+   "note": "some present; ticket #68",
    "probe": "defs.js::citizen"
   },
   {
@@ -251,14 +252,14 @@
    "id": "B5",
    "ask": "Buildings, great works, decisions the player can use",
    "status": "partial",
-   "note": "Build mode and Works board exist",
+   "note": "Build mode and Works board exist; ticket #69",
    "probe": "ui8.js::undo"
   },
   {
    "id": "B6",
    "ask": "UI at least as good as Devlet-i Aliyye",
    "status": "unverified",
-   "note": "layout audit fails 7 pages"
+   "note": "layout audit fails 7 pages; ticket #69"
   },
   {
    "id": "B7",
@@ -270,7 +271,7 @@
    "id": "B8",
    "ask": "About 20 more buildings and 12 more great works",
    "status": "unverified",
-   "note": "25 building kinds, 34 great works (22 non-fair); MASTER_PLAN has no great-works target (PR #53)"
+   "note": "25 building kinds, 34 great works (22 non-fair); MASTER_PLAN has no great-works target (PR #53); ticket #70"
   },
   {
    "id": "B9",
@@ -310,7 +311,7 @@
    "id": "B14",
    "ask": "Undo; end-of-year review of choices vs minister",
    "status": "partial",
-   "note": "Build mode undo only",
+   "note": "Build mode undo only; annual review ticket #61",
    "probe": "ui8.js::undo"
   },
   {
