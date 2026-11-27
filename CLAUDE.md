@@ -1,13 +1,17 @@
 # The Long Century: agent guide
 
-Roles: Codex/GPT implements every ticket that changes the game. Claude plans, writes ticket issues, supervises and audits (docs/DEV_WORKFLOW.md section 3b), and maintains docs and test tooling (`tools/stress/`, `stress.yml`); Claude does not change game code (`src/`, `build.py`). Plans: `docs/DESIGN.md`, `docs/MASTER_PLAN.md`, `docs/STATUS.md`.
+Roles (owner, 27 Nov 2026, ledger B21): Codex/GPT, Claude and Google AI Studio may all implement tickets that change the game; Claude also plans, writes ticket issues, audits PRs (docs/DEV_WORKFLOW.md section 3b) and maintains docs and the stress tier. Every agent, AI Studio included, works on a `t/` branch and opens a PR; nobody pushes to `main`. Plans: `docs/DESIGN.md`, `docs/MASTER_PLAN.md`, `docs/STATUS.md`.
+
+Direction (owner, ledger B20): Android game first, dynamic map, modern UI, features easy to add. Path: keep the JavaScript engine; Vite multi-file build; Capacitor Android app; PixiJS map; switch to Godot only if the PixiJS map fails the phone test on a Galaxy A56.
 
 Session start: run `python3 tools/ledger.py --open` and read the open rows of `docs/LEDGER.md`. Every owner ask goes in the ledger (`--add`), rows are never deleted, done rows stay as history, and a PR may not make a done feature stop working (CI probe).
 
 Before editing, check the [shared work-claims issue](https://github.com/PrinzKutlump/long-century/issues?q=is%3Aissue+in%3Atitle+claims) and record your plan-qualified ticket, branch and affected files or functions. Post your handoff or merged PR there when you release the claim.
 
-Plain JS game. `build.py` concatenates `engine-files.json` plus the `ui*.js` files into `dist/long-century.html`.
-`dist/` is not tracked; CI builds it. Read this file first.
+Plain JS game with a few TypeScript engine files (`src/engine/*.ts`, stripped to JS at build time by `scripts/transpile-engine.cjs`, Node 22.13 or later). Two builds read the same sources:
+- `python3 build.py` (or `node build.mjs`): one file, `dist/long-century.html`. Used by CI, `century.js`, the tests and GitHub Pages.
+- `npx vite build`: the multi-file app in `dist/` (installable web app and the Capacitor Android app). Its file list is in `vite.config.js`; a new `ui*.js` file must be added there, in `build.mjs` and in `build.py`. Check it with `python3 tools/vite_smoke.py`.
+`dist/`, `dev-dist/` and the Android copies (`android/app/src/main/assets/public`) are generated and not tracked. Read this file first.
 
 ## Ticket flow
 - One ticket, one branch: `t/<id>-<slug>`, for example `t/a5-research-balance`. One agent per ticket.

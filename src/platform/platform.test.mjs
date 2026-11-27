@@ -82,10 +82,13 @@ test("Source tree eliminates window.confirm, window.prompt, and window.alert cal
 
 test("Asset manifest resolves province and naval scenes without undefined entries", () => {
   const ASSET_MANIFEST = buildAssetManifest();
-  assert.ok(ASSET_MANIFEST.pictures.titleBackdrop.src);
-  assert.ok(ASSET_MANIFEST.pictures.capitalScene.src);
-  assert.ok(ASSET_MANIFEST.pictures.navalFleet.src);
-  assert.ok(ASSET_MANIFEST.pictures.emblem.src);
+  /* a picture without a licensed file has src "" and shows its gradient only (docs/ASSETS.md) */
+  for (const k of ["titleBackdrop", "capitalScene", "navalFleet", "emblem"]) {
+    const pic = ASSET_MANIFEST.pictures[k];
+    assert.equal(typeof pic.src, "string");
+    assert.ok(pic.fallbackGradient);
+  }
+  assert.equal(buildAssetManifest({ navalFleet: "/assets/pictures/fleet.webp" }).pictures.navalFleet.src, "/assets/pictures/fleet.webp");
   assert.ok(ASSET_MANIFEST.units.inf && ASSET_MANIFEST.units.dread);
 
   const capitalScene = resolveProvinceSceneMeta(

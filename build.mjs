@@ -22,6 +22,7 @@ const jsFiles = [
   "ui7.js",
   "ui8.js",
   "ui9.js",
+  "ui_audio.js",
 ];
 
 const css = ["ui.css", "ui3.css"]

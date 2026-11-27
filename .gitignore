@@ -9,3 +9,5 @@ data/raw/geo/*.geojson
 /archive/
 /deepseek_h1.txt
 /*.zip
+dev-dist/
+node_modules

@@ -97,7 +97,7 @@ function provHTML(p){const c=p.o&&G.c[p.o],pl=me(),mine=p.o===G.player,n=p.pops.
  const armies=G.armies.filter(a=>a.loc===p.id&&a.u.length),ctlOther=p.ctl&&p.ctl!==p.o;
  let h=`<div class="ph" data-pid="${p.id}">${p.o?`<span class="phf">${flagOf(p.o)}</span>`:`<span class="phf none"></span>`}<div class="phm"><h2>${esc(p.n)}</h2><div class="small muted">${c?esc(c.n)+(p.col===0?" colony":""):p.waste?"Wasteland":"Unclaimed land"}${ctlOther?", occupied by "+esc(nameOf(p.ctl)):""} · ${TERRAIN[p.t].n}${p.sea?" · coastal":""}</div></div><button class="x" data-a="close" aria-label="Close">×</button></div>`;
  const sceneMeta=!p.waste&&window.LC_ASSET_FN?.getProvinceSceneMeta?window.LC_ASSET_FN.getProvinceSceneMeta(p,c):null;
- if(sceneMeta){h+=`<div class="lc-scene-banner" style="background:${sceneMeta.fallbackGradient}"><img src="${sceneMeta.src}" alt="${esc(sceneMeta.alt)}" onerror="this.style.display='none'"><div class="lc-scene-cap">${esc(sceneMeta.caption||p.n)}</div></div>`;}
+ if(sceneMeta){h+=`<div class="lc-scene-banner" style="background:${sceneMeta.fallbackGradient}">${sceneMeta.src?`<img src="${sceneMeta.src}" alt="${esc(sceneMeta.alt)}" onerror="this.style.display='none'">`:""}<div class="lc-scene-cap">${esc(sceneMeta.caption||p.n)}</div></div>`;}
  const administrator=indiaAdministrator(p);
  if(administrator)h+=kr("Administration",esc(administrator));
  if(!p.waste){const inf=p.infra,macc=inf?inf.marketAccess:1,neti=inf?inf.netInfra:0;
