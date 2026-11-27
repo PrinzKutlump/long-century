@@ -2,7 +2,7 @@
 
 Follow the [execution strategy](docs/EXECUTION_STRATEGY.md) for the implementation order, durable tracking, and acceptance evidence.
 
-Before editing, check the [shared work-claims issue](https://github.com/PrinzKutlump/long-century/issues?q=is%3Aissue+in%3Atitle+claims) and record your plan-qualified ticket, branch and affected files or functions. Post your handoff or merged PR there when you release the claim.
+Coordination: follow [docs/COORDINATION.md](docs/COORDINATION.md). Session start: read the board (issue #1, generated), `python3 tools/ledger.py --open`, record any new owner ask (Owner request issue, or `docs/inbox/`), then resume your claim or claim the first Ready ticket you can do by commenting `/claim <agent> t/<id>-<slug>` on it. A PR needs `Closes #<ticket>` and `Ledger: <id>` (CI job `coord`). At session end, comment on the ticket what is done and what is left.
 
 Follow the shared repository instructions in [CLAUDE.md](CLAUDE.md). Feature ledger: run `python3 tools/ledger.py --open` first; see CLAUDE.md. New implementer: read [docs/CODEX_START.md](docs/CODEX_START.md) first.
 

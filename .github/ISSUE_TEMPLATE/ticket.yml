@@ -11,6 +11,22 @@ body:
       placeholder: a5-research-balance
     validations:
       required: true
+  - type: input
+    id: ledger
+    attributes:
+      label: Ledger
+      description: "Ledger rows this ticket serves, written as `Ledger: A5` (several: `Ledger: A1, B5`). A ticket that only comes from the plan writes `Ledger: plan <PLAN-ID>`."
+      placeholder: "Ledger: A5"
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: The planner also sets the matching label p1, p2 or p3; the board orders Ready by it.
+      options: [p1 (next), p2 (soon), p3 (later)]
+    validations:
+      required: true
   - type: dropdown
     id: area
     attributes:

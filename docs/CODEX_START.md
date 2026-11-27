@@ -5,7 +5,7 @@ You implement every ticket of The Long Century. Claude plans, writes ticket issu
 ## First, in this order
 Follow `docs/MASTER_PLAN.md` §5. The first engine ticket is **FX1** (#27) (phantom factory output and save/resume divergence; root cause in `docs/STATUS.md` §5), then SV1 (#4), FX2, FX3, CA1, PL2, PL3a. Open PRs to finish first: PL1 #23, FD1 #22, PB5 #25.
 
-Take tickets only from issues labelled `ticket`, claim on the claims board, one ticket per branch `t/<id>-<slug>`.
+Take tickets only from issues labelled `ticket`, claim with a `/claim codex t/<id>-<slug>` comment on the ticket (rules: docs/COORDINATION.md), one ticket per branch `t/<id>-<slug>`.
 
 ## Rules that matter most
 - Same rules for every nation, player and AI. No network calls in the game. One `<style>` element. Phone first (360/390 px, 44 px targets, no horizontal scroll). Plain English; disabled buttons say why. Original art only.
