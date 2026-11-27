@@ -20,13 +20,13 @@ The stages of MASTER_PLAN §3 stay, with two Android stages put in front of the 
 |---|---|---|---|
 | **A. Stable base on a phone** | The game never crashes, saves always reload, and installs on the Galaxy A56 | #27 FX1, #74, #75, #76, #98 SV4, #97 QA2, #99 FX2, #100 FX3, #101 FX5, #102 PF1, #80 AND3, #82 LED3, #96 SEC1, #7 PL2, #10 PL7, FX4, FX6, QA3, QA4, PB2, PB3 #13, PB4 #14, PB5, PL1, SV1, SV2 #8 | Stress tier green (MASTER_PLAN S0 gate); APK installs on the A56 |
 | **B. Daily clock, living map, modern UI** | Time runs day by day; armies, fleets and buildings move and appear on a 2.5D map with easy theatre controls; a clean modern interface | DAY0–DAY9, MAP1–MAP5, PROG2, CAUSE1, BAL1, #81 AND4 (go/no-go for Godot), #92 AND8, #91 AND7, #90 AND6, #89 DEC1, #9 PL3a, PL3b, PL4, PL5, PL6, PL8, MP1a/b/c–MP5, #26, #85, UI5, UI2, UI4, FX6, #69 UI1a, UI1b, AR1–AR8 start, #93 MED1 | Owner says "go" on the A56 map; daily engine in calibration bands at 4 ms/day; 7 failing pages pass the layout sweep |
-| **C. Alpha on Android** | A first playable slice others can test | LOAD1, NEWS1, PROG1, FD3a/b, FD4, FD5, AI1, UI3, UI9, UI11, SC1, SC3, RL1, RL2, RL3, QA5, #61 | Five testers' pass marks; owner played three builds |
+| **C. Alpha on Android** | A first playable slice others can test | LOAD1, NEWS1, PROG1a, PROG1b, FD3a/b, FD4, FD5, AI1, UI3, UI9, UI11, SC1, SC3, RL1, RL2, RL3, QA5, #61 | Five testers' pass marks; owner played three builds |
 | **D. Performance and provinces** | More provinces without slowing down | PF2, PF3, SO4, MP6, MP7–MP10, #84, WD1–WD4, #11 WD5a, MI6, HI5 | MASTER_PLAN S3 gate |
 | **E. Economy, demography, society** | Living population and economy | SOC2, DM1–DM6, EC1–EC6, FI1–FI3, TR1–TR3, #45, #46, #64, #65, SO1a, SO1b, SO2, SO3, FD6, FD7, #5 FD2, #54 | MASTER_PLAN S4 gate |
 | **F. Politics, programmes, flavour** | Each nation feels different | PO1–PO6, RS1–RS9, NF0–NF5, HI1–HI4, #67, #56, #83, #49 | MASTER_PLAN S5 gate |
 | **G. Diplomacy, war, navy, AI** | Wars and diplomacy that follow history's patterns | DP1–DP7, MI1–MI11, NV1–NV3, AI2–AI6, HI6, HI7, #68, #39, #42, #47 | MASTER_PLAN S6 gate |
 | **H. Whole world, art and sound** | Every corner of the map and the era's look and sound | MP11–MP14, AR1–AR8, UI2, UI4, UI6, UI7, UI8, UI10, UI12, UI13, SC2, SC4, CA2–CA5, #6 CA1, #43, #94 MUS1, #41, #70, #66 | Art budgets; every nation playable |
-| **I. Release** | On Google Play | RL4, RL5, RL6, SC5, #95 REL1, #40 (1917 scenario) | Phone gate, licences, store checks |
+| **I. Release** | On Google Play | PROG1c, RL4, RL5, RL6, SC5, #95 REL1, #40 (1917 scenario) | Phone gate, licences, store checks |
 
 ## 3. Feature map
 
@@ -85,7 +85,9 @@ Each table: what the player gets, how it works (the mechanics, short; full text 
 | Month progress indicator | A small bar beside the date filling as the days of the month pass | B39, B37, DAY8 | ○ |
 | Loading screen with history | Public-domain pictures, real quotes with sources (published before 1929), did-you-know facts, loading bar | B30, B37, LOAD1 | ○ |
 | Newspaper | Weekly or monthly front page from the game's own events, period style | B34, NEWS1 | ○ |
-| Progression system | Meaning to confirm: milestones and achievements, eras, or both | B35, PROG1 | ? owner |
+| Progression: eras | Six eras change the map style, units, music, newspaper and options as the world reaches them | B35, PROG1a #120 | ○ |
+| Progression: milestones and beat-history score | 40 milestones; yearly and final score against real history | B35, PROG1b #139 | ○ |
+| Progression: player profile | Level across campaigns; unlocks scenarios, flavour nations, cosmetics; online weekly challenges; paid items cosmetic only | B35, PROG1c #140 | ○ |
 | Progress indicators | Bars and rings on construction, research, programmes, war score, unification | B37, PROG2 | ○ |
 | Causal breakdowns | Tap a key number to see its top causes | B33, CAUSE1 | ◐ some "why" sheets exist |
 | Monthly turns (until DAY1) | One month per turn; fast-forward stops for decrees | A1 | ✔ (being replaced) |
@@ -320,7 +322,6 @@ Owner 27 Nov: online features encouraged, the game must still work fully offline
 
 | Decision | Ticket | Needed before |
 |---|---|---|
-| What "progression system" means | PROG1 | PROG1 |
 | Map: PixiJS go or Godot | #81 | Stage B map and art work |
 | Modern UI design approval | #92 | Page rebuilds |
 | Add `ottoman1911.html` to the repo | #83 | Ottoman parity tickets |

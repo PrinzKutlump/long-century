@@ -331,7 +331,9 @@ Size: S under 60k tokens; M one day; L split first. "After": tickets that must m
 | MAP5 (#136) | Theatre controls on the map (draw-an-arrow orders, one-tap stances, army card, battle moments, undo) | M | MAP2, DAY3 | Owner finds it easy on the A56 |
 | LOAD1 | Loading screen: public-domain pictures, sourced quotes, facts, progress bar | M | MED1 | 50 quotes and 50 facts with sources |
 | NEWS1 | Newspaper front page from game events | M | DAY7 | Owner check |
-| PROG1 | Progression system (meaning confirmed by the owner) | M | UI12 | Owner check |
+| PROG1a (#120) | Eras that change the campaign | M | DAY7, AIS6 | Eras arrive in historical windows |
+| PROG1b (#139) | National milestones and beat-history score | M | UI12, NEWS1 | 40 milestones; yearly score |
+| PROG1c (#140) | Player profile, unlocks, online challenges | M | PROG1b, AIS5, REV1 | Unlocks work offline |
 | PROG2 | Progress indicators on everything that grows | S | DAY4 | Owner check |
 | CAUSE1 | Causal breakdown on every key number | M | UI1a | Sums match |
 | SOC2 | Strata, standard of living, radicalism, interest groups, legitimacy, laws | L | DAY6, PO1 | Groups react differently to one law |

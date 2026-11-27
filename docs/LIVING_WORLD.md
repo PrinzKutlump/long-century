@@ -82,7 +82,7 @@ All sprites, icons and terrain art are our own, AI-made (owner 27 Nov, B42, with
 | **Date controller** | Date with day, month, year; pause; speeds 1–5; auto-pause on wars, events and finished buildings (each switchable) | Speed = days per second; pause states saved | B36 |
 | **Loading screen** | A historical picture of the era or the chosen nation, a real quote with speaker, year and source, and a short "did you know" fact; a progress bar while loading | Quotes and facts in a data file, each with its source; only quotes published before 1929 by their authors (public domain); pictures public domain (museum collections), our own art or AI-made scenes (B42), each in `docs/ASSETS.md`; no invented quotes | B30, B37 |
 | **Newspaper** | A front page every week or month: headlines about wars, treaties, inventions, elections, disasters and the player's deeds, in period style, with a masthead per nation | Built from the game's own events and numbers; each headline links to the event or province | B34 |
-| **Progression** | Three layers proposed (owner to choose): eras that change the look and options during a campaign; national milestones with a beat-history score; a player profile that unlocks scenarios and cosmetics across campaigns, plus optional online challenges | Tracked from the history ledger (UI12) | B35 |
+| **Progression** (owner chose all three, 27 Nov) | 1. Six eras (1836 Revolutions, 1850s Railways, 1870s Nations and Empires, 1890s Steel and Electricity, 1914 Great War, 1920s Interwar) that change the map style, units, music, newspaper and options. 2. National milestones and a beat-history score per campaign. 3. A player profile that unlocks scenarios, flavour nations and cosmetics, with optional online weekly challenges and leaderboards | Eras arrive when the world reaches them; score from the history ledger (UI12); paid items cosmetic only | B35 |
 | **Progress indicators** | Bars and rings on construction, research, programmes, war score, unification and loading | Read from existing progress values | B37 |
 | **Causal breakdowns** | Tap any key number to see the 2–3 biggest causes | One breakdown function per number | B33 |
 
@@ -109,7 +109,9 @@ Stage A (stable base) comes first: the daily conversion multiplies any existing 
 | MAP4 | Fronts, occupation, cities by size, canals | MAP2 | Owner check |
 | LOAD1 | Loading screen: pictures, verified quotes, facts, progress bar | MED1 | 50 quotes and 50 facts with sources; owner check |
 | NEWS1 | Newspaper front page from game events | DAY7 | Owner check |
-| PROG1 | Progression system (after the owner says what it means) | UI12 | Owner check |
+| PROG1a | Eras that change the campaign | DAY7, AIS6 | Eras arrive in historical windows across seeds |
+| PROG1b | National milestones and beat-history score | UI12, NEWS1 | 40 milestones; score each year |
+| PROG1c | Player profile, unlocks, online challenges | PROG1b, AIS5, REV1 | Unlocks work offline |
 | PROG2 | Progress indicators everywhere something grows | DAY4 | Owner check |
 | CAUSE1 | Causal breakdown on every key number | UI1a | Sums match the number |
 | SOC2 | Strata, needs, standard of living, radicalism, interest groups, legitimacy, laws (AI Studio Phase 2 asks) | DAY6, PO1 | Owner check; groups react differently to one law |
