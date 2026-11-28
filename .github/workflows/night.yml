@@ -17,7 +17,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
       - uses: oven-sh/setup-bun@v2
@@ -42,10 +42,26 @@ jobs:
           apk=android/app/build/outputs/apk/debug/app-debug.apk
           test -s "$apk"
           cp "$apk" long-century-nightly-debug.apk
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: nightly-builds
           path: |
             long-century-nightly-web.tar.gz
             long-century-nightly-debug.apk
           if-no-files-found: error
+
+  artifact-round-trip:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v8
+        with:
+          name: nightly-builds
+      - name: Verify both downloaded builds
+        run: |
+          tar -tzf long-century-nightly-web.tar.gz | grep -Fx './index.html'
+          python -m zipfile -l long-century-nightly-debug.apk | grep -F AndroidManifest.xml
