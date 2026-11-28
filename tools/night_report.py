@@ -18,7 +18,7 @@ def bench():
     from playwright.sync_api import sync_playwright
 
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(executable_path="/usr/bin/google-chrome")
+        browser = playwright.chromium.launch(executable_path=os.environ.get("LC_CHROME", "/usr/bin/google-chrome"))
         page = browser.new_page(viewport={"width": 390, "height": 844})
         page.goto(Path("dist/long-century.html").resolve().as_uri())
         session = page.context.new_cdp_session(page)
@@ -85,7 +85,7 @@ def post():
     body = f"Jobs requiring attention: {', '.join(failures)}. See the [night run](https://github.com/{repo}/actions/runs/{run})."
     for issue in issues:
         if issue["title"] == title:
-            gh("issue", "edit", str(issue["number"]), "--repo", repo, "--body", body)
+            gh("issue", "comment", str(issue["number"]), "--repo", repo, "--body", body)
             return
     gh("issue", "create", "--repo", repo, "--title", title, "--label", "bug", "--body", body)
 
