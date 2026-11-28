@@ -37,7 +37,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          prev=$(gh release list --limit 1 --json tagName -q '.[0].tagName' || true)
+          prev=$(gh release list --limit 20 --json tagName -q 'map(select(.tagName | startswith("build-")))[0].tagName // empty' || true)
           if [ -n "$prev" ]; then
             git log --format='- %s' "$(git rev-list -n 1 "$prev")..HEAD" > /tmp/notes.md
           else
@@ -55,9 +55,16 @@ jobs:
             echo "- FAIL release $tag" >> "$GITHUB_STEP_SUMMARY"; exit 1
           fi
       - name: Stage Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p _site
           cp dist/long-century.html _site/index.html
+          if gh release view nightly >/dev/null 2>&1; then
+            gh release download nightly --pattern long-century-nightly-web.tar.gz
+            mkdir -p _site/nightly
+            tar -xzf long-century-nightly-web.tar.gz -C _site/nightly
+          fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
