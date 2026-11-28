@@ -9,8 +9,8 @@ on:
       - tools/night_report.py
 
 concurrency:
-  group: release-pages
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('night-pr-{0}', github.event.pull_request.number) || 'release-pages' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
