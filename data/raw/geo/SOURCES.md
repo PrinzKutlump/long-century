@@ -40,3 +40,10 @@ Clipped to longitudes -180..180, latitudes -60..80; coordinates rounded to 0.001
 Source archive release: geodata-run-12 (private). The public geodata release is tracked by PB4.
 The layers can be regenerated with the geodata workflow.
 zip sha256: 675c64a258ef6ef82d99d99e14c6562bcff0a551480d60773d0828babbe985e8
+
+## Natural Earth raw files (owner upload, 28 Nov 2026, ledger B64)
+Folder: data/raw/geo/natural_earth/. Licence: public domain. Checksums: SHA256SUMS in that folder.
+- ne_10m_coastline.zip, ne_10m_land.zip, ne_10m_lakes.zip, ne_10m_rivers_lake_centerlines.zip: unchanged shapefile zips from https://www.naturalearthdata.com/downloads/10m-physical-vectors/
+- ne2_50m_sr.webp: Natural Earth II with shaded relief, 1:50m (10800x5400), from NE2_50M_SR.zip (sha256 0e9838cb3acb10ce4674b74a8f79bd5aae02e4b715185d54f018afaf4d9451f4), converted from TIFF to WebP quality 82. Original: https://www.naturalearthdata.com/downloads/50m-raster-data/50m-natural-earth-2/
+- sr_50m.webp: shaded relief, 1:50m, greyscale (10800x5400), from SR_50M.zip (sha256 ff810f5f2747463fd8ffa612b23e5f5e5d593a345218976872b6749610976ab7), converted to WebP quality 82. Original: https://www.naturalearthdata.com/downloads/50m-raster-data/50m-shaded-relief/
+- Use: terrain and coast layers for the era map styles (WOW1 #187). Raw inputs only; game-ready art goes in assets/ with a docs/assets.json row.

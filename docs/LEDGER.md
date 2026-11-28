@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 19, partial 13, missing 10, unverified 50, closed 2  (audited 2026-11-25)
+Totals: done 19, partial 13, missing 10, unverified 51, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -108,3 +108,4 @@ Totals: done 19, partial 13, missing 10, unverified 50, closed 2  (audited 2026-
 | B61 | Province count: raise from 184 to a level that stays mobile-friendly and fun, not the full historical ~1,000; replaces the full-count part of B47 and B60 | unverified | from owner, Claude chat 28 Nov |  |
 | B62 | Wow factor: creative, music, history and graphics direction for 1.0, learning from competitor games (living atlas that ages by era, signature moments, adaptive score, history against you, people who age, first five minutes) | unverified | from owner, Claude chat 28 Nov |  |
 | B63 | Allow the SIL Open Font License for font files only (period fonts such as IM Fell, Playfair, Cormorant, Libre Caslon); OFL.txt ships beside each font | unverified | from owner, Claude chat 28 Nov |  |
+| B64 | Owner downloads of free resources the agents cannot fetch (list in Claude doc 'Free Resources to Download'); first batch: Natural Earth 10m physical vectors and 50m relief rasters | unverified | from owner, Claude chat 28 Nov |  |
