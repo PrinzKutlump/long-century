@@ -73,7 +73,7 @@ window.updateGameDOM = updateGameDOM;
 function loadClassicRuntime() {
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
-    script.src = "/lc-app-bundle.js";
+    script.src = `${import.meta.env.BASE_URL}lc-app-bundle.js`;
     script.async = false;
     script.onload = () => resolve();
     script.onerror = err => reject(err || new Error("Failed to load classic engine bundle"));
