@@ -11,7 +11,7 @@ export function createSimClient() {
   function ensureWorker() {
     if (worker || typeof Worker !== "function") return worker;
     try {
-      worker = new Worker("/sim-worker.js");
+      worker = new Worker(`${import.meta.env.BASE_URL}sim-worker.js`);
       worker.onmessage = ev => {
         const msg = ev.data || {};
         const job = pending.get(msg.id);
