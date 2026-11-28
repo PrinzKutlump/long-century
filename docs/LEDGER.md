@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 19, partial 12, missing 10, unverified 47, closed 2  (audited 2026-11-25)
+Totals: done 19, partial 13, missing 10, unverified 46, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -103,4 +103,4 @@ Totals: done 19, partial 12, missing 10, unverified 47, closed 2  (audited 2026-
 | B53 | The date display (hdr-date) moves from a monthly display to a full day-by-day calendar | partial | from owner, Claude chat 27 Nov 2026; first slice in DAY1a (ui_day.js): End Day, weekday date in #hdr-date, month bar, daily ticker; engine still settles monthly until DAY2-DAY7 |  |
 | B54 | Assign every task to AI Studio, Codex or Claude; tell the owner when assignment is done so he can ask them to start; keep token use efficient for all | done | from owner, Claude chat 27 Nov 2026; every open ticket labelled for:claude (25), for:codex (64) or for:aistudio (12); #83 waits for the owner's file; COORDINATION.md §5 takes the first Ready ticket with your label | 2026-11-27 |
 | B58 | Approve plan v3; daily clock option B; hero nations Britain, Ottoman Empire, Sikh Empire, Prussia and the United States | unverified | from owner, Claude chat 27 Nov |  |
-| B59 | Final structured plan for 1.0 and a 1.1 plan; Claude used minimally after today, most work divided between GPT/Codex and AI Studio; use GitHub's free resources extensively, especially at night when the owner is not working | unverified | from owner, Claude chat 27 Nov |  |
+| B59 | Final structured plan for 1.0 and a 1.1 plan; Claude used minimally after today, most work divided between GPT/Codex and AI Studio; use GitHub's free resources extensively, especially at night when the owner is not working | partial | from owner, Claude chat 27 Nov; nightly build artifact workflow in #179; publication, probes and morning report tracked in #162 |  |
