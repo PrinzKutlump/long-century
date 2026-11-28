@@ -211,6 +211,32 @@ Target **about 400 provinces** (range 350 to 450), up from 184. Not the full his
 
 Rough split of the 400: Europe 150, Ottoman lands and the Middle East 45, South Asia 50, East and South-East Asia 55, the Americas 60, Africa 25, Russia in Asia and Central Asia 15.
 
+### Province plan totals (HP1 #147, from `data/provinces/plan.csv`)
+
+| Region | Current (184) | Planned 1.0 (B61) | Direct tap (>=44 px) | Flagged for search |
+|---|---:|---:|---:|---:|
+| Europe | 54 | **150** | 80 | 70 |
+| Ottoman lands and the Middle East | 17 | **45** | 39 | 6 |
+| South Asia | 13 | **50** | 48 | 2 |
+| East and South-East Asia | 31 | **55** | 53 | 2 |
+| Americas | 38 | **60** | 57 | 3 |
+| Africa | 25 | **25** | 25 | 0 |
+| Russia in Asia and Central Asia | 6 | **15** | 15 | 0 |
+| **Total** | **184** | **400** | **317** | **83** |
+
+**Hero nations (1836 snapshot):**
+
+| Hero nation (1836 tag) | Current provinces | Planned 1.0 provinces | Direct tap | Flagged for search | Notes |
+|---|---:|---:|---:|---:|---|
+| Britain (`GBR`) | 17 | **60** | 46 | 14 | 13 British Isles, 38 India/Ceylon (incl. Cis-Sutlej), 4 Canada (incl. Rupert's Land, company rule), 1 Malaya & Singapore, 2 Australia, 1 West Indies, 1 Cape Colony |
+| Ottoman Empire (`OTT`) | 9 | **26** | 20 | 6 | 10 Balkans, 11 Anatolia & Cyprus, 4 Mesopotamia/Diyarbekir, 1 Tripolitania |
+| Sikh Empire (`PUN`) | 3 | **8** | 8 | 0 | Lahore, Jullundur, Rawalpindi, Multan, Derajat, Peshawar, Kashmir, Jammu (Cis-Sutlej under GBR per 1809 treaty) |
+| Prussia (`PRU`) | 5 | **10** | 10 | 0 | Brandenburg, Prussian Saxony, Pomerania, Posen, East & West Prussia, Lower & Upper Silesia, Westphalia, Rhine Province |
+| United States (`USA`) | 6 | **14** | 14 | 0 | 14 states/territories in 1836 (Great Plains, Oregon, Texas, California & New Mexico adjacent) |
+
+Full historical unit census (2,164 first-level units, 1836–1936) and grouping crosswalk: `data/provinces/census.csv` and `docs/PROVINCE_CENSUS.md`.
+
+
 ## 8. Decisions still with the owner
 
 - Turn on "Do not allow bypassing" for main (#12) and Discussions in Settings.
