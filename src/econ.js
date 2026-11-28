@@ -106,6 +106,7 @@ function econMonth(warm){
  for(const g of GK){const s=TS[g],d=TD[g];G.pricePrev[g]=G.price[g];if(s+d<=0)continue;const ex=clamp((d-s)/Math.max(s,d),-1,1);let fl=GOODS[g].p*.2;const R=RECIPE[g];if(R){let ci=0;for(const x in R.I)ci+=R.I[x]*G.price[x];fl=Math.max(fl,1.02*ci/R.O);} // nobody sells below the cost of the inputs for long
   G.price[g]=clamp(G.price[g]*(1+.04*ex),fl,Math.max(fl,GOODS[g].p*5));if(!G.tight)G.tight={};G.tight[g]=(G.tight[g]||1)*.9+.1*(s>0?d/s:1);} // how short the world is of a good, smoothed: investors read it
  for(const tag of participants)allocateLocalHouseholds(G.c[tag],provinces(tag),pilotSupply,pilotDemand);
+ if(!warm)freightMonth(pilotSupply,pilotDemand); // B1: grain freight receipts
  for(const c of Object.values(G.c))if(c.alive){c.stat.dividendsIn=0;c.stat.dividendsOut=0;}
  /* incomes */
  for(const tag in G.c){const c=G.c[tag];if(!c.alive)continue;c._inc={};c._gdp=0;c._ari=0;c._cap=0;}
