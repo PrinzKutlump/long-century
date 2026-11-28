@@ -602,6 +602,12 @@
    "ask": "Province count must be historical in 1.0 (confirms B47 for the launch, not 1.1)",
    "status": "unverified",
    "note": "from owner, Claude chat 27 Nov"
+  },
+  {
+   "id": "B61",
+   "ask": "Province count: raise from 184 to a level that stays mobile-friendly and fun, not the full historical ~1,000; replaces the full-count part of B47 and B60",
+   "status": "unverified",
+   "note": "from owner, Claude chat 28 Nov"
   }
  ]
 }
