@@ -30,7 +30,7 @@ Ledger: `B61`, `B47` · Source data: `data/provinces/census.csv` (2,164 historic
 
 | Hero nation (1836 tag) | Current provinces | Planned 1.0 provinces | Direct tap | Flagged for search | Notes |
 |---|---:|---:|---:|---:|---|
-| Britain (`GBR`) | 17 | **58** | 44 | 14 | 13 British Isles, 38 India/Ceylon (incl. Cis-Sutlej), 3 Canada, 2 Australia, 1 West Indies, 1 Cape Colony |
+| Britain (`GBR`) | 17 | **60** | 46 | 14 | 13 British Isles, 38 India/Ceylon (incl. Cis-Sutlej), 4 Canada (incl. Rupert's Land, company rule), 1 Malaya & Singapore, 2 Australia, 1 West Indies, 1 Cape Colony |
 | Ottoman Empire (`OTT`) | 9 | **26** | 20 | 6 | 10 Balkans, 11 Anatolia & Cyprus, 4 Mesopotamia/Diyarbekir, 1 Tripolitania |
 | Sikh Empire (`PUN`) | 3 | **8** | 8 | 0 | Lahore, Jullundur, Rawalpindi, Multan, Derajat, Peshawar, Kashmir, Jammu (Cis-Sutlej under GBR per 1809 treaty) |
 | Prussia (`PRU`) | 5 | **10** | 10 | 0 | Brandenburg, Prussian Saxony, Pomerania, Posen, East & West Prussia, Lower & Upper Silesia, Westphalia, Rhine Province |
@@ -169,3 +169,7 @@ Ledger: `B61`, `B47` · Source data: `data/provinces/census.csv` (2,164 historic
 | Wallachia, Moldavia & Romania | Europe | 7 | 1836–1936 |
 | West & Central African Polities | Africa | 4 | 1836–1936 |
 | Đại Nam / French Indochina | East and South-East Asia | 5 | 1836–1936 |
+
+## Owner review, 28 Nov 2026
+
+Approved with three fixes (review on PR #181): Kamchatka & Siberian North owner RUS; Malaya & Singapore owner GBR (Straits Settlements from 1826); Rupert's Land owner GBR (Hudson's Bay Company rule). Unowned provinces at 1836: 20.

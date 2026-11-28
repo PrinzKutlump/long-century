@@ -288,7 +288,7 @@ SGN,Cochinchina (Saigon),DAI,SGN,"Six Provinces of Southern Vietnam (Gia Dinh/Sa
 BKK,Central & Southern Siam,SIA,BKK,"Chao Phraya core, Bangkok, Ayutthaya, Nakhon Si Thammarat (Monthons Krung Thep, Ayutthaya)",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Monthon
 LNA,Northern Siam & Isan,SIA,BKK,"Chiang Mai (Lanna), Nan, Udon, Nakhon Ratchasima, Ubon",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Monthon
 CMB,Cambodia & Laos,SIA,BKK,"Kingdom of Cambodia, Luang Prabang, Vientiane, Champasak",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/French_Indochina
-MLY,Malaya & Singapore,UNADMINISTERED,MLY,"Straits Settlements (Singapore, Penang, Malacca) and Malay Sultanates",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/British_Malaya
+MLY,Malaya & Singapore,GBR,MLY,"Straits Settlements (Singapore, Penang, Malacca) and Malay Sultanates; Straits Settlements (British from 1826) with the Malay sultanates",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/British_Malaya
 JAV,Java,NED,JAV,"Batavia, Priangan, Semarang, Surabaya, Yogyakarta, Surakarta residencies",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Administrative_divisions_of_the_Dutch_East_Indies
 SUM,Sumatra,NED,SUM,"Aceh, Sumatra West Coast, Palembang, Siak, Lampong residencies",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Administrative_divisions_of_the_Dutch_East_Indies
 BOR,Borneo,UNADMINISTERED,BOR,"Sultanate of Brunei, Sarawak (1841), North Borneo, Dutch Borneo residencies",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Administrative_divisions_of_the_Dutch_East_Indies
@@ -322,7 +322,7 @@ NMX,New Mexico & Rockies,MEX,SFO,"Santa Fe de Nuevo México (New Mexico, Arizona
 QUE,Lower Canada (Quebec),GBR,QUE,Province of Lower Canada,Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_Canada
 MRM,Maritimes & Newfoundland,GBR,QUE,"Nova Scotia, New Brunswick, Prince Edward Island, Newfoundland",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_and_territories_of_Canada
 TOR,Upper Canada (Ontario),GBR,TOR,Province of Upper Canada,Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_Canada
-RUP,Rupert's Land,UNADMINISTERED,RUP,"Hudson's Bay Company Charter Territory (Manitoba, Saskatchewan, Alberta)",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_Canada
+RUP,Rupert's Land,GBR,RUP,"Hudson's Bay Company Charter Territory (Manitoba, Saskatchewan, Alberta); Hudson's Bay Company rule under the British Crown",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_Canada
 GRL,Greenland,UNADMINISTERED,GRL,North and South Greenland Inspectorates (Danish trade monopoly),Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Counties_of_Denmark
 ARC,Canadian Arctic & Alaska,UNADMINISTERED,ARC,"North-Western Territory, Yukon, Russian Alaska",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_Canada
 MEX,Central Mexico,MEX,MEX,"México, Puebla, Guanajuato, Michoacán, Querétaro, San Luis Potosí",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Centralist_Republic_of_Mexico
@@ -398,4 +398,4 @@ IRK,Irkutsk & Lake Baikal,RUS,IRK,Irkutsk governorate,Russia in Asia and Central
 YAK,Yakutsk,RUS,IRK,Yakutsk Oblast,Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Oblasts_of_the_Russian_Empire
 TRZ,Transbaikalia & Amur,RUS,IRK,Transbaikal and Amur oblasts (ceded by Qing 1858),Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Oblasts_of_the_Russian_Empire
 VLD,Primorye & Vladivostok,RUS,IRK,Primorskaya Oblast & Sakhalin (ceded by Qing 1860),Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Oblasts_of_the_Russian_Empire
-SIN,Kamchatka & Siberian North,UNADMINISTERED,SIN,"Kamchatka, Chukotka and Arctic Siberian coast",Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Oblasts_of_the_Russian_Empire
+SIN,Kamchatka & Siberian North,RUS,SIN,"Kamchatka, Chukotka and Arctic Siberian coast",Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Oblasts_of_the_Russian_Empire
