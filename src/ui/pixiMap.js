@@ -20,8 +20,8 @@ function pointInRing(pts, x, y) {
   return inside;
 }
 
-function pointInProv(w, x, y) {
-  const rings = window.provPts ? window.provPts(w) : w._pp || [];
+function pointInProv(w, x, y, provPts) {
+  const rings = provPts(w);
   for (const pts of rings) {
     if (pointInRing(pts, x, y)) return true;
   }
@@ -35,11 +35,13 @@ function parseColorCss(c, fallback = "#ece4cf") {
 }
 
 export function createPixiMapController() {
+  let runtime;
   let hostEl = null;
   let canvasEl = null;
   let app = null;
   let usePixi = false;
   let initializing = null;
+  let mounting = null;
 
   let worldRoot = null;
   let oceanGfx = null;
@@ -122,8 +124,8 @@ export function createPixiMapController() {
   function startAnimLoop() {
     if (animTimer) return;
     animTimer = setInterval(() => {
-      if (document.hidden) return;
-      if (!window.G || !window.UI || window.UI.tab !== "map") return;
+      if (document.hidden || !hostEl?.classList.contains("has-pixi")) return;
+      if (!runtime.G || !runtime.UI || runtime.UI.tab !== "map") return;
       if (!document.getElementById("map")?.isConnected) return;
       animPhase = (animPhase + 0.14) % (Math.PI * 2);
       renderDynamicOverlayAndStage();
@@ -151,9 +153,9 @@ export function createPixiMapController() {
 
   function buildProvinceGeometry() {
     if (!usePixi || !provGfx || !overlayGfx || !railGfx) return;
-    const G = window.G;
-    const UI = window.UI;
-    const WORLD = window.WORLD;
+    const G = runtime.G;
+    const UI = runtime.UI;
+    const WORLD = runtime.WORLD;
     if (!G || !WORLD) return;
 
     provGfx.clear();
@@ -174,17 +176,17 @@ export function createPixiMapController() {
     oceanGfx.stroke({ width: 0.7, color: gridColor, alpha: 0.28 });
 
     // Province polygons
-    const bmOn = typeof window.bmOn === "function" && window.bmOn();
+    const bmOn = typeof runtime.bmOn === "function" && runtime.bmOn();
     const bmSel = new Set(UI?.bm?.sel || []);
     const borderCol = dark ? 0x16110b : 0x362816;
 
     for (const w of WORLD.provs) {
-      const p = window.P ? window.P(w.id) : G.prov?.[w.id];
+      const p = runtime.P ? runtime.P(w.id) : G.prov?.[w.id];
       if (!p) continue;
-      const rings = window.provPts ? window.provPts(w) : [];
+      const rings = runtime.provPts ? runtime.provPts(w) : [];
       if (!rings.length) continue;
 
-      const fillHex = parseColorCss(window.provColor ? window.provColor(p) : "#ece4cf");
+      const fillHex = parseColorCss(runtime.provColor ? runtime.provColor(p) : "#ece4cf");
       const fillInt = hexToInt(fillHex);
       let alpha = 1;
       if (bmOn && p.o !== G.player) alpha = 0.42;
@@ -229,10 +231,10 @@ export function createPixiMapController() {
     const drawnPairs = new Set();
     for (const p of G.plist) {
       if (!p.rail || p.rail <= 0) continue;
-      for (const nid of window.ADJ?.[p.id] || []) {
+      for (const nid of runtime.ADJ?.[p.id] || []) {
         const key = p.id < nid ? p.id + "|" + nid : nid + "|" + p.id;
         if (drawnPairs.has(key)) continue;
-        const q = window.P(nid);
+        const q = runtime.P(nid);
         if (!q || !q.rail) continue;
         drawnPairs.add(key);
         railGfx.moveTo(p.x, p.y).lineTo(q.x, q.y);
@@ -255,9 +257,9 @@ export function createPixiMapController() {
   }
 
   function renderDynamicOverlayAndStage() {
-    const G = window.G;
-    const UI = window.UI;
-    const WORLD = window.WORLD;
+    const G = runtime.G;
+    const UI = runtime.UI;
+    const WORLD = runtime.WORLD;
     if (!G || !UI || !UI.view || !WORLD || !hostEl) return;
 
     const { w: cw } = resizeToHost();
@@ -277,9 +279,9 @@ export function createPixiMapController() {
 
   function drawDynamicMovesAndUnits(sc) {
     if (!moveGfx || !unitLayer) return;
-    const G = window.G;
-    const UI = window.UI;
-    const seen = typeof window.seenSet === "function" ? window.seenSet() : new Set();
+    const G = runtime.G;
+    const UI = runtime.UI;
+    const seen = typeof runtime.seenSet === "function" ? runtime.seenSet() : new Set();
     const meTag = G.player;
 
     moveGfx.clear();
@@ -295,8 +297,8 @@ export function createPixiMapController() {
     // Marching army & navy arrows
     for (const a of G.armies || []) {
       if (!a.u.length || !a.path?.length) continue;
-      if (!(a.o === meTag || (G.c[a.o] && window.friendly?.(meTag, a.o)) || seen.has(a.loc))) continue;
-      const pts = [a.loc].concat(a.path.slice(0, 6)).map(id => window.P(id)).filter(Boolean);
+      if (!(a.o === meTag || (G.c[a.o] && runtime.friendly?.(meTag, a.o)) || seen.has(a.loc))) continue;
+      const pts = [a.loc].concat(a.path.slice(0, 6)).map(id => runtime.P(id)).filter(Boolean);
       if (pts.length < 2) continue;
 
       const colInt = a.reb ? 0x222222 : hexToInt(G.c[a.o]?.col || "#9c2a22");
@@ -331,7 +333,7 @@ export function createPixiMapController() {
     // Active & recent battles with pulsing aura
     const btList = (G.bt || []).map(r => ({ p: r.p, active: true, m: r.m }));
     for (const b of btList) {
-      const p = window.P(b.p);
+      const p = runtime.P(b.p);
       if (!p) continue;
       const rPx = (9 + pulse * 4) * invSc;
       moveGfx.circle(p.x, p.y - 16 * invSc, rPx).fill({ color: 0xc0413a, alpha: 0.28 + pulse * 0.2 });
@@ -347,8 +349,8 @@ export function createPixiMapController() {
     // Group visible armies by province/sea zone & owner for crisp non-cluttered markers
     for (const a of G.armies || []) {
       if (!a.u.length) continue;
-      if (!(a.o === meTag || (G.c[a.o] && window.friendly?.(meTag, a.o)) || seen.has(a.loc))) continue;
-      const p = window.P(a.loc);
+      if (!(a.o === meTag || (G.c[a.o] && runtime.friendly?.(meTag, a.o)) || seen.has(a.loc))) continue;
+      const p = runtime.P(a.loc);
       if (!p) continue;
       const key = `${a.loc}|${a.o}|${a.naval ? "N" : "L"}`;
       let entry = seenLocs.get(key);
@@ -361,7 +363,7 @@ export function createPixiMapController() {
           count: 0,
           moving: !!a.path?.length,
           th: a.th || null,
-          ns: a.naval ? (a.sr || window.SEAR_OF?.[a.loc] || null) : null
+          ns: a.naval ? (a.sr || runtime.SEAR_OF?.[a.loc] || null) : null
         };
         seenLocs.set(key, entry);
       }
@@ -432,9 +434,9 @@ export function createPixiMapController() {
   }
 
   function updatePixiLabels(sc) {
-    if (!labelLayer || !window.G || !window.UI) return;
-    const UI = window.UI;
-    const G = window.G;
+    if (!labelLayer || !runtime.G || !runtime.UI) return;
+    const UI = runtime.UI;
+    const G = runtime.G;
     const nat = UI.view.w >= 580;
     const band = Math.round(Math.log(Math.max(0.1, sc)) / Math.log(1.18));
     const key = `${nat ? "N" : "P"}|${G.t}|${band}|${G.player || ""}`;
@@ -450,8 +452,8 @@ export function createPixiMapController() {
       cachedLabelNodes = [];
 
       const items = nat
-        ? (typeof window.labelLayout === "function" ? window.labelLayout().map(o => ({ ...o })) : [])
-        : (typeof window.provLabelItems === "function" ? window.provLabelItems() : []);
+        ? (typeof runtime.labelLayout === "function" ? runtime.labelLayout().map(o => ({ ...o })) : [])
+        : (typeof runtime.provLabelItems === "function" ? runtime.provLabelItems() : []);
       items.sort((a, b) => b.pri - a.pri);
 
       const placed = (UI._mkbPixi || []).slice();
@@ -497,12 +499,12 @@ export function createPixiMapController() {
   }
 
   function drawCanvas2DFallback(sc) {
-    if (!canvasEl || !window.G || !window.WORLD || !window.UI) return;
+    if (!canvasEl || !runtime.G || !runtime.WORLD || !runtime.UI) return;
     const ctx = canvasEl.getContext("2d");
     if (!ctx) return;
-    const G = window.G;
-    const UI = window.UI;
-    const WORLD = window.WORLD;
+    const G = runtime.G;
+    const UI = runtime.UI;
+    const WORLD = runtime.WORLD;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const v = UI.view;
     const dark = document.documentElement.dataset.theme === "dark" ||
@@ -513,9 +515,9 @@ export function createPixiMapController() {
 
     const invSc = 1 / Math.max(0.25, sc);
     const pulse = 0.5 + 0.5 * Math.sin(animPhase);
-    const bmOn = typeof window.bmOn === "function" && window.bmOn();
+    const bmOn = typeof runtime.bmOn === "function" && runtime.bmOn();
     const bmSel = new Set(UI?.bm?.sel || []);
-    const seen = typeof window.seenSet === "function" ? window.seenSet() : new Set();
+    const seen = typeof runtime.seenSet === "function" ? runtime.seenSet() : new Set();
     const meTag = G.player;
 
     ctx.save();
@@ -538,9 +540,9 @@ export function createPixiMapController() {
 
     // 2. Province fills, borders, selection, occupation, build-mode
     for (const w of WORLD.provs) {
-      const p = window.P(w.id);
+      const p = runtime.P(w.id);
       if (!p) continue;
-      const rings = window.provPts ? window.provPts(w) : [];
+      const rings = runtime.provPts ? runtime.provPts(w) : [];
       if (!rings.length) continue;
       ctx.beginPath();
       for (const pts of rings) {
@@ -551,7 +553,7 @@ export function createPixiMapController() {
       }
       ctx.save();
       ctx.globalAlpha = bmOn && p.o !== meTag ? 0.42 : 1;
-      ctx.fillStyle = parseColorCss(window.provColor(p));
+      ctx.fillStyle = parseColorCss(runtime.provColor(p));
       ctx.fill();
       ctx.restore();
 
@@ -582,10 +584,10 @@ export function createPixiMapController() {
     ctx.beginPath();
     for (const p of G.plist) {
       if (!p.rail || p.rail <= 0) continue;
-      for (const nid of window.ADJ?.[p.id] || []) {
+      for (const nid of runtime.ADJ?.[p.id] || []) {
         const key = p.id < nid ? p.id + "|" + nid : nid + "|" + p.id;
         if (drawnPairs.has(key)) continue;
-        const q = window.P(nid);
+        const q = runtime.P(nid);
         if (!q || !q.rail) continue;
         drawnPairs.add(key);
         ctx.moveTo(p.x, p.y);
@@ -610,8 +612,8 @@ export function createPixiMapController() {
     // 4. Marching army & navy dashed arrows
     for (const a of G.armies || []) {
       if (!a.u.length || !a.path?.length) continue;
-      if (!(a.o === meTag || (G.c[a.o] && window.friendly?.(meTag, a.o)) || seen.has(a.loc))) continue;
-      const pts = [a.loc].concat(a.path.slice(0, 6)).map(id => window.P(id)).filter(Boolean);
+      if (!(a.o === meTag || (G.c[a.o] && runtime.friendly?.(meTag, a.o)) || seen.has(a.loc))) continue;
+      const pts = [a.loc].concat(a.path.slice(0, 6)).map(id => runtime.P(id)).filter(Boolean);
       if (pts.length < 2) continue;
       const colCss = a.reb ? "#222222" : G.c[a.o]?.col || "#9c2a22";
       ctx.save();
@@ -640,7 +642,7 @@ export function createPixiMapController() {
 
     // 5. Active battles
     for (const b of G.bt || []) {
-      const p = window.P(b.p);
+      const p = runtime.P(b.p);
       if (!p) continue;
       ctx.fillStyle = `rgba(192, 65, 58, ${(0.28 + pulse * 0.2).toFixed(2)})`;
       ctx.beginPath();
@@ -661,8 +663,8 @@ export function createPixiMapController() {
     const seenLocs = new Map();
     for (const a of G.armies || []) {
       if (!a.u.length) continue;
-      if (!(a.o === meTag || (G.c[a.o] && window.friendly?.(meTag, a.o)) || seen.has(a.loc))) continue;
-      const p = window.P(a.loc);
+      if (!(a.o === meTag || (G.c[a.o] && runtime.friendly?.(meTag, a.o)) || seen.has(a.loc))) continue;
+      const p = runtime.P(a.loc);
       if (!p) continue;
       const key = `${a.loc}|${a.o}|${a.naval ? "N" : "L"}`;
       let entry = seenLocs.get(key);
@@ -675,7 +677,7 @@ export function createPixiMapController() {
           count: 0,
           moving: !!a.path?.length,
           th: a.th || null,
-          ns: a.naval ? (a.sr || window.SEAR_OF?.[a.loc] || null) : null
+          ns: a.naval ? (a.sr || runtime.SEAR_OF?.[a.loc] || null) : null
         };
         seenLocs.set(key, entry);
       }
@@ -746,8 +748,8 @@ export function createPixiMapController() {
     // 7. Zoom-tiered decluttered country & province labels
     const nat = v.w >= 580;
     const items = nat
-      ? (typeof window.labelLayout === "function" ? window.labelLayout().map(o => ({ ...o })) : [])
-      : (typeof window.provLabelItems === "function" ? window.provLabelItems() : []);
+      ? (typeof runtime.labelLayout === "function" ? runtime.labelLayout().map(o => ({ ...o })) : [])
+      : (typeof runtime.provLabelItems === "function" ? runtime.provLabelItems() : []);
     items.sort((a, b) => b.pri - a.pri);
     const placed = tokenPlacements.slice();
     let count = 0;
@@ -784,8 +786,8 @@ export function createPixiMapController() {
 
   function pickAtScreen(cx, cy) {
     const r = hostEl?.getBoundingClientRect();
-    const UI = window.UI;
-    const WORLD = window.WORLD;
+    const UI = runtime.UI;
+    const WORLD = runtime.WORLD;
     if (!r || !UI?.view || !WORLD) return null;
     const lx = cx - r.left;
     const ly = cy - r.top;
@@ -793,10 +795,10 @@ export function createPixiMapController() {
     // First check unit/navy/theatre markers
     for (const m of hitMarkers) {
       if (Math.hypot(lx - m.x, ly - m.y) <= m.r) {
-        if (m.th && window.ACT?.thsheet && m.o === window.G.player) {
+        if (m.th && runtime.ACT?.thsheet && m.o === runtime.G.player) {
           return { kind: "theatre", th: m.th, pId: m.pId };
         }
-        if (m.naval && m.ns && window.navSheet && m.o === window.G.player) {
+        if (m.naval && m.ns && runtime.navSheet && m.o === runtime.G.player) {
           return { kind: "navy", ns: m.ns, pId: m.pId };
         }
         return { kind: "province", pId: m.pId };
@@ -809,9 +811,9 @@ export function createPixiMapController() {
 
     // Exact polygon hit
     for (const w of WORLD.provs) {
-      const b = typeof window.bbOf === "function" ? window.bbOf(w.id) : null;
+      const b = typeof runtime.bbOf === "function" ? runtime.bbOf(w.id) : null;
       if (b && (wx < b[0] || wx > b[2] || wy < b[1] || wy > b[3])) continue;
-      if (pointInProv(w, wx, wy)) {
+      if (pointInProv(w, wx, wy, runtime.provPts)) {
         return { kind: "province", pId: w.id };
       }
     }
@@ -819,11 +821,11 @@ export function createPixiMapController() {
     // Nearest edge fallback within 20 screen px for tiny islands/cantons
     let bestId = null;
     let bestDist = 20 / sc;
-    if (typeof window.edgeDist === "function") {
+    if (typeof runtime.edgeDist === "function") {
       for (const w of WORLD.provs) {
-        const b = window.bbOf(w.id);
+        const b = runtime.bbOf(w.id);
         if (wx < b[0] - bestDist || wx > b[2] + bestDist || wy < b[1] - bestDist || wy > b[3] + bestDist) continue;
-        const d = window.edgeDist(w, wx, wy);
+        const d = runtime.edgeDist(w, wx, wy);
         if (d < bestDist) {
           bestDist = d;
           bestId = w.id;
@@ -834,11 +836,23 @@ export function createPixiMapController() {
   }
 
   return {
-    async mount(host) {
+    mount(host, bindings) {
+      runtime = bindings;
       ensureCanvas(host);
-      await initRenderer(host);
-      buildProvinceGeometry();
-      renderDynamicOverlayAndStage();
+      if (!mounting) {
+        mounting = initRenderer(host).then(ready => {
+          if (!ready || !hostEl || canvasEl.parentElement !== hostEl) return false;
+          buildProvinceGeometry();
+          renderDynamicOverlayAndStage();
+          return true;
+        }).finally(() => { mounting = null; });
+      }
+      return mounting;
+    },
+    unmount() {
+      hostEl?.classList.remove("has-pixi");
+      canvasEl?.remove();
+      hostEl = null;
     },
     redrawGeometry() {
       labelCacheKey = "";
@@ -854,7 +868,7 @@ export function createPixiMapController() {
       renderDynamicOverlayAndStage();
     },
     syncView() {
-      if (pendingDraw) return;
+      if (pendingDraw || !hostEl) return;
       pendingDraw = true;
       requestAnimationFrame(() => {
         pendingDraw = false;
@@ -865,6 +879,6 @@ export function createPixiMapController() {
       labelCacheKey = "";
     },
     pickAtScreen,
-    isActive: () => !!canvasEl && canvasEl.isConnected
+    isActive: () => !!hostEl?.classList.contains("has-pixi") && !!canvasEl?.isConnected
   };
 }

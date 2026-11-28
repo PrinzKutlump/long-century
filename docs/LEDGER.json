@@ -265,8 +265,9 @@
   {
    "id": "B7",
    "ask": "Miller true-Earth map, art, easy navigation",
-   "status": "unverified",
-   "note": "MP and AR tickets"
+   "status": "partial",
+   "probe": "ui5.js::function syncPixiAtlas",
+   "note": "MP and AR tickets; experimental Atlas switch wired in #81; phone comparison pending on #81"
   },
   {
    "id": "B8",
@@ -354,8 +355,9 @@
   {
    "id": "B20",
    "ask": "Android game first; finished game has a dynamic map and modern UI; new features easy to add. Chosen path (option 1): keep the JavaScript engine, Vite multi-file build, Capacitor Android app, PixiJS map; switch to Godot only if the PixiJS map fails a phone test on the Galaxy A56",
-   "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov 2026"
+   "status": "partial",
+   "probe": "ui5.js::function syncPixiAtlas",
+   "note": "from owner, Claude chat 27 Nov 2026; experimental Atlas switch wired in #81; Galaxy A56 acceptance pending on #81"
   },
   {
    "id": "B21",
