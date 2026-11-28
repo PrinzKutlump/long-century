@@ -609,6 +609,18 @@
    "ask": "Province count: raise from 184 to a level that stays mobile-friendly and fun, not the full historical ~1,000; replaces the full-count part of B47 and B60",
    "status": "unverified",
    "note": "from owner, Claude chat 28 Nov"
+  },
+  {
+   "id": "B62",
+   "ask": "Wow factor: creative, music, history and graphics direction for 1.0, learning from competitor games (living atlas that ages by era, signature moments, adaptive score, history against you, people who age, first five minutes)",
+   "status": "unverified",
+   "note": "from owner, Claude chat 28 Nov"
+  },
+  {
+   "id": "B63",
+   "ask": "Allow the SIL Open Font License for font files only (period fonts such as IM Fell, Playfair, Cormorant, Libre Caslon); OFL.txt ships beside each font",
+   "status": "unverified",
+   "note": "from owner, Claude chat 28 Nov"
   }
  ]
 }
