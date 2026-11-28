@@ -32,9 +32,11 @@ jobs:
           npm run build
           test -s dist/index.html
           tar -czf long-century-nightly-web.tar.gz -C dist .
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platforms;android-36 platform-tools build-tools;36.0.0
       - name: Build Android debug APK
         run: |
-          sdkmanager 'platforms;android-36'
           npx --no-install cap sync android
           (cd android && bash gradlew --no-daemon assembleDebug)
           apk=android/app/build/outputs/apk/debug/app-debug.apk
