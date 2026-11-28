@@ -1,0 +1,401 @@
+id,name,owner_1836,old_province_split,historical_units,region,tap_target,source_url
+LON,London & Home Counties,GBR,LON,"Middlesex, Surrey, Kent, Essex, Sussex, Hertfordshire, Berkshire, Hampshire",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Historic_counties_of_England
+WEX,Wessex & West Country,GBR,LON,"Cornwall, Devon, Somerset, Dorset, Wiltshire, Gloucestershire, Oxfordshire",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Historic_counties_of_England
+EAN,East Anglia,GBR,LON,"Norfolk, Suffolk, Cambridgeshire, Huntingdonshire, Bedfordshire, Buckinghamshire",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/East_Anglia
+MID,The Midlands,GBR,MID,"Warwickshire, Staffordshire, Worcestershire, Leicestershire, Nottinghamshire, Derbyshire, Shropshire, Northamptonshire, Lincolnshire",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Historic_counties_of_England
+WAL,Wales,GBR,MID,13 historic counties of Wales and Monmouthshire,Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Historic_counties_of_Wales
+LNC,Lancashire & Cheshire,GBR,MID,Lancashire and Cheshire,Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Historic_counties_of_England
+YOR,Yorkshire,GBR,MID,"West Riding, North Riding, East Riding of Yorkshire",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Historic_counties_of_England
+NTH,Northumbria & Cumbria,GBR,MID,"Northumberland, County Durham, Cumberland, Westmorland",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Historic_counties_of_England
+SCO,Lowland Scotland,GBR,SCO,"Midlothian, Lanarkshire, Ayrshire, Fife, Angus, Aberdeenshire, Berwickshire, Galloway",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Counties_of_Scotland
+HIG,Highlands & Islands,GBR,SCO,"Inverness-shire, Argyll, Ross and Cromarty, Sutherland, Perthshire, Caithness, Hebrides, Orkney, Shetland",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Counties_of_Scotland
+IRE,Leinster & Dublin,GBR,IRE,"12 counties of Leinster (Dublin, Kildare, Meath, Wexford, Kilkenny, etc.)",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Counties_of_Ireland
+MNS,Munster & Connacht,GBR,IRE,"6 counties of Munster (Cork, Kerry, Limerick, etc.) and 5 counties of Connacht (Galway, Mayo, etc.)",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Counties_of_Ireland
+ULS,Ulster,GBR,IRE,"9 counties of Ulster (Antrim, Down, Armagh, Tyrone, Londonderry, Fermanagh, Donegal, Cavan, Monaghan)",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Counties_of_Ireland
+PAR,Île-de-France,FRA,PAR,"Seine, Seine-et-Oise, Seine-et-Marne, Oise, Eure-et-Loir",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Departments_of_France
+NMD,Normandy,FRA,PAR,"Seine-Inférieure, Eure, Calvados, Manche, Orne",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Departments_of_France
+PIC,Picardy & Artois,FRA,PAR,"Nord, Pas-de-Calais, Somme, Aisne",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Departments_of_France
+CHM,Champagne,FRA,PAR,"Marne, Aube, Haute-Marne, Ardennes",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Departments_of_France
+BRT,Brittany,FRA,BDX,"Finistère, Côtes-du-Nord, Morbihan, Ille-et-Vilaine, Loire-Inférieure",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Departments_of_France
+LRE,Loire & Poitou,FRA,BDX,"Maine-et-Loire, Mayenne, Sarthe, Indre-et-Loire, Loiret, Loir-et-Cher, Vendée, Deux-Sèvres, Vienne, Charente-Inférieure, Charente",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Departments_of_France
+BDX,Guyenne & Gascony,FRA,BDX,"Gironde, Dordogne, Lot-et-Garonne, Landes, Basses-Pyrénées, Hautes-Pyrénées, Gers, Lot, Tarn-et-Garonne",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Departments_of_France
+AUV,Auvergne & Limousin,FRA,BDX,"Puy-de-Dôme, Cantal, Haute-Loire, Allier, Haute-Vienne, Corrèze, Creuse, Indre, Cher",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Departments_of_France
+BRG,Burgundy & Franche-Comté,FRA,LYO,"Côte-d'Or, Saône-et-Loire, Yonne, Nièvre, Doubs, Jura, Haute-Saône",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Departments_of_France
+LYO,Lyonnais & Dauphiné,FRA,LYO,"Rhône, Loire, Ain, Isère, Drôme, Hautes-Alpes, Ardèche",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Departments_of_France
+LNG,Languedoc & Roussillon,FRA,MRS,"Haute-Garonne, Hérault, Gard, Aude, Tarn, Aveyron, Lozère, Ariège, Pyrénées-Orientales",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Departments_of_France
+MRS,Provence,FRA,MRS,"Bouches-du-Rhône, Var, Vaucluse, Basses-Alpes",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Departments_of_France
+CRS,Corsica,FRA,MRS,Corse département (1811–1975),Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Departments_of_France
+LOR,Lorraine,FRA,LOR,"Meurthe, Moselle, Meuse, Vosges",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Departments_of_France
+ALS,Alsace,FRA,LOR,"Bas-Rhin, Haut-Rhin (incl. Belfort)",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Departments_of_France
+MAD,New Castile,SPA,MAD,"Madrid, Toledo, Guadalajara, Cuenca, Ciudad Real, Albacete",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Spain
+OCL,Old Castile & León,SPA,MAD,"Valladolid, Burgos, Segovia, Ávila, Soria, Palencia, León, Zamora, Salamanca",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Spain
+EXT,Extremadura,SPA,MAD,"Badajoz, Cáceres",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Spain
+CAT,Catalonia,SPA,CAT,"Barcelona, Tarragona, Lérida, Gerona, Balearic Islands",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Spain
+ARA,Aragon,SPA,CAT,"Zaragoza, Huesca, Teruel",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Spain
+VAL,Valencia & Murcia,SPA,CAT,"Valencia, Alicante, Castellón, Murcia",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Spain
+AND,Andalusia,SPA,AND,"Seville, Cádiz, Córdoba, Jaén, Granada, Málaga, Almería, Huelva",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Spain
+GLC,Galicia & Asturias,SPA,GLC,"A Coruña, Lugo, Ourense, Pontevedra, Oviedo, Santander",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Spain
+BSQ,Basque Country & Navarre,SPA,GLC,"Biscay, Gipuzkoa, Álava, Navarre, Logroño",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Spain
+LIS,Lisbon & Southern Portugal,POR,LIS,"Lisboa, Santarém, Portalegre, Évora, Beja, Faro districts",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_Portugal
+OPO,Northern Portugal,POR,LIS,"Porto, Braga, Viana do Castelo, Vila Real, Bragança, Aveiro, Coimbra, Viseu, Guarda, Castelo Branco, Leiria",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_Portugal
+HOL,Holland & Utrecht,NED,HOL,"North Holland, South Holland, Utrecht",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Provinces_of_the_Netherlands
+FRI,Northern Netherlands,NED,HOL,"Friesland, Groningen, Drenthe, Overijssel",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Provinces_of_the_Netherlands
+BRB,Southern Netherlands,NED,HOL,"Gelderland, North Brabant, Zeeland, Limburg",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Provinces_of_the_Netherlands
+BRU,Brabant & Wallonia,BEL,BRU,"Brabant, Hainaut, Namur, Liège, Belgian Luxembourg",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Provinces_of_Belgium
+FLA,Flanders,BEL,BRU,"East Flanders, West Flanders, Antwerp, Belgian Limburg",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Provinces_of_Belgium
+LUX,Luxembourg,NED,BRU,Grand Duchy of Luxembourg (personal union with NED until 1890; 1839 partition),Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Districts_of_Luxembourg
+ZUR,Northern Switzerland,SWI,ZUR,"Zurich, Bern, Basel, Aargau, St. Gallen, Lucerne, Solothurn, Thurgau, Schaffhausen",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Cantons_of_Switzerland
+GVA,Western & Alpine Switzerland,SWI,ZUR,"Geneva, Vaud, Valais, Fribourg, Neuchâtel, Ticino, Graubünden, Uri, Schwyz, Unterwalden, Glarus, Zug, Appenzell",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Cantons_of_Switzerland
+BER,Brandenburg,PRU,BER,"Berlin, Potsdam, Frankfurt/Oder Regierungsbezirke",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Prussia
+MAG,Prussian Saxony,PRU,BER,"Magdeburg, Merseburg, Erfurt Regierungsbezirke",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Regierungsbezirk
+POM,Pomerania,PRU,PSN,"Stettin, Köslin, Stralsund Regierungsbezirke",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Prussia
+PSN,Posen,PRU,PSN,"Posen, Bromberg Regierungsbezirke",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Prussia
+KON,East Prussia,PRU,KON,"Königsberg, Gumbinnen Regierungsbezirke",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Prussia
+DAN,West Prussia,PRU,KON,"Danzig, Marienwerder Regierungsbezirke",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Prussia
+SIL,Lower Silesia,PRU,SIL,"Breslau, Liegnitz Regierungsbezirke",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Prussia
+OSL,Upper Silesia,PRU,SIL,Oppeln Regierungsbezirk,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Regierungsbezirk
+WST,Westphalia,PRU,RHN,"Münster, Minden, Arnsberg Regierungsbezirke",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Prussia
+RHN,Rhine Province,PRU,RHN,"Köln, Düsseldorf, Koblenz, Trier, Aachen Regierungsbezirke",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Prussia
+HNV,Hanover,HAN,HNV,"Hanover, Hildesheim, Lüneburg, Stade, Osnabrück, Aurich Landdrosteien",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_Hanover
+OLD,Oldenburg & Bremen,HAN,HNV,"Grand Duchy of Oldenburg, Free Hanseatic City of Bremen",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/States_of_the_German_Confederation
+HAM,Hamburg & Lübeck,HAN,HNV,Free and Hanseatic Cities of Hamburg and Lübeck,Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/States_of_the_German_Confederation
+MCK,Mecklenburg,HAN,HNV,Grand Duchies of Mecklenburg-Schwerin and Mecklenburg-Strelitz,Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/States_of_the_German_Confederation
+DRE,Kingdom of Saxony,SAX,DRE,"Dresden, Leipzig, Bautzen, Zwickau Kreisdirektionen",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_Saxony
+THU,Thuringia,SAX,DRE,"Saxe-Weimar-Eisenach, Saxe-Coburg-Gotha, Saxe-Meiningen, Saxe-Altenburg, Reuss, Schwarzburg",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/States_of_the_German_Confederation
+ANH,Anhalt & Brunswick,SAX,DRE,"Duchies of Brunswick, Anhalt-Dessau, Anhalt-Bernburg, Anhalt-Köthen",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/States_of_the_German_Confederation
+KSL,Hesse-Kassel,SAX,DRE,"Electorate of Hesse (Niederhessen, Oberhessen, Fulda, Hanau)",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Electorate_of_Hesse
+MUN,Old Bavaria,BAV,MUN,"Upper Bavaria, Lower Bavaria Kreise",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_Bavaria
+FRN,Franconia,BAV,MUN,"Upper, Middle, and Lower Franconia",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_Bavaria
+SWB,Bavarian Swabia & Oberpfalz,BAV,MUN,Swabia and Upper Palatinate,Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_Bavaria
+PFZ,Bavarian Palatinate,BAV,MUN,Rheinkreis / Palatinate (left bank of Rhine),Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_Bavaria
+STU,Württemberg,WUR,STU,"Neckar, Black Forest, Jagst, Danube circles (incl. Hohenzollern)",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_W%C3%BCrttemberg
+BAD,Baden,WUR,STU,"Lake, Upper Rhine, Middle Rhine, Lower Rhine circles",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Grand_Duchy_of_Baden
+HES,Hesse-Darmstadt & Nassau,WUR,STU,"Grand Duchy of Hesse (Starkenburg, Oberhessen, Rheinhessen), Duchy of Nassau, Free City of Frankfurt",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Grand_Duchy_of_Hesse
+COP,Denmark Proper,DEN,COP,"Zealand, Funen, North Jutland amter, Bornholm",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Counties_of_Denmark
+ICE,Iceland & Faroes,DEN,COP,"Iceland (Vestur-, Norður-, Suðuramt) and Faroe Islands",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Counties_of_Denmark
+SLH,Schleswig,DEN,SLH,Duchy of Schleswig (Sønderjylland),Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Schleswig-Holstein
+HLS,Holstein & Lauenburg,DEN,SLH,Duchies of Holstein and Saxe-Lauenburg,Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Schleswig-Holstein
+STO,Svealand & Stockholm,SWE,STO,"Stockholm, Uppsala, Södermanland, Västmanland, Örebro, Värmland, Kopparberg",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Counties_of_Sweden
+GOT,Götaland & Scania,SWE,STO,"Malmöhus, Kristianstad, Blekinge, Halland, Gothenburg, Skaraborg, Östergötland, Jönköping, Kronoberg, Kalmar, Gotland",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Counties_of_Sweden
+NRR,Norrland,SWE,STO,"Gävleborg, Västernorrland, Jämtland, Västerbotten, Norrbotten",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Counties_of_Sweden
+NOR,Southern Norway,SWE,NOR,"Christiania/Akershus, Buskerud, Bratsberg, Nedenes, Stavanger, Bergen, Hedmark, Christians",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Counties_of_Norway
+TRD,Trøndelag & Northern Norway,SWE,NOR,"Søndre/Nordre Trondhjem, Romsdal, Nordland, Finmarken",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Counties_of_Norway
+PIE,Piedmont,SAR,PIE,"Turin, Alessandria, Cuneo, Novara, Aosta divisions",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_Sardinia_(1720%E2%80%931861)
+GEN,Liguria & Genoa,SAR,PIE,"Duchy of Genoa (Genoa, Savona)",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_Sardinia_(1720%E2%80%931861)
+SAV,Savoy & Nice,SAR,PIE,"Duchy of Savoy (Chambéry, Annecy) and County of Nice",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_Sardinia_(1720%E2%80%931861)
+SRD,Sardinia,SAR,PIE,Cagliari and Sassari divisions,Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_Sardinia_(1720%E2%80%931861)
+LOM,Lombardy,AUS,LOM,"Milan Government (8 provinces incl. Milan, Bergamo, Brescia, Como, Mantua)",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Kingdom_of_Lombardy%E2%80%93Venetia
+VEN,Venetia,AUS,LOM,"Venice Government (8 provinces incl. Venice, Verona, Padua, Udine, Vicenza)",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Kingdom_of_Lombardy%E2%80%93Venetia
+TUS,Tuscany,TUS,TUS,"Florence, Pisa, Siena, Arezzo, Grosseto, Lucca compartimenti",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Grand_Duchy_of_Tuscany
+PRM,Parma,TUS,TUS,"Duchy of Parma, Piacenza and Guastalla",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Provinces_of_Italy
+MOD,Modena,TUS,TUS,"Duchy of Modena, Reggio and Massa-Carrara",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Provinces_of_Italy
+ROM,Lazio & Rome,PAP,ROM,"Comarca of Rome, Viterbo, Civitavecchia, Velletri, Frosinone",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Administrative_subdivisions_of_the_Papal_States_from_1816_to_1870
+UMB,Umbria & the Marches,PAP,ROM,"Perugia, Spoleto, Rieti, Ancona, Macerata, Pesaro e Urbino, Ascoli, Fermo",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Administrative_subdivisions_of_the_Papal_States_from_1816_to_1870
+RMG,Romagna,PAP,ROM,"Legations of Bologna, Ferrara, Ravenna, Forlì",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Administrative_subdivisions_of_the_Papal_States_from_1816_to_1870
+NAP,Naples & Abruzzo,SIC,NAP,"Napoli, Terra di Lavoro, Principati, Molise, Abruzzo Citeriore/Ulteriore I & II",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_the_Two_Sicilies
+APU,Apulia & Basilicata,SIC,NAP,"Capitanata, Terra di Bari, Terra d'Otranto, Basilicata",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_the_Two_Sicilies
+CLB,Calabria,SIC,NAP,"Calabria Citeriore, Calabria Ulteriore Prima, Calabria Ulteriore Seconda",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_the_Two_Sicilies
+PAL,Sicily,SIC,PAL,"Palermo, Messina, Catania, Girgenti, Siracusa, Trapani, Caltanissetta",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Kingdom_of_the_Two_Sicilies
+VIE,Austria Proper,AUS,VIE,"Archduchy of Austria below and above the Enns, Salzburg",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Cisleithania
+STY,Styria & Carinthia,AUS,VIE,Duchies of Styria and Carinthia,Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Cisleithania
+TYR,Tyrol & Vorarlberg,AUS,VIE,Princely County of Tyrol and Vorarlberg,Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Cisleithania
+CRN,Carniola & the Littoral,AUS,VIE,"Duchy of Carniola, Trieste, Gorizia and Gradisca, Istria",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Cisleithania
+BOH,Bohemia,AUS,BOH,Kingdom of Bohemia,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Cisleithania
+MRV,Moravia & Austrian Silesia,AUS,BOH,Margraviate of Moravia and Duchy of Upper and Lower Silesia,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Cisleithania
+GAL,West Galicia,AUS,GAL,"Western Galician circles (Kraków from 1846, Tarnów, Rzeszów, Nowy Sącz)",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Cisleithania
+LVM,East Galicia,AUS,GAL,"Eastern Galician circles (Lemberg/Lwów, Przemyśl, Tarnopol, Stanisławów)",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Cisleithania
+BKV,Bukovina,AUS,GAL,Duchy of Bukovina (Czernowitz),Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Cisleithania
+HUN,Central Hungary,AUS,HUN,"Pest-Pilis-Solt, Heves, Borsod, Szabolcs, Hajdú, Csongrád counties",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Lands_of_the_Crown_of_Saint_Stephen
+DUN,Western Hungary (Dunántúl),AUS,HUN,"Sopron, Vas, Győr, Fejér, Tolna, Baranya, Somogy, Zala counties",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Lands_of_the_Crown_of_Saint_Stephen
+SLO,Upper Hungary (Slovakia),AUS,HUN,"Pozsony, Nyitra, Trencsén, Túróc, Árva, Liptó, Zólyom, Szepes, Sáros, Abaúj, Gömör",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Lands_of_the_Crown_of_Saint_Stephen
+CRK,Carpathian Ruthenia & Bihar,AUS,HUN,"Ung, Bereg, Ugocsa, Máramaros, Szatmár, Bihar counties",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Lands_of_the_Crown_of_Saint_Stephen
+BNT,Banat & Vojvodina,AUS,HUN,"Bács-Bodrog, Torontál, Temes, Krassó counties and Banat Military Frontier",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Lands_of_the_Crown_of_Saint_Stephen
+TRS,Transylvania,AUS,TRS,"Grand Principality of Transylvania (Székely, Saxon, and Hungarian counties)",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Lands_of_the_Crown_of_Saint_Stephen
+CRO,Croatia & Slavonia,AUS,CRO,Kingdoms of Croatia and Slavonia and Croatian-Slavonian Military Frontier,Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Lands_of_the_Crown_of_Saint_Stephen
+DAL,Dalmatia,AUS,CRO,"Kingdom of Dalmatia (Zadar, Split, Ragusa/Dubrovnik, Cattaro)",Europe,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Cisleithania
+SRB,Central Serbia,SER,SRB,"Belgrade, Šumadija, Podrinje, Braničevo okrugs (1836 Principality)",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Administrative_districts_of_Serbia
+NIS,Southern Serbia & Morava,SER,SRB,"Niš, Pirot, Vranje, Toplica (southern frontier & 1878 Nish sanjak)",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Administrative_districts_of_Serbia
+BUC,Wallachia,RMN,BUC,17 counties of Principality of Wallachia (Muntenia & Oltenia),Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Counties_of_Romania
+MLD,Moldavia,RMN,BUC,13 counties of Principality of Moldavia (excl. Bessarabia),Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Counties_of_Romania
+ATH,Attica & Central Greece,GRE,ATH,"Attica-Boeotia, Euboea, Phthiotis-Phocis, Aetolia-Acarnania",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Administrative_divisions_of_Greece
+PEL,Peloponnese & Aegean,GRE,ATH,"Argolid, Achaea-Elis, Arcadia, Laconia, Messenia, Cyclades",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Administrative_divisions_of_Greece
+FIN,Southern Finland,RUS,FIN,"Nyland, Åbo och Björneborg, Tavastehus, St. Michel governorates",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Finland
+VBG,Karelia & Viipuri,RUS,FIN,Viborg and Kuopio governorates,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Finland
+OUL,Ostrobothnia & Lapland,RUS,FIN,Vasa and Uleåborg governorates,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Finland
+SPB,St Petersburg & Ingria,RUS,SPB,Saint Petersburg and Olonets governorates,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+EST,Estonia,RUS,SPB,Estonia Governorate and northern Livonia,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+LVA,Livonia & Courland,RUS,SPB,Livonia (southern) and Courland governorates,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+NOV,Novgorod & Pskov,RUS,SPB,"Novgorod, Pskov, and Tver governorates",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+WAR,Mazovia & Warsaw,RUS,WAR,"Masovia/Warsaw, Płock, Augustów/Suwałki governorates",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Subdivisions_of_Congress_Poland
+LOD,Greater & Central Poland,RUS,WAR,"Kalisz, Piotrków, Radom governorates",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Subdivisions_of_Congress_Poland
+KRA,Lesser Poland & Lublin,RUS,WAR,"Lublin, Siedlce, Kielce governorates",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Subdivisions_of_Congress_Poland
+LTU,Lithuania,RUS,MSK,Vilna and Kovno governorates,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+GRO,Grodno & Brest,RUS,MSK,Grodno governorate and Belostok oblast,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+MSK,Minsk & Central Belarus,RUS,MSK,Minsk and Vitebsk governorates,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+SMO,Smolensk & Mogilev,RUS,MSK,Mogilev and Smolensk governorates,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+UKR,Kiev & Right-Bank Ukraine,RUS,UKR,Kiev governorate,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+VOL,Volhynia & Podolia,RUS,UKR,Volhynia and Podolia governorates,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+CHR,Chernigov & Poltava,RUS,UKR,Chernigov and Poltava governorates,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+KHK,Kharkov & Sloboda Ukraine,RUS,UKR,Kharkov and Kursk governorates,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+BSB,Bessarabia,RUS,ODE,Bessarabia Oblast / Governorate,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+ODE,New Russia (Odessa),RUS,ODE,"Kherson, Ekaterinoslav governorates",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+CRM,Crimea & Taurida,RUS,ODE,Taurida governorate,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+DON,Don & Kuban,RUS,ODE,Don Host Oblast and Black Sea/Kuban territory,Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Oblasts_of_the_Russian_Empire
+MOS,Moscow & Vladimir,RUS,MOS,"Moscow, Vladimir, Kaluga, Tula, Ryazan governorates",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+YAR,Upper Volga & Yaroslavl,RUS,MOS,"Yaroslavl, Kostroma, Nizhny Novgorod, Tambov, Oryol, Voronezh governorates",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+ARK,Russian North,RUS,MOS,"Arkhangelsk, Vologda, Vyatka governorates",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+KAZ,Kazan & Middle Volga,RUS,KAZ,"Kazan, Simbirsk, Penza governorates",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+SAM,Lower Volga & Astrakhan,RUS,KAZ,"Samara, Saratov, Astrakhan governorates",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+TIF,Georgia & Ciscaucasia,RUS,TIF,"Tiflis, Kutais governorates and Stavropol/Terek",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+AZB,Azerbaijan & Dagestan,RUS,TIF,"Baku, Elisabethpol governorates and Dagestan Oblast",Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+ARM,Eastern Armenia & Kars,RUS,TIF,Armenian Oblast / Erivan governorate (and 1878 Kars),Europe,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+IST,Constantinople & Thrace,OTT,IST,Constantinople and Silistra/Edirne eyalet (Eastern Thrace),Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+SOF,Danube Bulgaria,OTT,SOF,"Northern Rumelia / Vidin, Niš, Silistra eyalets (later Danube Vilayet)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+ERU,Eastern Rumelia,OTT,SOF,Plovdiv and Sliven sanjaks (Edirne / Rumelia eyalet),Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Vilayet
+DOB,Dobruja,OTT,SOF,Tulcea sanjak (Silistra eyalet),Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Vilayet
+SAL,Macedonia,OTT,SAL,"Rumelia / Salonica eyalet (Salonica, Monastir, Kosovo)",Ottoman lands and the Middle East,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Eyalet
+ALB,Albania,OTT,SAL,Scutari and Janina (northern Albanian sanjaks),Ottoman lands and the Middle East,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Eyalet
+THE,Thessaly & Epirus,OTT,SAL,Janina and Trikala sanjaks (southern Rumelia/Janina eyalet),Ottoman lands and the Middle East,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Eyalet
+CRT,Crete,OTT,SAL,Crete Eyalet (administered by Egypt 1830-1840),Ottoman lands and the Middle East,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Eyalet
+BSN,Bosnia,OTT,BSN,"Bosnia Eyalet (Bosna-Serai, Banja Luka, Travnik)",Ottoman lands and the Middle East,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Eyalet
+HRZ,Herzegovina & Montenegro,OTT,BSN,Herzegovina Eyalet (Mostar) and Prince-Bishopric of Montenegro,Ottoman lands and the Middle East,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Eyalet
+SMY,Western Anatolia (Aydin),OTT,SMY,"Aydin Eyalet (Smyrna, Saruhan, Menteşe) & Archipelago islands",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+BRS,Hüdavendigâr (Bursa),OTT,SMY,"Anatolia / Hüdavendigâr eyalet (Bursa, Kütahya, Izmit)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+CYP,Cyprus,OTT,SMY,Cyprus sanjak (Archipelago Eyalet; British leased 1878),Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+ANK,Central Anatolia (Ankara),OTT,ANK,"Ankara Eyalet (Ankara, Yozgat, Kayseri, Çorum)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+KST,Kastamonu,OTT,ANK,"Kastamonu Eyalet (Kastamonu, Bolu, Sinop)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+KNY,Konya,OTT,ANK,"Karaman / Konya eyalet (Konya, Niğde, Antalya, Isparta)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+ADN,Adana & Cilicia,OTT,ANK,"Adana Eyalet (Adana, Mersin, Tarsus, Kozan)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+SIV,Sivas,OTT,ANK,"Rum / Sivas Eyalet (Sivas, Amasya, Tokat)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+TRB,Trebizond & Pontus,OTT,ERZ,"Trebizond Eyalet (Trabzon, Samsun, Giresun, Batum)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+ERZ,Erzurum & Western Armenia,OTT,ERZ,"Erzurum Eyalet (Erzurum, Erzincan, Bayezit)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+VAN,Van & Bitlis,OTT,ERZ,Van Eyalet and Hakkari / Bitlis,Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+DIY,Diyarbekir & Upper Jazira,OTT,BAG,Diyarbekir Eyalet and Kharput / Mamuret-ul-Aziz,Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+MSL,Mosul,OTT,BAG,Mosul Eyalet,Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+BAG,Baghdad,OTT,BAG,Baghdad Eyalet,Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+BSR,Basra,OTT,BAG,Basra Eyalet / Muntafiq,Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+ALP,Aleppo & Alexandretta,EGY,DAM,Aleppo Eyalet (occupied by Egypt 1831-1840) and Zor,Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+DAM,Syria & Damascus,EGY,DAM,"Damascus Eyalet (Hama, Homs, Damascus, Hauran)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+LBN,Beirut & Mount Lebanon,EGY,DAM,Sidon Eyalet / Beirut Vilayet & Mount Lebanon Mutasarrifate,Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+JER,Palestine & Jerusalem,EGY,DAM,"Jerusalem, Nablus and Acre sanjaks",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Administrative_divisions_of_the_Ottoman_Empire
+TRJ,Transjordan,EGY,DAM,Kerak / Ma'an and Balqa (southern Damascus vilayet),Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Emirate_of_Transjordan
+MEC,The Hejaz,EGY,MEC,"Habesh & Jeddah Eyalet / Emirate of Mecca (Mecca, Medina, Jeddah)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eyalet
+YEM,Yemen & Asir,YEM,YEM,Imamate of Yemen and Idrisi Asir (later Ottoman Yemen Vilayet),Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Vilayet
+ADE,Aden & Hadhramaut,YEM,YEM,Sultanate of Lahej / Aden Settlement (British 1839) & Hadhramaut,Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Salute_state
+RIY,Nejd & Shammar,NEJ,RIY,Second Saudi State (Nejd) and Emirate of Jabal Shammar (Ha'il),Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Saudi_Arabia
+HSA,Al-Hasa & Gulf Coast,NEJ,RIY,"Al-Hasa, Kuwait, Bahrain, Qatar and Trucial Sheikhdoms",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Saudi_Arabia
+MUS,Oman & Muscat,OMA,MUS,"Sultanate of Muscat and Oman (Muscat, Dhofar, Interior)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Administrative_divisions_of_the_Ottoman_Empire
+RUB,The Empty Quarter,UNADMINISTERED,RUB,Rub' al Khali desert (unadministered 1836),Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Saudi_Arabia
+AZR,Iranian Azerbaijan,PER,TEH,"Azerbaijan province (Tabriz, Ardabil, Urmia)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Iran
+GIL,Gilan & Mazandaran,PER,TEH,"Gilan, Mazandaran, and Astarabad provinces",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Iran
+TEH,Tehran & Persian Iraq,PER,TEH,"Tehran, Isfahan, Qazvin, Hamadan, Kermanshah (Iraq-e Ajam)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Iran
+KHS,Khorasan,PER,TEH,"Khorasan province (Mashhad, Nishapur, Birjand)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Iran
+SHI,Fars & Persian Gulf Coast,PER,SHI,"Fars, Bushehr, and Laristan provinces",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Iran
+KHZ,Khuzestan & Luristan,PER,SHI,Arabistan (Khuzestan) and Luristan provinces,Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Iran
+KRM,Kerman & Persian Baluchistan,PER,SHI,Kerman and Sistan-Baluchistan provinces,Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Iran
+KAB,Afghanistan,AFG,KAB,"Emirate of Afghanistan (Kabul, Kandahar, Ghazni, Balkh, Herat)",Ottoman lands and the Middle East,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Afghanistan
+LAH,Lahore & Bari Doab,PUN,LAH,"Lahore Subah / Bari Doab (Lahore, Amritsar, Gurdaspur)",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+JUL,Jullundur & Bist Doab,PUN,LAH,Jullundur Doab / Bist Doab & Kangra hill states,South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+RWP,Rawalpindi & Potohar,PUN,LAH,"Sindh Sagar, Chaj and Rechna Doabs (Rawalpindi, Gujrat, Sialkot)",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+CIS,Cis-Sutlej & Patiala,GBR,LAH,"Phulkian States (Patiala, Jind, Nabha) and Ambala/Ludhiana",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_princely_states_of_British_India_(by_region)
+MUL,Multan,PUN,MUL,Multan and Montgomery districts / Lower Bari-Rechna,South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+DER,Derajat & Bahawalpur,PUN,MUL,"Dera Ghazi Khan, Dera Ismail Khan and Bahawalpur State",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+PES,Peshawar & Hazara,PUN,PES,"Peshawar, Kohat, Bannu, Hazara and Frontier Tribal Agencies",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/North-West_Frontier_Province
+KAS,Kashmir & Gilgit,PUN,PES,"Kashmir Valley, Gilgit and Baltistan (ceded 1846)",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+JMU,Jammu & Ladakh,PUN,PES,Jammu Dogra heartland and Ladakh (ceded 1846),South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+SND,Lower Sindh,SND,SND,"Hyderabad, Karachi, Thatta (Talpur Mirs)",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+KHP,Upper Sindh & Khairpur,SND,SND,"Shikarpur, Sukkur, Upper Sind Frontier and Khairpur State",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+BLC,Baluchistan & Kalat,SND,SND,"Khanate of Kalat, Las Bela, Makran and Quetta-Pishin",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Baluchistan_Agency
+NEP,Nepal,NEP,NEP,"Kingdom of Nepal (Gorkha, Kathmandu Valley, Karnali, Koshi)",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Nepal
+CEY,Maritime Ceylon,GBR,CEY,"Western, Southern, North-Western and Northern Provinces (Colombo, Galle, Jaffna)",South Asia,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Provinces_of_Sri_Lanka
+KND,Highland Ceylon (Kandy),GBR,CEY,"Central, Uva, Sabaragamuwa and Eastern Provinces (Kandy)",South Asia,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Provinces_of_Sri_Lanka
+CAL,Calcutta & Presidency,GBR,CAL,"Calcutta, 24 Parganas, Nadia, Jessore, Khulna, Murshidabad",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+WBG,Western Bengal (Burdwan),GBR,CAL,"Burdwan, Midnapore, Hooghly, Howrah, Bankura, Birbhum",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+EBG,Eastern Bengal (Dacca),GBR,CAL,"Dacca, Mymensingh, Faridpur, Bakerganj, Chittagong, Tipperah, Noakhali, Tripura",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+NBG,Northern Bengal & Cooch Behar,GBR,CAL,"Rajshahi, Dinajpur, Rangpur, Bogra, Pabna, Malda, Jalpaiguri, Darjeeling, Cooch Behar",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+BIH,Bihar,GBR,CAL,"Patna, Gaya, Shahabad, Saran, Champaran, Muzaffarpur, Darbhanga, Bhagalpur, Monghyr, Purnea",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+CHT,Chota Nagpur,GBR,CAL,"Hazaribagh, Ranchi, Palamau, Manbhum, Singhbhum, Santhal Parganas",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+ORS,Orissa,GBR,CAL,"Cuttack, Puri, Balasore, Sambalpur and Orissa Tributary States",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+ASM,Assam Valley,GBR,ASM,"Kamrup, Goalpara, Darrang, Nowgong, Sibsagar, Lakhimpur, Garo/Naga Hills",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Assam_Province
+SYL,Surma Valley & Sylhet,GBR,ASM,"Sylhet, Cachar, Khasi & Jaintia Hills",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Assam_Province
+MNP,Manipur & Lushai Hills,GBR,ASM,Manipur State and Lushai Hills,South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Assam_Province
+DEL,Delhi & Upper Doab,GBR,DEL,"Delhi, Meerut, Saharanpur, Muzaffarnagar, Bulandshahr, Aligarh",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+AGR,Agra & Middle Doab,GBR,DEL,"Agra, Mathura, Mainpuri, Etah, Etawah, Farrukhabad",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+ROH,Rohilkhand & Rampur,GBR,DEL,"Bareilly, Moradabad, Bijnor, Budaun, Shahjahanpur, Pilibhit, Rampur State",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+OUD,Oudh (Lucknow),GBR,DEL,"Kingdom of Oudh (12 districts: Lucknow, Faizabad, Gonda, Sitapur, Rae Bareli, etc.)",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Oudh_State
+ALL,Allahabad & Benares,GBR,DEL,"Allahabad, Cawnpore, Fatehpur, Benares, Mirzapur, Jaunpur, Ghazipur, Gorakhpur, Basti, Azamgarh",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+KUM,Kumaon & Tehri Garhwal,GBR,DEL,"Nainital, Almora, Garhwal and Tehri-Garhwal State",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+MWR,Marwar & Bikaner,GBR,NAG,"Jodhpur (Marwar), Bikaner, Jaisalmer states & Ajmer-Merwara",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Rajputana_Agency
+MEW,Mewar & Southern Rajputana,GBR,NAG,"Udaipur (Mewar), Banswara, Dungarpur, Partabgarh, Sirohi",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Rajputana_Agency
+JPR,Jaipur & Eastern Rajputana,GBR,NAG,"Jaipur, Alwar, Bharatpur, Dholpur, Karauli, Kota, Bundi",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Rajputana_Agency
+GWL,Gwalior & Bundelkhand,GBR,NAG,"Gwalior State, Jhansi, Rewa (Baghelkhand), Orchha, Datia, Panna",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Central_India_Agency
+MLW,Malwa & Bhopal,GBR,NAG,"Indore (Holkar), Bhopal, Dhar, Dewas, Ratlam",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Central_India_Agency
+NAG,Nagpur & Vidarbha,GBR,NAG,"Nagpur Kingdom (Maratha Bhonsle; annexed 1853), Jubbulpore, Saugor-Nerbudda",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Central_Provinces_and_Berar
+CGR,Chhattisgarh,GBR,NAG,"Raipur, Bilaspur, Drug and Chhattisgarh Feudatory States",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Central_Provinces_and_Berar
+BOM,Bombay & the Konkan,GBR,BOM,"Bombay City, Thana, Kolaba, Ratnagiri, North Kanara",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Bombay_Presidency
+DES,Pune & the Deccan Desh,GBR,BOM,"Poona, Satara, Sholapur, Ahmednagar, Nasik, Belgaum, Dharwar, Bijapur, Kolhapur",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Bombay_Presidency
+GUJ,Gujarat & Baroda,GBR,BOM,"Baroda State, Ahmedabad, Kaira, Broach, Surat, Panchmahals, Rewa Kantha",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Bombay_Presidency
+KTH,Kathiawar & Kutch,GBR,BOM,"Cutch State, Junagadh, Bhavnagar, Nawanagar, Gondal (Kathiawar Agency)",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_princely_states_of_British_India_(by_region)
+BRR,Khandesh & Berar,GBR,BOM,"East & West Khandesh and Berar Division (Amravati, Akola, Buldana, Yeotmal)",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Central_Provinces_and_Berar
+MDR,Madras & the Carnatic,GBR,MDR,"Madras, Chingleput, North & South Arcot, Tanjore, Trichinopoly, Madura, Tinnevelly, Salem, Coimbatore",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Madras_Presidency
+CIR,Northern Circars,GBR,MDR,"Ganjam, Vizagapatam, Godavari, Kistna, Guntur, Nellore",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Madras_Presidency
+RAY,Rayalaseema (Ceded Districts),GBR,MDR,"Bellary, Anantapur, Cuddapah, Kurnool",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Madras_Presidency
+MLB,Malabar & South Kanara,GBR,MDR,Malabar and South Kanara districts,South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Madras_Presidency
+TVN,Travancore & Cochin,GBR,MDR,Kingdom of Travancore and Kingdom of Cochin,South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Salute_state
+HYD,Hyderabad & Telangana,GBR,HYD,"Hyderabad State (Nizam: Hyderabad, Warangal, Gulbarga, Aurangabad divisions)",South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+MYS,Mysore & Coorg,GBR,HYD,Kingdom of Mysore (8 districts) and Coorg Province,South Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Districts_of_British_India
+PEK,Zhili & Beijing,CHI,PEK,Zhili province and Shuntian Prefecture,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+SHX,Shanxi,CHI,PEK,Shanxi province,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+JIN,Shandong,CHI,JIN,Shandong province,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+HNN,Henan,CHI,JIN,Henan province,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+NAN,Jiangsu,CHI,NAN,Jiangsu province (Nanjing & Shanghai),East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+ANP,Anhui,CHI,NAN,Anhui province,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+JXI,Jiangxi,CHI,NAN,Jiangxi province,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+FUZ,Fujian,CHI,FUZ,Fujian province,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+TAI,Taiwan,CHI,FUZ,Taiwan Prefecture (Taiwan Province 1885; Japanese 1895),East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Taiwan_under_Japanese_rule
+ZHE,Zhejiang,CHI,FUZ,Zhejiang province,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+WUH,Hubei,CHI,WUH,Hubei province,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+HNA,Hunan,CHI,WUH,Hunan province,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+CAN,Guangdong,CHI,CAN,Guangdong province (Canton),East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+GXI,Guangxi,CHI,CAN,Guangxi province,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+CHG,Sichuan,CHI,CHG,Sichuan province (and Xikang frontier),East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+KUN,Yunnan,CHI,KUN,Yunnan province,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+GZH,Guizhou,CHI,KUN,Guizhou province,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+XIA,Shaanxi,CHI,XIA,Shaanxi province,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+GNS,Gansu,CHI,XIA,Gansu province (incl. Ningxia & Qinghai),East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+MUK,Fengtian (Liaoning),CHI,MUK,Shengjing / Fengtian Generalship (South Manchuria),East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+JIL,Jilin & Heilongjiang,CHI,MUK,Jilin and Heilongjiang Generalships (North & Outer Manchuria),East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+URU,Xinjiang,CHI,URU,Ili Generalship (Dzungaria and Tarim Basin; Xinjiang Province 1884),East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+LHA,Tibet,CHI,LHA,Ü-Tsang and Kham (Ambanate of Tibet),East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_China
+ULA,Mongolia,CHI,ULA,Outer Mongolia (Uliastai) & Inner Mongolia banners,East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Administrative_divisions_of_the_Republic_of_China_(1912%E2%80%931949)
+SEO,Central Korea (Hanseong),KOR,SEO,"Gyeonggi, Gangwon, Hwanghae provinces",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eight_Provinces_of_Korea
+NKJ,Northern Korea,KOR,SEO,Pyongan and Hamgyong provinces (North & South 1896),East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eight_Provinces_of_Korea
+SKJ,Southern Korea (Samnam),KOR,SEO,"Chungcheong, Jeolla, Gyeongsang provinces",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Eight_Provinces_of_Korea
+TOH,Tohoku,JAP,TOH,"Mutsu and Dewa han (Sendai, Aizu, Morioka, Hirosaki, Yonezawa, Kubota)",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_han
+EZO,Ezo (Hokkaido),JAP,TOH,Matsumae Domain and Ezo Kaitakushi (Hokkaido 1869),East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_han
+EDO,Kanto,JAP,EDO,"Musashi, Sagami, Awa, Kazusa, Shimousa, Hitachi, Kōzuke, Shimotsuke (Tokugawa Tenryō, Mito, Odawara)",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_han
+CHB,Chubu,JAP,EDO,"Kaga, Owari, Echizen, Shinano, Kai, Suruga, Echigo han (Kanazawa, Nagoya, Fukui)",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_han
+OSA,Kansai (Kinai),JAP,OSA,"Kyoto, Osaka, Kishū, Ise, Yamato, Harima, Ōmi (Wakayama, Hikone, Tsu, Himeji)",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_han
+SHK,Shikoku,JAP,OSA,"Awa, Tosa, Sanuki, Iyo han (Tokushima, Kōchi, Takamatsu, Matsuyama)",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_han
+CHU,Chugoku,JAP,KYU,"Chōshū (Nagato), Aki (Hiroshima), Okayama, Matsue, Tottori, Tsuyama",East and South-East Asia,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/List_of_han
+KYU,Kyushu & Ryukyu,JAP,KYU,"Satsuma, Saga, Fukuoka, Kumamoto, Nagasaki, Ryukyu Domain",East and South-East Asia,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/List_of_han
+AVA,Upper Burma (Ava),BUR,AVA,"Konbaung core districts (Mandalay, Sagaing, Magwe, Shwebo)",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/British_rule_in_Burma
+PGO,Lower Burma (Pegu & Arakan),BUR,AVA,"Arakan, Tenasserim (British 1826) & Pegu/Irrawaddy (British 1852)",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/British_rule_in_Burma
+SHN,Shan & Kachin States,BUR,AVA,"Federated Shan States (Hsipaw, Yawnghwe, Kengtung) and Kachin hills",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Salute_state
+TNK,Tonkin,DAI,TNK,"Northern Vietnam provinces (Hanoi, Hai Duong, Nam Dinh, Son Tay)",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Nguy%E1%BB%85n_dynasty
+HUE,Annam (Hue),DAI,SGN,"Central Vietnam provinces (Thua Thien/Hue, Thanh Hoa, Nghe An, Binh Dinh)",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Nguy%E1%BB%85n_dynasty
+SGN,Cochinchina (Saigon),DAI,SGN,"Six Provinces of Southern Vietnam (Gia Dinh/Saigon, Bien Hoa, Dinh Tuong, Vinh Long, An Giang, Ha Tien)",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/French_Indochina
+BKK,Central & Southern Siam,SIA,BKK,"Chao Phraya core, Bangkok, Ayutthaya, Nakhon Si Thammarat (Monthons Krung Thep, Ayutthaya)",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Monthon
+LNA,Northern Siam & Isan,SIA,BKK,"Chiang Mai (Lanna), Nan, Udon, Nakhon Ratchasima, Ubon",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Monthon
+CMB,Cambodia & Laos,SIA,BKK,"Kingdom of Cambodia, Luang Prabang, Vientiane, Champasak",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/French_Indochina
+MLY,Malaya & Singapore,UNADMINISTERED,MLY,"Straits Settlements (Singapore, Penang, Malacca) and Malay Sultanates",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/British_Malaya
+JAV,Java,NED,JAV,"Batavia, Priangan, Semarang, Surabaya, Yogyakarta, Surakarta residencies",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Administrative_divisions_of_the_Dutch_East_Indies
+SUM,Sumatra,NED,SUM,"Aceh, Sumatra West Coast, Palembang, Siak, Lampong residencies",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Administrative_divisions_of_the_Dutch_East_Indies
+BOR,Borneo,UNADMINISTERED,BOR,"Sultanate of Brunei, Sarawak (1841), North Borneo, Dutch Borneo residencies",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Administrative_divisions_of_the_Dutch_East_Indies
+SUL,Sulawesi & the Moluccas,NED,JAV,"Celebes, Menado, Amboina, Ternate, Timor residencies",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Administrative_divisions_of_the_Dutch_East_Indies
+MNL,Luzon,SPA,MNL,"Manila/Tondo, Ilocos, Cagayan, Pampanga, Bulacan, Batangas, Bicol",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_the_Philippines
+VIS,Visayas & Mindanao,SPA,MNL,"Cebu, Iloilo, Negros, Leyte, Samar, Zamboanga, Sulu Sultanate",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_the_Philippines
+SYD,Eastern Australia,GBR,SYD,"Colony of New South Wales, Victoria (1851), Queensland (1859), South Australia (1836), Tasmania",East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/States_and_territories_of_Australia
+WAU,Western Australia,GBR,WAU,Swan River / Colony of Western Australia (1829),East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/States_and_territories_of_Australia
+AUI,Central Australia & Outback,UNADMINISTERED,AUI,Interior deserts and Northern Territory (unadministered 1836),East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/States_and_territories_of_Australia
+NZL,New Zealand,UNADMINISTERED,NZL,Māori iwi territories; Colony of New Zealand (1840) & 6 provinces (1853),East and South-East Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_New_Zealand
+NEN,Southern New England,USA,NEN,"Massachusetts, Connecticut, Rhode Island",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_U.S._states_by_date_of_admission_to_the_Union
+VTM,Northern New England,USA,NEN,"Maine, New Hampshire, Vermont",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_U.S._states_by_date_of_admission_to_the_Union
+NYC,New York,USA,NYC,State of New York,Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_U.S._states_by_date_of_admission_to_the_Union
+PEN,Pennsylvania,USA,NYC,Commonwealth of Pennsylvania,Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_U.S._states_by_date_of_admission_to_the_Union
+RIC,Virginia & Maryland,USA,RIC,"Virginia, Maryland, Delaware, New Jersey, District of Columbia",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_U.S._states_by_date_of_admission_to_the_Union
+NCR,The Carolinas,USA,RIC,North Carolina and South Carolina,Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_U.S._states_by_date_of_admission_to_the_Union
+GEO,Georgia & Florida,USA,RIC,State of Georgia and Florida Territory (state 1845),Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_U.S._states_by_date_of_admission_to_the_Union
+NOL,Louisiana & Arkansas,USA,NOL,State of Louisiana and State of Arkansas (1836),Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_U.S._states_by_date_of_admission_to_the_Union
+ALM,Alabama & Mississippi,USA,NOL,Alabama and Mississippi,Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_U.S._states_by_date_of_admission_to_the_Union
+TKY,Tennessee & Kentucky,USA,CIN,Tennessee and Kentucky,Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_U.S._states_by_date_of_admission_to_the_Union
+CIN,Ohio & Indiana,USA,CIN,Ohio and Indiana,Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_U.S._states_by_date_of_admission_to_the_Union
+ILL,Illinois & Great Lakes,USA,CIN,"Illinois, Michigan Territory (state 1837), Wisconsin Territory (1836)",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_the_United_States
+STL,Missouri & Iowa,USA,STL,Missouri and Iowa District / Territory (1838),Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_the_United_States
+MIN,Minnesota & Dakota,USA,STL,Minnesota (1858) and Dakota Territory (1861),Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_the_United_States
+PLN,The Great Plains,UNADMINISTERED,PLN,"Unorganized / Indian Territory (Kansas, Nebraska, Oklahoma)",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_the_United_States
+TEX,Texas,TEX,TEX,Republic of Texas (1836–1845; US state 1845),Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_the_United_States
+ORG,Oregon Country,UNADMINISTERED,ORG,"Joint US–British Oregon Country (Oregon, Washington, Idaho)",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_the_United_States
+BCN,British Columbia,UNADMINISTERED,ORG,New Caledonia & Columbia District (Crown Colony 1858; Canada 1871),Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_Canada
+SFO,Alta California,MEX,SFO,Alta California Department (incl. Nevada; US cession 1848),Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_Mexico
+NMX,New Mexico & Rockies,MEX,SFO,"Santa Fe de Nuevo México (New Mexico, Arizona, Utah, Colorado)",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_Mexico
+QUE,Lower Canada (Quebec),GBR,QUE,Province of Lower Canada,Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_Canada
+MRM,Maritimes & Newfoundland,GBR,QUE,"Nova Scotia, New Brunswick, Prince Edward Island, Newfoundland",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_and_territories_of_Canada
+TOR,Upper Canada (Ontario),GBR,TOR,Province of Upper Canada,Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_Canada
+RUP,Rupert's Land,UNADMINISTERED,RUP,"Hudson's Bay Company Charter Territory (Manitoba, Saskatchewan, Alberta)",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_Canada
+GRL,Greenland,UNADMINISTERED,GRL,North and South Greenland Inspectorates (Danish trade monopoly),Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Counties_of_Denmark
+ARC,Canadian Arctic & Alaska,UNADMINISTERED,ARC,"North-Western Territory, Yukon, Russian Alaska",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Territorial_evolution_of_Canada
+MEX,Central Mexico,MEX,MEX,"México, Puebla, Guanajuato, Michoacán, Querétaro, San Luis Potosí",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Centralist_Republic_of_Mexico
+VER,Veracruz & Gulf Coast,MEX,MEX,"Veracruz, Tamaulipas, Tabasco",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Centralist_Republic_of_Mexico
+GDL,Western Mexico (Jalisco),MEX,MEX,"Jalisco, Zacatecas, Aguascalientes, Colima, Sinaloa",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Centralist_Republic_of_Mexico
+CHH,Northern Mexico,MEX,CHH,"Chihuahua, Sonora, Durango, Coahuila, Nuevo León, Baja California",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Centralist_Republic_of_Mexico
+YUC,Yucatán & Oaxaca,MEX,YUC,"Yucatán, Oaxaca, Chiapas",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Centralist_Republic_of_Mexico
+GUA,Guatemala & El Salvador,UCA,GUA,States of Guatemala and El Salvador (Federal Republic of Central America),Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Federal_Republic_of_Central_America
+NIC,"Honduras, Nicaragua & Costa Rica",UCA,GUA,"States of Honduras, Nicaragua and Costa Rica",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Federal_Republic_of_Central_America
+HAV,Cuba,SPA,HAV,"Captaincy General of Cuba (Havana, Matanzas, Santa Clara, Puerto Príncipe, Santiago)",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Cuba
+HAI,Haiti,HAI,HAI,"Ouest, Nord, Sud, Artibonite departments (western Hispaniola)",Americas,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Departments_of_Haiti
+DOM,Santo Domingo,HAI,HAI,"Eastern Hispaniola (Azua, Santo Domingo, Seybo, Santiago, La Vega; independent 1844)",Americas,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Provinces_of_the_Dominican_Republic
+JAM,West Indies & Puerto Rico,GBR,JAM,"British West Indies (Jamaica, Barbados, Trinidad, Bahamas) & Spanish Puerto Rico",Americas,"search (small territory; <44 px at regional zoom, flagged for search & chooser)",https://en.wikipedia.org/wiki/Territories_of_the_United_States
+BOG,New Granada (Bogotá),CLM,BOG,"Cundinamarca, Boyacá, Cauca, Magdalena provinces",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Departments_of_Colombia
+PAN,Panama & Antioquia,CLM,BOG,Isthmus of Panama and Antioquia,Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Panama
+CCS,Venezuela (Caracas),VNZ,CCS,"Caracas, Carabobo, Barquisimeto, Maracaibo, Cumaná provinces",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/States_of_Venezuela
+GUY,Guayana & the Guianas,VNZ,CCS,"Venezuelan Guayana, British Guiana, Suriname, French Guiana",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/States_of_Venezuela
+QUI,Ecuador (Quito),ECU,QUI,"Quito, Guayaquil, Azuay departments",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Ecuador
+LIM,Northern & Central Peru,PEU,LIM,"Lima, La Libertad, Junín, Ancash, Amazonas",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Regions_of_Peru
+CUZ,Southern Peru (Cuzco),PEU,LIM,"Cuzco, Arequipa, Puno, Ayacucho, Tacna-Arica",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Regions_of_Peru
+LPZ,Upper Bolivia (Altiplano),BOL,LPZ,"La Paz, Oruro, Potosí, Cochabamba",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Departments_of_Bolivia
+SUC,Eastern Bolivia (Chaco-Beni),BOL,LPZ,"Chuquisaca (Sucre), Santa Cruz, Tarija, Litoral (Antofagasta)",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Departments_of_Bolivia
+SCL,Central & Northern Chile,CHL,SCL,"Santiago, Valparaíso, Aconcagua, Coquimbo, Colchagua, Maule",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Chile
+CHP,Southern Chile (Araucanía),CHL,SCL,"Concepción, Valdivia, Chiloé and Araucanía frontier",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Chile
+BUE,Buenos Aires & the Pampas,ARG,BUE,"Buenos Aires, Santa Fe, Entre Ríos, Corrientes",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Argentina
+COR,Córdoba & the Interior,ARG,COR,"Córdoba, Mendoza, San Juan, San Luis, Tucumán, Salta, Jujuy, Catamarca, Santiago del Estero",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Argentina
+PAT,Patagonia,UNADMINISTERED,PAT,Mapuche/Tehuelche Patagonia & Tierra del Fuego (settled 1878-1884),Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Argentina
+ASU,Paraguay,PRG,ASU,"Republic of Paraguay (Central, Concepción, Misiones, Chaco)",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Departments_of_Paraguay
+MVD,Uruguay,URU,MVD,"Montevideo, Canelones, Colonia, Maldonado, Paysandú, Durazno, Cerro Largo, Soriano, San José",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Departments_of_Uruguay
+RIO,Rio de Janeiro & Minas Gerais,BRA,RIO,"Rio de Janeiro, Minas Gerais, Espírito Santo",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Federative_units_of_Brazil
+SAP,São Paulo & Paraná,BRA,RIO,"São Paulo, Goiás, Mato Grosso",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Federative_units_of_Brazil
+BAH,Bahia & Pernambuco,BRA,BAH,"Bahia, Pernambuco, Sergipe, Alagoas, Paraíba, Rio Grande do Norte",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Federative_units_of_Brazil
+CEJ,Maranhão & Ceará,BRA,BAH,"Ceará, Piauí, Maranhão",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Federative_units_of_Brazil
+POA,Southern Brazil,BRA,POA,"São Pedro do Rio Grande do Sul, Santa Catarina",Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Federative_units_of_Brazil
+BLM,Grão-Pará,BRA,BLM,Province of Grão-Pará (eastern Amazon mouth),Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Federative_units_of_Brazil
+AMI,Amazonia,UNADMINISTERED,AMI,Upper Amazon basin (unadministered interior 1836),Americas,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Federative_units_of_Brazil
+MOR,Morocco,MOR,MOR,"Sultanate of Morocco (Fez, Marrakesh, Tangier, Sous)",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Regions_of_Morocco
+ALG,Algeria,FRA,ALG,"French Algiers (Algiers, Oran, Constantine departments 1848)",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/French_Algeria
+TUN,Tunis,TUN,TUN,Beylik of Tunis (caidats),Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Tunis
+TRP,Tripolitania & Cyrenaica,OTT,TRP,"Tripolitania Vilayet (Tripoli, Benghazi, Fezzan; Italian Libya 1911)",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Italian_Libya
+CAI,Lower Egypt,EGY,CAI,"Delta mudiriyas (Behera, Gharbia, Daqahlia, Sharqia, Menufia, Qalyubia) & Cairo/Alexandria",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Subdivisions_of_Egypt
+ASW,Upper Egypt,EGY,ASW,"Nile Valley mudiriyas (Giza, Faiyum, Beni Suef, Minya, Asyut, Girga, Qena, Aswan)",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Subdivisions_of_Egypt
+KHA,The Sudan,EGY,KHA,"Turco-Egyptian Sudan (Khartoum, Dongola, Sennar, Kordofan, Darfur, Equatoria)",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Anglo-Egyptian_Sudan
+SAH,The Western Sahara,UNADMINISTERED,SAH,Western & Central Sahara (Tuareg/Moorish confederations),Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/French_West_Africa
+SAE,The Libyan Desert,UNADMINISTERED,SAE,Eastern Sahara & Tibesti (unadministered 1836),Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Italian_Libya
+SEN,Senegambia & Western Sudan,UNADMINISTERED,SEN,"Senegal, Gambia, Mali, Upper Niger (later French West Africa)",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/French_West_Africa
+GLD,Gold Coast & Ashanti,UNADMINISTERED,GLD,"Ashanti Empire, Gold Coast forts, Ivory Coast",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/British_West_Africa
+LAG,Yoruba & Niger Delta,UNADMINISTERED,LAG,"Oyo/Yoruba states, Benin, Niger Delta oil rivers",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Colonial_Nigeria
+SOK,Sokoto Caliphate,SOK,SOK,"Sokoto, Kano, Katsina, Zaria, Adamawa, Gwandu emirates & Bornu",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Sokoto_Caliphate
+CGO,The Congo Basin,UNADMINISTERED,CGO,"Kongo, Luba, Lunda, Equatorial Congo (later Belgian Congo & AEF)",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_the_Democratic_Republic_of_the_Congo
+LUA,Angola,POR,LUA,"Portuguese West Africa (Luanda, Benguela, Moçâmedes districts)",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Angola
+MOZ,Mozambique,POR,MOZ,"Portuguese East Africa (Lourenço Marques, Inhambane, Sofala, Zambézia, Mozambique)",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Mozambique
+CPT,Cape Colony,GBR,CPT,Cape of Good Hope (Western & Eastern Cape districts),Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Cape_Colony
+NAT,Zululand & Natal,ZUL,NAT,Zulu Kingdom and Port Natal (British Natal 1843),Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_South_Africa
+TRV,The Highveld,TRN,TRV,Highveld Voortrekker Republics (Transvaal/SAR & Orange Free State),Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/South_African_Republic
+KAL,The Kalahari & SWA,UNADMINISTERED,KAL,Bechuanaland & Nama/Herero South West Africa (German SWA 1884),Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/German_South_West_Africa
+ZAN,Zanzibar & Swahili Coast,OMA,ZAN,Sultanate of Zanzibar and Tanganyika coast (German East Africa 1885),Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/German_East_Africa
+KEN,East African Great Lakes,UNADMINISTERED,KEN,"Buganda, Bunyoro, Kikuyu & Maasai highlands (British East Africa 1895)",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/East_Africa_Protectorate
+ADD,Abyssinia (Ethiopia),ETH,ADD,"Tigray, Amhara/Gondar, Gojjam, Shewa, Harar",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Provinces_of_Ethiopia
+MOG,The Horn of Africa,UNADMINISTERED,MOG,"Majerteen, Geledi, Ogaden, Somali coast (Italian/British/French Somaliland)",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Italian_Somaliland
+TAN,Madagascar,MDG,TAN,"Merina Kingdom (Imerina, Betsileo, Sakalava; French colony 1896)",Africa,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Madagascar
+URA,The Urals (Perm & Ufa),RUS,URA,"Perm, Ufa, Orenburg governorates",Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+ORE,Western Kazakh Steppe (Turgai),RUS,ORE,Ural and Turgai oblasts (Junior Juz),Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Oblasts_of_the_Russian_Empire
+AKM,Central Kazakh Steppe (Akmolinsk),RUS,ORE,Akmolinsk and Semipalatinsk oblasts (Middle Juz),Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Oblasts_of_the_Russian_Empire
+BKH,Bukhara,BUK,BKH,Emirate of Bukhara (Samarkand & Zarafshan),Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Emirate_of_Bukhara
+KHV,Khiva & Transcaspia,BUK,BKH,Khanate of Khiva and Transcaspian Oblast,Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Khanate_of_Khiva
+KOK,Kokand (Fergana),BUK,BKH,Khanate of Kokand / Fergana & Syr-Darya oblasts,Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Khanate_of_Kokand
+SEM,Semirechye,RUS,ORE,Semirechye Oblast (Senior Juz / Jetysu),Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Russian_Turkestan
+OMS,Western Siberia (Tobolsk),RUS,OMS,Tobolsk governorate and Omsk,Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+TOM,Tomsk & Altai,RUS,OMS,Tomsk governorate,Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+YEN,Yeniseysk (Central Siberia),RUS,IRK,Yeniseysk governorate,Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+IRK,Irkutsk & Lake Baikal,RUS,IRK,Irkutsk governorate,Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/List_of_governorates_of_the_Russian_Empire
+YAK,Yakutsk,RUS,IRK,Yakutsk Oblast,Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Oblasts_of_the_Russian_Empire
+TRZ,Transbaikalia & Amur,RUS,IRK,Transbaikal and Amur oblasts (ceded by Qing 1858),Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Oblasts_of_the_Russian_Empire
+VLD,Primorye & Vladivostok,RUS,IRK,Primorskaya Oblast & Sakhalin (ceded by Qing 1860),Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Oblasts_of_the_Russian_Empire
+SIN,Kamchatka & Siberian North,UNADMINISTERED,SIN,"Kamchatka, Chukotka and Arctic Siberian coast",Russia in Asia and Central Asia,ok (>=44 px at selection zoom),https://en.wikipedia.org/wiki/Oblasts_of_the_Russian_Empire
