@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 19, partial 13, missing 10, unverified 46, closed 2  (audited 2026-11-25)
+Totals: done 19, partial 13, missing 10, unverified 48, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -104,3 +104,5 @@ Totals: done 19, partial 13, missing 10, unverified 46, closed 2  (audited 2026-
 | B54 | Assign every task to AI Studio, Codex or Claude; tell the owner when assignment is done so he can ask them to start; keep token use efficient for all | done | from owner, Claude chat 27 Nov 2026; every open ticket labelled for:claude (25), for:codex (64) or for:aistudio (12); #83 waits for the owner's file; COORDINATION.md §5 takes the first Ready ticket with your label | 2026-11-27 |
 | B58 | Approve plan v3; daily clock option B; hero nations Britain, Ottoman Empire, Sikh Empire, Prussia and the United States | unverified | from owner, Claude chat 27 Nov |  |
 | B59 | Final structured plan for 1.0 and a 1.1 plan; Claude used minimally after today, most work divided between GPT/Codex and AI Studio; use GitHub's free resources extensively, especially at night when the owner is not working | partial | from owner, Claude chat 27 Nov; nightly build artifact workflow in #179; publication, probes and morning report tracked in #162 |  |
+| B60 | Province count must be historical in 1.0 (confirms B47 for the launch, not 1.1) | unverified | from owner, Claude chat 27 Nov |  |
+| B61 | Province count: raise from 184 to a level that stays mobile-friendly and fun, not the full historical ~1,000; replaces the full-count part of B47 and B60 | unverified | from owner, Claude chat 28 Nov |  |

@@ -8,7 +8,7 @@ One update every 4 to 6 weeks, each with a devlog post and a short video. Every 
 
 | Update | Target | Theme |
 |---|---|---|
-| 1.1 | May 2027 | Full daily world (DAY5 to DAY7, DAY9), society and interest groups (SOC2), the historical province count (HP2), fronts and canals on the map |
+| 1.1 | May 2027 | Full daily world (DAY5 to DAY7, DAY9), society and interest groups (SOC2), fronts and canals on the map |
 | 1.2 | June to July 2027 | Trade and finance: trade page and treaties, taxes by sector, banking and the gold standard, freight by route length |
 | 1.3 | August to September 2027 | Navy and industry depth: shipyards and unique ships, naval training, modernisation programmes, more buildings and great works, renovation |
 | 1.4 | Autumn 2027 | Online extras (all optional, game stays offline): Ask the Historian, voice orders, cloud saves, player profile and online challenges; intro and event video |
@@ -39,7 +39,6 @@ One update every 4 to 6 weeks, each with a devlog post and a short video. Every 
 | #117 | MAP4: fronts, occupation and canals on the map | Codex |  |
 | #123 | SOC2: strata, standard of living, interest groups, legitimacy, laws | Codex |  |
 | #140 | PROG1c: player profile, unlocks and online challenges | Codex |  |
-| #148 | HP2: map and engine at the historical province count | Codex | needs owner OK: 1.0 keeps 184 provinces |
 | #41 | A18 Liquid-glass old-book look (design first) | AI Studio | optional theme on the design system |
 | #43 | A25 Great work and city background pictures | AI Studio |  |
 | #127 | AIS3: design an "Ask the Historian" adviser (online) | AI Studio |  |
@@ -49,4 +48,4 @@ One update every 4 to 6 weeks, each with a devlog post and a short video. Every 
 
 ## 3. Not yet ticketed (from PLAN_V3 section 3)
 
-Demography DM1 to DM6, elections PO4, production methods and private investment EC1 to EC4, money and banking FI1 to FI3, treaty ports TR3, naval races and coaling NV2 and NV3, total-war economy MI11, flavour packs for every nation (NF), AI personalities AI5, new province batches MP5 to MP14, portraits for every leader. The planner opens these as tickets when their update comes up.
+Demography DM1 to DM6, elections PO4, production methods and private investment EC1 to EC4, money and banking FI1 to FI3, treaty ports TR3, naval races and coaling NV2 and NV3, total-war economy MI11, flavour packs for every nation (NF), AI personalities AI5,  portraits for every leader. The planner opens these as tickets when their update comes up.
