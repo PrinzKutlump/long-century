@@ -78,8 +78,35 @@ Object.assign(ACT,{
 const WFIL=[["all","All"],["mil","Military"],["eco","Economy"],["soc","People"],["cul","Culture"],["gw","Great works"]];
 function gwRow(c,w){const s=gwState(c,w),g=c.gw&&c.gw[w.id],why=s==="cond"?(w.why?w.why(c):"We do not meet the conditions."):s==="date"?"Not before "+w.y+".":"";
  return lr({t:esc(w.n)+(w.uniq?' <span class="tag">first</span>':w.first?' <span class="tag">first bonus</span>':""),s:esc(w.d),bar:g?1-g.left/w.m:null,v:s==="done"?"built":g?g.left+" months left":money(w.cost),vs:s==="done"||g?(s==="done"&&G.gwDone[w.id]?esc(nameOf(G.gwDone[w.id][0])):""):"over "+w.m+" months",vc:s==="done"?"good":"",btn:s==="done"||g?null:["Begin","gwask",{id:w.id},s==="ok"?"pri":"",s!=="ok",esc(why)]});}
+function quickSites(c,k){
+ const ev=wbEval();
+ if(k.startsWith("factory/")){
+  const g=k.slice(8);
+  return ECON[c.econ].build>0?ev.provs.filter(p=>heldBy(c,p)&&facCan(c,p,g).ok):[];
+ }
+ return ev.provs.filter(p=>ev.by[p.id][k]?.st==="can");
+}
+function quickName(k){return k.startsWith("factory/")?GOODS[k.slice(8)].n+" factory":bmNm(k);}
+ACT.quickworks=d=>{
+ const p=$("#quick-site").value,k=d.k,c=me();
+ if(!p)return;
+ UI.quickSite=p;
+ const sites=d.all?quickSites(c,k):[P(p)];
+ let placed=0,why="";
+ for(const site of sites){
+  const kind=k.startsWith("factory/")?"factory":k==="rail"?"rail":bldActive(c)>=buildSlots(c)?"queue":"building";
+  const r=applyCampaignCommand({...issueCampaignCommand(),kind,province:site.id,building:k,good:k.slice(8)});
+  if(r.ok)placed++;else why=r.why||r.txt;
+ }
+ if(placed){UI._br=null;autosave();}
+ render();toast(placed+" of "+sites.length+" orders placed."+(why?" "+why:""));
+};
+document.addEventListener("change",event=>{
+ if(event.target.dataset.works==="quick"){UI.quickKind=event.target.value;render();}
+});
 function projectShortage(country, project){
  const shortages=Object.keys(project.left||{}).filter(g=>project.left[g]>1&&(country.fill[g]??1)<.9);
+ if(shortages.length&&projProgress(project)>=.995)return " · local workshops finish the last fittings at double the missing materials’ price";
  if(shortages.length)return " · short of "+shortages.map(g=>GOODS[g].n.toLowerCase()).join(", ");
  return "";
 }
@@ -131,7 +158,7 @@ function worksPlanner(c){
 function worksOrders(c){
  const rows=new Map(),nm=(kind,good)=>BLD[kind]?BLD[kind].n:kind==="rail"?"Railway":good&&GOODS[good]?GOODS[good].n+" works":"Project",ik=kind=>BLD[kind]||kind==="rail"?kind:"works",q=c.bq||[];
  q.forEach((x,i)=>{if(x.orderId!=null)rows.set(x.orderId,{o:x.orderId,k:x.b,t:nm(x.b),p:x.p,st:"queued",s:"Waiting list, place "+(i+1)+" of "+q.length,v:"Queued"});});
- for(const p of provsOf(c.tag))for(const b of p.build)if(b.orderId!=null&&b.k!=="upg"&&!rows.has(b.orderId))rows.set(b.orderId,{o:b.orderId,k:b.b||b.k,t:nm(b.b||b.k,b.g),p:p.id,st:"building",s:"Building"+(b.lastProgress?.delayed?", short of funds":""),bar:projProgress(b),v:pct(projProgress(b))});
+ for(const p of provsOf(c.tag))for(const b of p.build)if(b.orderId!=null&&b.k!=="upg"&&!rows.has(b.orderId))rows.set(b.orderId,{o:b.orderId,k:b.b||b.k,t:nm(b.b||b.k,b.g),p:p.id,st:"building",s:"Building"+(b.lastProgress?.delayed?", short of funds":""),bar:projProgress(b),v:buildPercent(projProgress(b))});
  for(const a of Object.values(G.constructionLedger||{}))if(a.orderId!=null&&!rows.has(a.orderId)&&a.owner===c.tag&&P(a.province)){const done=a.status==="Completed";rows.set(a.orderId,{o:a.orderId,k:a.kind,t:nm(a.kind,a.good),p:a.province,st:done?"done":/Cancel/.test(a.status)?"ended":"building",s:done?"Done":a.status,v:done?"Done":"",bar:done?1:null});}
  const L=[...rows.values()].sort((a,b)=>b.o-a.o).slice(0,40);
  return L.length?L.map(r=>lr({lead:ic(ik(r.k)),t:esc(r.t)+" in "+esc(P(r.p).n),s:esc(r.s),bar:r.bar,v:r.v,cls:"ord ord-"+r.st})).join("")+note("Every order from the map and the planner, newest first. Work that has started cannot be cancelled."):note("No orders yet. Choose Build on the Atlas, pick a project and tap provinces.");}
@@ -145,7 +172,7 @@ function pgWorks(){const c=me(),tag=c.tag,slots=buildSlots(c),act=bldActive(c),F
  const top=best[0];
  const s0=`<div class="kgrid">${tl("Building slots",act+" of "+slots,"projects at once")}${tl("Upkeep",money(bx.up||0),"a month")}${tl("Buildings",lv+"","levels in our provinces")}${tl("Great works",doneN+"","built by us")}</div>${gz("Slots in use",act,slots,act+" of "+slots,{c:act>=slots?"red":"green"})}`;
  const q=c.bq||[];
- const s1=(projs.length?projs.map(([p,b])=>lr({t:projName(b),s:"in "+esc(p.n)+(b.paid==null?"":" · "+money(b.paid)+" paid")+(b.lastProgress?.delayed?" · Short of funds":"")+projectShortage(c,b),bar:projProgress(b),v:pct(projProgress(b))})).join(""):`<p class="calm">Nothing is being built.</p>`)
+ const s1=(projs.length?projs.map(([p,b])=>lr({t:projName(b),s:"in "+esc(p.n)+(b.paid==null?"":" · "+money(b.paid)+" paid")+(b.lastProgress?.delayed?" · Short of funds":"")+projectShortage(c,b),bar:projProgress(b),v:buildPercent(projProgress(b))})).join(""):`<p class="calm">Nothing is being built.</p>`)
   +(Object.keys(c.gw||{}).length?Object.keys(c.gw).map(id=>{const w=GW.find(x=>x.id===id),g=c.gw[id];return lr({lead:ic("works"),t:esc(w.n),s:"a great work",bar:1-g.left/w.m,v:g.left+" months"});}).join(""):"")
   +`<h3>Waiting list ${INFO("Waiting list","When every building slot is busy, new orders wait here. The first on the list starts as soon as a slot is free. Use the arrows to change the order.")}</h3>`
   +(q.length?q.map((x,i)=>{const B=BLD[x.b],p=P(x.p);return lr({lead:ic(x.b),t:esc(B.n),s:"in "+esc(p.n)+" · place "+(i+1),mid:`<span class="qbtns"><button class="btn sm" ${DA("bqmv",{id:x.id,d:-1,...issueCampaignCommand()})}${i?"":" disabled"} aria-label="Move up">Up</button><button class="btn sm" ${DA("bqmv",{id:x.id,d:1,...issueCampaignCommand()})}${i<q.length-1?"":" disabled"} aria-label="Move down">Down</button><button class="btn sm dng" ${DA("bqdel",{id:x.id,...issueCampaignCommand()})}>Remove</button></span>`});}).join(""):note("The waiting list is empty. When the slots are full, tap Queue in the construction planner and it joins the list."));
@@ -166,7 +193,21 @@ function pgWorks(){const c=me(),tag=c.tag,slots=buildSlots(c),act=bldActive(c),F
 /* V2c: on the Works tab the board comes first: a one-line title, no hero, no jump chips, and the tip folded to the foot */
 PAGES.works=()=>{let h=pgWorks();const co=(/<aside class="coach"[\s\S]*?<\/aside>/.exec(h)||[""])[0];
  h=h.replace(/<header class="headpiece">[\s\S]*?<\/header>/,"").replace(/<aside class="coach"[\s\S]*?<\/aside>/,"").replace(/<nav class="jumpbar"[\s\S]*?<\/nav>/,"");
- return`<h1 class="wb-ttl">Works board</h1>${wbHTML(me())}`+h+co;};
+ return `<h1 class="wb-ttl">Works board</h1>`+wbHTML(me())+h+co;};
+function quickWorksHTML(c){
+ const k=UI.quickKind||wbCurKey();
+ const eligible=quickSites(c,k);
+ const keys=[...wbAllKeys(),...Object.keys(RECIPE).filter(g=>goodOK(c,g)).map(g=>"factory/"+g)];
+ const choices=keys.map(key=>`<option value="${key}"${key===k?" selected":""}>${esc(quickName(key))}</option>`).join("");
+ const sites=eligible.map(p=>`<option value="${esc(p.id)}"${p.id===UI.quickSite?" selected":""}>${esc(p.n)}</option>`).join("");
+ const site=eligible.find(p=>p.id===UI.quickSite)||eligible[0];
+ const action=k.startsWith("factory/")||k==="rail"||bldActive(c)<buildSlots(c)?"Build":"Queue";
+ const quick=`<div class="works-pickers"><label>Project<select data-works="quick">${choices}</select></label>
+ <label>Province<select id="quick-site">${sites||"<option>No eligible province</option>"}</select></label>
+ <button class="btn pri" data-a="quickworks" data-k="${k}" ${site?"":"disabled"}>${action} ${esc(quickName(k))}</button>
+ ${eligible.length>1?`<button class="btn" data-a="quickworks" data-all="1" data-k="${k}">Order in all ${eligible.length} eligible provinces</button>`:""}</div>`;
+ return `<section aria-label="Quick orders"><h3>Quick orders</h3>${quick}${nationalOrders()}</section>`;
+}
 
 COACH.works=["Works","Every project in one place. The best places to build are ranked by what they should earn or save; tap Build to see the cost and the return before you commit."];
 

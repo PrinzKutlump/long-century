@@ -253,7 +253,7 @@
    "id": "B5",
    "ask": "Buildings, great works, decisions the player can use",
    "status": "partial",
-   "note": "Build mode and Works board exist",
+   "note": "Build mode and Works board exist; #31 adds quick orders and fixes completion; additional historical great works are tracked by #150.",
    "probe": "ui8.js::undo"
   },
   {

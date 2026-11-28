@@ -50,7 +50,7 @@ Totals: done 19, partial 13, missing 10, unverified 50, closed 2  (audited 2026-
 | B2 | Theatre command with infantry, cavalry, artillery; no army selection | unverified | theatre.js exists; owner 27 Nov (B57): theatre orders kept, armies visible and moving on the map, easy enjoyable controls |  |
 | B3 | Flags for every nation | done |  | 2026-11-25 |
 | B4 | Punjab 1836 flag | done | every nation has a flag (PR #53) | 2026-11-25 |
-| B5 | Buildings, great works, decisions the player can use | partial | Build mode and Works board exist |  |
+| B5 | Buildings, great works, decisions the player can use | partial | Build mode and Works board exist; #31 adds quick orders and fixes completion; additional historical great works are tracked by #150. |  |
 | B6 | UI at least as good as Devlet-i Aliyye | unverified | layout audit fails 7 pages |  |
 | B7 | Miller true-Earth map, art, easy navigation | unverified | MP and AR tickets |  |
 | B8 | About 20 more buildings and 12 more great works | unverified | 25 building kinds, 34 great works (22 non-fair); MASTER_PLAN has no great-works target (PR #53) |  |

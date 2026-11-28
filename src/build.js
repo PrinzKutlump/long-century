@@ -99,6 +99,7 @@ function bldBestAll(c,lim){const L=[];for(const k in BLD){const b=bldBest(c,k);i
 function railCan(c,p){if(p.o!==c.tag||p.ctl!==p.o)return{ok:false,why:"Only in provinces we hold."};if(p.rail>=railMax(c))return{ok:false,why:railMax(c)?"Our technology allows railways up to level "+railMax(c)+".":"We need railway technology."};if(p.build.some(b=>b.k==="rail"))return{ok:false,why:"Already under construction."};return{ok:true};}
 const projProgress=b=>{const C=costOf(b);let t=0,l=0;for(const x in C){t+=C[x];l+=Math.max(0,b.left[x]||0);}return t?1-l/t:1;};
 /* ================= GREAT WORKS ================= */
+const buildPercent=ratio=>Math.min(99,Math.floor(clamp(ratio,0,1)*100))+"%";
 const ownsAny=(c,ids)=>ids.some(id=>P(id).o===c.tag),ownsAll=(c,ids)=>ids.every(id=>P(id).o===c.tag);
 const capPop=c=>P(c.cap).pop;
 const GW=[

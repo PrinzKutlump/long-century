@@ -270,9 +270,14 @@ function completeProject(c,p,b,payer){
  return rec;}
 function investMonth(){PIPE={};LVG={};for(const p of G.plist)if(p.o){for(const f of p.factories)LVG[f.g]=(LVG[f.g]||0)+f.lv;for(const b of p.build)if(b.k==="fac")PIPE[b.g]=(PIPE[b.g]||0)+1;}
  for(const tag in G.c){const c=G.c[tag];if(!c.alive)continue;
-  for(const p of provsOf(tag))for(const b of p.build){if(b.k!=="fac"&&b.k!=="rail"&&b.k!=="bld"&&b.k!=="upg")continue;const materials=Object.keys(costOf(b)).map(g=>{
-    const quantity=Math.min(b.left[g],monthlyConstructionOrder(b,g))*(c.fill[g]??1);
-    return {g,quantity,value:quantity*c.bp[g]};
+  for(const p of provsOf(tag))for(const b of p.build){if(b.k!=="fac"&&b.k!=="rail"&&b.k!=="bld"&&b.k!=="upg")continue;const recipe=costOf(b);
+   // Local workshops can make the final fittings once less than half a percent of the job remains.
+   const finish=sum(Object.values(b.left),x=>Math.max(0,x))<=sum(Object.values(recipe),x=>x)*.005;
+   const materials=Object.keys(recipe).map(g=>{
+    const order=Math.min(b.left[g],monthlyConstructionOrder(b,g));
+    const delivered=order*clamp(c.fill[g]??1,0,1);
+    const local=finish?order-delivered:0;
+    return {g,quantity:delivered+local,value:(delivered+2*local)*c.bp[g]};
    });
    const payer=projectPayer(c,b);
    const balance=b.state?"tr":"inv";
@@ -283,7 +288,8 @@ function investMonth(){PIPE={};LVG={};for(const p of G.plist)if(p.o){for(const f
    const cost=fraction<1?funds:bill;
    if(b.pid==null)b.pid=newPid();
    for(const m of materials)b.left[m.g]-=m.quantity*fraction;
-   const need=sum(Object.values(b.left),x=>x);
+   const need=sum(Object.values(b.left),x=>Math.max(0,x));
+   const complete=finish?need<1e-7:need<=1;
    payer[balance]-=cost;
    b.paid=(b.paid||0)+cost;
    const ledger=tag===G.player||payer.tag===G.player?constructionAccount(p,b):null;
@@ -291,10 +297,10 @@ function investMonth(){PIPE={};LVG={};for(const p of G.plist)if(p.o){for(const f
     b.lastProgress={month:G.t,paid:cost,payer:payer.tag,delayed:fraction<1};
     ledger.paid=b.paid;
     ledger.remaining=need;
-    ledger.status=need<=1?"Completed":fraction<1?"Funding delayed":cost===0?"Awaiting materials":"Under construction";
+    ledger.status=complete?"Completed":fraction<1?"Funding delayed":cost===0?"Awaiting materials":"Under construction";
     if(cost>0)recordConstructionPayment(ledger,payer.tag,balance,cost,materials,fraction);
    }
-   if(need<=1)completeProject(c,p,b,payer);}
+   if(complete)completeProject(c,p,b,payer);}
   for(const p of provsOf(tag))p.build=p.build.filter(b=>!b.done);if(!c.civ)continue;
   const lv=sum(provsOf(tag),p=>sum(p.factories,f=>f.lv)),busy=sum(provsOf(tag),p=>p.build.filter(b=>b.k==="fac"&&!b.fo).length),slots=Math.min(7,1+Math.floor(Math.sqrt(lv)/1.8)),FC=17000;
   let home=0;const upgd=tryUpgrade(c,lv);if(!upgd&&busy<slots&&(civRamp(c)>=1||rng()<civRamp(c))&&c.inv>FC*1.2*(1+clamp((.4-(c.stat.lit||0))*2.5,0,1))&&ECON[c.econ].cap>0){const g=bestGood(c);if(g&&(busy<slots||(UPSTREAM.has(g)&&((G.tight&&G.tight[g])||1)>1.06))){const pr=bestSite(c,g);if(pr){startFactory(c,pr,g,false);home=1;}}}

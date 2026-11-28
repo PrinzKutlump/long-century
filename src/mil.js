@@ -14,9 +14,15 @@ function milDemand(c){const d={},add=(g,q)=>{if(goodOK(c,g)&&q>0)d[g]=(d[g]||0)+
  for(const a of G.armies){if(a.o!==c.tag||a.reb)continue;const war=c.war.length>0;for(const u of a.u){const U=UNITS[u.k];for(const g in U.sup)add(g,U.sup[g]*(war?1.6:.6)*(.5+.5*c.sp.mil)*(U.land?12:6));if(U.land&&!u.mob)men+=MEN*u.str;if(u.str<1){for(const g in U.cost)add(g,U.cost[g]*Math.min(.15,1-u.str)*1.2);}}}
  for(const r of c.recq||[])for(const g in r.left)add(g,Math.min(r.left[g],UNITS[r.k].cost[g]*.6+.01)*12);
  c._men=men;const k=d;for(const g in k)k[g]/=12;return d;}
-function recruit(c,k,pid){const U=UNITS[k];if(!U)return{ok:false,txt:"Unknown unit."};if(U.tech&&!c.tech[U.tech])return{ok:false,txt:"We lack the technology."};
+function recruitmentCheck(c,k,pid){const U=UNITS[k];if(!U)return{ok:false,txt:"Unknown unit."};if(U.tech&&!c.tech[U.tech])return{ok:false,txt:"We lack the technology."};
+ const site=P(pid);
+ if(!site||site.o!==c.tag||site.ctl!==c.tag)return {ok:false,txt:"Requires a province under our control."};
  if(U.land){const sol=(c.stat.N&&c.stat.N.SOL)||0,men=(c._men||0)+MEN*((c.recq||[]).filter(r=>UNITS[r.k].land).length+1);if(sol<men*.85)return{ok:false,txt:"Not enough soldiers: the conscription pool is "+Math.round(sol)+"k men."};}
  else if(!P(pid).sea||P(pid).o!==c.tag)return{ok:false,txt:"Ships need a port of our own."};else if(["iron","cru","bb"].includes(k)&&(P(pid).port||0)<2)return{ok:false,txt:"This ship needs a naval base of level 2."};else if(k==="bb"&&bxl(P(pid),"dock")<1)return{ok:false,txt:"Dreadnoughts need a dry dock."};
+ return {ok:true};}
+function recruit(c,k,pid){
+ const check=recruitmentCheck(c,k,pid);if(!check.ok)return check;
+ const U=UNITS[k];
  c.recq=c.recq||[];const ar=bxl(P(pid),"arsenal"),L=Object.assign({},U.cost);if(ar)for(const g in L)L[g]*=1-.1*ar;c.recq.push({k,pid,left:L,ar});return{ok:true,txt:U.n+" ordered at "+P(pid).n+"."};}
 function recruitTick(c){if(!c.recq||!c.recq.length)return;for(const r of c.recq){let need=0;for(const g in r.left){const q=Math.min(r.left[g],UNITS[r.k].cost[g]*.6*(1+.2*(r.ar||0))+.01),got=q*((c.fill&&c.fill[g])==null?1:c.fill[g]);r.left[g]=Math.max(0,r.left[g]-got);need+=r.left[g];}
   if(need<.05){const U=UNITS[r.k],loc=P(r.pid).o===c.tag?r.pid:c.cap;let a=G.armies.find(x=>x.o===c.tag&&x.loc===loc&&!!x.naval===!U.land&&!x.path.length&&!x.reb);if(!a){a=mkArmy(c.tag,loc,{},!U.land);G.armies.push(a);}const nu={k:r.k,str:.6,org:.5};a.u.push(nu);thRecruitTo(c,a,nu,U);r.done=1;}}

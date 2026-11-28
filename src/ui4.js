@@ -104,7 +104,7 @@ function provHTML(p){const c=p.o&&G.c[p.o],pl=me(),mine=p.o===G.player,n=p.pops.
  if(p.emigrantFlow||p.immigrantFlow)h+=note("Recorded migration abroad: "+ppl(p.immigrantFlow||0)+" arrivals · "+ppl(p.emigrantFlow||0)+" departures.");
  const fl=p.factories.filter(f=>f.lv>0);
  if(fl.length||(mine&&p.ctl===p.o))h+=sx("Factories",facList(p,fl),true,fl.length+"");
- if(p.build.length)h+=sx("Under construction",p.build.map(b=>lr({t:projName(b),bar:projProgress(b),v:pct(projProgress(b))})).join(""),true,p.build.length+"");
+ if(p.build.length)h+=sx("Under construction",p.build.map(b=>lr({t:projName(b),bar:projProgress(b),v:buildPercent(projProgress(b))})).join(""),true,p.build.length+"");
  if(mine)h+=sx("Buildings",bldHTML(p),false);
  if(armies.length)h+=sx("Forces here",armies.map(a=>lr({lead:`<span class="ctr" style="background:${a.reb?"#222":G.c[a.o].col}">${a.u.length}</span>`,t:(a.reb?"Rebels":esc(G.c[a.o].adj))+" "+(a.naval?"fleet":"army"),s:"power "+Math.round(strength(a))})).join(""),true,armies.length+"");
  let foot="";
