@@ -594,8 +594,9 @@
   {
    "id": "B59",
    "ask": "Final structured plan for 1.0 and a 1.1 plan; Claude used minimally after today, most work divided between GPT/Codex and AI Studio; use GitHub's free resources extensively, especially at night when the owner is not working",
-   "status": "unverified",
-   "note": "from owner, Claude chat 27 Nov"
+   "status": "partial",
+   "nosrc": true,
+   "note": "from owner, Claude chat 27 Nov; nightly build artifact workflow in #179; publication, probes and morning report tracked in #162"
   }
  ]
 }
