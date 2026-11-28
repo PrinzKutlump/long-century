@@ -4,7 +4,7 @@ Status: approved direction (plan v3, B58) turned into a work plan on 27 Nov 2026
 
 ## 1. What 1.0 is
 
-A 19th-century grand strategy game for Android phones, fully offline, 1836 to 1936, every nation under the same rules. Daily clock (option B): days pass for armies, fleets, construction and the date; economy and society settle monthly. A 2.5D PixiJS map where armies march, fleets sail and railways grow. Five polished hero nations (Britain, Ottoman Empire, Sikh Empire, Prussia, United States), all 62 nations playable. Modern UI, newspaper, loading screen with history, era music, achievements. Free download with opt-in rewarded ads and one Full Edition unlock. Scope details: `docs/PLAN_V3.md` section 3.
+A 19th-century grand strategy game for Android phones, fully offline, 1836 to 1936, every nation under the same rules. Daily clock (option B): days pass for armies, fleets, construction and the date; economy and society settle monthly. A 2.5D PixiJS map where armies march, fleets sail and railways grow. About 400 provinces drawn from historical regions, up from 184 (owner, B61): enough to feel full, still easy to tap on a phone. Five polished hero nations (Britain, Ottoman Empire, Sikh Empire, Prussia, United States), all 62 nations playable. Modern UI, newspaper, loading screen with history, era music, achievements. Free download with opt-in rewarded ads and one Full Edition unlock. Scope details: `docs/PLAN_V3.md` section 3.
 
 ## 2. Who does what (Claude minimal after 27 Nov 2026)
 
@@ -71,6 +71,7 @@ Work limits: at most 3 tickets in progress at once (Codex 2, AI Studio 1); Ready
 | #160 | B45d: quality-of-life lead plan | AI Studio | QoL plan document; Codex builds it in M1 and M2 |
 | #12 | PB2: harden the public repo (workflow permissions, fork PRs, branch protect | Owner | branch protection: Do not allow bypassing |
 | #166 | REVIEW: weekly plan review | Claude |  |
+| #147 | HP1: province plan of about 400 historical regions | AI Studio | p1: the list and count first; owner approves |
 
 ### M1 Living map (14 Dec 2026 to 17 Jan 2027)
 
@@ -96,10 +97,13 @@ Work limits: at most 3 tickets in progress at once (Codex 2, AI Studio 1); Ready
 | #141 | PL9: tests and tools run on the full app, not only the single HTML file | Codex | tests on the full app |
 | #144 | MAPDATA1: province shapes as a geometry asset, not SVG paths in world.js | Codex | geometry asset |
 | #149 | SEA1: sea areas (sea zones) for fleets, trade and blockades | Codex | sea zones for fleets |
-| #147 | HP1: historical province census (how many provinces history had) | AI Studio | province census research (feeds 1.1 HP2) |
 | #157 | B45a: music lead plan, era-accurate and licence-free music | AI Studio | start early: research and sourcing; tracks due in M2 |
 | #158 | B45b: creative and art lead plan, images, animation and map art | AI Studio | start early: style guide due before MAP1 art; pictures in M2 |
 | #159 | B45c: history lead plan, events for every country and region | AI Studio | start early: research; 60 events due in M2 |
+| #170 | PL4: province ids as data | Codex | p1: required before any province batch |
+| #148 | HP2: scale test at 450 provinces (target about 400) | Codex | p1: a 450-province test world holds the A56 budgets |
+| #171 | HPD1: province data, Europe and the Ottoman Empire | AI Studio | p1 |
+| #172 | HPD2: province data, South Asia and North America | AI Studio | p1 |
 
 ### M2 Vertical slice (18 Jan to 14 Feb 2027)
 
@@ -127,6 +131,9 @@ Work limits: at most 3 tickets in progress at once (Codex 2, AI Studio 1); Ready
 | #130 | AIS6: AI art pipeline (style guide, backgrounds, event pictures, portraits, | AI Studio | 40 event pictures |
 | #131 | AIS7: AI music for each era (Lyria) | AI Studio | AI music |
 | #150 | GW2: historical great projects for every region and nation | AI Studio | great projects data |
+| #174 | HPW1: wire new provinces, Europe and the Ottoman Empire | Codex | p1 |
+| #175 | HPW2: wire new provinces, South Asia and North America | Codex | p1 |
+| #173 | HPD3: province data, rest of the world | AI Studio | p1 |
 
 ### M3 Closed test (15 Feb to 21 Mar 2027)
 
@@ -155,6 +162,7 @@ Work limits: at most 3 tickets in progress at once (Codex 2, AI Studio 1); Ready
 | #95 | REL1: commercial release plan (Google Play) | AI Studio | Play release plan |
 | #133 | REV1: revenue design (ads, purchases) for the owner | AI Studio | revenue design for the owner |
 | #165 | TEST1: closed test kit | AI Studio |  |
+| #176 | HPW3: wire new provinces, rest of the world | Codex | p1 |
 
 ### M4 Launch (22 Mar to 12 Apr 2027)
 
@@ -168,10 +176,10 @@ Tickets per milestone and agent:
 
 | Milestone | Codex | AI Studio | Owner | Claude |
 |---|---|---|---|---|
-| M0 | 12 | 2 | 1 | 1 |
-| M1 | 18 | 4 | 0 | 0 |
-| M2 | 11 | 9 | 0 | 0 |
-| M3 | 18 | 3 | 0 | 0 |
+| M0 | 12 | 3 | 1 | 1 |
+| M1 | 20 | 5 | 0 | 0 |
+| M2 | 13 | 10 | 0 | 0 |
+| M3 | 19 | 3 | 0 | 0 |
 | M4 | 0 | 1 | 0 | 0 |
 
 ## 6. Definition of done (every ticket)
@@ -189,14 +197,25 @@ Tickets per milestone and agent:
 | PixiJS map too slow on the A56 | under 30 fps after fixes in M0 | lower detail levels first; Godot only as a last resort (owner decision) |
 | Five hero nations too much for M2 | M2 gate missed by more than a week | Prussia and the USA finish in M3; launch date holds |
 | Codex or AI Studio limits run out | no PRs for 3 days | the night shift keeps testing; owner reorders Ready; Claude covers one blocking ticket |
+| About 400 provinces too slow or too small to tap on the A56 | HP2 #148 scale test at 450 misses budgets in M1 | settle the count lower (350) before the data tickets start; map level of detail; quarterly updates for small provinces |
 | Closed-test dropouts | fewer than 12 testers active | recruit 25 to 30; the 14-day clock restarts only if under 12 |
 | Save size grows with daily state | night bench over budget | compact save (SV2/SV3) moves from 1.1 into M3 |
+
+## 7a. Province count (owner, 28 Nov 2026, B61)
+
+Target **about 400 provinces** (range 350 to 450), up from 184. Not the full historical count (over 1,000), which would make provinces too small to tap and the phone too slow. Rules for the province plan (HP1 #147):
+- A province is a historical region or a group of first-level units (for example Brittany or the Rhine Province), never a modern border.
+- Denser where the history happens and where the hero nations play: Europe, the Ottoman lands, India, China and Japan, the eastern United States. Sparse in Siberia, the Sahara, the Amazon and the Canadian north.
+- Every province at least about 44 px across at the zoom where it is chosen on a 390 px screen, or reachable by search.
+- The scale test (HP2 #148) runs a 450-province world first; if it fails the A56 budgets, the count settles lower before the data work starts.
+
+Rough split of the 400: Europe 150, Ottoman lands and the Middle East 45, South Asia 50, East and South-East Asia 55, the Americas 60, Africa 25, Russia in Asia and Central Asia 15.
 
 ## 8. Decisions still with the owner
 
 - Turn on "Do not allow bypassing" for main (#12) and Discussions in Settings.
 - Play account: personal (12 testers, 14 days) or organisation (D-U-N-S number).
 - Unlock price (suggested $4.99 with regional pricing).
-- Province count: 1.0 keeps 184 provinces; the historical count (B47, HP2 #148) moves to 1.1 unless you say otherwise.
+- Approve the province list from HP1 #147 (about 400).
 - Check the government service conduct rules before any revenue.
 - Add `ottoman1911.html` to the repository (#83).
