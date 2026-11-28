@@ -127,7 +127,7 @@ function pgEco(){const c=me(),st=c.stat||{},N=st.N||{},tag=c.tag,H=G.hist&&G.his
   ${gz("Life needs of the poor",nf.poor,1,pct(nf.poor),{c:nf.poor<.6?"red":"green",mk:.6})}${gz("Everyday needs of the poor",nn?ef/nn:0,1,pct(nn?ef/nn:0),{c:"green"})}${kr("Factory workers",ppl(N.CRA||0))}${kr("Immigrants",ppl(st.immig||0))}${workforce?`<details><summary>Provincial markets and households</summary>${workforce}</details>`:""}${tradePolicy}${companyAccounts}`;
  const mn=BR().all.find(r=>r.id==="fac"),slots=Math.max(2,Math.min(10,2+Math.floor(provsOf(tag).filter(p=>p.ctl===p.o&&p.col).length/4)));
  const gwst=GW.map(w=>[w,gwState(c,w),c.gw&&c.gw[w.id]]);
- const s1=`${L.length?L.map(([p,b])=>lr({t:projName(b),s:"in "+esc(p.n),bar:projProgress(b),v:pct(projProgress(b))})).join(""):`<p class="calm">Nothing is being built.</p>`}${gz("Works under way",L.length,slots,L.length+" of "+slots+" at a time")}
+ const s1=`${L.length?L.map(([p,b])=>lr({t:projName(b),s:"in "+esc(p.n),bar:projProgress(b),v:buildPercent(projProgress(b))})).join(""):`<p class="calm">Nothing is being built.</p>`}${gz("Works under way",L.length,slots,L.length+" of "+slots+" at a time")}
   ${mn?cta("Build "+gnm(mn.d.g)+" in "+esc(P(mn.d.p).n),"facmenu",{p:mn.d.p}):cta("Choose a province on the map","tab",{t:"map"},{sec:1})}
   <h3>Buildings and great works</h3>${cta("Open Works: what to build next","tab",{t:"works"},{sec:1})}`;
  const fk=Object.keys(fac).sort((a,b)=>fac[b]-fac[a]),fm=Math.max(1,...fk.map(g=>fac[g]));
@@ -200,14 +200,24 @@ function pgMil(){thSync();const c=me(),A=G.armies.filter(a=>a.o===c.tag&&a.u.len
  const s2=thHTML(c),thn=thRows(c).length;
  const s3=A.filter(a=>a.gen).map(a=>lr({t:esc(a.gen.n),s:"leads "+a.u.length+" "+(a.naval?"ships":"brigades")+(a.naval?" at "+esc(P(a.loc).n):" in "+esc(thName(a.th)))+", age "+Math.floor(a.gen.age),v:GEN_PILL(a.gen)})).join("")+leaders.map(g=>lr({t:esc(g.n),s:"no army, age "+Math.floor(g.age),v:GEN_PILL(g),vs:"free"})).join("")||`<p class="calm">We have no generals yet.</p>`;
  const s4=`<div class="kgrid">${tl("Warships",String(sum(navFleets(tag),a=>a.u.length)),"in "+navRows(c).filter(x=>navFleets(tag).some(a=>a.sr===x)).length+" sea"+(navRows(c).filter(x=>navFleets(tag).some(a=>a.sr===x)).length===1?"":"s"))}${tl("Transports",String(sum(sea.filter(a=>!a.u.some(isWarship)),a=>a.u.length)),"carry armies")}${tl("Our blockades",String(inf.length),inf.length?"nations shut in":"none")}${tl("Blockade on us",blk?Math.round(c.blk.share*100)+"%":"none",blk?esc(nameOf(c.blk.by)):"",{bad:blk})}</div>${inf.length?inf.map(k=>lr({lead:FL(k.tag),t:esc(k.n),s:"our blockade",bar:k.blk.share,bc:"green",v:Math.round(k.blk.share*100)+"%",vs:"of its coast"})).join(""):""}${navHTML(c)}`;
- const s5=Object.keys(UNITS).filter(k=>!UNITS[k].tech||c.tech[UNITS[k].tech]).map(k=>{const U=UNITS[k],st=uStat(c,k);return lr({t:U.n,s:"costs "+Object.keys(U.cost).map(g=>U.cost[g]+" "+GOODS[g].n.toLowerCase()).join(", "),v:`<span class="pills"><span>A ${st.a.toFixed(1)}</span><span>D ${st.d.toFixed(1)}</span></span>`,btn:["Raise","recruit",{k,p:c.cap},"pri"]});}).join("")+`<label class="mvto rdest">New brigades join<select data-sel="rdest" aria-label="Where new brigades join"><option value="">Where they are raised (the capital)</option><option value="res"${c.rdest==="res"?" selected":""}>The reserve</option>${thList(tag).filter(r=>thHub(tag,r)).map(r=>`<option value="${r}"${c.rdest===r?" selected":""}>${esc(REGION[r].n)}</option>`).join("")}</select></label>`+note("Raised at the capital, then sent where you choose. Ships are raised at a port: tap the province, then Recruit.");
+ const sites=provsOf(tag).filter(p=>p.ctl===tag);
+ const muster=Object.entries(UNITS).filter(([k,u])=>!u.tech||c.tech[u.tech]).map(([k,u])=>{
+  const candidates=u.land?sites.filter(p=>p.id===c.cap).concat(sites.filter(p=>p.id!==c.cap)):sites.filter(p=>p.sea);
+  const site=candidates.find(p=>recruitmentCheck(c,k,p.id).ok)||candidates[0];
+  const check=site?recruitmentCheck(c,k,site.id):{ok:false,txt:u.land?"No controlled province.":"Requires a controlled coastal province."};
+  const cost=Object.entries(u.cost).map(([g,n])=>n+" "+GOODS[g].n.toLowerCase()).join(", ");
+  return lr({t:u.n,s:check.ok?site.n+" · "+cost:check.txt,btn:check.ok?[u.land?"Recruit":"Order ship","recruit",{k,p:site.id},"pri"]:null});
+ }).join("");
+ const queue=(c.recq||[]).map(r=>lr({t:UNITS[r.k].n,s:P(r.pid).n,v:Math.ceil(sum(Object.values(r.left),x=>x))+" units of materials left"})).join("");
+ const s5=muster+(queue?"<h3>On order</h3>"+queue:"")+`<label class="mvto rdest">New brigades join<select data-sel="rdest" aria-label="Where new brigades join"><option value="">Where they are raised (the capital)</option><option value="res"${c.rdest==="res"?" selected":""}>The reserve</option>${thList(tag).filter(r=>thHub(tag,r)).map(r=>`<option value="${r}"${c.rdest===r?" selected":""}>${esc(REGION[r].n)}</option>`).join("")}</select></label>`+note("Ships are ordered at the eligible port shown. Orders receive materials each month.");
  return pageHTML("mil","mil","The army","Armies, fleets and commanders",[
+  ["Raise","Recruit brigades and order ships",s5],
   ["Strength","Men and supply",s0,{info:["War exhaustion","War exhaustion rises with every month of war and every defeat. At 50 the people want peace; at 100 the government may fall."]}],
   ["Mobilize","Mobilization",mobBody(c),{info:mobInfo,sum:c.mob&&c.mob.st?"under way":""}],
   ["Armies","Theatres",s2,{sum:thn?thn+"":"",info:["Theatres","The map is split into regions. Our brigades in a region form a theatre. Give each theatre a stance and, for an attack, an objective; its general does the marching. Move brigades between theatres with the Move button. Infantry holds the line, cavalry scouts and runs down a beaten enemy, and artillery cuts trenches and forts. Brigades above a province's supply limit lose strength every month."]}],
   ["Navy","Navy by station",s4,{sum:sea.length?sum(sea,a=>a.u.length)+" ships":"",info:["Navy by station","Ships are posted to a sea, not moved one by one. Each sea has a mission: Blockade, Patrol and escort, Seek battle, Support landing or Fleet in port. The ships sail to the right port by themselves each month. Send ships from one sea to another with the Send ships button."]}],
   ["Generals","Commanders",s3,{info:["Generals","Each point of attack or defense is worth 8% in battle; each point of marching makes an army 10% faster. Leadership grows with our officers and military spending: "+Math.floor((c.lead||0)/GEN_AT*100)+"% of the way to the next general. Generals are given to the biggest armies of each theatre automatically."]}],
-  ["Raise","Raise forces",s5]]);}
+  ]);}
 
 
 ACT.repayall=()=>{const r=applyCampaignCommand({...issueCampaignCommand(),kind:"repayall"});toast(r.txt||r.why);render();};

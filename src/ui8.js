@@ -220,7 +220,7 @@ function bmCraneAt(cx,cy){for(const g of document.querySelectorAll("#bmcr g.cr")
 function bmCrane(id,keep){
  const c=me(),p=P(id);if(!p)return;UI.crane=id;if(!keep)UI.sel=null;
  const q=c.bq||[],mine=q.map((x,i)=>[x,i]).filter(([x])=>x.p===id);
- const works=p.build.map(b=>lr({lead:ic(b.k==="bld"?b.b:b.k==="rail"?"rail":"works"),t:esc(projName(b)),s:(b.paid==null?"under way":money(b.paid)+" paid")+(b.lastProgress?.delayed?" · short of funds":"")+projectShortage(c,b),bar:projProgress(b),v:pct(projProgress(b))})).join("");
+ const works=p.build.map(b=>lr({lead:ic(b.k==="bld"?b.b:b.k==="rail"?"rail":"works"),t:esc(projName(b)),s:(b.paid==null?"under way":money(b.paid)+" paid")+(b.lastProgress?.delayed?" · short of funds":"")+projectShortage(c,b),bar:projProgress(b),v:buildPercent(projProgress(b))})).join("");
  const wait=mine.map(([x,i])=>lr({lead:ic(x.b),t:esc(BLD[x.b].n),s:"waiting list, place "+(i+1)+" of "+q.length,mid:`<span class="qbtns"><button class="btn sm" ${DA("bqmv",{id:x.id,d:-1,...issueCampaignCommand()})}${i?"":" disabled"} aria-label="Move up">Up</button><button class="btn sm" ${DA("bqmv",{id:x.id,d:1,...issueCampaignCommand()})}${i<q.length-1?"":" disabled"} aria-label="Move down">Down</button><button class="btn sm dng" ${DA("bqdel",{id:x.id,...issueCampaignCommand()})}>Remove</button></span>`})).join("");
  const h=`<div class="ph"><div class="phm"><h2>Works in ${esc(p.n)}</h2><div class="small muted">${p.build.length} under way, ${mine.length} waiting</div></div><button class="x" data-a="shclose" aria-label="Close">×</button></div>`
   +(works?`<h3>Under way</h3>${works}`:"")+(wait?`<h3>Waiting list</h3>${wait}`:"")+(works||wait?"":note("Nothing is being built here now."))

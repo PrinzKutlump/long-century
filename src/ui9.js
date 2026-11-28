@@ -28,14 +28,14 @@ const wbWhy=(k,p)=>{const x=UI.wb.bk.find(y=>y.k===k&&y.p===p);return x?x.why:""
 function wbCell(c,p,k,qpos){
  const cell={k,pid:p.id,lv:0,max:wbMax(c,k),st:"need",txt:"",pct:0,qn:0,cost:0,C:null,val:null,net:null,yrs:null,why:""};
  if(k==="rail"){const b=p.build.find(x=>x.k==="rail");cell.lv=p.rail;cell.C=RAIL_COST;cell.cost=bldMoney(RAIL_COST);
-  if(b){cell.st="building";cell.pct=projProgress(b);cell.txt="building "+pct(cell.pct);}
+  if(b){cell.st="building";cell.pct=projProgress(b);cell.txt="building "+buildPercent(cell.pct);}
   else if(!heldBy(c,p)){cell.txt=bmCan(c,p,"rail").why;}
   else{const r=railCan(c,p);if(r.ok){cell.st="can";cell.txt="can build";}else if(cell.max>0&&p.rail>=cell.max){cell.st="max";cell.txt="at maximum";}else cell.txt=r.why;}
   return cell;}
  const B=BLD[k],lv=B.lv(p);cell.lv=lv;
  if(B.ok&&!B.ok(p)&&!lv){cell.st="na";cell.txt=B.okw||"Not possible here.";return cell;}
  const bj=p.build.find(x=>x.k==="bld"&&x.b===k);
- if(bj){cell.st="building";cell.pct=projProgress(bj);cell.txt="building "+pct(cell.pct);return cell;}
+ if(bj){cell.st="building";cell.pct=projProgress(bj);cell.txt="building "+buildPercent(cell.pct);return cell;}
  if(qpos[p.id+"|"+k]){cell.st="queued";cell.qn=qpos[p.id+"|"+k];cell.txt="queued #"+cell.qn;return cell;}
  if(lv>=B.max){cell.st="max";cell.txt="at maximum";return cell;}
  const can=bmCan(c,p,k);cell.C=bldCost(p,k);cell.cost=bldMoney(cell.C);
@@ -80,7 +80,7 @@ function wbToolsHTML(c,ev,k){
  <div class="wb-tr"><label class="wb-f">Best value within £<input data-wb="cap" type="text" inputmode="decimal" autocomplete="off" placeholder="20000 or 20k" value="${esc(UI.wb.cap)}" aria-label="Amount to spend, in pounds"></label><button class="btn" data-a="wbbest">Best value within the amount</button></div>
  <div class="wb-tr"><button class="btn" data-a="wbfill">Fill free slots (${free} free)</button></div></div>`:"";
  const msg=UI.wb.msg||(more?"These tools only tick boxes. Nothing is bought until you review and confirm.":"");
- return`<div class="wb-tools${bld?" wb-tc":""}" role="group" aria-label="Bulk tools: they only tick boxes, nothing is bought">${sel}${top}${rest}${msg?`<p class="wb-msg small muted" role="status">${esc(msg)}</p>`:""}</div>`;}
+ return`<div class="wb-tools${bld?" wb-tc":""}" role="group" aria-label="Bulk tools: they only tick boxes, nothing is bought">${sel}${top}${rest}${msg?`<p class="wb-msg small muted" role="status">${esc(msg)}</p>`:""}</div>`+(bld&&more?quickWorksHTML(c):"");}
 
 /* ---------- view 1: by building ---------- */
 function wbChips(c,ev,k){
@@ -89,7 +89,7 @@ function wbChips(c,ev,k){
    return`<button class="wb-chip${x===k?" on":""}" aria-pressed="${x===k}" data-a="wbcur" data-k="${x}" aria-label="${esc(bmNm(x))}, ${l}, ${n} province${n===1?"":"s"} can build${t?", "+t+" ticked":""}">${ic(x)}<span>${esc(bmNm(x))}</span><i class="wb-n${n?"":" none"}">${t?t+"/":""}${n}</i></button>`;}).join("")).join("")+`</div>`;}
 function wbRowHTML(cell,p){
  const on=wbHas(cell.k,p.id),can=cell.st==="can",why=on?wbWhy(cell.k,p.id):"";
- const st=cell.st==="building"?"building "+pct(cell.pct):cell.txt;
+ const st=cell.st==="building"?"building "+buildPercent(cell.pct):cell.txt;
  return`<button class="wb-row st-${cell.st}${on?" on":""}" role="checkbox" aria-checked="${on}" data-a="wbtick" data-k="${cell.k}" data-p="${p.id}"${can?"":" disabled"}><span class="wb-tk" aria-hidden="true">${on?"✓":""}</span><span class="wb-rm"><b>${esc(p.n)}</b><span class="wb-rs">${wbPips(cell)}<em>${esc(st)}</em></span>${why?`<span class="wb-why">${esc(why)}</span>`:""}</span><span class="wb-rn">${cell.st==="na"?"":esc(money(cell.cost))}<small>${esc(wbPay(cell))}</small></span></button>`;}
 function wbFilHTML(ev){
  const by=UI.wb.sort,regs=new Map();for(const p of ev.provs)if(REG_OF[p.id]&&REGION[REG_OF[p.id]])regs.set(REG_OF[p.id],REGION[REG_OF[p.id]].n);
@@ -107,7 +107,7 @@ function wbByBuilding(c,ev){const k=wbCurKey();
 /* ---------- view 2: by province ---------- */
 function wbTile(cell,p){
  const on=wbHas(cell.k,p.id),can=cell.st==="can";
- return`<button class="wb-tile st-${cell.st}${on?" on":""}" role="checkbox" aria-checked="${on}" data-a="wbtick" data-k="${cell.k}" data-p="${p.id}"${can?"":" disabled"}>${ic(cell.k)}<span class="wb-tn">${esc(bmNm(cell.k))}</span>${wbPips(cell)}<small>${on?"ticked":esc(cell.st==="building"?"building "+pct(cell.pct):cell.st==="can"?(cell.cost?money(cell.cost):"can build"):cell.txt)}</small></button>`;}
+ return`<button class="wb-tile st-${cell.st}${on?" on":""}" role="checkbox" aria-checked="${on}" data-a="wbtick" data-k="${cell.k}" data-p="${p.id}"${can?"":" disabled"}>${ic(cell.k)}<span class="wb-tn">${esc(bmNm(cell.k))}</span>${wbPips(cell)}<small>${on?"ticked":esc(cell.st==="building"?"building "+buildPercent(cell.pct):cell.st==="can"?(cell.cost?money(cell.cost):"can build"):cell.txt)}</small></button>`;}
 function wbByProvince(c,ev){
  const k=wbCurKey(),open=UI.wb.open;
  return wbToolsHTML(c,ev,k)+ev.provs.map(p=>{const row=ev.by[p.id],ks=wbAllKeys().filter(x=>row[x].st!=="na"),t=ks.filter(x=>wbHas(x,p.id)).length,n=ks.filter(x=>row[x].st==="can").length,o=open[p.id]===undefined?p.id===c.cap&&!Object.keys(open).length:open[p.id];
@@ -117,7 +117,7 @@ function wbByProvince(c,ev){
 const wbCols=()=>{const w=UI.wb.bw||Math.min(window.innerWidth,560)-40;return clamp(Math.floor((w-114)/44),2,5);};
 const WB_SYM={can:"+",need:"–",building:"…",queued:"#",max:"●",na:""};
 function wbCellBtn(cell,p){
- const on=wbHas(cell.k,p.id),can=cell.st==="can",lab=bmNm(cell.k)+", "+p.n+": level "+cell.lv+" of "+cell.max+", "+(cell.st==="building"?"building "+pct(cell.pct):cell.txt)+(on?", ticked":"");
+ const on=wbHas(cell.k,p.id),can=cell.st==="can",lab=bmNm(cell.k)+", "+p.n+": level "+cell.lv+" of "+cell.max+", "+(cell.st==="building"?"building "+buildPercent(cell.pct):cell.txt)+(on?", ticked":"");
  return`<button class="wb-cell st-${cell.st}${on?" on":""}" role="checkbox" aria-checked="${on}" aria-label="${esc(lab)}" data-a="wbtick" data-k="${cell.k}" data-p="${p.id}"${can?"":" disabled"}><b>${cell.st==="na"?"":cell.lv}</b><i>${on?"✓":WB_SYM[cell.st]}</i></button>`;}
 function wbGrid(c,ev){
  const g=UI.wb.grp,keys=wbKeys(g),cols=wbCols(),pages=[];for(let i=0;i<keys.length;i+=cols)pages.push(keys.slice(i,i+cols));
@@ -144,7 +144,7 @@ function wbOrderRow(r){
  const pn=P(r.p).n,name=`<button class="wb-pn" data-a="wbmap" data-p="${r.p}" aria-label="Show ${esc(pn)} on the map">${esc(pn)}</button>`;
  const paid=`<span class="wb-paid" data-paid="${(+r.paid).toFixed(2)}">${esc(money(r.paid))} paid</span>`;
  let s,btns="",bar="";
- if(r.st==="building"){s=`Building ${pct(r.pr)} · about ${r.left} month${r.left===1?"":"s"} left · ${paid}${r.late?" · short of funds":""}`;bar=`<span class="meter"><i style="width:${(clamp(r.pr,0,1)*100).toFixed(0)}%"></i></span>`;}
+ if(r.st==="building"){s=`Building ${buildPercent(r.pr)} · about ${r.left} month${r.left===1?"":"s"} left · ${paid}${r.late?" · short of funds":""}`;bar=`<span class="meter"><i style="width:${(clamp(r.pr,0,1)*100).toFixed(0)}%"></i></span>`;}
  else if(r.st==="queued"){s=`Waiting, place ${r.i+1} of ${r.n} · starts when a slot is free · ${paid}`;
   btns=`<span class="wb-ob"><button class="btn sm" ${DA("bqmv",{id:r.id,d:-1,...issueCampaignCommand()})}${r.i?"":" disabled"} aria-label="Move ${esc(r.nm)} in ${esc(pn)} up">Up</button><button class="btn sm" ${DA("bqmv",{id:r.id,d:1,...issueCampaignCommand()})}${r.i<r.n-1?"":" disabled"} aria-label="Move ${esc(r.nm)} in ${esc(pn)} down">Down</button><button class="btn sm dng" ${DA("bqdel",{id:r.id,...issueCampaignCommand()})} aria-label="Remove ${esc(r.nm)} in ${esc(pn)} from the queue">Remove</button></span>`;}
  else s=`Finished ${dateStr(r.t)} · ${paid}`;
