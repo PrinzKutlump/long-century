@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 19, partial 13, missing 10, unverified 48, closed 2  (audited 2026-11-25)
+Totals: done 19, partial 15, missing 10, unverified 46, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -52,7 +52,7 @@ Totals: done 19, partial 13, missing 10, unverified 48, closed 2  (audited 2026-
 | B4 | Punjab 1836 flag | done | every nation has a flag (PR #53) | 2026-11-25 |
 | B5 | Buildings, great works, decisions the player can use | partial | Build mode and Works board exist |  |
 | B6 | UI at least as good as Devlet-i Aliyye | unverified | layout audit fails 7 pages |  |
-| B7 | Miller true-Earth map, art, easy navigation | unverified | MP and AR tickets |  |
+| B7 | Miller true-Earth map, art, easy navigation | partial | MP and AR tickets; experimental Atlas switch wired in #81; phone comparison pending on #81 |  |
 | B8 | About 20 more buildings and 12 more great works | unverified | 25 building kinds, 34 great works (22 non-fair); MASTER_PLAN has no great-works target (PR #53) |  |
 | B9 | About 90 events plus chronicle | done | 104 events, 79 dispatches (PR #53); more events: ticket #56 | 2026-11-25 |
 | B10 | DeepSeek 12 European events fixed | closed | owner set DeepSeek files aside 2026-11-25; events built from scratch: ticket #56 (B18) |  |
@@ -65,7 +65,7 @@ Totals: done 19, partial 13, missing 10, unverified 48, closed 2  (audited 2026-
 | B17 | Branch protection and CI that does not starve (admin bypass, light stress on push) | done | PR #51; owner set bypass | 2026-11-25 |
 | B18 | Missing historical events (Europe, Americas, Asia) built from scratch, not from DeepSeek files | missing | ticket #56 |  |
 | B19 | Free-licence assets only (CC0, public domain, or our own); manifest and CI check | done | docs/ASSETS.md, docs/assets.json, tools/assets_check.py; asset files for #41, #43, #44 still to add; owner 27 Nov (B42): AI-made art now allowed, recorded in the manifest with tool, prompt and date | 2026-11-25 |
-| B20 | Android game first; finished game has a dynamic map and modern UI; new features easy to add. Chosen path (option 1): keep the JavaScript engine, Vite multi-file build, Capacitor Android app, PixiJS map; switch to Godot only if the PixiJS map fails a phone test on the Galaxy A56 | unverified | from owner, Claude chat 27 Nov 2026 |  |
+| B20 | Android game first; finished game has a dynamic map and modern UI; new features easy to add. Chosen path (option 1): keep the JavaScript engine, Vite multi-file build, Capacitor Android app, PixiJS map; switch to Godot only if the PixiJS map fails a phone test on the Galaxy A56 | partial | from owner, Claude chat 27 Nov 2026; experimental Atlas switch wired in #81; Galaxy A56 acceptance pending on #81 |  |
 | B21 | Claude may implement game code as well as plan and audit (owner, 27 Nov 2026); AI Studio work goes through a branch and PR, never straight to main | done | from owner, Claude chat 27 Nov 2026; CLAUDE.md and AGENTS.md updated (PR #77); branch protection without bypass set by the owner 27 Nov | 2026-11-27 |
 | B22 | Review AI Studio's 27 Nov engine changes (runMonthlyTick in src/engine/simulation.ts, price clamps, market access, construction queue, tax calibration) that reached main without a PR | unverified | seed 7 SWI before (ad5aaa3) vs after (2fc1e64): Germany Aug 1866 vs Sep 1880; wars 68 vs 51; states destroyed 20 vs 16; save 977 KB vs 943 KB; worst month 96 vs 84 ms; hash dda070bb vs 0592088d (PR AND1); owner 27 Nov: revert. PR #77 restores the engine and interface files to ad5aaa3 (hash dda070bb, save/reload passes again) and keeps AI Studio's build, Android, PWA, map and worker files. Ideas to redo as reviewed tickets: market access, price limits, construction queue, askSheet instead of confirm() |  |
 | B23 | One GitHub-based coordination system for every AI and the owner: master plan and tickets on a claims board, agents take unclaimed tickets, no feature or planned feature goes missing, a new ask in any tool (AI Studio, Codex, Claude) is recorded in the repo before work, no independent streaks | done | from owner, Claude chat 27 Nov 2026; docs/COORDINATION.md, tools/coord.py, coord.yml (PR COORD1); merged PR #87; /claim and board refresh verified live on #88 | 2026-11-27 |

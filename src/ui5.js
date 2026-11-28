@@ -33,6 +33,7 @@ function buildMap(){WP={};for(const w of WORLD.provs)WP[w.id]=w;UI._fl=null;UI._
  $("#map").innerHTML=s.join("")+`<div id="mapbtns"><div id="zoom"><button class="btn" data-a="zoom" data-z="1" aria-label="Zoom in">+</button><button class="btn" data-a="zoom" data-z="-1" aria-label="Zoom out">−</button></div><button class="btn" data-a="capital" aria-label="Go to the capital">${mic("cap")}</button><button class="btn" data-a="nextth" aria-label="Next theatre needing orders">${mic("idle")}<span class="bdg" id="idlen" hidden></span></button><button class="btn" data-a="findprovince" aria-label="Find a province">${mic("find")}</button><button class="btn" id="bmbtn" data-a="bmopen" aria-label="Build: choose a project and select provinces">${ic("works")}</button></div><div id="bmstack"><div id="bmtop" hidden></div><div id="bmundo" role="status" hidden></div></div><div id="bmbot" hidden></div><div id="mapfoot"><div id="lens"><button class="btn lensb" id="lensb" data-a="lens" aria-haspopup="true" aria-expanded="false" aria-label="Map lens"><span class="lk">Lens</span><b id="lensn"></b>${CHEV}</button><div id="lenspop" role="menu" aria-label="Map lens" hidden>${Object.keys(MODES).map(k=>`<button class="btn" role="menuitem" data-a="mode" data-m="${k}">${MODES[k]}</button>`).join("")}</div></div><div id="legend" class="${OPT("lgmin",1)?"min":""}"></div></div>`;
  const c=me(),cap=P(c.cap),r=mapRect(),w0=r.width<700?380:900;UI.view={w:w0,h:w0*r.height/Math.max(1,r.width)};UI.view.x=cap.x-UI.view.w/2;UI.view.y=cap.y-UI.view.h*.4;applyView();bindMap();}
 function applyView(){const v=UI.view,svg=$("#svg");if(!svg)return;const r=UI.mr&&UI.mr.width?UI.mr:mapRect(),asp=r.height/Math.max(1,r.width);v.w=clamp(v.w,140,WORLD.w*1.1);v.h=v.w*asp;v.x=clamp(v.x,-v.w*.5,WORLD.w-v.w*.5);v.y=clamp(v.y,-v.h*.5,WORLD.h-v.h*.5);svg.setAttribute("viewBox",`${v.x.toFixed(1)} ${v.y.toFixed(1)} ${v.w.toFixed(1)} ${v.h.toFixed(1)}`);
+ if($("#map").classList.contains("has-pixi"))window.LC_PIXIMAP?.syncView();
  const sc=r.width/v.w;if(Math.abs(sc-(UI._sc||0))>1e-4){UI._sc=sc;mapScale(sc);}}
 /* things whose size on the screen should stay readable at every zoom */
 function mapScale(sc){const u=$("#units"),sw=(3/sc).toFixed(2)+"px";if(u)u.style.setProperty("--kc",(1/sc).toFixed(4));{const bc=$("#bmcr");if(bc)bc.style.setProperty("--kc",(1/sc).toFixed(4));}for(const k of["#lbls","#plbl"]){const g=$(k);if(g)g.style.setProperty("--sw",sw);}
@@ -86,12 +87,33 @@ function legendHTML(){const m=UI.mode,c=me(),sw=(col,l)=>`<span><i class="sw" st
  const S={pol:[sw(c.col,"Our land"),sw(hexMix(c.col,"#ffffff",.35),"A colony"),sw(hexMix(c.col,"#c0413a",.5),"Occupied"),sw("#ece4cf","Unclaimed")],dip:[sw("#5e9b5e","Us"),sw("#4f7fbf","Allies"),sw("#8fb8de","Our sphere"),sw("#c0413a","At war with us"),sw("#b9d4b0","Friendly"),sw("#e4b2a6","Cool")],pop:[sw(H(.15),"Few people"),sw(H(.9),"Crowded")],mil:[sw(H(.05),"Calm"),sw(H(.9),"Angry")],ind:[sw("#f0e2c0","No factories"),sw("#5a3d1e","Many factories")],rail:[sw("#f0e2c0","No railway"),sw("#24476b","Best railway")],ter:Object.keys(TERRAIN).map(k=>sw(TERC[k]||"#ccc",TERRAIN[k].n))};
  return`<button class="lgh" data-a="lg" aria-expanded="${!UI.lgmin}"><span>Key</span>${CHEV}</button><div class="lgb">${(S[m]||[]).join("")}<span class="muted">${esc(LEG[m])}</span></div>`;}
 function ensureFlags(tags){const k=[...tags].sort().join();if(UI._fl===k)return;UI._fl=k;setH($("#fdefs"),[...tags].map(t=>{const m=flagSVG(t,"").match(/<svg[^>]*>([\s\S]*)<\/svg>/);return m?`<symbol id="fl-${t}" viewBox="0 0 30 20" preserveAspectRatio="none">${m[1]}</symbol>`:"";}).join(""));}
+const atlasPixiBindings = {
+ get G(){return G;}, get ADJ(){return ADJ;}, get SEAR_OF(){return SEAR_OF;},
+ UI, WORLD, ACT, P, seenSet, friendly, navSheet, provColor,
+ get bmOn(){return bmOn;},
+ labelLayout, provLabelItems,
+ get provPts(){return provPts;}, get bbOf(){return bbOf;}, get edgeDist(){return edgeDist;}
+};
+function syncPixiAtlas(){
+ const pixi=window.LC_PIXIMAP, host=$("#map");
+ if(!pixi||!host)return;
+ if(!OPT("pixiAtlas",0)){pixi.unmount();return;}
+ if(pixi.isActive()){pixi.redrawGeometry();return;}
+ pixi.mount(host,atlasPixiBindings).then(active=>{
+  if(!OPT("pixiAtlas",0)||!host.isConnected)return;
+  if(active){host.classList.add("has-pixi");return;}
+  throw new Error("Pixi renderer unavailable");
+ }).catch(()=>{
+  pixi.unmount();OPTS("pixiAtlas",0);toast("Experimental Atlas unavailable. The classic map is active.");
+  if($("#modal [data-k=pixiAtlas]"))openSettings();
+ });
+}
 function drawMap(){for(const p of G.plist){const e=document.getElementById("pv-"+p.id);if(e){const f=provColor(p);if(e._f!==f){e.setAttribute("fill",f);e._f=f;}e.classList.toggle("sel",UI.sel===p.id);e.classList.toggle("occupied",!!p.ctl&&p.ctl!==p.o);e.classList.toggle("restive",UI.mode==="mil"&&p.un>=25&&p.ctl===p.o);}}
  const mv=mapMoves();setH($("#arrows"),"");setH($("#bats"),mv.bats);
  drawTheatres(1);
  const lg=$("#legend");if(lg){const h=legendHTML()+UI.lgmin;if(lg._h!==h){lg.innerHTML=legendHTML();lg._h=h;}lg.classList.toggle("min",!!UI.lgmin);}
  const ib=$("#idlen");if(ib){const n=G.player?thNeeds(me()).length:0;ib.textContent=n;ib.hidden=!n;}
- bmDraw();lensSync();applyView();UI._sc=0;applyView();}
+ bmDraw();lensSync();applyView();UI._sc=0;applyView();syncPixiAtlas();}
 UI.lgmin=OPT("lgmin",1);
 /* after a new game or a load the header has its Atlas shape only once render has run, so the first view is set afterwards */
 function atlasHome(){UI.mr=null;mapRect();const c=me();centerOn(P(c.cap),UI.view.w,.4);}
@@ -235,7 +257,8 @@ function openSettings(){const dark=(document.documentElement.dataset.theme||(mat
  openModal(`<div class="msheet" tabindex="-1"><div class="sh-h"><h2>Settings</h2><button class="x" data-a="close" aria-label="Close">×</button></div>
  <h3>Saved games</h3>${autosaveStatus()}<p class="small muted">The game saves itself every month. Use a slot to keep a game you can come back to.</p>${[1,2,3].map(slotRow).join("")}<div class="setrow"><button class="btn sm pri" data-a="savefile">Save to file</button><button class="btn sm" data-a="copysave">Copy save</button><button class="btn sm" data-a="import">Load pasted save</button></div><textarea id="svtxt" class="svtxt" rows="3" spellcheck="false" aria-label="Save text" placeholder="Press Copy save and the text appears here. To load a save, paste its text here and press Load pasted save."></textarea><div class="setrow"><button class="btn sm" data-a="importfile">Import a file</button></div><p class="small muted">Some sites block downloads, so copying the text is the sure way. Keep it in a note on your phone.</p><input type="file" id="impf" accept=".txt,text/plain" hidden>
  <h3>Play</h3>${swHTML("sum","Show a summary after each month",OPT("sum",1)!==0)}<p class="small muted" style="margin:0 0 .3rem">Fast-forward stops by itself for a decree that needs an answer, a war declared on us, or a lost province.</p>${sndRow()}
- <h3>Look</h3><div class="setrow"><div class="seg">${[["Light",0],["Dark",1]].map(([l,v])=>`<button class="btn sm ${dark===!!v?"on":""}" data-a="theme" data-v="${v?"dark":"light"}">${l}</button>`).join("")}</div></div><div class="setrow"><span class="small" style="align-self:center">Text size</span><div class="seg">${[["Small",.9],["Medium",1],["Large",1.12],["Largest",1.25]].map(([l,v])=>`<button class="btn sm ${tz===v?"on":""}" data-a="tz" data-v="${v}">${l}</button>`).join("")}</div></div>
+ <h3>Look</h3>${window.LC_PIXIMAP?swHTML("pixiAtlas","Experimental PixiJS Atlas",!!OPT("pixiAtlas",0)):""}
+<div class="setrow"><div class="seg">${[["Light",0],["Dark",1]].map(([l,v])=>`<button class="btn sm ${dark===!!v?"on":""}" data-a="theme" data-v="${v?"dark":"light"}">${l}</button>`).join("")}</div></div><div class="setrow"><span class="small" style="align-self:center">Text size</span><div class="seg">${[["Small",.9],["Medium",1],["Large",1.12],["Largest",1.25]].map(([l,v])=>`<button class="btn sm ${tz===v?"on":""}" data-a="tz" data-v="${v}">${l}</button>`).join("")}</div></div>
  <h3>The game</h3><div class="setrow"><button class="btn sm" data-a="chronicle">The chronicle so far</button><button class="btn sm" data-a="cabinetreport">Cabinet reports</button><button class="btn sm" data-a="newgame">New game</button></div>
  <h3>Cheats</h3><div class="setrow"><button class="btn sm" data-a="cheat">Add £100 million to the treasury</button></div><p class="small muted">${G.cheat?"Used "+G.cheat+" time"+(G.cheat>1?"s":"")+": £"+G.cheat*100+" million added.":"Each press adds £100 million."}</p></div>`);}
 Object.assign(ACT,{
@@ -245,7 +268,11 @@ Object.assign(ACT,{
  importfile:()=>{const f=$("#impf");if(!f)return;f.onchange=()=>{const r=new FileReader();r.onload=()=>loadText(String(r.result).trim(),"Imported");r.readAsText(f.files[0]);};f.click();},
  import:()=>{const ta=$("#svtxt");let z=ta&&ta.value.trim();if(!z){try{z=prompt("Paste a save:");}catch(e){}}if(!z){toast("Paste the save text into the box first.");return;}if(loadText(z.trim(),"Imported"))closeModal();},
  cont:()=>{let z=null;try{z=SAVES.get("vic.auto");}catch(e){}if(!z){toast("There is no autosave.");return;}if(loadText(z,"Continued")){UI.lastAutosave=G.t;drawTop();}},
- opt:d=>{OPTS(d.k,OPT(d.k,1)===0?1:0);openSettings();},
+ opt:d=>{
+  if(d.k==="pixiAtlas"){OPTS(d.k,OPT(d.k,0)?0:1);syncPixiAtlas();}
+  else OPTS(d.k,OPT(d.k,1)===0?1:0);
+  openSettings();
+ },
  chronicle:()=>{closeModal();showChronicle(false);},
  newgame:()=>{closeModal();askSheet({ti:"Start a new game?",danger:1,lab:"New game",body:"You return to the title page. The autosave is replaced when you begin again; saves in the slots are kept.",go:["newgo",{}]});},
  newgo:()=>showStart(),
