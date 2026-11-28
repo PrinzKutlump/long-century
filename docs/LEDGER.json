@@ -50,8 +50,10 @@
   {
    "id": "A6",
    "ask": "Trade, resource extraction, industry that produces",
-   "status": "unverified",
-   "note": "audit"
+   "status": "done",
+   "note": "AUD4: industrial output rose from 1.36M to 1.40M across the first 24 months; see test_aud4.js and #82.",
+   "probe": "econ.js::function econMonth",
+   "done": "2026-11-28"
   },
   {
    "id": "A7",
@@ -109,14 +111,18 @@
   {
    "id": "A15",
    "ask": "Red Sea fleet can return to the Mediterranean",
-   "status": "unverified",
-   "note": "audit"
+   "status": "done",
+   "note": "AUD4: ASW to CAI sea-only route exists at start. The Suez project adds the canal lane; see test_aud4.js and #82.",
+   "probe": "build.js::G.canal.suez",
+   "done": "2026-11-28"
   },
   {
    "id": "A16",
    "ask": "Mobile-friendly",
-   "status": "unverified",
-   "note": "layout_check 74 of 74 clean (2026-11-25)"
+   "status": "done",
+   "note": "AUD5: 74 of 74 phone layouts passed at 360 and 390 px on 2026-11-25; see docs/AUD5.md and #82.",
+   "probe": "ui.js::function render",
+   "done": "2026-11-28"
   },
   {
    "id": "A17",
@@ -179,8 +185,9 @@
   {
    "id": "A26",
    "ask": "Sounds and music of the era",
-   "status": "missing",
-   "note": "ticket #44"
+   "status": "partial",
+   "note": "Era sound cues shipped in PR #55. Era music is still tracked by #94 and #157.",
+   "probe": "ui_audio.js::const SND"
   },
   {
    "id": "A27",
@@ -231,8 +238,10 @@
   {
    "id": "B2",
    "ask": "Theatre command with infantry, cavalry, artillery; no army selection",
-   "status": "unverified",
-   "note": "theatre.js exists; owner 27 Nov (B57): theatre orders kept, armies visible and moving on the map, easy enjoyable controls"
+   "status": "done",
+   "note": "AUD4: cavalry and artillery changed combat outcomes. Theatre commands remain the player interface; living map and control upgrades are in B56/B57.",
+   "probe": "ui6.js::function drawTheatres",
+   "done": "2026-11-28"
   },
   {
    "id": "B3",

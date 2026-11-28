@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 19, partial 13, missing 10, unverified 48, closed 2  (audited 2026-11-25)
+Totals: done 23, partial 14, missing 9, unverified 44, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -14,7 +14,7 @@ Totals: done 19, partial 13, missing 10, unverified 48, closed 2  (audited 2026-
 | A3 | Refine gameplay, more historical events, refined military and naval system | unverified | audit vs Ottoman artifact |  |
 | A4 | Build railways | done |  | 2026-11-25 |
 | A5 | Build oil wells | partial | oil good exists, no well building found; needs ticket |  |
-| A6 | Trade, resource extraction, industry that produces | unverified | audit |  |
+| A6 | Trade, resource extraction, industry that produces | done | AUD4: industrial output rose from 1.36M to 1.40M across the first 24 months; see test_aud4.js and #82. | 2026-11-28 |
 | A7 | Refit ships in bulk, not one by one | missing | ticket #47 |  |
 | A8 | Buttons must not jump the page scroll | done | Settings sheet keeps scroll, merged PR #50; Economy page ok | 2026-11-25 |
 | A9 | More unique events, policies and systems, interlinked | unverified | audit |  |
@@ -23,8 +23,8 @@ Totals: done 19, partial 13, missing 10, unverified 48, closed 2  (audited 2026-
 | A12 | Repay all loans option | done | merged PR #37 | 2026-11-25 |
 | A13 | Improve naval training and quality | missing | ticket #39 |  |
 | A14 | Modernise administration, army, navy, education, constitution with historical projects | partial | modern.js and prog_tanzimat.js exist; navy, education, constitution unverified |  |
-| A15 | Red Sea fleet can return to the Mediterranean | unverified | audit |  |
-| A16 | Mobile-friendly | unverified | layout_check 74 of 74 clean (2026-11-25) |  |
+| A15 | Red Sea fleet can return to the Mediterranean | done | AUD4: ASW to CAI sea-only route exists at start. The Suez project adds the canal lane; see test_aud4.js and #82. | 2026-11-28 |
+| A16 | Mobile-friendly | done | AUD5: 74 of 74 phone layouts passed at 360 and 390 px on 2026-11-25; see docs/AUD5.md and #82. | 2026-11-28 |
 | A17 | Second scenario: Bolsheviks publish Sykes-Picot, Arab revolt turns loyal, play through WWII with interwar events, tech, industry, finance | missing | ticket #40 |  |
 | A18 | Liquid-glass old-book look with borders and images | missing | ticket #41; owner 27 Nov: liquid glass is optional, the target is a modern UI (B20) |  |
 | A19 | Small randomness in events and combat; decisions that feel purposeful | unverified | audit |  |
@@ -34,7 +34,7 @@ Totals: done 19, partial 13, missing 10, unverified 48, closed 2  (audited 2026-
 | A23 | Taxes by category with sector effects | partial | tax change moves income (PR #35 probe); categories per sector unverified |  |
 | A24 | Great works by history, renovation of old works, historic buildings | partial | 34 great works, no renovation path |  |
 | A25 | Great work and city pictures in background | missing | ticket #43 |  |
-| A26 | Sounds and music of the era | missing | ticket #44 |  |
+| A26 | Sounds and music of the era | partial | Era sound cues shipped in PR #55. Era music is still tracked by #94 and #157. |  |
 | A27 | Game theory in turns: deterrence, coalitions, payoffs, score vs real outcome | partial | some in diplo.js; scripted decisions unverified |  |
 | A28 | Trade page with treaties, boycotts, tariffs | missing | ticket #45 |  |
 | A29 | Resource deposits (coal, copper, chrome, lead, oil) in three levels | missing | ticket #46 |  |
@@ -47,7 +47,7 @@ Totals: done 19, partial 13, missing 10, unverified 48, closed 2  (audited 2026-
 | ID | Ask | Status | Ticket or evidence | Done on |
 |---|---|---|---|---|
 | B1 | Rebuild like Victoria 2; every country same rules; any country 1836 start | unverified | SWI, FRA, GBR accept the same fort order alike (PR #53); wider check open |  |
-| B2 | Theatre command with infantry, cavalry, artillery; no army selection | unverified | theatre.js exists; owner 27 Nov (B57): theatre orders kept, armies visible and moving on the map, easy enjoyable controls |  |
+| B2 | Theatre command with infantry, cavalry, artillery; no army selection | done | AUD4: cavalry and artillery changed combat outcomes. Theatre commands remain the player interface; living map and control upgrades are in B56/B57. | 2026-11-28 |
 | B3 | Flags for every nation | done |  | 2026-11-25 |
 | B4 | Punjab 1836 flag | done | every nation has a flag (PR #53) | 2026-11-25 |
 | B5 | Buildings, great works, decisions the player can use | partial | Build mode and Works board exist |  |
