@@ -20,6 +20,13 @@ for it in man["items"]:
         bad.append(f"{p}: CC0 and PD items need source_url, author, retrieved")
     if it.get("license") == "AI" and not all(it.get(k) for k in ("tool", "prompt", "created", "reviewed_by")):
         bad.append(f"{p}: AI items need tool, prompt, created, reviewed_by (docs/ASSETS.md)")
+    if it.get("license") == "OFL":
+        if not p.lower().endswith((".ttf", ".otf", ".woff", ".woff2")):
+            bad.append(f"{p}: OFL is allowed for font files only (ledger B63)")
+        elif not os.path.exists(os.path.join(ROOT, os.path.dirname(p), "OFL.txt")):
+            bad.append(f"{p}: OFL fonts need OFL.txt in the same folder")
+        if not (it.get("source_url") and it.get("author") and it.get("retrieved")):
+            bad.append(f"{p}: OFL items need source_url, author, retrieved")
     full = os.path.join(ROOT, p)
     if p.startswith(("assets/", "public/assets/")):
         if not os.path.exists(full):

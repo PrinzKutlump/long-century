@@ -115,6 +115,6 @@ Touch: haptic ticks (End Day, war, building done) with an off switch; numbers ro
 
 Related tickets: #119 newspaper, #120 eras, #130 art, #131 music, #139 achievements.
 
-Budgets on every ticket: 60 fps map (30 at lowest setting), 130 ms per month at 1936, at most 80 MB art and 25 MB music in 1.0, a low setting that turns off scenes, weather and the near-zoom diorama. Licences: public domain, CC0 or MIT, or AI-made with the prompt in docs/ASSETS.md. CC-BY is not allowed.
+Budgets on every ticket: 60 fps map (30 at lowest setting), 130 ms per month at 1936, at most 80 MB art and 25 MB music in 1.0, a low setting that turns off scenes, weather and the near-zoom diorama. Licences: public domain, CC0 or MIT, or AI-made with the prompt in docs/ASSETS.md. Fonts may also use the SIL Open Font License (B63). CC-BY is not allowed.
 
 Biggest risk: WOW1 depends on the PixiJS map passing the phone test. Fallback: tint the SVG map and swap textures by era; drop the near zoom until 1.1.
