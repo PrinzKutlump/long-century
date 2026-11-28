@@ -68,7 +68,12 @@ function econMonth(warm){
   if(p.mine&&mineW>0){const q=RGO_OUT[p.mine]*rgoK(p.mine)*p.mineCap*Math.pow(mineW/p.mineCap,.7)*(1+.15*(p.minew||0))*(1+c.fx.rgo+rail)*om*un*mq*PE[p.mine];s[p.mine]+=q;p._out.mine=q;}
   let reqC=0,reqK=0;for(const f of p.factories){reqC+=f.lv*FAC_WORK*.9;reqK+=f.lv*FAC_WORK*.1;}
   const staff=reqC?Math.min(1,n.CRA/reqC)*(.7+.3*Math.min(1,n.CLK/Math.max(.01,reqK))):0;p._staff=staff;p._craUn=reqC?Math.max(0,n.CRA-reqC)/Math.max(.01,n.CRA):1;
-  for(const f of p.factories){if(f.lv<=0||!goodOK(c,f.g))continue;const r=RECIPE[f.g];let fi=1;f._limitingInput=null;
+  for(const f of p.factories){
+   if(f.lv<=0||!goodOK(c,f.g)){
+    f._out=0;f._e=0;f._im=1;f._pr=0;f._limitingInput=null;f._inputFill=0;
+    continue;
+   }
+   const r=RECIPE[f.g];let fi=1;f._limitingInput=null;
    for(const x in r.I){const fill=c.fill[x]??1;if(fill<fi){fi=fill;f._limitingInput=x;}}
    f._inputFill=fi;
    const e=staff*Math.max(.05,fi)*om*un,mult=1+c.fx.fac+rail*.5+(p.id===c.cap&&c.gwx&&c.gwx.capfac||0)+.08*bxl(p,"power");f._e=e;const method=f.activeMethod??f.m??0,mm=1+.2*method,im=mm*(1-.1*method);f._im=im;f._out=r.O*f.lv*e*mult*mm*methodOperation(f,c.fill);s[f.g]+=f._out;for(const x in r.I)D[p.o][x]+=r.I[x]*f.lv*e*im;}
@@ -101,7 +106,6 @@ function econMonth(warm){
  for(const g of GK){const s=TS[g],d=TD[g];G.pricePrev[g]=G.price[g];if(s+d<=0)continue;const ex=clamp((d-s)/Math.max(s,d),-1,1);let fl=GOODS[g].p*.2;const R=RECIPE[g];if(R){let ci=0;for(const x in R.I)ci+=R.I[x]*G.price[x];fl=Math.max(fl,1.02*ci/R.O);} // nobody sells below the cost of the inputs for long
   G.price[g]=clamp(G.price[g]*(1+.04*ex),fl,Math.max(fl,GOODS[g].p*5));if(!G.tight)G.tight={};G.tight[g]=(G.tight[g]||1)*.9+.1*(s>0?d/s:1);} // how short the world is of a good, smoothed: investors read it
  for(const tag of participants)allocateLocalHouseholds(G.c[tag],provinces(tag),pilotSupply,pilotDemand);
- if(!warm)freightMonth(pilotSupply,pilotDemand); // B1: grain freight receipts
  for(const c of Object.values(G.c))if(c.alive){c.stat.dividendsIn=0;c.stat.dividendsOut=0;}
  /* incomes */
  for(const tag in G.c){const c=G.c[tag];if(!c.alive)continue;c._inc={};c._gdp=0;c._ari=0;c._cap=0;}
@@ -113,7 +117,8 @@ function econMonth(warm){
    const va=rev-cost,minW=(c.reforms.wage||0)*.1*c.tc[0][0]*f.lv*FAC_WORK*.9*f._e;let wages=Math.max(va*.7,minW);const prof=va-wages;f.employerAccount={revenue:rev,inputs:cost,wages,profit:prof};f._pr=prof;f.cash+=prof*.3;const fcap=FAC_IN*f.lv*2;if(f.cash>fcap){const x=f.cash-fcap;f.cash=fcap;if(f.own==="state")c.tr+=x;else capTo(f,x);}f.loss=prof<0?f.loss+1:Math.max(0,f.loss-1);
    wC+=wages*.78;wK+=wages*.22;if(prof>0){if(f.own==="state")c.tr+=prof*.7;else capTo(f,prof*.7);}else if(f.own==="state"||f.sub)c.tr+=prof;c._gdp+=va;
    if(f.loss>=8&&f.cash<0&&!(f.own==="state"||f.sub)){f.lv=Math.max(0,f.lv-.5);f.loss=4;f.cash=FAC_IN*.5;}
-   f.low=(f._e<.4)?(f.low||0)+1:0;if(f.low>=24){f.lv=Math.max(0,f.lv-.5);f.low=12;}}
+   f.low=(f._e<.4)?(f.low||0)+1:0;if(f.low>=24){f.lv=Math.max(0,f.lv-.5);f.low=12;}
+   if(f.lv<=0)f._out=0;}
   give.CRA+=wC;give.CLK+=wK;
   if(n.ART>0&&p._art){let va=0;const W=p.artW||G.artW,mg={};for(const g in p._art){const r=RECIPE[g],k=p._art[g]/r.O;let cost=0;for(const x in r.I)cost+=r.I[x]*k*1.1*c.bp[x]*(c.fill[x]||1);const v=p._art[g]*G.price[g]*c.sold[g]-cost;va+=v;mg[g]=cost>0?v/cost:0;}give.ART+=Math.max(0,va);c._gdp+=Math.max(0,va);
    if(!warm&&G.t%3===p.id.charCodeAt(0)%3){const nw={};let tw=0;for(const g of ARTISAN_GOODS){if(!goodOK(c,g)){nw[g]=0;continue;}const w=(W[g]||.02)*Math.exp(clamp((mg[g]||0)*1.5,-.6,.6));nw[g]=Math.max(.02,w);tw+=nw[g];}for(const g in nw)nw[g]=Math.round(nw[g]/tw*1000)/1000;p.artW=nw;}}
