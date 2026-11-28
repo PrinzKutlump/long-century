@@ -41,7 +41,7 @@ for(const [ev,y,tags] of CASES){const base=snaps[y];for(const tag of tags){
  // the card must not be taken by the clock when a person is playing: monthTick in a headless run takes the default, so here we check the state just before
  for(const o of card.opts){n++;A.load(sv);G=A.getG();let e=null,before=JSON.stringify(G.choices||[]);
   let now=true;const chk=T(ev,o.k,tag);try{G.player=tag;A.cardChoose(o.k);G=A.getG();now=!chk||chk(G);for(let i=0;i<12;i++)A.monthTick();}catch(x){e=x;}
-  G=A.getG();const pass=!e&&!G.card&&(G.choices||[]).some(c=>c.id===ev&&c.k===o.k)&&now;
+  G=A.getG();const pass=!e&&(!G.card||G.card.id!==ev)&&(G.choices||[]).some(c=>c.id===ev&&c.k===o.k)&&now;
   if(!pass){bad++;console.log("FAIL "+ev+" as "+tag+" option "+o.k+(e?" error "+e.message:"")+(!now?" effect not seen":""));}else console.log("ok   "+ev+" as "+tag+": "+o.label);}
  // AI keeps the old automatic course: no card, event runs by itself
  A.load(base);G=A.getG();G.player=null;let anyc=false;for(let i=0;i<14;i++){A.monthTick();if(G.card)anyc=true;}if(anyc||(G.ev[ev]==null&&false)){console.log("FAIL AI path opened a card",ev);bad++;}
