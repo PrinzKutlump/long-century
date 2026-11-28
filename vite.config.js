@@ -101,7 +101,10 @@ function longCenturyBundlerPlugin() {
   };
 }
 
+const siteBase = process.env.LC_SITE_BASE || "/";
+
 export default defineConfig({
+  base: siteBase,
   server: {
     host: "0.0.0.0",
     port: 3000,
@@ -132,7 +135,7 @@ export default defineConfig({
         "pwa-maskable-512x512.png"
       ],
       manifest: {
-        id: "/",
+        id: siteBase,
         name: metadata.name,
         short_name: "LongCentury",
         description: metadata.description,
@@ -140,8 +143,8 @@ export default defineConfig({
         background_color: "#141b26",
         display: "standalone",
         orientation: "any",
-        scope: "/",
-        start_url: "/",
+        scope: siteBase,
+        start_url: siteBase,
         icons: [
           {
             src: "pwa-192x192.png",
@@ -170,7 +173,7 @@ export default defineConfig({
         globIgnores: ["assets/pictures/**", "assets/audio/**", "assets/models/**"],
         runtimeCaching: [
           {
-            urlPattern: ({ url }) => /^\/assets\/(pictures|audio|models)\//.test(url.pathname),
+            urlPattern: ({ url }) => /\/assets\/(pictures|audio|models)\//.test(url.pathname),
             handler: "CacheFirst",
             options: {
               cacheName: "lc-media-assets",
