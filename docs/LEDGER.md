@@ -3,7 +3,7 @@
 Generated from docs/LEDGER.json by tools/ledger.py. Do not edit by hand.
 Rules: docs/DEV_WORKFLOW.md section 'Feature ledger'. Done rows stay forever for later audits.
 
-Totals: done 19, partial 13, missing 10, unverified 48, closed 2  (audited 2026-11-25)
+Totals: done 19, partial 13, missing 10, unverified 49, closed 2  (audited 2026-11-25)
 
 ## A. Devlet-i Aliyye asks (Ottoman 1911+ game) as carried into the Long Century
 
@@ -106,3 +106,4 @@ Totals: done 19, partial 13, missing 10, unverified 48, closed 2  (audited 2026-
 | B59 | Final structured plan for 1.0 and a 1.1 plan; Claude used minimally after today, most work divided between GPT/Codex and AI Studio; use GitHub's free resources extensively, especially at night when the owner is not working | partial | from owner, Claude chat 27 Nov; nightly build artifact workflow in #179; publication, probes and morning report tracked in #162 |  |
 | B60 | Province count must be historical in 1.0 (confirms B47 for the launch, not 1.1) | unverified | from owner, Claude chat 27 Nov |  |
 | B61 | Province count: raise from 184 to a level that stays mobile-friendly and fun, not the full historical ~1,000; replaces the full-count part of B47 and B60 | unverified | from owner, Claude chat 28 Nov |  |
+| B62 | Wow factor: creative, music, history and graphics direction for 1.0, learning from competitor games (living atlas that ages by era, signature moments, adaptive score, history against you, people who age, first five minutes) | unverified | from owner, Claude chat 28 Nov |  |
