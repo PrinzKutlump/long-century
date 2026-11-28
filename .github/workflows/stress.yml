@@ -55,7 +55,7 @@ jobs:
           echo "Runs in this shard: $(wc -l < /tmp/plan.txt)"
           xargs -P 4 -L 1 sh -c 'node --max-old-space-size=3072 tools/stress/run.js --seed "$0" --player "$1" --fuzz "$2" --resume 240,720,1080 --out "stress-out/run-$0-$1-$2.json" || true' < /tmp/plan.txt | tee /tmp/lines.txt
           sed 's/^/- /' /tmp/lines.txt >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: stress-century-${{ matrix.shard }}
@@ -88,7 +88,7 @@ jobs:
           mkdir -p stress-out
           python3 tools/stress/ui_sweep.py --shard ${{ matrix.shard }} --of 8 --months "$UI_MONTHS" --out stress-out/ui-${{ matrix.shard }}.json | tee /tmp/ui.txt
           sed 's/^/- /' /tmp/ui.txt >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: stress-ui-${{ matrix.shard }}
@@ -114,7 +114,7 @@ jobs:
           cat stress-report.md >> "$GITHUB_STEP_SUMMARY"
           # Also in the job log: artifacts are not readable from every reviewer's sandbox.
           echo "=== STRESS REPORT BEGIN ==="; cat stress-report.md; echo "=== STRESS REPORT END ==="
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: stress-report
           path: |

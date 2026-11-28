@@ -81,7 +81,7 @@ jobs:
             rm "$f" "$f.json"
           done
           ls /tmp/ohm | head; du -sh /tmp/ohm
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: ohm-planet
           path: /tmp/ohm/
@@ -181,7 +181,7 @@ jobs:
           cd "$OUT"
           cp SOURCES.md "$RUNNER_TEMP/package/"
           zip -q -9 "$RUNNER_TEMP/package/geodata.zip" *.geojson SOURCES.md
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: geodata-package
           path: ${{ runner.temp }}/package/
