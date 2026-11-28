@@ -6,6 +6,11 @@ on:
   pull_request:
     paths:
       - .github/workflows/night.yml
+      - tools/night_report.py
+
+concurrency:
+  group: release-pages
+  cancel-in-progress: false
 
 permissions:
   contents: read
@@ -31,7 +36,6 @@ jobs:
         run: |
           npm run build
           test -s dist/index.html
-          tar -czf long-century-nightly-web.tar.gz -C dist .
       - uses: android-actions/setup-android@v3
         with:
           packages: platforms;android-36 platform-tools build-tools;36.0.0
@@ -42,6 +46,12 @@ jobs:
           apk=android/app/build/outputs/apk/debug/app-debug.apk
           test -s "$apk"
           cp "$apk" long-century-nightly-debug.apk
+      - name: Package Pages web build
+        env:
+          LC_SITE_BASE: /${{ github.event.repository.name }}/nightly/
+        run: |
+          npm run build
+          tar -czf long-century-nightly-web.tar.gz -C dist .
       - uses: actions/upload-artifact@v4
         with:
           name: nightly-builds
@@ -49,3 +59,162 @@ jobs:
             long-century-nightly-web.tar.gz
             long-century-nightly-debug.apk
           if-no-files-found: error
+
+  publish:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v4
+        with:
+          name: nightly-builds
+      - name: Stage complete Pages deployment
+        run: |
+          python3 build.py
+          mkdir -p _site/nightly
+          cp dist/long-century.html _site/index.html
+          tar -xzf long-century-nightly-web.tar.gz -C _site/nightly
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Publish stable download URLs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view nightly >/dev/null 2>&1; then
+            gh release upload nightly --clobber long-century-nightly-debug.apk long-century-nightly-web.tar.gz
+            gh release edit nightly --notes "Test build from $GITHUB_SHA"
+          else
+            gh release create nightly --target "$GITHUB_SHA" --prerelease --latest=false \
+              --title "Nightly Android and web builds" --notes "Test build from $GITHUB_SHA" \
+              long-century-nightly-debug.apk long-century-nightly-web.tar.gz
+          fi
+
+  pages:
+    needs: publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment: github-pages
+    steps:
+      - uses: actions/deploy-pages@v4
+
+  stress:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        seed: [3, 7, 11, 19, 23, 31, 47, 59]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: python3 build.py
+      - name: Save and resume checkpoints
+        run: node tools/stress/run.js --seed ${{ matrix.seed }} --player SWI --resume 240,720,1080 --out stress.json
+      - name: Calibration
+        if: '!cancelled()'
+        run: node tools/cal_harness.js ${{ matrix.seed }} calibration.json
+      - uses: actions/upload-artifact@v4
+        if: '!cancelled()'
+        with:
+          name: measurements-${{ matrix.seed }}
+          path: |
+            stress.json
+            calibration.json
+
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          python3 -m pip install --quiet playwright
+          python3 build.py
+      - run: python3 tools/layout_check.py
+      - if: '!cancelled()'
+        run: python3 tools/tap_probe.py --width 360 --height 740
+      - if: '!cancelled()'
+        run: python3 tools/tap_probe.py --width 390 --height 844
+      - if: '!cancelled()'
+        run: python3 tools/shots.py
+      - uses: actions/upload-artifact@v4
+        if: '!cancelled()'
+        with:
+          name: nightly-screenshots
+          path: shots/
+
+  bench:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          python3 -m pip install --quiet playwright
+          python3 build.py
+          python3 tools/night_report.py bench > bench.json
+      - uses: actions/upload-artifact@v4
+        if: '!cancelled()'
+        with:
+          name: measurements-bench
+          path: bench.json
+
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v7
+      - run: python3 tools/ledger.py --check
+      - run: python3 tools/coord.py audit
+        if: '!cancelled()'
+      - run: python3 tools/coord.py board --write
+        if: '!cancelled() && github.ref == ''refs/heads/main'' && github.event_name != ''pull_request'''
+
+  report:
+    needs: [build, publish, pages, stress, probe, bench, checks]
+    if: '!cancelled()'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: measurements-*
+          path: measurements
+      - name: Render and post the morning report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          JOB_RESULTS: ${{ toJSON(needs) }}
+          POST_REPORT: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        run: |
+          python3 tools/night_report.py report > report.md
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+          if [ "$POST_REPORT" = true ]; then
+            python3 tools/night_report.py post
+          fi
